@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { X, Shield, FileText } from "lucide-react";
+import { launchEmailLinks } from "../../lib/launchEmailLinks";
 
 interface LegalModalProps {
   isOpen: boolean;
@@ -8,6 +9,62 @@ interface LegalModalProps {
 }
 
 const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousActiveElement =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    dialogRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((element) => !element.hasAttribute("disabled"));
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        dialogRef.current.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousActiveElement?.focus();
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const content = {
@@ -16,34 +73,44 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
       icon: Shield,
       sections: [
         {
+          title: "Launch-Stage Notice",
+          content:
+            "PinayMate is currently in launch preparation. Website waitlist and support interactions may be available before the full mobile dating service is publicly released. App account, messaging, verification, and paid features should be treated as available only when the product is explicitly launched for your region or test group.",
+        },
+        {
           title: "Information We Collect",
           content:
-            "We collect information you provide directly to us, including your name, email address, profile information, photos, and communication preferences. We also collect information about your usage of our platform, including matches, messages, and interactions.",
+            "The website waitlist and support flows collect only the information you choose to send by email, such as your email address, waitlist interest, and support request. Profile information, photos, matches, messages, reports, blocks, and verification status apply only when app account features are available for your account or test group.",
         },
         {
           title: "How We Use Your Information",
           content:
-            "We use your information to provide and improve our services, facilitate connections between members, personalize your experience, send you updates and notifications, ensure platform security, and comply with legal obligations.",
+            "We use launch-stage website information to respond to support and waitlist requests. When app features are live for your account or test group, we use account information to provide and improve the service, facilitate connections between members, personalize your experience, send updates and notifications, support platform security, and comply with legal obligations.",
+        },
+        {
+          title: "Verification and Safety Data",
+          content:
+            "If you submit verification materials or safety reports, we use them only for review, fraud prevention, support, moderation, and user-protection workflows. Review workflows can create trust signals, but they do not guarantee that another member is safe, truthful, or compatible.",
         },
         {
           title: "Data Security",
           content:
-            "We implement industry-standard security measures including AES-256 encryption, secure Supabase database infrastructure with row-level security policies, SSL/TLS encryption for data transmission, and regular security audits. Your data is stored on secure, redundant servers with 24/7 monitoring.",
+            "We use account access controls, database policies, and protected network connections to reduce risk around account and profile data. We continue to review database policies, storage access, and production settings as part of launch readiness.",
         },
         {
           title: "Information Sharing",
           content:
-            "We do not sell your personal information to third parties. We may share your information with other members as part of our matching service, with service providers who assist our operations (under strict confidentiality agreements), when required by law, and with your explicit consent.",
+            "We do not sell your personal information to third parties. When app features are available, visible profile information may be shared with other members as part of discovery and messaging. We may also share limited information with service providers who assist operations, when required by law, or with your explicit consent.",
         },
         {
           title: "Your Rights",
           content:
-            "You have the right to access, update, or delete your personal information at any time. You can control your privacy settings, opt-out of communications, request a copy of your data, and permanently delete your account. We comply with GDPR, CCPA, and other international data protection regulations.",
+            "You can request access, updates, or deletion of your personal information through support while launch-stage account deletion tools are being finalized. Visible profile controls and communication preferences should be treated as available only when those app settings are live for your account.",
         },
         {
           title: "Cookies and Tracking",
           content:
-            "We use cookies and similar technologies to enhance your experience, remember your preferences, analyze platform usage, and improve our services. You can control cookie settings through your browser preferences.",
+            "The launch website may use basic cookies or similar technologies for site functionality, preferences, analytics, or security if they are enabled. You can control cookie settings through your browser preferences.",
         },
       ],
     },
@@ -52,9 +119,14 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
       icon: FileText,
       sections: [
         {
+          title: "Launch-Stage Service",
+          content:
+            "PinayMate is currently preparing for public launch. Website waitlist actions, support messages, and product previews do not guarantee immediate app access, paid membership availability, app-store availability, or live dating functionality.",
+        },
+        {
           title: "Acceptance of Terms",
           content:
-            "By accessing and using PinayMate, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please do not use our platform. These terms constitute a legally binding agreement between you and PinayMate.",
+            "By accessing the PinayMate website, joining the waitlist, contacting support, or using available app features, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please do not use PinayMate.",
         },
         {
           title: "Eligibility",
@@ -64,7 +136,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         {
           title: "Account Responsibilities",
           content:
-            "You are responsible for maintaining the confidentiality of your account credentials, all activities that occur under your account, providing accurate and truthful information, and promptly updating your profile information. You must not share your account with others or use someone else's account.",
+            "When app account features are available for your account or test group, you are responsible for maintaining the confidentiality of your account credentials, all activities that occur under your account, providing accurate and truthful information, and promptly updating your profile information. You must not share your account with others or use someone else's account.",
         },
         {
           title: "Prohibited Conduct",
@@ -79,12 +151,17 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         {
           title: "Premium Membership",
           content:
-            "Premium memberships are billed on a recurring basis according to your selected plan. You can cancel your subscription at any time through your account settings. Cancellation will be effective at the end of your current billing cycle. We offer a 30-day money-back guarantee for first-time premium members.",
+            "Premium memberships, billing, cancellation, and refund terms will be shown at checkout only when paid plans are available. Pricing shown before launch is informational or exploratory unless a final checkout screen is visible and accepted.",
+        },
+        {
+          title: "No Safety Guarantee",
+          content:
+            "PinayMate may use verification cues, reports, blocks, and moderation workflows to improve trust and safety. These tools reduce risk but do not guarantee member identity, behavior, relationship outcomes, or personal safety. Use caution and do not send money, passwords, codes, or private documents to someone you just met.",
         },
         {
           title: "Termination",
           content:
-            "We reserve the right to suspend or terminate your account at any time for violation of these terms, fraudulent activity, or for any reason we deem necessary to protect our platform and community. You may also terminate your account at any time through your account settings.",
+            "We reserve the right to suspend or terminate your account at any time for violation of these terms, fraudulent activity, or for any reason we deem necessary to protect our platform and community. While launch-stage account deletion tools are being finalized, you may request account termination or deletion through support.",
         },
         {
           title: "Limitation of Liability",
@@ -99,37 +176,59 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
   const IconComponent = selectedContent.icon;
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
-      <div className="bg-gradient-to-br from-[#1a202c] via-[#283040] to-[#1a202c] rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-[#8D99B2]/20 shadow-2xl animate-slideInUp">
+    <div
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) {
+          onClose();
+        }
+      }}
+    >
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={`legal-modal-title-${type}`}
+        aria-describedby={`legal-modal-description-${type}`}
+        tabIndex={-1}
+        className="bg-gradient-to-br from-[#1a202c] via-[#283040] to-[#1a202c] rounded-xl max-w-4xl w-full max-h-[min(90dvh,48rem)] overflow-hidden border border-[#8D99B2]/20 shadow-2xl animate-slideInUp"
+      >
         {/* Header */}
         <div className="bg-gradient-to-r from-[#F4376D]/10 via-[#A855F7]/10 to-[#3B82F6]/10 border-b border-[#8D99B2]/20 p-6 flex items-center justify-between sticky top-0 backdrop-blur-lg z-10">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-[#F4376D] via-[#A855F7] to-[#3B82F6] rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-12 h-12 bg-gradient-to-r from-[#F4376D] via-[#A855F7] to-[#3B82F6] rounded-lg flex items-center justify-center shadow-lg">
               <IconComponent className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-2xl md:text-3xl font-black text-white font-roboto">
+            <h2
+              id={`legal-modal-title-${type}`}
+              className="text-2xl md:text-3xl font-dm-sans-black text-white"
+            >
               {selectedContent.title}
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="w-10 h-10 bg-[#283040] hover:bg-[#F4376D] rounded-full flex items-center justify-center transition-all duration-300 group border border-[#8D99B2]/20 hover:border-[#F4376D]"
+            aria-label={`Close ${selectedContent.title}`}
+            className="w-11 h-11 bg-[#283040] hover:bg-[#F4376D] rounded-lg flex items-center justify-center transition-all duration-300 group border border-[#8D99B2]/20 hover:border-[#F4376D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4376D]"
           >
             <X className="w-5 h-5 text-[#C8B5E6] group-hover:text-white transition-colors" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto max-h-[calc(90vh-100px)] p-6 space-y-8">
-          <div className="bg-gradient-to-r from-[#F4376D]/5 via-[#A855F7]/5 to-[#3B82F6]/5 border border-[#F4376D]/20 rounded-2xl p-6">
-            <p className="text-[#C8B5E6] font-roboto leading-relaxed">
-              <strong className="text-white">Last Updated:</strong> November 4,
-              2025
+        <div className="overflow-y-auto max-h-[calc(min(90dvh,48rem)-100px)] p-5 space-y-7 sm:p-6 sm:space-y-8">
+          <div className="bg-gradient-to-r from-[#F4376D]/5 via-[#A855F7]/5 to-[#3B82F6]/5 border border-[#F4376D]/20 rounded-lg p-6">
+            <p className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed">
+              <strong className="text-white">Last Updated:</strong> June 11,
+              2026
             </p>
-            <p className="text-[#C8B5E6] font-roboto leading-relaxed mt-2">
+            <p
+              id={`legal-modal-description-${type}`}
+              className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed mt-2"
+            >
               Please read this {selectedContent.title.toLowerCase()} carefully.
-              By using PinayMate, you acknowledge that you have read,
-              understood, and agree to be bound by these terms.
+              The current site is launch-stage, so waitlist/support terms may
+              apply before full mobile app features are publicly available.
             </p>
           </div>
 
@@ -139,41 +238,43 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               className="space-y-3 animate-fadeInUp"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-gradient-to-r from-[#F4376D] to-[#A855F7] rounded-full flex items-center justify-center text-white font-bold text-sm">
+              <div className="flex items-start gap-3">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-r from-[#F4376D] to-[#A855F7] text-sm font-bold text-white">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-bold text-white font-roboto">
+                <h3 className="text-xl font-dm-sans-bold text-white">
                   {section.title}
                 </h3>
               </div>
-              <p className="text-[#C8B5E6] font-roboto leading-relaxed pl-11">
+              <p className="pl-0 text-[#C8B5E6] font-dm-sans-regular leading-relaxed sm:pl-11">
                 {section.content}
               </p>
             </div>
           ))}
 
           {/* Contact Section */}
-          <div className="bg-gradient-to-r from-[#F4376D]/10 via-[#A855F7]/10 to-[#3B82F6]/10 border border-[#F4376D]/30 rounded-2xl p-6 mt-8">
-            <h3 className="text-xl font-bold text-white font-roboto mb-4">
+          <div className="bg-gradient-to-r from-[#F4376D]/10 via-[#A855F7]/10 to-[#3B82F6]/10 border border-[#F4376D]/30 rounded-lg p-6 mt-8">
+            <h3 className="text-xl font-dm-sans-bold text-white mb-4">
               Questions or Concerns?
             </h3>
-            <p className="text-[#C8B5E6] font-roboto leading-relaxed mb-4">
+            <p className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed mb-4">
               If you have any questions about our{" "}
-              {selectedContent.title.toLowerCase()}, please contact our support
+              {selectedContent.title.toLowerCase()}, contact the launch support
               team:
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="mailto:legal@pinaymate.com"
-                className="inline-flex items-center space-x-2 text-[#F4376D] hover:text-[#A855F7] transition-colors font-roboto font-bold"
+                href={launchEmailLinks.legalQuestion}
+                aria-label="Email PinayMate legal support"
+                className="inline-flex min-h-11 items-center space-x-2 rounded-xl text-[#ff8fb8] hover:text-white transition-colors font-dm-sans-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 <span>legal@pinaymate.com</span>
               </a>
               <span className="text-[#8D99B2] hidden sm:block">•</span>
               <a
-                href="mailto:support@pinaymate.com"
-                className="inline-flex items-center space-x-2 text-[#A855F7] hover:text-[#3B82F6] transition-colors font-roboto font-bold"
+                href={launchEmailLinks.supportQuestion}
+                aria-label="Email PinayMate support"
+                className="inline-flex min-h-11 items-center space-x-2 rounded-xl text-[#cbb2ff] hover:text-white transition-colors font-dm-sans-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 <span>support@pinaymate.com</span>
               </a>

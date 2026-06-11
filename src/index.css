@@ -1,46 +1,5 @@
 @import "tailwindcss";
 
-/* ─── Font Face Declarations ─── */
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans ExtraLight.ttf") format("truetype");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
 /*───────────────────────────────────────────────
 🌸 PinayMate Design System – Color Tokens (CSS Variables)
 ───────────────────────────────────────────────*/
@@ -891,4 +850,55 @@ h6 {
 
 .animate-zoom-pulse {
   animation: zoom-pulse 2s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a,
+button {
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+:target {
+  scroll-margin-top: 5rem;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  transform: translateY(-150%);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #4d0034;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  box-shadow: 0 16px 40px rgba(15, 10, 26, 0.24);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid #81a5e9;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

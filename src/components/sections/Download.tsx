@@ -1,235 +1,305 @@
 import {
   Heart,
-  MessageCircle,
-  Star,
-  User,
+  Mail,
   MapPin,
+  ShieldCheck,
+  Smartphone,
   Sparkles,
-  Apple,
-  Play,
+  UsersRound,
 } from "lucide-react";
+import { launchEmailLinks } from "../../lib/launchEmailLinks";
+import { WaitlistCaptureForm } from "../waitlist/WaitlistCaptureForm";
+
+const waitlistSignals = [
+  {
+    icon: ShieldCheck,
+    title: "Review before broad reach",
+    text: "Launch access is being shaped around verification cues, report paths, and safer conversation boundaries before wide availability.",
+  },
+  {
+    icon: Sparkles,
+    title: "Intent over attention",
+    text: "The experience highlights relationship goals, lifestyle fit, and profile context instead of encouraging low-intent swiping.",
+  },
+  {
+    icon: UsersRound,
+    title: "Built for cross-cultural clarity",
+    text: "PinayMate is planned around expectations, location context, and communication readiness before a conversation starts.",
+  },
+];
+
+const featureTags = [
+  "Interest only",
+  "Launch updates",
+  "No payment today",
+  "Platform preference",
+];
+
+const privacyNotes = [
+  "Send your platform preference and email only.",
+  "Keep passwords, ID documents, payment details, precise location, and private profile information out of waitlist messages.",
+  "Profile and verification details belong in the app after launch.",
+];
+
+const waitlistSteps = [
+  "Choose iOS or Android and send only email plus platform preference.",
+  "PinayMate uses that signal to plan launch cohorts and support coverage.",
+  "You receive updates when access is ready. Matching starts only after the app opens and you choose to set up a profile.",
+];
+
+const waitlistLinks = [
+  {
+    href: launchEmailLinks.iosWaitlist,
+    label: "Join iOS waitlist",
+    ariaLabel:
+      "Join the PinayMate iOS waitlist by email without creating an app account, dating profile, match request, or payment record",
+    isPrimary: true,
+    detail: "Best if you use iPhone or iPad.",
+  },
+  {
+    href: launchEmailLinks.androidWaitlist,
+    label: "Join Android waitlist",
+    ariaLabel:
+      "Join the PinayMate Android waitlist by email without creating an app account, dating profile, match request, or payment record",
+    isPrimary: false,
+    detail: "Best if you use an Android phone.",
+  },
+];
+
+const storeLinkStates = [
+  {
+    label: "App Store",
+    detail: "Unavailable until iOS release sign-off.",
+  },
+  {
+    label: "Google Play",
+    detail: "Unavailable until Android release sign-off.",
+  },
+];
 
 const Download = () => {
-  const features = [
-    {
-      icon: Heart,
-      text: "Verified Profiles",
-      color: "from-[#F4376D]/20 to-[#A855F7]/20",
-      iconColor: "text-[#F4376D]",
-    },
-    {
-      icon: MessageCircle,
-      text: "Instant Messaging",
-      color: "from-[#A855F7]/20 to-[#3B82F6]/20",
-      iconColor: "text-[#A855F7]",
-    },
-    {
-      icon: Sparkles,
-      text: "Smart Matching",
-      color: "from-[#3B82F6]/20 to-[#F4376D]/20",
-      iconColor: "text-[#3B82F6]",
-    },
-    {
-      icon: Star,
-      text: "Premium Features",
-      color: "from-[#F4376D]/20 to-[#A855F7]/20",
-      iconColor: "text-[#F4376D]",
-    },
-  ];
-
   return (
     <section
       id="download"
-      className="py-16 md:py-20 bg-gradient-to-br from-[#2d1b3d] via-[#1a0f26] to-[#3d2952] relative overflow-hidden"
+      className="relative overflow-hidden bg-[#160d20] py-20 text-white sm:py-24 lg:py-28"
     >
-      {/* Background Elements */}
-      <div
-        className="absolute inset-0 overflow-hidden pointer-events-none"
-        aria-hidden="true"
-      >
-        <div className="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-[#F4376D]/10 to-[#A855F7]/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-48 h-48 bg-gradient-to-r from-[#A855F7]/10 to-[#3B82F6]/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute inset-0" aria-hidden="true">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#ef3e78]/25 to-transparent" />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-6 text-left order-2 lg:order-1">
-            <div className="space-y-4">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight font-roboto">
-                Find Your Perfect{" "}
-                <span className="text-transparent bg-gradient-to-r from-[#F4376D] via-[#A855F7] to-[#3B82F6] bg-clip-text">
-                  Match
-                </span>
-              </h2>
-              <p className="text-base md:text-lg text-[#C8B5E6] font-roboto max-w-xl">
-                Start your journey to finding genuine connections and meaningful
-                relationships.
-              </p>
+      <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+          <div>
+            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/15 bg-white/8 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-2xl shadow-black/20 backdrop-blur">
+              <Heart className="h-4 w-4 text-[#F4376D]" fill="#F4376D" aria-hidden="true" />
+              Launch-stage waitlist
             </div>
 
-            {/* Features Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 py-4">
-              {features.map((feature, i) => {
-                const Icon = feature.icon;
-                return (
-                  <div key={i} className="flex items-center space-x-3">
-                    <div
-                      className={`w-10 h-10 bg-gradient-to-r ${feature.color} rounded-full flex items-center justify-center border border-[#F4376D]/30`}
+            <h2 className="max-w-2xl font-lora text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+              Pick your platform. Keep the first step private.
+            </h2>
+
+            <p className="mt-6 max-w-xl text-lg leading-8 text-[#d7c7ed]">
+              Share only your email and platform preference so the team knows
+              whether to prioritize your iOS or Android path. It does not create
+              a dating profile, start matching, or collect payment.
+            </p>
+
+            <WaitlistCaptureForm />
+
+            <div className="mt-8 rounded-lg border border-white/12 bg-white/[0.07] p-3 shadow-xl shadow-black/15 backdrop-blur">
+              <p className="px-2 pb-3 text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
+                Email fallback if needed
+              </p>
+              <p className="px-2 pb-3 text-sm leading-6 text-[#cbbade]">
+                Choose your launch path by email only if the private launch
+                form is unavailable or you prefer your mail app.
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {waitlistLinks.map((link) => (
+                  <div
+                    key={link.label}
+                    className="rounded-lg border border-white/10 bg-[#251633]/70 p-2 shadow-lg shadow-black/10"
+                  >
+                    <a
+                      href={link.href}
+                      aria-label={link.ariaLabel}
+                      aria-describedby="waitlist-email-note"
+                      className={`inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] ${
+                        link.isPrimary
+                          ? "bg-white text-[#21132f] shadow-2xl shadow-[#F4376D]/20 hover:bg-[#fff4fa] hover:shadow-[#F4376D]/30"
+                          : "border border-white/20 bg-white/8 text-white backdrop-blur hover:border-[#f0b6df] hover:bg-white/12"
+                      }`}
                     >
-                      <Icon className={`w-5 h-5 ${feature.iconColor}`} />
-                    </div>
-                    <span className="text-white text-sm font-roboto font-medium">
-                      {feature.text}
-                    </span>
+                      <Smartphone className="h-5 w-5" aria-hidden="true" />
+                      {link.label}
+                    </a>
+                    <p className="px-2 pt-2 text-sm leading-6 text-[#cbbade]">
+                      {link.detail} Use this if the private launch form is
+                      unavailable or you prefer email.
+                    </p>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            <p
+              id="waitlist-email-note"
+              className="mt-3 max-w-xl text-sm leading-6 text-[#cbbade]"
+              aria-live="polite"
+            >
+              Opens your email app with a platform-only waitlist message. No
+              app account, dating profile, match request, matching session,
+              checkout, payment record, precise location, or matching data is
+              created from this page. The form above is the primary waitlist
+              path; email stays available as fallback.
+            </p>
+
+            <div className="mt-5 rounded-lg border border-[#f0b6df]/25 bg-[#fff7fb] p-4 text-[#21132f] shadow-xl shadow-black/10">
+              <div className="flex items-start gap-3">
+                <ShieldCheck
+                  className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
+                  aria-hidden="true"
+                />
+                <div>
+                  <p className="font-dm-sans-bold">
+                    Send only what the waitlist needs
+                  </p>
+                  <ul className="mt-2 grid gap-2 text-sm leading-6 text-[#4b5563]">
+                    {privacyNotes.map((note) => (
+                      <li key={note} className="flex gap-2">
+                        <span
+                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ef3e78]"
+                          aria-hidden="true"
+                        />
+                        <span>{note}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-lg border border-white/12 bg-white/[0.07] p-5 shadow-xl shadow-black/15 backdrop-blur">
+              <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
+                What happens next
+              </p>
+              <ol className="mt-4 grid gap-3">
+                {waitlistSteps.map((step, index) => (
+                  <li key={step} className="flex items-start gap-3">
+                    <span
+                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-[#fff7fb] text-sm font-dm-sans-bold text-[#b31460]"
+                      aria-hidden="true"
+                    >
+                      {index + 1}
+                    </span>
+                    <span className="pt-0.5 text-sm leading-6 text-[#eadff7]">
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {featureTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="inline-flex min-h-10 items-center rounded-lg border border-white/12 bg-white/8 px-3 py-2 text-sm font-dm-sans-semibold text-[#eadff7]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-white/12 bg-white/[0.06] p-4 shadow-2xl shadow-black/25 backdrop-blur sm:p-6 lg:p-8">
+            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              {waitlistSignals.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <article
+                    key={item.title}
+                    className="rounded-lg border border-white/10 bg-[#251633]/80 p-5 shadow-xl shadow-black/15 transition duration-200 hover:border-[#f0b6df]/35 hover:bg-[#2c193c]"
+                  >
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#ef3e78] text-white">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    </div>
+                    <h3 className="font-lora text-xl font-bold text-white">{item.title}</h3>
+                    <p className="mt-3 text-base leading-7 text-[#d7c7ed]">{item.text}</p>
+                  </article>
                 );
               })}
             </div>
 
-            {/* Download Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <a
-                href="#"
-                className="group inline-flex items-center justify-center space-x-3 bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl border border-gray-700/50"
-              >
-                <Apple className="w-10 h-10" />
-                <div className="text-left">
-                  <div className="text-xs text-gray-300 font-roboto uppercase tracking-wide">
-                    Download on the
-                  </div>
-                  <div className="text-lg font-bold font-roboto">App Store</div>
-                </div>
-              </a>
-
-              <a
-                href="#"
-                className="group inline-flex items-center justify-center space-x-3 bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl border border-gray-700/50"
-              >
-                <Play className="w-10 h-10" fill="currentColor" />
-                <div className="text-left">
-                  <div className="text-xs text-gray-300 font-roboto uppercase tracking-wide">
-                    Get it on
-                  </div>
-                  <div className="text-lg font-bold font-roboto">
-                    Google Play
-                  </div>
-                </div>
-              </a>
+            <div className="mt-5 rounded-lg border border-[#F4376D]/20 bg-[#F4376D]/10 p-5">
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-[#f7a4c8]" aria-hidden="true" />
+              <div>
+                <p className="font-dm-sans-bold text-white">What the waitlist means</p>
+                  <p className="mt-1 text-sm leading-6 text-[#eadff7]">
+                    It is a launch interest signal, not a live
+                    membership, app account, dating profile, match request,
+                    matching session, checkout step, or payment record.
+                    Joining does not start matching today, create a public
+                    profile, or require payment. It is an interest signal for
+                    launch planning, not a live membership, match request, or
+                    checkout step.
+                    {" Joining does not start matching today, create a public profile, or require payment. This is an interest signal for launch planning, not a live membership, match request, or checkout step."}
+                  </p>
+              </div>
+              </div>
             </div>
-          </div>
 
-          {/* Right Phone Mockup */}
-          <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
-            <div className="relative w-full max-w-sm">
-              {/* Glow Effect */}
-              <div
-                className="absolute inset-0 bg-gradient-to-r from-[#F4376D]/30 via-[#A855F7]/20 to-[#3B82F6]/30 blur-3xl scale-110 animate-pulse"
-                aria-hidden="true"
-              ></div>
-
-              {/* Phone */}
-              <div className="relative w-full max-w-[280px] mx-auto aspect-[9/16] bg-gradient-to-br from-[#2a2a3e] to-[#1a1a2e] rounded-[2.5rem] p-2 shadow-2xl border-2 border-[#A855F7]/30">
-                <div className="w-full h-full bg-gradient-to-br from-[#1a0f26] to-[#0f0a1a] rounded-[2rem] overflow-hidden flex flex-col">
-                  {/* Status Bar */}
-                  <div className="flex justify-between items-center px-6 pt-4 pb-2 flex-shrink-0">
-                    <div className="text-white text-xs font-medium font-roboto">
-                      9:41
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <div className="w-3 h-1.5 bg-white/80 rounded-sm"></div>
-                      <div className="w-1 h-3 bg-white/60 rounded-sm"></div>
-                      <div className="w-5 h-2.5 border-2 border-white/70 rounded-sm">
-                        <div className="w-full h-full bg-green-400 rounded-sm"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* App Header */}
-                  <div className="px-6 py-2 flex-shrink-0">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center space-x-2">
-                        <div className="w-8 h-8 bg-gradient-to-r from-[#F4376D] via-[#A855F7] to-[#3B82F6] rounded-full flex items-center justify-center shadow-lg">
-                          <Heart className="w-4 h-4 text-white" fill="white" />
-                        </div>
-                        <span className="text-white text-lg font-black font-roboto">
-                          PinayMate
-                        </span>
-                      </div>
-                      <div className="w-7 h-7 bg-white/10 rounded-full flex items-center justify-center">
-                        <div className="w-2 h-2 bg-[#F4376D] rounded-full animate-pulse"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Profile Card */}
-                  <div className="flex-1 px-4 pb-20 overflow-hidden">
-                    <div className="bg-gradient-to-br from-[#F4376D]/25 to-[#A855F7]/20 rounded-2xl p-1 backdrop-blur-sm border border-[#F4376D]/40 shadow-xl h-full">
-                      <div className="bg-black/50 rounded-xl p-4 backdrop-blur-md h-full flex flex-col">
-                        <div className="flex items-center space-x-3 mb-3">
-                          <div className="w-12 h-12 bg-gradient-to-r from-[#F4376D] to-[#A855F7] rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
-                            <User className="w-6 h-6 text-white" />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <div className="text-white font-bold text-base font-roboto">
-                              Preview Profile
-                            </div>
-                            <div className="text-[#C8B5E6] text-xs font-roboto flex items-center space-x-1">
-                              <MapPin className="w-3 h-3 flex-shrink-0" />
-                              <span className="truncate">Philippines</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-[#C8B5E6] text-xs font-roboto mb-3 bg-white/5 p-2.5 rounded-lg flex-1">
-                          Discover meaningful connections with verified profiles
-                        </div>
-                        <div className="flex justify-end space-x-2">
-                          <button className="w-10 h-10 bg-gray-600/30 hover:bg-gray-500/40 rounded-full flex items-center justify-center transition-colors">
-                            <span className="text-gray-300 text-lg">✕</span>
-                          </button>
-                          <button className="w-10 h-10 bg-gradient-to-r from-[#F4376D] to-[#A855F7] rounded-full flex items-center justify-center shadow-lg transform hover:scale-105 transition-all">
-                            <Heart
-                              className="w-5 h-5 text-white"
-                              fill="white"
-                            />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bottom Navigation */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="flex justify-around items-center bg-black/70 rounded-xl py-3 px-4 backdrop-blur-lg border border-white/10">
-                      {[
-                        { icon: Heart, active: true },
-                        { icon: MessageCircle, active: false },
-                        { icon: Star, active: false },
-                        { icon: User, active: false },
-                      ].map((item, i) => {
-                        const Icon = item.icon;
-                        return (
-                          <div
-                            key={i}
-                            className={`w-7 h-7 rounded-full flex items-center justify-center ${
-                              item.active
-                                ? "bg-gradient-to-r from-[#F4376D] to-[#A855F7]"
-                                : "bg-gray-600/50"
-                            }`}
-                          >
-                            <Icon
-                              className={`w-4 h-4 ${
-                                item.active ? "text-white" : "text-gray-400"
-                              }`}
-                              fill={item.active ? "white" : "none"}
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
+            <div className="mt-4 rounded-lg border border-white/12 bg-white/[0.06] p-5">
+              <div className="flex items-start gap-3">
+                <Mail className="mt-1 h-5 w-5 shrink-0 text-[#f7a4c8]" aria-hidden="true" />
+                <div>
+                  <p className="font-dm-sans-bold text-white">Launch note</p>
+                  <p className="mt-1 text-sm leading-6 text-[#eadff7]">
+                    Store links, social channels, and community invitations
+                    should be added only after production QA, Supabase migration
+                    sign-off, and support inbox routing are confirmed.
+                  </p>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-4 rounded-lg border border-white/12 bg-white/[0.06] p-5">
+              <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
+                Store availability
+              </p>
+              <p className="mt-2 text-sm leading-6 text-[#cbbade]">
+                App Store link locked. Google Play link locked until release
+                sign-off.
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {storeLinkStates.map((store) => (
+                  <div
+                    key={store.label}
+                    className="rounded-lg border border-white/10 bg-[#120a1b]/50 p-3 opacity-90"
+                  >
+                    <button
+                      type="button"
+                      disabled
+                      aria-disabled="true"
+                      className="inline-flex min-h-12 w-full cursor-not-allowed items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-dm-sans-bold text-[#b9aec8]"
+                    >
+                      {store.label} link locked
+                    </button>
+                    <p className="mt-2 text-sm leading-6 text-[#cbbade]">
+                      {store.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center gap-2 text-sm text-[#cbbade]">
+              <MapPin className="h-4 w-4 text-[#f7a4c8]" aria-hidden="true" />
+              Built for Filipina and foreigner introductions across launch markets.
             </div>
           </div>
         </div>

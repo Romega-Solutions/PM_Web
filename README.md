@@ -1,53 +1,122 @@
-# 💕 PinayMate - Elite Filipino Dating Platform
+# PinayMate - Launch-Stage Filipino Dating Landing Site
 
-> **Connecting Hearts Across the World** • Premium Filipino dating experience with cutting-edge technology and authentic connections.
+> Premium Filipino dating waitlist experience focused on safety cues, serious intent, honest launch messaging, and conversion clarity.
 
-![PinayMate Banner](https://img.shields.io/badge/PinayMate-Elite%20Dating%20Platform-F4376D?style=for-the-badge&logo=heart&logoColor=white)
+![PinayMate Banner](https://img.shields.io/badge/PinayMate-Premium%20Dating%20Landing-F4376D?style=for-the-badge&logo=heart&logoColor=white)
 
 ## 🌟 About PinayMate
 
-PinayMate is a sophisticated dating platform designed specifically for connecting individuals with Filipino singles worldwide. Built with modern web technologies, it offers a premium user experience focused on authentic relationships and meaningful connections.
+PinayMate is a launch-stage dating product for people seeking serious Filipino connections. PM_Web presents the waitlist, membership direction, trust/safety model, and mobile-app preview without claiming live matching, live checkout, active calls, or active users.
+
+## 🚢 Launch Readiness (Current as of 2026-06-11)
+
+### Manager view
+
+- **Scope:** PM_Web static/site readiness + public launch messaging alignment with PM_App blockers.
+- **Status:** Incomplete pending coordinated launch gates. PM_Web remains waitlist-only until current local QA, production URL, mailbox proof, and PM_App launch blockers are closed.
+- **Launch-state source of truth:** `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` is the PM_Web-local snapshot used by standalone checks. `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` remains the cross-product source when the full Romega workspace is available.
+
+### Done
+
+- Vite + React project builds and linting scripts are available in `package.json`.
+- Marketing CTA and app-download sections are present and reviewable.
+- Runtime scripts are documented for reproducible setup (`dev`, `build`, `preview`, `lint`).
+- Local release scripts enforce dependency audit, CTA routing, and launch-claim checks before copy or CTA changes are treated as releasable.
+- Normal local checks are read-only by default. Use the `:report` scripts only when intentionally collecting evidence for launch review.
+
+### Verified
+
+- Repository-level evidence confirms launch-readiness section exists and references are aligned with PM_App blockers.
+- Historical local lint/build and local preview smoke evidence is recorded in `../PM_App/docs/evidence/2026-06-10-local-qa-summary.md`.
+- Those historical passes are not current release proof after the 2026-06-11 UI polish and release-doc updates. Rerun PM_Web release checks before publishing.
+- No live production deployment, host-domain, monitored-mailbox, or production URL validation is recorded in docs.
+
+### Blocked
+
+- PM_App blocker closure is a launch gate: ordered launch migrations, Supabase policy verification, and OCR endpoint readiness.
+- PM_Web production checks are still open: final domain, deployed URL, support/legal mailbox routing, and production CTA verification.
+- PM_Web now has a project-local release checklist in `RELEASE_CHECKLIST.md`; the central launch evidence tracker remains in `PM_App/docs/RELEASE_READINESS.md`.
+- PM_Web claims must stay aligned to `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` for standalone checks and to `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` during full workspace release review; if the matrix says a feature is waitlist-only, gated, source-only, or blocked pending proof, README, section copy, CTA copy, and release notes must not imply that the feature is live.
+
+### PM_Web release owner proof block
+
+| Gate             | Required proof                                                 | Owner | Date       | Evidence path / URL                                                | Status                                       |
+| ---------------- | -------------------------------------------------------------- | ----- | ---------- | ------------------------------------------------------------------ | -------------------------------------------- |
+| Local lint       | `npm run lint` output                                          | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-local-qa-summary.md`           | Historical pass; rerun required             |
+| Dependency audit | `npm run check:dependency-audit` output                        | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-dependency-audit-release-gate.md` | Historical gate; rerun required           |
+| Production build | `npm run build` output                                         | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-local-qa-summary.md`           | Historical pass; rerun required             |
+| Desktop smoke    | hero, CTAs, legal modal, footer render on desktop              | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-pm-web-local-browser-smoke.md` | Historical screenshot; rerun required       |
+| Mobile smoke     | no horizontal overflow, CTA/legal modal usable                 | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-pm-web-local-browser-smoke.md` | Historical screenshot; rerun required       |
+| CTA routing      | waitlist/support/legal links route to monitored inboxes        | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-pm-web-local-cta-audit.txt`    | Historical source audit; needs mailbox proof and rerun |
+| Launch-state matrix alignment | PM_Web copy and CTAs match the PM_Web-local matrix snapshot and the central PM_App matrix during workspace release review | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-pm-web-launch-state-matrix-alignment.md` | Source/docs alignment added; rerun required |
+| Final domain     | production domain loads and matches launch copy                |       |            |                                                                    | Needs deployed URL                           |
+| Copy accuracy    | no fake checkout, app-store, active-user, or safety guarantees | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-local-qa-summary.md`           | Historical review; rerun required           |
+
+### Next
+
+- Run `npm run check:release-local` in `PM_Web` after current UI changes are ready for QA.
+- Confirm PM_Web copy, CTA, membership, store-link, support, legal, and safety claims still match `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`; for full workspace release review, compare against `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`.
+- Run `npm run build` and `npm run lint` in `PM_Web` when release blockers are ready.
+- Validate production host/domain behavior for CTA deep links and support paths.
+- Publish only after PM_App launch blockers are closed and recorded in PM_App docs.
+
+### Proof commands
+
+```bash
+# run in PM_Web (static/build checks only)
+npm run lint
+npm run check:dependency-audit
+npm run build
+npm run check:release-local
+npm run check:release-local:report
+npm run preview -- --host
+
+# launch comms checks (manual review)
+rg -n "Download|Google|support|pinaymate|CTA|app" PM_Web/src PM_Web/public
+```
 
 ### ✨ Key Features
 
-- 🤖 **AI-Powered Matching Algorithm** - 97% compatibility accuracy based on 50+ factors
-- 🛡️ **SheerID Verification System** - 100% authentic profiles with identity, income & background checks
-- 💬 **Real-Time Chat & Messaging** - Seamless communication with photos, videos & live status
-- ✨ **Rich Profile Customization** - Showcase personality through detailed profiles and media
-- 📱 **Mobile-First Design** - Fully responsive across all devices
-- 💎 **Premium User Experience** - Stunning animations and intuitive interface
+- **Preference-Led Matching Direction** - Relationship intent, lifestyle, and profile signals guide planned discovery
+- **Verification Path** - Email/profile checks and optional ID/photo review support safer introductions
+- **Messaging Readiness** - Chat copy stays preview/waitlist-first until release QA passes
+- **Membership Interest** - Plans are framed as waitlist or interest capture, with planned pricing secondary and no live checkout
+- **Mobile-First Design** - Responsive layouts, accessible focus states, and clear touch targets
+- **Premium User Experience** - Calmer hierarchy, restrained motion, and clearer safety messaging
 
-### 🎯 Platform Statistics
+### 🎯 Launch Messaging
 
-- **94%** Success rate in finding meaningful connections
-- **500+** Verified success stories and marriages
-- **100%** Authentic, verified user profiles
-- **1000+** Active daily conversations
+- Waitlist-first CTAs until app-store, checkout, and matching flows are production-ready
+- Profile checks and verification review path are described without unsupported guarantees
+- Membership copy explains launch intent and free Filipina access without leading with purchasable paid plans or claiming live billing
+- Mobile-first sections prioritize trust, safety, and conversion clarity
+- Run `npm run check:local-quality` before publishing launch copy or CTA changes
+- `npm run check:release-local` includes dependency audit, CTA routing, and launch-claim checks
+- `npm run check:launch-claims` uses `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` by default and opportunistically compares the central PM_App matrix when the full workspace is present
 
 ## 🚀 Technology Stack
 
 ### **Frontend**
 
-- ⚛️ **React 18** - Modern component-based architecture
+- ⚛️ **React 19** - Modern component-based architecture
 - 🔷 **TypeScript** - Type-safe development
 - ⚡ **Vite** - Lightning-fast build tool and dev server
 - 🎨 **Tailwind CSS** - Utility-first styling framework
-- 🎭 **Framer Motion** - Smooth animations and transitions
+- 🎭 **CSS/Tailwind motion** - Lightweight transitions without a runtime animation dependency
 
 ### **Design System**
 
 - 🎨 **Custom Color Palette**: Pink (#F4376D), Purple (#A855F7), Blue (#3B82F6)
-- 🖼️ **Roboto Font Family** - Clean, modern typography
-- ✨ **Glass-morphism Effects** - Modern UI with backdrop blur
-- 🌈 **Gradient Animations** - Dynamic visual elements
+- 🖼️ **DM Sans + Lora + Hello Paris Sans** - UI, editorial, and brand typography
+- ✨ **Premium Surfaces** - Restrained cards, clear contrast, and token-driven brand accents
+- 🌈 **Meaningful Motion** - Short hover/focus transitions with reduced-motion support
 
 ### **Key Animations**
 
 - 📱 Loading screen with progress indicators
-- 💫 Staggered section animations
-- 🎯 Interactive hover effects
-- 💝 Heart-themed cursor and elements
-- 🔄 3D card transformations
+- 💫 Reduced entrance and hover transitions
+- 🎯 Accessible focus and interaction states
+- 🔄 Motion constrained to transform/opacity patterns where used
 
 ## 🏗️ Project Structure
 
@@ -57,12 +126,12 @@ pinaymate/
 │   ├── components/
 │   │   └── sections/
 │   │       ├── Header.tsx      # Navigation with scroll effects
-│   │       ├── Hero.tsx        # Landing section with phone mockups
-│   │       ├── About.tsx       # 3D connection visualization
-│   │       ├── Features.tsx    # Interactive feature showcase
-│   │       ├── Membership.tsx  # Pricing plans
+│   │       ├── Hero.tsx        # Landing section with waitlist CTA and product preview
+│   │       ├── About.tsx       # Trust and launch-path section
+│   │       ├── Features.tsx    # Product direction and safety approach
+│   │       ├── Membership.tsx  # Membership interest, not checkout
 │   │       ├── Faqs.tsx        # Frequently asked questions
-│   │       ├── Download.tsx    # App download section
+│   │       ├── Download.tsx    # Platform waitlist section
 │   │       └── Footer.tsx      # Site footer
 │   ├── App.tsx                 # Main application component
 │   ├── App.css                 # Custom animations & styles
@@ -116,38 +185,46 @@ npm run dev          # Start development server
 npm run build        # Build for production
 npm run preview      # Preview production build
 npm run lint         # Run ESLint
-npm run type-check   # Run TypeScript compiler
 ```
 
-## ✨ Features Showcase
+## Features Showcase
 
-### 🎨 **Stunning Visual Design**
+### Premium Visual Design
 
-- Premium gradient color schemes
-- Smooth micro-interactions
-- Glass-morphism UI elements
-- Custom heart cursor theme
+- Editorial hero hierarchy with clear waitlist CTAs
+- Restrained brand surfaces using pink, violet, and blue accents
+- Accessible focus states and touch-friendly buttons
+- Reduced decorative motion compared with the earlier prototype
 
-### 📱 **Mobile-First Responsive Design**
+### Mobile-First Responsive Design
 
 - Optimized for all screen sizes (320px - 2560px+)
 - Touch-friendly interactions
 - Adaptive typography and spacing
 - Progressive enhancement
 
-### 🎭 **Advanced Animations**
+## Launch Readiness Note
 
-- Intersection Observer-triggered animations
-- Staggered entrance effects
-- 3D card transformations
-- Smooth loading transitions
+- Public claims were tightened to avoid unsupported guarantees around match accuracy, compliance, billing, and verification.
+- Membership and app download CTAs route to support/waitlist email until checkout and store links are production-ready.
+- Backend waitlist handoff source exists, but public CTAs stay email-first until Supabase waitlist proof and abuse/rate-limit approval are captured.
+- `npm run check:local-quality` runs lint, TypeScript, build, and local CTA/launch-claim audits before release.
+- Remaining launch work: replace waitlist mailto links with final app-store and checkout destinations when those systems are live.
+- Evidence files are not written by normal PM_Web checks. Run `npm run check:release-local:report` only when the output should be captured as launch evidence.
+- If central launch-state claims change, refresh `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` before publishing PM_Web copy.
 
-### 🔒 **Premium Features**
+### Motion Approach
 
-- SheerID identity verification
-- AI-powered compatibility matching
-- Real-time messaging system
-- Advanced profile customization
+- Short hover and focus transitions
+- Reduced-motion support in global CSS
+- Motion used for interaction feedback, not fake activity
+
+### Launch-Stage Product Direction
+
+- Verification review path
+- Preference-based compatibility signals
+- Messaging previews until chat is production-ready
+- Membership interest capture with planned pricing secondary until checkout is production-ready
 
 ## 🎯 Target Audience
 
@@ -159,19 +236,19 @@ npm run type-check   # Run TypeScript compiler
 ## 📱 Platform Sections
 
 1. **🏠 Hero Section** - Compelling intro with app mockups
-2. **ℹ️ About Section** - 3D network visualization of connections
-3. **⚡ Features Section** - Interactive showcase of platform capabilities
-4. **💎 Membership** - Transparent pricing with premium options
+2. **ℹ️ Trust Section** - Product promise and safer discovery framing
+3. **⚡ Features Section** - Launch-stage safety and product-direction cards
+4. **💎 Membership** - Reference pricing and membership-interest capture
 5. **❓ FAQ Section** - Common questions and answers
-6. **📲 Download** - App store links and mobile promotion
+6. **📲 Waitlist** - iOS and Android waitlist email actions
 7. **📞 Contact/Footer** - Support and company information
 
-## 🌟 Performance Features
+## Performance Notes
 
 - ⚡ Lightning-fast loading with Vite
 - 🎯 Optimized bundle size
-- 📱 Perfect Lighthouse scores
-- 🔄 Smooth 60fps animations
+- 📱 Responsive layout targets
+- 🔄 Transform/opacity-based interaction transitions
 - 💾 Efficient memory management
 
 ## 🎨 Brand Identity
@@ -184,9 +261,10 @@ npm run type-check   # Run TypeScript compiler
 
 ### Typography
 
-- **Primary Font**: Roboto (Google Fonts)
-- **Weights**: 300, 400, 500, 700, 900
-- **Usage**: Clean, modern, highly readable
+- **UI Font**: DM Sans
+- **Editorial Font**: Lora
+- **Brand Font**: Hello Paris Sans
+- **Usage**: Clear UI text with warmer editorial headings
 
 ## 🤝 Contributing
 
@@ -203,7 +281,6 @@ For technical support or business inquiries:
 - 📧 Email: support@pinaymate.com
 - 🌐 Website: https://pinaymate.com
 
-
 ---
 
-**Built with ❤️ for the Filipino community worldwide** • Connecting hearts, building forever relationships.
+**Built for the Filipino community worldwide** • Launch-stage, waitlist-first, and safety-aware.

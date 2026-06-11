@@ -1,46 +1,5 @@
 @import "tailwindcss";
 
-/* ─── Font Face Declarations ─── */
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hello Paris Sans";
-  src: url("/fonts/Hello Paris Sans ExtraLight.ttf") format("truetype");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
 /*───────────────────────────────────────────────
 🌸 PinayMate Design System – Color Tokens (CSS Variables)
 ───────────────────────────────────────────────*/
@@ -538,4 +497,72 @@
 
 .animate-zoom-pulse {
   animation: zoom-pulse 2s ease-in-out infinite;
+}
+
+:focus-visible {
+  outline-color: #81a5e9;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+a,
+button {
+  touch-action: manipulation;
+}
+
+main:focus {
+  outline: none;
+}
+
+@media (hover: none) {
+  .hover\:scale-105:hover,
+  .hover\:-translate-y-0\.5:hover,
+  .hover\:-translate-y-1:hover {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fadeIn,
+  .animate-fadeInUp,
+  .animate-slideInDown,
+  .animate-slideInRight,
+  .animate-slideInLeft,
+  .animate-slideInUp,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-float-slow,
+  .animate-float-3d,
+  .animate-float-heart,
+  .animate-float-heart-3d,
+  .animate-heartbeat,
+  .animate-heartbeat-3d,
+  .animate-gradient-x,
+  .animate-pulse-subtle,
+  .animate-zoom-pulse,
+  .animate-shimmer {
+    animation: none !important;
+  }
+
+  .translate-y-6,
+  .translate-y-0,
+  .rotate-180 {
+    transform: none !important;
+  }
 }

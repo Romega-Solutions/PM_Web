@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import {
-  Heart,
-  Mail,
-  MapPin,
-  Facebook,
-  Twitter,
-  Instagram,
-  Youtube,
-  Shield,
-  CheckCircle,
-} from "lucide-react";
+import { CheckCircle, Heart, Mail, MapPin, Shield } from "lucide-react";
 import LegalModal from "../modals/LegalModal";
+import { launchEmailLinks } from "../../lib/launchEmailLinks";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -28,183 +19,131 @@ const Footer: React.FC = () => {
   };
 
   const quickLinks = [
-    { name: "About Us", href: "#about" },
-    { name: "How It Works", href: "#features" },
-    { name: "Safety Tips", href: "#safety" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  const socialLinks = [
-    {
-      icon: Facebook,
-      href: "#",
-      label: "Facebook",
-      hoverColor: "hover:text-[#1877F2]",
-    },
-    {
-      icon: Twitter,
-      href: "#",
-      label: "Twitter",
-      hoverColor: "hover:text-[#1DA1F2]",
-    },
-    {
-      icon: Instagram,
-      href: "#",
-      label: "Instagram",
-      hoverColor: "hover:text-[#E4405F]",
-    },
-    {
-      icon: Youtube,
-      href: "#",
-      label: "Youtube",
-      hoverColor: "hover:text-[#FF0000]",
-    },
+    { name: "Trust", href: "#about" },
+    { name: "Safety", href: "#features" },
+    { name: "Membership", href: "#pricing" },
+    { name: "Waitlist", href: "#download" },
   ];
 
   return (
     <>
-      <footer className="bg-gradient-to-br from-[#1a202c] via-[#283040] to-[#1a202c] relative overflow-hidden">
-        {/* Subtle Background */}
-        <div className="absolute inset-0 overflow-hidden opacity-30">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-r from-[#F4376D]/10 to-[#A855F7]/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-64 h-64 bg-gradient-to-r from-[#A855F7]/10 to-[#3B82F6]/10 rounded-full blur-3xl"></div>
+      <footer className="relative overflow-hidden bg-[#120a1b] text-white">
+        <div className="absolute inset-0" aria-hidden="true">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 relative z-10">
-          {/* Main Footer Content */}
-          <div className="py-12 border-b border-[#8D99B2]/10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-              {/* Brand Section */}
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3 group">
-                  <div className="relative w-10 h-10">
-                    <img
-                      src="/main-logo-no-bg.svg"
-                      alt="PinayMate"
-                      className="w-full h-full object-contain drop-shadow-lg"
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-2xl font-hello-paris-bold text-white">
-                      PinayMate
-                    </span>
-                    <span className="text-xs text-[#C8B5E6] font-hello-paris-light">
-                      Find Your Forever Filipina
-                    </span>
-                  </div>
+        <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
+          <div className="grid gap-10 border-b border-white/10 py-12 md:grid-cols-[1.1fr_0.8fr_1fr] lg:py-14">
+            <div className="space-y-5">
+              <div className="flex items-center gap-3">
+                <div className="relative h-11 w-11">
+                  <img
+                    src="/main-logo-no-bg.svg"
+                    alt="PinayMate"
+                    className="h-full w-full object-contain drop-shadow-lg"
+                  />
                 </div>
-                <p className="text-[#C8B5E6] text-sm font-roboto max-w-xs">
-                  The premier Filipino dating platform connecting hearts
-                  worldwide.
-                </p>
-
-                {/* Trust Badges */}
-                <div className="flex flex-wrap gap-2">
-                  <div className="flex items-center space-x-1 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
-                    <CheckCircle className="w-3 h-3 text-green-500" />
-                    <span className="text-green-400 text-xs font-roboto">
-                      Verified
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-1 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
-                    <Shield className="w-3 h-3 text-blue-500" />
-                    <span className="text-blue-400 text-xs font-roboto">
-                      Secured
-                    </span>
-                  </div>
+                <div>
+                  <span className="block text-2xl font-hello-paris-bold text-white">
+                    PinayMate
+                  </span>
+                  <span className="text-xs font-dm-sans-semibold uppercase text-[#f0b6df]">
+                    Launch-stage dating platform
+                  </span>
                 </div>
               </div>
 
-              {/* Quick Links */}
-              <div className="space-y-4">
-                <h3 className="text-white font-bold text-base font-roboto">
-                  Quick Links
-                </h3>
-                <div className="grid grid-cols-2 gap-2">
-                  {quickLinks.map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      className="text-[#C8B5E6] hover:text-[#F4376D] transition-colors text-sm font-roboto"
-                    >
-                      {link.name}
-                    </a>
-                  ))}
+              <p className="max-w-sm text-sm leading-6 text-[#d7c7ed]">
+                PinayMate is being built for safer, more intentional Filipino dating. Public links and launch claims should follow production QA and support readiness.
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                <div className="flex items-center gap-1.5 rounded-full border border-[#22a574]/20 bg-[#22a574]/10 px-3 py-1.5">
+                  <CheckCircle className="h-3.5 w-3.5 text-[#49d49a]" aria-hidden="true" />
+                  <span className="text-xs font-dm-sans-semibold text-[#aaf1cf]">
+                    Review cues
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 rounded-full border border-[#5c83e9]/25 bg-[#5c83e9]/10 px-3 py-1.5">
+                  <Shield className="h-3.5 w-3.5 text-[#91b1ff]" aria-hidden="true" />
+                  <span className="text-xs font-dm-sans-semibold text-[#cddcff]">
+                    Safety first
+                  </span>
                 </div>
               </div>
+            </div>
 
-              {/* Contact & Social */}
-              <div className="space-y-4">
-                <h3 className="text-white font-bold text-base font-roboto">
-                  Connect
-                </h3>
-                <div className="space-y-2">
+            <div>
+              <h3 className="font-dm-sans-bold text-base text-white">Navigate</h3>
+              <div className="mt-4 grid grid-cols-2 gap-2">
+                {quickLinks.map((link) => (
                   <a
-                    href="mailto:support@pinaymate.com"
-                    className="flex items-center space-x-2 text-[#C8B5E6] hover:text-[#F4376D] transition-colors text-sm group"
+                    key={link.name}
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-dm-sans-semibold text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
                   >
-                    <Mail className="w-4 h-4" />
-                    <span className="font-roboto">support@pinaymate.com</span>
+                    {link.name}
                   </a>
-                  <div className="flex items-center space-x-2 text-[#C8B5E6] text-sm">
-                    <MapPin className="w-4 h-4" />
-                    <span className="font-roboto">Global • Manila • USA</span>
-                  </div>
-                </div>
+                ))}
+              </div>
+            </div>
 
-                {/* Social Links */}
-                <div className="flex items-center space-x-3 pt-2">
-                  {socialLinks.map((social) => {
-                    const IconComponent = social.icon;
-                    return (
-                      <a
-                        key={social.label}
-                        href={social.href}
-                        className={`w-9 h-9 bg-[#283040] rounded-full flex items-center justify-center border border-[#8D99B2]/20 ${social.hoverColor} transition-all duration-300 hover:scale-110`}
-                        aria-label={social.label}
-                      >
-                        <IconComponent className="w-4 h-4 text-[#C8B5E6]" />
-                      </a>
-                    );
-                  })}
+            <div>
+              <h3 className="font-dm-sans-bold text-base text-white">Launch support</h3>
+              <div className="mt-4 space-y-3">
+                <a
+                  href={launchEmailLinks.launchSupport}
+                  aria-label="Email PinayMate launch support"
+                  className="flex min-h-11 items-center gap-2 rounded-lg text-sm text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                >
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  <span className="font-dm-sans-semibold">support@pinaymate.com</span>
+                </a>
+                <div className="flex items-center gap-2 text-sm text-[#d7c7ed]">
+                  <MapPin className="h-4 w-4" aria-hidden="true" />
+                  <span>Philippines, US, and launch-market members</span>
                 </div>
+              </div>
+
+              <div className="mt-5 rounded-lg border border-white/10 bg-white/[0.06] p-4 text-sm leading-6 text-[#d7c7ed]">
+                Store, social, and community links stay intentionally withheld until public channels, monitored mailbox proof, and release evidence are ready.
               </div>
             </div>
           </div>
 
-          {/* Bottom Bar */}
-          <div className="py-6">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-[#8D99B2] text-sm font-roboto">
-                © {currentYear} PinayMate. All rights reserved.
-              </p>
+          <div className="flex flex-col items-center justify-between gap-4 py-6 md:flex-row">
+            <p className="text-sm text-[#9b8fac]">
+              © {currentYear} PinayMate. All rights reserved.
+            </p>
 
-              <div className="flex items-center space-x-4 text-sm">
-                <button
-                  onClick={() => openLegalModal("privacy")}
-                  className="text-[#C8B5E6] hover:text-[#F4376D] transition-colors font-roboto"
-                >
-                  Privacy
-                </button>
-                <span className="text-[#8D99B2]">•</span>
-                <button
-                  onClick={() => openLegalModal("terms")}
-                  className="text-[#C8B5E6] hover:text-[#A855F7] transition-colors font-roboto"
-                >
-                  Terms
-                </button>
-              </div>
-
-              <p className="text-[#8D99B2] text-xs font-roboto flex items-center gap-1">
-                <Heart className="w-3 h-3 text-[#F4376D]" fill="#F4376D" />
-                Connecting hearts worldwide
-              </p>
+            <div className="flex items-center gap-4 text-sm">
+              <button
+                type="button"
+                onClick={() => openLegalModal("privacy")}
+                aria-label="Open PinayMate privacy notice"
+                className="min-h-11 text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+              >
+                Privacy
+              </button>
+              <span className="text-[#5f536d]">•</span>
+              <button
+                type="button"
+                onClick={() => openLegalModal("terms")}
+                aria-label="Open PinayMate terms notice"
+                className="min-h-11 text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+              >
+                Terms
+              </button>
             </div>
+
+            <p className="flex items-center gap-1 text-xs text-[#9b8fac]">
+              <Heart className="h-3 w-3 text-[#F4376D]" fill="#F4376D" aria-hidden="true" />
+              Built for safer introductions
+            </p>
           </div>
         </div>
       </footer>
 
-      {/* Legal Modal */}
       {legalModal.type && (
         <LegalModal
           isOpen={legalModal.isOpen}

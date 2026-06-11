@@ -6,6 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "check:dependency-audit": "npm audit --audit-level=moderate",
+    "check:launch-claims": "node scripts/check-launch-claims.mjs",
+    "check:launch-claims:report": "node scripts/check-launch-claims.mjs --write-report",
+    "check:local-quality": "npm run lint && npx tsc -p tsconfig.app.json --noEmit --pretty false && npm run build && npm run check:release-local",
+    "check:local-links": "node scripts/check-local-cta-links.mjs",
+    "check:local-links:report": "node scripts/check-local-cta-links.mjs --write-report",
+    "check:product-design-contract": "node scripts/check-product-design-contract.mjs",
+    "check:release-local": "npm run check:dependency-audit && npm run check:local-links && npm run check:launch-claims && npm run check:product-design-contract",
+    "check:release-local:report": "npm run check:dependency-audit && npm run check:local-links:report && npm run check:launch-claims:report && npm run check:product-design-contract",
     "lint": "eslint .",
     "preview": "vite preview"
   },

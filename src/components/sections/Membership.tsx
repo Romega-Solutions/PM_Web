@@ -1,264 +1,268 @@
-
 import {
   Check,
-  Heart,
-  Award,
   Crown,
-  Star,
-  MessageCircle,
-  Search,
-  Eye,
-  Image,
+  Heart,
+  Mail,
+  ShieldCheck,
   Sparkles,
-  Headphones,
-  Verified,
-  Globe,
+  Star,
 } from "lucide-react";
+import {
+  PLAN_INTEREST_EMAIL_WARNING,
+  buildPlanInterestEmailHref,
+} from "../../lib/launchEmailLinks";
 
-const MobileMembership = () => {
-  const handleJoinFree = () => {
-    console.log("Navigate to Filipina registration");
-    // window.location.href = "/register?type=filipina";
-  };
+const plans = [
+  {
+    name: "Filipina Waitlist",
+    id: "filipina-waitlist",
+    label: "No-card waitlist",
+    decision: "Best first step if you want launch timing before sharing profile details.",
+    price: "Free waitlist",
+    priceDetail: "no payment step",
+    plannedPrice: null,
+    note: "Join launch updates by email. No account, profile, card, or billing flow starts here.",
+    icon: Heart,
+    tone: "from-[#ef3e78] to-[#8d69f6]",
+    subject: "PinayMate waitlist - Filipina access",
+    cta: "Join free waitlist",
+    features: [
+      "Launch update emails",
+      "Profile setup guidance",
+      "Verification review path",
+      "Community access updates when ready",
+    ],
+  },
+  {
+    name: "Gold Interest",
+    id: "gold-interest",
+    label: "Most relevant for serious search",
+    decision: "Best fit if curated discovery, clearer preferences, and support expectations matter most.",
+    price: "Gold interest",
+    priceDetail: "interest only",
+    plannedPrice: "$29.99 / month planned",
+    note: "Register interest only. Final checkout terms, cancellation policy, and billing provider must be visible before any payment.",
+    icon: Star,
+    tone: "from-[#ef3e78] to-[#5c83e9]",
+    subject: "PinayMate waitlist - Gold interest",
+    cta: "Register Gold interest",
+    features: [
+      "Messaging direction when launched",
+      "Advanced preference filters",
+      "Profile presentation options",
+      "Support response model direction",
+    ],
+  },
+  {
+    name: "Platinum Interest",
+    id: "platinum-interest",
+    label: "VIP feature direction",
+    decision: "Best fit if you want priority support expectations and profile-quality review considered before launch.",
+    price: "VIP interest",
+    priceDetail: "interest only",
+    plannedPrice: "$34.99 / month planned",
+    note: "Register VIP interest only. VIP features open only after safety review, launch QA, and checkout readiness are confirmed.",
+    icon: Crown,
+    tone: "from-[#8d69f6] to-[#5c83e9]",
+    subject: "PinayMate waitlist - Platinum interest",
+    cta: "Register VIP interest",
+    features: [
+      "Gold feature direction plus",
+      "Profile quality review interest",
+      "Badge policy direction after review",
+      "Translation feature interest",
+    ],
+  },
+];
 
-  const handleSelectPlan = (planType: string, planDuration = "1month") => {
-    console.log(`Selected plan: ${planType}, Duration: ${planDuration}`);
-    // window.location.href = `/checkout?plan=${planType}&duration=${planDuration}`;
-  };
+const launchBoundaries = [
+  "No card or charge",
+  "No app account or dating profile created",
+  "No match request or matching session starts today",
+  "No matching starts today",
+];
 
+const decisionPrompts = [
+  "Start free if you only want launch timing and access updates.",
+  "Choose Gold interest if curated discovery is your main launch concern.",
+  "Choose Platinum interest if support expectations and profile quality matter most.",
+];
+
+const Membership = () => {
   return (
-    <section
-      id="pricing"
-      className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-slate-800 py-16 md:py-20 lg:py-24"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20">
-        {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
-            Choose Your{" "}
-            <span className="text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text">
-              Perfect Plan
-            </span>
+    <section id="pricing" className="bg-[#170f22] py-20 sm:py-24 lg:py-28">
+      <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/12 bg-white/8 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
+            <Sparkles className="h-4 w-4" aria-hidden="true" />
+            Membership direction
+          </div>
+
+          <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
+            Clear plans for launch interest, not a live checkout.
           </h2>
-          <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto mb-6">
-            Premium memberships for serious connections. Quality Filipinas join
-            free.
+          <p className="mt-5 text-lg leading-8 text-[#e3dcf9]">
+            These tiers explain the intended membership model. The current
+            action is email interest only, so pricing expectations stay clear
+            without suggesting signup, checkout, billing, or active matching is
+            already live.
           </p>
-          <div className="bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-blue-500/10 border border-pink-500/30 rounded-2xl px-6 py-4 max-w-2xl mx-auto backdrop-blur-sm">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <Heart className="w-5 h-5 text-pink-500" fill="#ec4899" />
-              <span className="text-pink-500 font-bold text-sm md:text-base">
-                Why Men Pay & Filipinas Join Free:
-              </span>
-            </div>
-            <p className="text-slate-400 text-sm md:text-base">
-              Ensures serious men connect with genuine Filipinas seeking real
-              relationships.
-            </p>
-          </div>
         </div>
 
-        {/* Pricing Cards - Horizontal on Desktop, Vertical on Mobile */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 max-w-7xl mx-auto">
-          {/* Free for Filipinas Card */}
-          <div className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 p-6 lg:p-8 rounded-2xl border-2 border-pink-500/50 backdrop-blur-sm transform hover:scale-105 transition-all duration-300 flex flex-col h-full">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-black text-white mb-3">
-                For Beautiful Filipinas
-              </h3>
-              <div className="text-4xl lg:text-5xl font-black text-transparent bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text mb-3">
-                100% FREE
-              </div>
-              <p className="text-slate-400 text-sm">
-                Join our exclusive community
-              </p>
-            </div>
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          {plans.map((plan) => {
+            const Icon = plan.icon;
 
-            <div className="space-y-3 mb-6 flex-grow">
-              {[
-                "Full platform access",
-                "Premium profile visibility",
-                "Unlimited messaging",
-                "Receive all messages",
-                "Profile verification badge",
-              ].map((feature, i) => (
-                <div key={i} className="flex items-center space-x-3">
-                  <div className="w-5 h-5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
-                  </div>
-                  <span className="text-white text-sm">{feature}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-auto">
-              <button
-                onClick={handleJoinFree}
-                className="w-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white py-4 rounded-full font-bold text-base shadow-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all"
+            return (
+              <article
+                key={plan.name}
+                aria-labelledby={`${plan.id}-title`}
+                className={`flex h-full flex-col rounded-lg border p-6 shadow-2xl shadow-black/15 backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:bg-white/[0.1] motion-reduce:transform-none ${
+                  plan.id === "gold-interest"
+                    ? "border-[#f0b6df]/45 bg-white/[0.1] ring-2 ring-[#ef3e78]/35"
+                    : "border-white/10 bg-white/[0.07]"
+                }`}
               >
-                <Heart className="w-5 h-5" />
-                Join Free as Filipina
-              </button>
-
-              <p className="text-center text-slate-400 text-xs mt-3 flex items-center justify-center gap-1">
-                <Sparkles className="w-3 h-3" />
-                No hidden fees, no credit card required
-              </p>
-            </div>
-          </div>
-
-          {/* Gold Plan - Most Popular */}
-          <div className="relative bg-gradient-to-br from-pink-500/30 to-purple-500/30 p-6 lg:p-8 rounded-2xl border-2 border-pink-500/60 backdrop-blur-sm shadow-2xl transform hover:scale-105 transition-all duration-300 flex flex-col h-full">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg">
-                <Star className="w-4 h-4" fill="white" />
-                MOST POPULAR
-              </div>
-            </div>
-
-            <div className="text-center mb-6 pt-2">
-              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-black text-white mb-2">
-                Gold Membership
-              </h3>
-              <div className="text-pink-500 text-sm mb-3 font-bold">
-                Perfect for serious connections
-              </div>
-              <div className="text-4xl lg:text-5xl font-black text-white mb-2">
-                $29.99
-                <span className="text-base text-slate-400">/month</span>
-              </div>
-              <div className="text-slate-400 text-xs mb-2">
-                $16.66/mo (3 months) • $13.33/mo (12 months)
-              </div>
-              <div className="text-pink-500 text-sm font-bold">
-                Save up to 55% yearly
-              </div>
-            </div>
-
-            <div className="space-y-3 mb-6 flex-grow">
-              {[
-                { icon: MessageCircle, text: "Unlimited messaging" },
-                { icon: Search, text: "Advanced search filters" },
-                { icon: Image, text: "View all profile photos" },
-                { icon: Eye, text: "Anonymous browsing" },
-                { icon: null, text: "Ad-free browsing" },
-                { icon: Headphones, text: "Priority support" },
-              ].map((feature, i) => (
-                <div key={i} className="flex items-center space-x-3">
-                  <div className="w-5 h-5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                {plan.id === "gold-interest" && (
+                  <div className="mb-4 inline-flex w-fit rounded-lg bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold uppercase text-white shadow-lg shadow-[#ef3e78]/25">
+                    Serious-search path
                   </div>
-                  <span className="text-white text-sm flex items-center gap-2">
-                    {feature.icon && <feature.icon className="w-4 h-4" />}
-                    {feature.text}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-auto">
-              <button
-                onClick={() => handleSelectPlan("gold", "1month")}
-                className="w-full bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-white py-4 rounded-full font-bold text-base shadow-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all"
-              >
-                <Award className="w-5 h-5" />
-                Start Gold Membership
-              </button>
-            </div>
-          </div>
-
-          {/* Platinum VIP */}
-          <div className="bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-6 lg:p-8 rounded-2xl border-2 border-purple-500/50 backdrop-blur-sm transform hover:scale-105 transition-all duration-300 flex flex-col h-full">
-            <div className="text-center mb-6">
-              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Crown className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
-              </div>
-              <h3 className="text-2xl lg:text-3xl font-black text-white mb-2">
-                Platinum VIP
-              </h3>
-              <div className="text-purple-500 text-sm mb-3 font-bold">
-                Ultimate premium experience
-              </div>
-              <div className="text-4xl lg:text-5xl font-black text-white mb-2">
-                $34.99
-                <span className="text-base text-slate-400">/month</span>
-              </div>
-              <div className="text-slate-400 text-xs mb-2">
-                $21.99/mo (3 months) • $16.66/mo (12 months)
-              </div>
-              <div className="text-purple-500 text-sm font-bold">
-                Maximum visibility
-              </div>
-            </div>
-
-            <div className="space-y-3 mb-6 flex-grow">
-              {[
-                { icon: null, text: "All Gold features +" },
-                { icon: Star, text: "Profile ranking boost" },
-                { icon: Verified, text: "VIP badge highlighting" },
-                { icon: Globe, text: "Message translation (32 languages)" },
-                { icon: Image, text: "Double photo space" },
-                { icon: null, text: "Advanced matching" },
-                { icon: Crown, text: "VIP support priority" },
-              ].map((feature, i) => (
-                <div key={i} className="flex items-center space-x-3">
-                  <div className="w-5 h-5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                )}
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-sm font-dm-sans-bold uppercase text-[#f0b6df]">
+                      {plan.label}
+                    </p>
+                    <h3
+                      id={`${plan.id}-title`}
+                      className="mt-2 font-lora text-3xl font-bold text-white"
+                    >
+                      {plan.name}
+                    </h3>
                   </div>
-                  <span className="text-white text-sm flex items-center gap-2">
-                    {feature.icon && <feature.icon className="w-4 h-4" />}
-                    {feature.text}
-                  </span>
+                  <div
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${plan.tone} text-white`}
+                  >
+                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  </div>
                 </div>
-              ))}
-            </div>
 
-            <div className="mt-auto">
-              <button
-                onClick={() => handleSelectPlan("platinum", "1month")}
-                className="w-full bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 text-white py-4 rounded-full font-bold text-base shadow-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all"
-              >
-                <Crown className="w-5 h-5" />
-                Start Platinum VIP
-              </button>
-            </div>
-          </div>
+                <div className="mt-6">
+                  <div className="flex items-end gap-2">
+                    <span className="font-dm-sans-bold text-3xl text-white">
+                      {plan.price}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm font-dm-sans-bold text-[#f0b6df]">
+                    {plan.priceDetail}
+                  </p>
+                  {plan.plannedPrice && (
+                    <div className="mt-3 rounded-lg border border-[#f0b6df]/25 bg-[#fff7fb]/10 p-3">
+                      <p className="text-xs font-dm-sans-bold uppercase text-[#f0b6df]">
+                        Planned pricing, not checkout
+                      </p>
+                      <p className="mt-1 text-base font-dm-sans-bold text-white">
+                        {plan.plannedPrice}
+                      </p>
+                    </div>
+                  )}
+                  <p className="mt-3 text-sm leading-6 text-[#c5b1e4]">
+                    {plan.note}
+                  </p>
+                  <p className="mt-3 rounded-lg border border-white/10 bg-[#251633]/80 p-3 text-sm font-dm-sans-semibold leading-6 text-[#f8f5ff]">
+                    {plan.decision}
+                  </p>
+                  <p
+                    id={`${plan.id}-action-note`}
+                    className="mt-2 text-xs leading-5 text-[#e3dcf9]"
+                  >
+                    Opens a plan-interest email only. It does not create an app
+                    account, dating profile, match request, matching session,
+                    checkout step, or payment record. This is plan-interest
+                    email only. Do not include payment details, ID documents,
+                    location, or private profile information.{" "}
+                    {PLAN_INTEREST_EMAIL_WARNING}
+                  </p>
+                </div>
+
+                <ul className="mt-6 flex-1 space-y-3">
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-3 text-sm leading-6 text-[#f8f5ff]"
+                    >
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#22a574] text-white">
+                        <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                      </span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href={buildPlanInterestEmailHref(plan.name, plan.subject)}
+                  aria-describedby={`${plan.id}-action-note`}
+                  aria-label={`${plan.cta}. Opens email interest form only. This is not checkout and does not create an app account, dating profile, match request, or payment record.`}
+                  className={`mt-7 inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
+                    plan.id === "gold-interest"
+                      ? "bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25 hover:bg-[#db2866] hover:shadow-[#ef3e78]/35"
+                      : "bg-white text-[#2e1e5a] shadow-lg shadow-black/10 hover:bg-[#fff7fb]"
+                  }`}
+                >
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  {plan.cta}
+                </a>
+              </article>
+            );
+          })}
         </div>
 
-        {/* Value Explanation */}
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-slate-800/50 to-slate-900/50 border border-slate-700/30 rounded-2xl px-6 lg:px-8 py-8 backdrop-blur-sm">
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6 flex items-center justify-center gap-3">
-              <Sparkles className="w-6 h-6 text-pink-500" />
-              Why This Model Works
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6 text-left">
-              <div className="space-y-2">
-                <h4 className="text-pink-500 font-bold text-lg mb-2 flex items-center gap-2">
-                  <Heart className="w-5 h-5" />
-                  For Men:
-                </h4>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Premium membership ensures you're connecting with serious,
-                  relationship-minded Filipinas in a curated environment.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h4 className="text-purple-500 font-bold text-lg mb-2 flex items-center gap-2">
-                  <Crown className="w-5 h-5" />
-                  For Filipinas:
-                </h4>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  Free access attracts genuine women seeking committed
-                  relationships without financial barriers.
-                </p>
-              </div>
+        <div className="mt-6 rounded-lg border border-white/10 bg-white/[0.06] p-5 text-white shadow-xl shadow-black/10 sm:p-6">
+          <p className="text-sm font-dm-sans-bold uppercase text-[#f0b6df]">
+            Not sure which interest path fits?
+          </p>
+          <ul className="mt-4 grid gap-3 lg:grid-cols-3">
+            {decisionPrompts.map((prompt) => (
+              <li
+                key={prompt}
+                className="flex min-h-14 items-start gap-3 rounded-lg border border-white/10 bg-[#251633]/75 px-4 py-3 text-sm leading-6 text-[#f8f5ff]"
+              >
+                <CheckCircleIcon />
+                <span>{prompt}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div
+          className="mt-6 grid gap-3 rounded-lg border border-white/10 bg-white/[0.06] p-4 sm:grid-cols-3"
+          aria-label="Current membership launch boundaries"
+        >
+          {launchBoundaries.map((boundary) => (
+            <div
+              key={boundary}
+              className="flex min-h-12 items-center justify-center rounded-lg border border-[#f0b6df]/20 bg-[#2e1e5a]/45 px-4 py-3 text-center text-sm font-dm-sans-bold text-[#f8f5ff] shadow-sm shadow-black/10"
+            >
+              {boundary}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 rounded-lg border border-[#f0b6df]/30 bg-[#fff7fb] p-5 text-[#1a1a1a] sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a] text-white">
+              <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 className="font-lora text-2xl font-bold">
+                Launch pricing notice
+              </h3>
+              <p className="mt-2 text-base leading-7 text-[#4b5563]">
+                Paid plans should not be treated as purchased, active, or
+                guaranteed until final plan details, checkout terms,
+                cancellation/refund policy, support coverage, and billing
+                provider flow are visible and confirmed.
+              </p>
             </div>
           </div>
         </div>
@@ -267,4 +271,10 @@ const MobileMembership = () => {
   );
 };
 
-export default MobileMembership;
+const CheckCircleIcon = () => (
+  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#22a574] text-white">
+    <Check className="h-3.5 w-3.5" aria-hidden="true" />
+  </span>
+);
+
+export default Membership;
