@@ -13,7 +13,7 @@ const trustPoints = [
   {
     icon: ShieldCheck,
     title: "Profile review first",
-    copy: "Review cues and safety-first onboarding are planned to help members understand profile readiness before a conversation starts.",
+    copy: "Helpful prompts and safety-first onboarding help members understand what to complete before starting a conversation.",
   },
   {
     icon: Sparkles,
@@ -23,7 +23,7 @@ const trustPoints = [
   {
     icon: MessageCircle,
     title: "Conversations with context",
-    copy: "Prompt and profile-detail direction is being prepared so first messages can feel easier, warmer, and more useful when chat is live.",
+    copy: "Prompt and profile-detail direction helps first messages feel easier, warmer, and more useful when chat is live.",
   },
 ];
 
@@ -45,14 +45,14 @@ const credibilityStats = [
   },
   {
     value: "3",
-    label: "Clear steps before launch access",
+    label: "Clear steps before early access",
   },
 ];
 
 const trustFlow = [
   "Join by platform preference",
-  "Get launch and safety updates",
-  "Create a profile only when the app opens",
+  "Get access and safety updates",
+  "Create a profile inside the app when access is available",
 ];
 
 const About = () => {
@@ -107,9 +107,9 @@ const About = () => {
 
             <p className="mt-6 text-lg leading-8 text-[#4b5563] sm:text-xl">
               PinayMate is shaped for people who want more than a busy dating
-              feed. The launch-stage experience explains the intended path:
-              safer discovery, clearer intent, and conversations that can turn
-              into something real after production sign-off.
+              feed. The product path keeps the first step clear: safer
+              discovery, stronger intent, and conversations that can turn into
+              something real when access is available.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -132,15 +132,15 @@ const About = () => {
               id="about-membership-note"
               className="mt-3 text-sm leading-6 text-[#6b5f75]"
             >
-              Membership links collect launch interest only. They do not create
-              a dating profile, start matching, or open checkout.
+              Membership links collect interest only. They do not create a
+              dating profile, start matching, or open checkout.
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4">
               {memberSignals.map((signal) => (
                 <div
                   key={signal}
-                  className="rounded-lg border border-[#ecebf0] bg-white/85 px-4 py-3 text-sm font-dm-sans-semibold text-[#374151] shadow-sm"
+                  className="border-l border-[#e7dff1] pl-3 text-sm font-dm-sans-semibold text-[#374151]"
                 >
                   <CheckCircle2
                     className="mb-2 h-4 w-4 text-[#22a574]"
@@ -151,7 +151,7 @@ const About = () => {
               ))}
             </div>
 
-            <dl className="mt-6 grid gap-3 rounded-lg border border-[#ecebf0] bg-white/85 p-4 shadow-sm sm:grid-cols-3">
+            <dl className="mt-8 grid gap-4 border-y border-[#ecebf0] py-5 sm:grid-cols-3">
               {credibilityStats.map((stat) => (
                 <div key={stat.label} className="min-w-0">
                   <dt className="font-lora text-3xl font-bold text-[#21132f]">
@@ -164,15 +164,15 @@ const About = () => {
               ))}
             </dl>
 
-            <div className="mt-6 rounded-lg border border-[#e7e6eb] bg-white p-5 shadow-sm">
+            <div className="mt-8 border-t border-[#e7e6eb] pt-6">
               <p className="text-sm font-dm-sans-bold uppercase text-[#b31460]">
-                The launch path
+                The access path
               </p>
-              <ol className="mt-4 grid gap-3 sm:grid-cols-3">
+              <ol className="mt-4 grid gap-4 sm:grid-cols-3">
                 {trustFlow.map((step, index) => (
                   <li
                     key={step}
-                    className="flex items-start gap-3 rounded-lg bg-[#faf9fb] p-3 text-sm leading-6 text-[#374151]"
+                    className="flex items-start gap-3 text-sm leading-6 text-[#374151]"
                   >
                     <span
                       className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#2e1e5a] text-sm font-dm-sans-bold text-white"
@@ -187,18 +187,18 @@ const About = () => {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-[#ecebf0] lg:pl-10">
             {trustPoints.map((point, index) => {
               const Icon = point.icon;
 
               return (
                 <article
                   key={point.title}
-                  className="group rounded-lg border border-white/70 bg-white/90 p-5 shadow-xl shadow-[#2e1e5a]/5 ring-1 ring-[#ecebf0] transition duration-200 hover:-translate-y-0.5 hover:border-[#f0b6df] hover:shadow-2xl motion-reduce:transform-none sm:p-6"
+                  className="border-b border-[#ecebf0] pb-6 last:border-b-0 sm:border-b-0 sm:pb-0 lg:border-b lg:pb-6"
                   style={{ transitionDelay: `${index * 60}ms` }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a] text-white shadow-lg shadow-[#2e1e5a]/12">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a] text-white">
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <div>
@@ -214,7 +214,7 @@ const About = () => {
               );
             })}
 
-            <div className="rounded-lg bg-[#2e1e5a] p-6 text-white shadow-2xl shadow-[#2e1e5a]/20 sm:col-span-3 lg:col-span-1">
+            <div className="border-t border-[#2e1e5a]/20 bg-[#2e1e5a] p-6 text-white sm:col-span-3 lg:col-span-1">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/12">
                   <Users className="h-5 w-5" aria-hidden="true" />
@@ -231,7 +231,7 @@ const About = () => {
               <p className="mt-4 text-base leading-7 text-[#e3dcf9]">
                 Every step is planned to help serious members understand fit,
                 safety posture, and value before they choose to start a
-                conversation after launch.
+                conversation in the app.
               </p>
             </div>
           </div>

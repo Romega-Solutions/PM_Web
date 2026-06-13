@@ -41,6 +41,23 @@ PM_Web must keep these boundaries until the central launch packet has current pr
 - no guaranteed safety, verification, identity, relationship, or moderation outcome
 - no support/legal mailbox readiness claim without delivery and owner proof
 
+## Surface and card discipline
+
+PM_Web should not become a wall of boxed tiles. Cards are allowed when they group one clear topic, such as a plan, trust proof, feature summary, or focused waitlist action. They should not be the default wrapper for every paragraph, note, statistic, and CTA.
+
+Preferred alternatives:
+
+- editorial section bands
+- split layouts
+- trust strips
+- comparison rows
+- lightweight lists with icons
+- whitespace and typography hierarchy
+- focused CTA blocks
+- modal or accordion disclosure for dense legal/support content
+
+Avoid nested cards. If a section already has a visible surface, inner content should normally use spacing, rows, dividers, icons, or typography instead of another rounded panel. This keeps the landing page conversion-led instead of dashboard-like.
+
 ## Manager signoff matrix
 
 | Gate | Owner | Backup | Required evidence | Date | Decision |
@@ -48,6 +65,7 @@ PM_Web must keep these boundaries until the central launch packet has current pr
 | Local release gate | Engineering owner | Release owner | `npm run check:release-local` output after current UI changes |  | Pending |
 | Production URL | Release owner | Engineering owner | Desktop and mobile production URL screenshots or browser evidence |  | Pending |
 | Product design QA | Product/design owner | Release owner | PM_Web design gates from `../PM_App/docs/PRODUCT_DESIGN_QA_STANDARD.md` completed with desktop/mobile screenshots |  | Pending |
+| Surface/card discipline | Product/design owner | Release owner | PM_Web review confirms editorial sections, trust strips, rows, and CTA blocks are used before nested cards or repeated equal-weight panels |  | Pending |
 | Launch-state matrix alignment | Product owner | Release owner | PM_Web copy and CTAs match `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`; full workspace release review also compares `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` |  | Pending |
 | Mailbox delivery | Support/legal owner | Release owner | Waitlist, support, and legal test emails received by monitored inboxes |  | Pending |
 | Mailto source audit | Engineering owner | Release owner | `npm run check:local-links:report` shows waitlist, support, and legal helper boundaries before mailbox proof is accepted |  | Pending |
@@ -56,6 +74,7 @@ PM_Web must keep these boundaries until the central launch packet has current pr
 | Waitlist-only copy | Product owner | Release owner | Copy audit proving no live checkout, app-store, active-matching, or guaranteed-safety claims |  | Pending |
 | Backend waitlist handoff | Product/engineering owner | Release owner | PM_Web waitlist form falls back to email until `waitlist_signups`, `submit_waitlist_signup`, `waitlist-signup` Edge Function deploy, direct RPC denial, edge rate-limit proof, and production evidence are approved |  | Pending |
 | Waitlist backend env gates | Product/engineering owner | Release owner | `VITE_PINAYMATE_WAITLIST_BACKEND_ENABLED`, `VITE_PINAYMATE_WAITLIST_BACKEND_PROOF_ACCEPTED`, and `VITE_PINAYMATE_WAITLIST_ABUSE_CONTROL_APPROVED` stay disabled until backend proof is approved |  | Pending |
+| Waitlist Edge header contract | Product/engineering owner | Release owner | `npm run check:waitlist-handoff` passes; PM_Web waitlist handoff uses the public `apikey` header only with `Content-Type: application/json`, keeps service-role credentials server-side, and does not add browser `Authorization` or Bearer anon-token headers |  | Pending |
 | Waitlist Edge Function proof | Product/engineering owner | Release owner | `waitlist-signup` is deployed with approved origins, rate-limit salt, service-role secret kept server-side, direct RPC execution denied, and repeated-request behavior proven |  | Pending |
 | Support email boundary | Product/support owner | Release owner | FAQ/support copy proves email does not create an app account, dating profile, match request, or payment record |  | Pending |
 | PM_App dependency closure | Engineering owner | Product owner | PM_App central launch packet shows blockers closed or explicitly deferred |  | Pending |
@@ -65,6 +84,7 @@ PM_Web must keep these boundaries until the central launch packet has current pr
 Run from `PM_Web`:
 
 ```bash
+npm run check:waitlist-handoff
 npm run check:local-quality
 ```
 
@@ -94,6 +114,7 @@ When this repo is checked out inside the full Romega workspace and `../PM_App/do
 - PM_Web copy and CTAs match `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`; full workspace release review also compares `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`.
 - Final production URL loads successfully on desktop and mobile.
 - Product design QA passes the PM_Web gates in `../PM_App/docs/PRODUCT_DESIGN_QA_STANDARD.md`.
+- PM_Web surface/card discipline is reviewed so the page does not regress into card spam or nested-card-heavy sections.
 - Waitlist, support, and legal mailboxes receive test messages.
 - Waitlist mailbox delivery is proven separately from app notification/email-provider delivery.
 - Waitlist, plan-interest, support, and legal email bodies do not request payment details, ID documents, precise location, passwords, or private message screenshots.

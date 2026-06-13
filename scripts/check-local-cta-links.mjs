@@ -13,6 +13,12 @@ const args = process.argv.slice(2);
 const shouldWriteReport =
   args.includes("--write-report") || process.env.PINAYMATE_WRITE_REPORT === "1";
 const reportArg = args.find((arg) => !arg.startsWith("--"));
+const reportDate = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Asia/Manila",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).format(new Date());
 const reportPath =
   reportArg ??
   process.env.PINAYMATE_REPORT_PATH ??
@@ -20,7 +26,7 @@ const reportPath =
     root,
     "docs",
     "evidence",
-    "2026-06-10-pm-web-local-cta-audit.txt",
+    `${reportDate}-pm-web-local-cta-audit.txt`,
   );
 
 const scanRoots = ["src"];
@@ -71,6 +77,10 @@ const launchEmailHelper = files.find((file) =>
 const launchEmailHelperText = launchEmailHelper
   ? readFileSync(launchEmailHelper, "utf8")
   : "";
+const footerFile = files.find((file) =>
+  rel(file).endsWith("src/components/sections/Footer.tsx"),
+);
+const footerText = footerFile ? readFileSync(footerFile, "utf8") : "";
 
 const hrefs = [];
 const mailtos = [];
@@ -221,12 +231,12 @@ const requiredEvidence = [
       launchEmailHelperText.includes("PLAN_INTEREST_EMAIL_WARNING"),
   },
   {
-    label: "membership interest email is not account profile match checkout or payment creation",
+    label: "membership interest email is checkout-safe and data-minimized",
     pass:
       launchEmailHelperText.includes("PLAN_INTEREST_EMAIL_WARNING") &&
       launchEmailHelperText.includes("plan-interest email is not checkout") &&
       launchEmailHelperText.includes(
-        "does not create an app account, dating profile, match request, matching session, checkout step, or payment record",
+        "Do not include payment details, ID documents, location, or private profile information",
       ),
   },
   {
@@ -249,6 +259,15 @@ const requiredEvidence = [
     pass: uniqueMailtos.some((entry) =>
       entry.href.startsWith("mailto:legal@pinaymate.com"),
     ),
+  },
+  {
+    label: "footer exposes support and legal contact paths",
+    pass:
+      footerText.includes("SUPPORT_EMAIL") &&
+      footerText.includes("LEGAL_EMAIL") &&
+      footerText.includes("launchEmailLinks.launchSupport") &&
+      footerText.includes("launchEmailLinks.legalQuestion") &&
+      footerText.includes("Email PinayMate legal and privacy team"),
   },
   {
     label: "footer support mailto uses launch-support subject",

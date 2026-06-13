@@ -13,7 +13,7 @@ PinayMate is a launch-stage dating product for people seeking serious Filipino c
 ### Manager view
 
 - **Scope:** PM_Web static/site readiness + public launch messaging alignment with PM_App blockers.
-- **Status:** Incomplete pending coordinated launch gates. PM_Web remains waitlist-only until current local QA, production URL, mailbox proof, and PM_App launch blockers are closed.
+- **Status:** Local PM_Web quality is current and passing, but public launch remains blocked by production URL, mailbox proof, and PM_App launch blockers. PM_Web remains waitlist-only until those coordinated launch gates close.
 - **Launch-state source of truth:** `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` is the PM_Web-local snapshot used by standalone checks. `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` remains the cross-product source when the full Romega workspace is available.
 
 ### Done
@@ -27,8 +27,8 @@ PinayMate is a launch-stage dating product for people seeking serious Filipino c
 ### Verified
 
 - Repository-level evidence confirms launch-readiness section exists and references are aligned with PM_App blockers.
-- Historical local lint/build and local preview smoke evidence is recorded in `../PM_App/docs/evidence/2026-06-10-local-qa-summary.md`.
-- Those historical passes are not current release proof after the 2026-06-11 UI polish and release-doc updates. Rerun PM_Web release checks before publishing.
+- Current local PM_Web checks passed on 2026-06-11 and are recorded in `../PM_App/docs/evidence/2026-06-11-current-local-quality-release-blockers.md`.
+- Historical browser smoke evidence remains useful context, but production URL, mailbox delivery, and final launch-domain checks are still unverified.
 - No live production deployment, host-domain, monitored-mailbox, or production URL validation is recorded in docs.
 
 ### Blocked
@@ -42,21 +42,20 @@ PinayMate is a launch-stage dating product for people seeking serious Filipino c
 
 | Gate             | Required proof                                                 | Owner | Date       | Evidence path / URL                                                | Status                                       |
 | ---------------- | -------------------------------------------------------------- | ----- | ---------- | ------------------------------------------------------------------ | -------------------------------------------- |
-| Local lint       | `npm run lint` output                                          | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-local-qa-summary.md`           | Historical pass; rerun required             |
-| Dependency audit | `npm run check:dependency-audit` output                        | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-dependency-audit-release-gate.md` | Historical gate; rerun required           |
-| Production build | `npm run build` output                                         | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-local-qa-summary.md`           | Historical pass; rerun required             |
+| Local lint       | `npm run lint` through `npm run check:local-quality`           | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-current-local-quality-release-blockers.md` | Pass locally                                |
+| Dependency audit | `npm run check:dependency-audit` through `npm run check:release-local` | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-current-local-quality-release-blockers.md` | Pass, 0 vulnerabilities                     |
+| Production build | `npm run build`                                                | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-current-local-quality-release-blockers.md` | Pass locally                                |
 | Desktop smoke    | hero, CTAs, legal modal, footer render on desktop              | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-pm-web-local-browser-smoke.md` | Historical screenshot; rerun required       |
 | Mobile smoke     | no horizontal overflow, CTA/legal modal usable                 | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-pm-web-local-browser-smoke.md` | Historical screenshot; rerun required       |
-| CTA routing      | waitlist/support/legal links route to monitored inboxes        | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-pm-web-local-cta-audit.txt`    | Historical source audit; needs mailbox proof and rerun |
-| Launch-state matrix alignment | PM_Web copy and CTAs match the PM_Web-local matrix snapshot and the central PM_App matrix during workspace release review | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-pm-web-launch-state-matrix-alignment.md` | Source/docs alignment added; rerun required |
+| CTA routing      | waitlist/support/legal links route to approved waitlist/support/legal flows | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-current-local-quality-release-blockers.md` | Pass locally; mailbox proof still required |
+| Launch-state matrix alignment | PM_Web copy and CTAs match the PM_Web-local matrix snapshot and the central PM_App matrix during workspace release review | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-current-local-quality-release-blockers.md` | Pass locally                                |
 | Final domain     | production domain loads and matches launch copy                |       |            |                                                                    | Needs deployed URL                           |
-| Copy accuracy    | no fake checkout, app-store, active-user, or safety guarantees | Codex | 2026-06-10 | `../PM_App/docs/evidence/2026-06-10-local-qa-summary.md`           | Historical review; rerun required           |
+| Copy accuracy    | no fake checkout, app-store, active-user, or safety guarantees | Codex | 2026-06-11 | `../PM_App/docs/evidence/2026-06-11-current-local-quality-release-blockers.md` | Pass locally                                |
 
 ### Next
 
-- Run `npm run check:release-local` in `PM_Web` after current UI changes are ready for QA.
-- Confirm PM_Web copy, CTA, membership, store-link, support, legal, and safety claims still match `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`; for full workspace release review, compare against `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`.
-- Run `npm run build` and `npm run lint` in `PM_Web` when release blockers are ready.
+- Keep `npm run check:local-quality` and `npm run check:release-local` green after any PM_Web copy, CTA, membership, support, legal, or safety copy change.
+- For full workspace release review, compare PM_Web claims against `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`.
 - Validate production host/domain behavior for CTA deep links and support paths.
 - Publish only after PM_App launch blockers are closed and recorded in PM_App docs.
 

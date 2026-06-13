@@ -1,4 +1,5 @@
 export type WaitlistPlatform = "ios" | "android" | "web" | "unknown";
+type WaitlistBackendStatus = "accepted";
 
 export type WaitlistBackendReadiness =
   | {
@@ -22,7 +23,7 @@ export type WaitlistBackendResult =
       mode: "backend";
       emailNormalized: string;
       platform: WaitlistPlatform;
-      status: string;
+      status: WaitlistBackendStatus;
     }
   | {
       ok: false;
@@ -30,6 +31,7 @@ export type WaitlistBackendResult =
       reason:
         | WaitlistBackendReadiness["reason"]
         | "invalid_email"
+        | "spam_check_failed"
         | "request_failed";
       userMessage: string;
     };
@@ -37,7 +39,7 @@ export type WaitlistBackendResult =
 export type WaitlistBackendInput = {
   email: string;
   platform: WaitlistPlatform;
-  source?: "pm_web" | "pm_app";
+  source?: "pm_web";
   website?: string;
   turnstileToken?: string;
 };
@@ -52,6 +54,9 @@ const SUPABASE_URL_KEY = "VITE_SUPABASE_URL";
 const SUPABASE_ANON_KEY = "VITE_SUPABASE_ANON_KEY";
 const WAITLIST_EDGE_FUNCTION_PATH = "/functions/v1/waitlist-signup";
 const WAITLIST_BACKEND_CONTRACT = "submit_waitlist_signup";
+const MAX_EMAIL_LENGTH = 254;
+const MAX_HONEYPOT_LENGTH = 120;
+const MAX_TURNSTILE_TOKEN_LENGTH = 2048;
 // Launch audit marker: VITE_PINAYMATE_WAITLIST_BACKEND_ENABLED VITE_PINAYMATE_WAITLIST_BACKEND_PROOF_ACCEPTED VITE_PINAYMATE_WAITLIST_ABUSE_CONTROL_APPROVED email_fallback
 
 const env = import.meta.env as Record<string, string | undefined>;
@@ -65,11 +70,11 @@ function normalizeSupabaseUrl(value: string | undefined) {
 }
 
 function normalizeEmail(value: string) {
-  return value.trim().toLowerCase();
+  return value.trim().toLowerCase().slice(0, MAX_EMAIL_LENGTH + 1);
 }
 
 function isValidEmail(value: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  return value.length <= MAX_EMAIL_LENGTH && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
 function normalizePlatform(platform: WaitlistPlatform): WaitlistPlatform {
@@ -78,6 +83,18 @@ function normalizePlatform(platform: WaitlistPlatform): WaitlistPlatform {
   }
 
   return "unknown";
+}
+
+function isWaitlistPlatform(value: unknown): value is WaitlistPlatform {
+  return value === "ios" || value === "android" || value === "web" || value === "unknown";
+}
+
+function isAcceptedWaitlistStatus(value: unknown): value is WaitlistBackendStatus {
+  return value === "accepted";
+}
+
+function cleanOptionalText(value: string | undefined, maxLength: number) {
+  return value?.trim().slice(0, maxLength) ?? "";
 }
 
 export function getWaitlistBackendReadiness(): WaitlistBackendReadiness {
@@ -129,18 +146,6 @@ export function getWaitlistBackendReadiness(): WaitlistBackendReadiness {
 export async function submitWaitlistInterest(
   input: WaitlistBackendInput,
 ): Promise<WaitlistBackendResult> {
-  const readiness = getWaitlistBackendReadiness();
-
-  if (!readiness.enabled) {
-    return {
-      ok: false,
-      mode: "email_fallback",
-      reason: readiness.reason,
-      userMessage:
-        "Email waitlist is the current public path while backend capture waits for release proof.",
-    };
-  }
-
   const email = normalizeEmail(input.email);
 
   if (!isValidEmail(email)) {
@@ -152,20 +157,46 @@ export async function submitWaitlistInterest(
     };
   }
 
+  if (cleanOptionalText(input.website, MAX_HONEYPOT_LENGTH)) {
+    return {
+      ok: false,
+      mode: "not_sent",
+      reason: "spam_check_failed",
+      userMessage: "We could not complete this request. Refresh the page and try again.",
+    };
+  }
+
+  const readiness = getWaitlistBackendReadiness();
+
+  if (!readiness.enabled) {
+    return {
+      ok: false,
+      mode: "email_fallback",
+      reason: readiness.reason,
+      userMessage:
+        "Use the email path to join the waitlist and choose your platform.",
+    };
+  }
+
   try {
+    const anonKey = env[SUPABASE_ANON_KEY]?.trim() ?? "";
+
     const response = await fetch(readiness.endpoint, {
       method: "POST",
       headers: {
-        apikey: env[SUPABASE_ANON_KEY] ?? "",
+        apikey: anonKey,
         "Content-Type": "application/json",
         "x-client-info": "pm-web-waitlist",
       },
       body: JSON.stringify({
         email,
         platform: normalizePlatform(input.platform),
-        source: input.source ?? "pm_web",
-        website: input.website ?? "",
-        turnstileToken: input.turnstileToken ?? "",
+        source: "pm_web",
+        website: "",
+        turnstileToken: cleanOptionalText(
+          input.turnstileToken,
+          MAX_TURNSTILE_TOKEN_LENGTH,
+        ),
         backendContract: WAITLIST_BACKEND_CONTRACT,
       }),
     });
@@ -176,24 +207,42 @@ export async function submitWaitlistInterest(
         mode: "email_fallback",
         reason: "request_failed",
         userMessage:
-          "Backend waitlist capture is not available right now. Use the email waitlist path instead.",
+          "Use the email path to join the waitlist with the same platform choice.",
       };
     }
 
-    const rows = (await response.json()) as Array<{
-      email_normalized?: string;
-      platform?: WaitlistPlatform;
-      status?: string;
-    }>;
-    const row = rows[0];
+    const responseContentType = response.headers.get("content-type") ?? "";
 
-    if (!row?.email_normalized || !row.platform || !row.status) {
+    if (!responseContentType.toLowerCase().includes("application/json")) {
       return {
         ok: false,
         mode: "email_fallback",
         reason: "request_failed",
         userMessage:
-          "Backend waitlist capture did not return an accepted response. Use the email waitlist path instead.",
+          "Use the email path to confirm your waitlist request with the same platform choice.",
+      };
+    }
+
+    const rowsPayload = (await response.json()) as unknown;
+    const rows = Array.isArray(rowsPayload) ? (rowsPayload as Array<{
+      email_normalized?: unknown;
+      platform?: unknown;
+      status?: unknown;
+    }>) : [];
+    const row = rows.length === 1 ? rows[0] : undefined;
+
+    if (
+      typeof row?.email_normalized !== "string" ||
+      row.email_normalized !== email ||
+      !isWaitlistPlatform(row.platform) ||
+      !isAcceptedWaitlistStatus(row.status)
+    ) {
+      return {
+        ok: false,
+        mode: "email_fallback",
+        reason: "request_failed",
+        userMessage:
+          "Use the email path to confirm your waitlist request with the same platform choice.",
       };
     }
 
@@ -201,7 +250,7 @@ export async function submitWaitlistInterest(
       ok: true,
       mode: "backend",
       emailNormalized: row.email_normalized,
-      platform: normalizePlatform(row.platform),
+      platform: row.platform,
       status: row.status,
     };
   } catch {
@@ -210,7 +259,7 @@ export async function submitWaitlistInterest(
       mode: "email_fallback",
       reason: "request_failed",
       userMessage:
-        "Backend waitlist capture could not be reached. Use the email waitlist path instead.",
+        "Use the email path to join the waitlist with the same platform choice.",
     };
   }
 }

@@ -57,7 +57,7 @@ const requiredMarkers = [
   {
     label: "website does not create profiles, matching, checkout, or payment",
     pattern:
-      /does not create a dating profile, start matching, open checkout, or collect payment/i,
+      /does\s+not\s+create\s+a\s+dating\s+profile[\s\S]{0,120}start\s+matching[\s\S]{0,120}open\s+checkout[\s\S]{0,120}collect\s+payment/i,
   },
   {
     label: "membership interest is not checkout",
@@ -65,7 +65,7 @@ const requiredMarkers = [
   },
   {
     label: "hero states no payment on this page",
-    pattern: /no payment on this page/i,
+    pattern: /no payment\s+on this page/i,
   },
   {
     label: "hero states waitlist does not create a profile",
@@ -76,13 +76,13 @@ const requiredMarkers = [
     pattern: /no card or charge/i,
   },
   {
-    label: "membership states no matching starts today",
-    pattern: /no matching starts today/i,
+    label: "membership says matching starts in the app",
+    pattern: /Matching starts in the app/i,
   },
   {
-    label: "store links are visibly locked until release sign-off",
+    label: "store links route users to waitlist updates",
     pattern:
-      /Store availability[\s\S]{0,160}App Store link locked[\s\S]{0,220}Google Play link locked/i,
+      /Store links[\s\S]{0,220}Join the waitlist first; official store links will be shared there/i,
   },
   {
     label: "membership separates planned pricing from checkout",
@@ -102,7 +102,7 @@ const requiredMarkers = [
       /safety controls and review paths[\s\S]{0,120}not guarantees[\s\S]{0,120}background checks/i,
   },
   {
-    label: "app-store access is not guaranteed before launch",
+    label: "app-store access is not guaranteed before availability proof",
     pattern:
       /do not guarantee immediate app access, paid membership availability, app-store availability, or live dating functionality/i,
   },
@@ -112,14 +112,19 @@ const requiredMarkers = [
       /platform-only waitlist message[\s\S]{0,260}No\s+app\s+account,[\s\S]{0,120}dating\s+profile,[\s\S]{0,120}match\s+request,[\s\S]{0,120}matching\s+session,[\s\S]{0,120}checkout,[\s\S]{0,120}payment\s+record,[\s\S]{0,120}precise\s+location,[\s\S]{0,120}matching\s+data\s+is\s+created/i,
   },
   {
-    label: "waitlist helper does not create account profile match checkout or payment records",
+    label: "waitlist helper records interest only",
     pattern:
-      /WAITLIST_EMAIL_LAUNCH_BOUNDARY[\s\S]{0,260}does\s+not\s+create\s+an\s+app\s+account,[\s\S]{0,120}dating\s+profile,[\s\S]{0,120}match\s+request,[\s\S]{0,120}matching\s+session,[\s\S]{0,120}checkout,[\s\S]{0,120}payment\s+record/i,
+      /WAITLIST_EMAIL_LAUNCH_BOUNDARY[\s\S]{0,260}waitlist email only records my interest for PinayMate updates/i,
   },
   {
     label: "backend waitlist handoff is gated and falls back to email",
     pattern:
       /VITE_PINAYMATE_WAITLIST_BACKEND_ENABLED[\s\S]{0,600}VITE_PINAYMATE_WAITLIST_BACKEND_PROOF_ACCEPTED[\s\S]{0,600}VITE_PINAYMATE_WAITLIST_ABUSE_CONTROL_APPROVED[\s\S]{0,1400}email_fallback/i,
+  },
+  {
+    label: "waitlist fallback copy is client-facing instead of readiness-facing",
+    pattern:
+      /Use\s+the\s+email\s+(?:path|option)[\s\S]{0,700}(?:platform|choice|preference)/i,
   },
   {
     label: "waitlist helper uses launch and data boundaries",
@@ -134,17 +139,17 @@ const requiredMarkers = [
   {
     label: "final waitlist CTA does not create profile, matching, or payment",
     pattern:
-      /Joining does not start matching today,[\s\S]{0,120}create a public profile,[\s\S]{0,80}require payment/i,
+      /No\s+app\s+account,[\s\S]{0,120}dating\s+profile,[\s\S]{0,120}match\s+request,[\s\S]{0,120}matching\s+session,[\s\S]{0,120}checkout,[\s\S]{0,120}payment\s+record[\s\S]{0,160}created from this page/i,
   },
   {
     label: "final waitlist note is not membership, match request, or checkout",
     pattern:
-      /interest signal for launch planning,[\s\S]{0,140}not a live\s+membership,\s+match request,\s+or checkout step/i,
+      /waitlist signal,[\s\S]{0,140}not a live membership,[\s\S]{0,120}match request,[\s\S]{0,120}checkout\s+step,[\s\S]{0,120}payment record/i,
   },
   {
     label: "legal privacy copy separates website waitlist data from app account data",
     pattern:
-      /website waitlist and support flows collect only[\s\S]{0,180}Profile information, photos, matches, messages, reports, blocks, and verification status apply only when app account features are available/i,
+      /website\s+waitlist\s+and\s+support\s+flows\s+collect\s+only[\s\S]{0,240}Profile\s+information,[\s\S]{0,240}stay\s+inside\s+the\s+app\s+access\s+flow/i,
   },
   {
     label: "membership interest email is not checkout and does not create a profile",
@@ -152,9 +157,9 @@ const requiredMarkers = [
       /plan-interest email only[\s\S]{0,180}does not create an app[\s\S]{0,120}account,[\s\S]{0,120}dating profile,[\s\S]{0,120}match request,[\s\S]{0,120}matching session,[\s\S]{0,120}checkout step,[\s\S]{0,120}payment record/i,
   },
   {
-    label: "membership interest helper does not create account profile match checkout or payment records",
+    label: "membership interest helper avoids checkout and private data",
     pattern:
-      /PLAN_INTEREST_EMAIL_WARNING[\s\S]{0,260}plan-interest email is not checkout[\s\S]{0,140}does not create an app account,[\s\S]{0,120}dating profile,[\s\S]{0,120}match request,[\s\S]{0,120}matching session,[\s\S]{0,120}checkout step,[\s\S]{0,120}payment record/i,
+      /PLAN_INTEREST_EMAIL_WARNING[\s\S]{0,260}plan-interest email is not checkout[\s\S]{0,180}Do not include payment details,[\s\S]{0,120}ID documents,[\s\S]{0,120}location,[\s\S]{0,120}private profile information/i,
   },
   {
     label: "membership interest email avoids private/payment data",
@@ -164,7 +169,7 @@ const requiredMarkers = [
   {
     label: "about membership links are interest-only",
     pattern:
-      /Membership links collect launch interest only[\s\S]{0,180}do not create[\s\S]{0,80}dating profile[\s\S]{0,160}start matching[\s\S]{0,160}open checkout/i,
+      /Membership links collect interest only[\s\S]{0,180}do not create[\s\S]{0,80}dating profile[\s\S]{0,160}start matching[\s\S]{0,160}open checkout/i,
   },
   {
     label: "FAQ support email avoids sensitive data collection",
@@ -179,12 +184,12 @@ const requiredMarkers = [
   {
     label: "FAQ support email does not create account profile matching or payment records",
     pattern:
-      /Emailing\s+support\s+does\s+not\s+create\s+an\s+app\s+account,[\s\S]{0,120}dating\s+profile,[\s\S]{0,120}match\s+request,[\s\S]{0,120}payment\s+record/i,
+      /Support\s+can\s+explain[\s\S]{0,180}cannot\s+create\s+accounts,[\s\S]{0,120}profiles,[\s\S]{0,120}matches,[\s\S]{0,120}checkout\s+sessions,[\s\S]{0,120}payment\s+records/i,
   },
   {
-    label: "support mailto body does not create account profile matching or payment records",
+    label: "support mailto keeps account and payment actions separate",
     pattern:
-      /SUPPORT_EMAIL_LAUNCH_BOUNDARY[\s\S]{0,220}does\s+not\s+create\s+an\s+app\s+account,[\s\S]{0,120}dating\s+profile,[\s\S]{0,120}match\s+request,[\s\S]{0,120}payment\s+record/i,
+      /SUPPORT_EMAIL_LAUNCH_BOUNDARY[\s\S]{0,220}support email does not change my app account,[\s\S]{0,120}profile,[\s\S]{0,120}matches,[\s\S]{0,120}checkout,[\s\S]{0,120}payments/i,
   },
   {
     label: "support helper uses launch and sensitive-data boundaries",
@@ -192,14 +197,19 @@ const requiredMarkers = [
       /function\s+buildSupportEmailHref[\s\S]{0,320}SUPPORT_EMAIL_LAUNCH_BOUNDARY[\s\S]{0,160}SUPPORT_EMAIL_SENSITIVE_DATA_WARNING/i,
   },
   {
-    label: "FAQ gates account settings and deletion during launch preparation",
+    label: "FAQ support boundary does not create account profile matching or payment records",
     pattern:
-      /Account changes,[\s\S]{0,80}profile settings,[\s\S]{0,120}deletion requests[\s\S]{0,180}through support during launch preparation/i,
+      /support can explain current access and\s+next steps,[\s\S]{0,180}cannot create accounts, profiles, matches,\s+checkout sessions, or payment records/i,
   },
   {
-    label: "legal separates launch-stage website use from app account use",
+    label: "legal separates website waitlist/support use from app account use",
     pattern:
-      /We use launch-stage website information[\s\S]{0,180}When app features are live for your account or test group/i,
+      /website waitlist and support flows collect only[\s\S]{0,260}Profile information,[\s\S]{0,220}stay inside the app access flow[\s\S]{0,260}We use website waitlist and support information/i,
+  },
+  {
+    label: "legal account requests use support without internal readiness wording",
+    pattern:
+      /request access, updates, or deletion[\s\S]{0,220}support can help route the request/i,
   },
 ];
 
@@ -284,9 +294,34 @@ const forbiddenLiveClaims = [
       /\bwaitlist\s+(?:creates|starts|opens)\s+(?:a\s+)?(?:profile|account|matching)\b/i,
   },
   {
+    label: "internal readiness language in public waitlist fallback copy",
+    pattern:
+      /\b(?:being finalized|online signup is unavailable|instant waitlist signup|instant signup)\b/i,
+  },
+  {
+    label: "store or email option framed as launch fallback",
+    pattern:
+      /\b(?:coming soon for ios|coming soon for android|email fallback if needed|available as fallback)\b/i,
+  },
+  {
+    label: "FAQ framed as unavailable or pending launch state",
+    pattern:
+      /\b(?:if app access is not available yet|when those options are available|when downloads, support, and access details are available)\b/i,
+  },
+  {
     label: "final CTA starts matching claim",
     pattern:
       /\bjoin(?:ing)?\s+(?:the\s+)?waitlist[\s\S]{0,120}\bstarts?\s+matching\b/i,
+  },
+  {
+    label: "developer or deployment status language in public source",
+    pattern:
+      /\b(?:dev branch|developer note|deployment status|deployed status|staging status|debug note|debugging note|QA gate|QA status|release gate)\b/i,
+  },
+  {
+    label: "infrastructure jargon in public source",
+    pattern:
+      /\b(?:Edge Function|RPC|database schema|schema migration|API key|environment variable|env var|feature flag|service role|handoff contract|route blocker)\b/i,
   },
 ];
 
@@ -412,7 +447,7 @@ add(
   }`,
 );
 add("");
-add("## Required launch-stage disclaimers");
+add("## Required waitlist and access disclaimers");
 for (const marker of markerResults) {
   add(`- ${marker.pass ? "Pass" : "Fail"}: ${marker.label}`);
 }
@@ -447,7 +482,7 @@ add("");
 add("## Result");
 if (failures.length === 0) {
   add(
-    "Pass: PM_Web source keeps launch-stage disclaimers and avoids obvious live checkout, app-store, profile creation, matching, safety-guarantee, and waitlist data-overclaim issues.",
+    "Pass: PM_Web source keeps waitlist/access disclaimers and avoids obvious live checkout, app-store, profile creation, matching, safety-guarantee, and waitlist data-overclaim issues.",
   );
 } else {
   add("Fail: PM_Web launch claim audit found issues.");
