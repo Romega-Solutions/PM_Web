@@ -24,6 +24,18 @@ Supabase configuration is also required:
 
 If any gate is missing, the helper returns an email-fallback result and does not call the RPC. The form then shows a `Continue by email` path.
 
+## Browser header contract
+
+PM_Web calls the public `waitlist-signup` Edge Function with:
+
+- `apikey: VITE_SUPABASE_ANON_KEY`
+- `Content-Type: application/json`
+- `x-client-info: pm-web-waitlist`
+
+PM_Web must not send a browser `Authorization` header for anonymous waitlist capture, must not format the anon key as `Bearer ${anonKey}`, and must never expose `SUPABASE_SERVICE_ROLE_KEY` or any service-role credential. The service-role key belongs only inside the deployed Edge Function environment.
+
+`scripts/check-waitlist-backend-handoff.mjs` enforces this source boundary directly, and `scripts/check-product-design-contract.mjs` keeps the same markers visible in the broader PM_Web release audit. Together they prevent the public waitlist handoff from regressing into a secret-bearing or user-auth-only browser request.
+
 ## Backend RPC target
 
 The helper calls:
@@ -70,9 +82,12 @@ Do not treat this as finished without operator proof. The handoff is valid only 
 - repeated-request throttle verification,
 - direct `submit_waitlist_signup` denial proof for anon/authenticated REST callers,
 - proof flags (`VITE_PINAYMATE_WAITLIST_BACKEND_*`) left disabled until all above checks pass.
+- PM_Web header contract proof showing only the public `apikey` header is used from the browser, with no service-role, browser `Authorization`, or Bearer anon-token fallback.
 
 ## Remaining verification commands
 
+- `npm run check:waitlist-handoff`
+- `npm run check:release-local`
 - `npx supabase functions deploy waitlist-signup --project-ref <ref> --use-api`
 - `npx supabase secrets list --project-ref <ref>` and secret-scope check for no public exposure
 - `curl`/`fetch` probes against `/functions/v1/waitlist-signup` for:

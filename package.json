@@ -13,10 +13,14 @@
     "check:local-links": "node scripts/check-local-cta-links.mjs",
     "check:local-links:report": "node scripts/check-local-cta-links.mjs --write-report",
     "check:product-design-contract": "node scripts/check-product-design-contract.mjs",
-    "check:release-local": "npm run check:dependency-audit && npm run check:local-links && npm run check:launch-claims && npm run check:product-design-contract",
-    "check:release-local:report": "npm run check:dependency-audit && npm run check:local-links:report && npm run check:launch-claims:report && npm run check:product-design-contract",
+    "check:source-contracts": "npm run check:local-links && npm run check:launch-claims && npm run check:client-copy && npm run check:waitlist-handoff && npm run check:product-design-contract",
+    "check:source-contracts:report": "npm run check:local-links:report && npm run check:launch-claims:report && npm run check:client-copy && npm run check:waitlist-handoff && npm run check:product-design-contract",
+    "check:waitlist-handoff": "node scripts/check-waitlist-backend-handoff.mjs",
+    "check:release-local": "npm run check:dependency-audit && npm run check:source-contracts",
+    "check:release-local:report": "npm run check:dependency-audit && npm run check:source-contracts:report",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:client-copy": "node scripts/check-client-facing-copy.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",

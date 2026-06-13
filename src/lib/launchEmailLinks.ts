@@ -8,16 +8,16 @@ export const LEGAL_EMAIL_SENSITIVE_DATA_WARNING =
   "I understand I should not send passwords, payment details, ID documents, private message screenshots, or raw identity documents by email.";
 
 export const SUPPORT_EMAIL_LAUNCH_BOUNDARY =
-  "I understand this email does not create an app account, dating profile, match request, or payment record.";
+  "I understand this support email does not change my app account, profile, matches, checkout, or payments.";
 
 export const WAITLIST_EMAIL_LAUNCH_BOUNDARY =
-  "I understand this waitlist email does not create an app account, dating profile, match request, matching session, checkout, or payment record.";
+  "I understand this waitlist email only records my interest for PinayMate updates.";
 
 export const WAITLIST_EMAIL_DATA_BOUNDARY =
   "I understand I should not include passwords, payment details, ID documents, precise location, or private profile information.";
 
 export const PLAN_INTEREST_EMAIL_WARNING =
-  "I understand this plan-interest email is not checkout, does not create an app account, dating profile, match request, matching session, checkout step, or payment record. Do not include payment details, ID documents, location, or private profile information.";
+  "I understand this plan-interest email is not checkout. Do not include payment details, ID documents, location, or private profile information.";
 
 const SUPPORT_MAILTO_PREFIX = "mailto:support@pinaymate.com?";
 const LEGAL_MAILTO_PREFIX = "mailto:legal@pinaymate.com?";

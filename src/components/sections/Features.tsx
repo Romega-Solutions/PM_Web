@@ -12,20 +12,20 @@ const features = [
   {
     icon: SlidersHorizontal,
     title: "Preference-led discovery",
-    copy: "The planned discovery flow prioritizes relationship goals, lifestyle, culture, and profile context instead of making photos carry the whole decision.",
+    copy: "The discovery flow prioritizes relationship goals, lifestyle, culture, and profile context instead of making photos carry the whole decision.",
     proof: "Designed for clearer fit before members message.",
   },
   {
     icon: UserCheck,
     title: "Profile review cues",
-    copy: "Verification labels are framed as review cues, not guarantees. Badges should only appear after the relevant email, profile, or ID/photo review step is approved.",
-    proof: "Honest safety language for launch readiness.",
+    copy: "Verification labels are framed as review cues, not guarantees. Badges should appear only after the relevant email, profile, or ID/photo review step is approved.",
+    proof: "Clear safety language without overpromising.",
   },
   {
     icon: MessageCircleHeart,
     title: "Conversation prompts",
-    copy: "Messaging previews focus on respectful openers and shared values so first contact can feel more intentional when chat is available.",
-    proof: "Messaging stays preview-only until launch.",
+    copy: "Messaging previews focus on respectful openers and shared values so first contact can feel more intentional when chat opens.",
+    proof: "Messaging stays inside the app account flow.",
   },
 ];
 
@@ -46,7 +46,7 @@ const safetyExpectations = [
     copy: "Safety labels stay framed as review status, not identity guarantees or background checks.",
   },
   {
-    title: "Private launch",
+    title: "Private waitlist",
     copy: "Waitlist interest does not publish a profile or expose personal dating details.",
   },
 ];
@@ -66,44 +66,53 @@ const Features = () => {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df] bg-white px-4 py-2 text-sm font-dm-sans-bold text-[#b31460] shadow-sm">
             <HeartHandshake className="h-4 w-4" aria-hidden="true" />
-            Built for a credible launch, not hype
+            Built for trust, not hype
           </div>
 
           <h2 className="font-lora text-4xl font-bold leading-tight text-[#1a1a1a] sm:text-5xl">
-            A dating experience that explains what is ready and what is still
-            being prepared.
+            A dating experience that explains what you can do now and what
+            happens inside the app.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[#4b5563]">
             PinayMate should feel premium because it is clear, careful, and
-            honest. The public experience separates product direction from what
-            is available during waitlist launch.
+            honest. The public experience separates product direction from
+            waitlist interest.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {features.map((feature) => {
+        <div className="mt-12 divide-y divide-[#eadfea] border-y border-[#eadfea]">
+          {features.map((feature, index) => {
             const Icon = feature.icon;
 
             return (
               <article
                 key={feature.title}
-                className="rounded-lg border border-[#ecebf0] bg-white p-6 shadow-xl shadow-[#2e1e5a]/6 transition duration-200 hover:-translate-y-0.5 hover:border-[#f0b6df] hover:shadow-2xl motion-reduce:transform-none"
+                className="grid gap-5 py-7 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-6 lg:grid-cols-[auto_0.7fr_1fr]"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#2e1e5a] text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2e1e5a] text-white shadow-lg shadow-[#2e1e5a]/10">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
-                <h3 className="mt-6 font-lora text-2xl font-bold text-[#1a1a1a]">
-                  {feature.title}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-[#5f6572]">
-                  {feature.copy}
-                </p>
-                <div className="mt-5 flex items-start gap-2 rounded-lg bg-[#f8f5ff] p-3 text-sm font-dm-sans-semibold text-[#5a3baf]">
-                  <CheckCircle2
-                    className="mt-0.5 h-4 w-4 shrink-0"
-                    aria-hidden="true"
-                  />
-                  <span>{feature.proof}</span>
+
+                <div>
+                  <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#b31460]">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-2 font-lora text-2xl font-bold leading-tight text-[#1a1a1a]">
+                    {feature.title}
+                  </h3>
+                </div>
+
+                <div>
+                  <p className="text-base leading-7 text-[#5f6572]">
+                    {feature.copy}
+                  </p>
+                  <p className="mt-4 inline-flex items-start gap-2 text-sm font-dm-sans-semibold leading-6 text-[#5a3baf]">
+                    <CheckCircle2
+                      className="mt-0.5 h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
+                    <span>{feature.proof}</span>
+                  </p>
                 </div>
               </article>
             );

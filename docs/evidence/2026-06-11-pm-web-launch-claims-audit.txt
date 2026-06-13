@@ -1,0 +1,70 @@
+# PM_Web Launch Claims Audit
+
+Date: 2026-06-11T08:37:47.485Z
+Scope: local source audit only. This does not prove production DNS, mailbox delivery, app-store availability, checkout readiness, or deployed URL behavior.
+Evidence write mode: enabled by --write-report or PINAYMATE_WRITE_REPORT=1
+
+## Required waitlist and access disclaimers
+- Pass: hero has persistent waitlist-only launch state
+- Pass: website does not create profiles, matching, checkout, or payment
+- Pass: membership interest is not checkout
+- Pass: hero states no payment on this page
+- Pass: hero states waitlist does not create a profile
+- Pass: membership states no card or charge
+- Pass: membership says matching starts in the app
+- Pass: store links stay unavailable until published
+- Pass: membership separates planned pricing from checkout
+- Pass: trust and safety has direct support path
+- Pass: legal safety disclaimer
+- Pass: feature section avoids safety guarantees and background-check claims
+- Pass: app-store access is not guaranteed before availability proof
+- Pass: waitlist email is platform-only and does not create profile data
+- Pass: waitlist helper records interest only
+- Pass: backend waitlist handoff is gated and falls back to email
+- Pass: waitlist helper uses launch and data boundaries
+- Pass: waitlist helper warns against sensitive data
+- Pass: final waitlist CTA does not create profile, matching, or payment
+- Pass: final waitlist note is not membership, match request, or checkout
+- Pass: legal privacy copy separates website waitlist data from app account data
+- Pass: membership interest email is not checkout and does not create a profile
+- Pass: membership interest helper avoids checkout and private data
+- Pass: membership interest email avoids private/payment data
+- Pass: about membership links are interest-only
+- Pass: FAQ support email avoids sensitive data collection
+- Pass: legal email avoids sensitive data collection
+- Pass: FAQ support email does not create account profile matching or payment records
+- Pass: support mailto keeps account and payment actions separate
+- Pass: support helper uses launch and sensitive-data boundaries
+- Pass: FAQ explains account changes through app or support
+- Pass: legal separates website waitlist/support use from app account use
+
+## Launch-state matrix
+- PM_Web matrix: docs/PINAYMATE_LAUNCH_STATE_MATRIX.md
+- Pass: shared launch-state matrix exists
+- Pass: matrix defines PM_Web as waitlist/support surface
+- Pass: matrix blocks PM_Web profile creation claims
+- Pass: matrix blocks live matching claims
+- Pass: matrix blocks live payment claims
+- Pass: matrix blocks paid ranking verification and feature access claims
+- Pass: matrix requires proof before stronger launch claims
+- Central PM_App matrix found: ../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md
+- Pass central: shared launch-state matrix exists
+- Pass central: matrix defines PM_Web as waitlist/support surface
+- Pass central: matrix blocks PM_Web profile creation claims
+- Pass central: matrix blocks live matching claims
+- Pass central: matrix blocks live payment claims
+- Pass central: matrix blocks paid ranking verification and feature access claims
+- Pass central: matrix requires proof before stronger launch claims
+
+## Forbidden live-claim patterns
+- None found.
+
+## Result
+Pass: PM_Web source keeps waitlist/access disclaimers and avoids obvious live checkout, app-store, profile creation, matching, safety-guarantee, and waitlist data-overclaim issues.
+
+## Not proven
+- Production domain or DNS.
+- Actual mailbox deliverability.
+- App-store availability.
+- Checkout or payment readiness.
+- Live app matching/profile behavior.

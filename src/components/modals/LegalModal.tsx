@@ -75,17 +75,17 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         {
           title: "Launch-Stage Notice",
           content:
-            "PinayMate is currently in launch preparation. Website waitlist and support interactions may be available before the full mobile dating service is publicly released. App account, messaging, verification, and paid features should be treated as available only when the product is explicitly launched for your region or test group.",
+            "PinayMate may offer waitlist and support access before the full mobile dating service is available in every region. App accounts, messaging, verification, and paid features are available only when they appear in the app for your region or access group.",
         },
         {
           title: "Information We Collect",
           content:
-            "The website waitlist and support flows collect only the information you choose to send by email, such as your email address, waitlist interest, and support request. Profile information, photos, matches, messages, reports, blocks, and verification status apply only when app account features are available for your account or test group.",
+            "The website waitlist and support flows collect only the information you choose to send by email, such as your email address, waitlist interest, and support request. Profile information, photos, matches, messages, reports, blocks, and verification status stay inside the app access flow.",
         },
         {
           title: "How We Use Your Information",
           content:
-            "We use launch-stage website information to respond to support and waitlist requests. When app features are live for your account or test group, we use account information to provide and improve the service, facilitate connections between members, personalize your experience, send updates and notifications, support platform security, and comply with legal obligations.",
+            "We use website waitlist and support information to respond to requests. When app features are live for your account or access group, we use account information to provide and improve the service, facilitate connections between members, personalize your experience, send updates and notifications, support platform security, and comply with legal obligations.",
         },
         {
           title: "Verification and Safety Data",
@@ -95,7 +95,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         {
           title: "Data Security",
           content:
-            "We use account access controls, database policies, and protected network connections to reduce risk around account and profile data. We continue to review database policies, storage access, and production settings as part of launch readiness.",
+            "We use account access controls, data-permission rules, and protected network connections to reduce risk around account and profile data. We continue improving privacy, storage, and access safeguards as the product grows.",
         },
         {
           title: "Information Sharing",
@@ -105,7 +105,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         {
           title: "Your Rights",
           content:
-            "You can request access, updates, or deletion of your personal information through support while launch-stage account deletion tools are being finalized. Visible profile controls and communication preferences should be treated as available only when those app settings are live for your account.",
+            "You can request access, updates, or deletion of your personal information through support. If in-app account deletion tools are not shown in your account, support can help route the request. Visible profile controls and communication preferences apply only when those app settings are available for your account.",
         },
         {
           title: "Cookies and Tracking",
@@ -136,7 +136,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         {
           title: "Account Responsibilities",
           content:
-            "When app account features are available for your account or test group, you are responsible for maintaining the confidentiality of your account credentials, all activities that occur under your account, providing accurate and truthful information, and promptly updating your profile information. You must not share your account with others or use someone else's account.",
+            "Inside the app account flow, you are responsible for maintaining the confidentiality of your account credentials, all activities that occur under your account, providing accurate and truthful information, and promptly updating your profile information. You must not share your account with others or use someone else's account.",
         },
         {
           title: "Prohibited Conduct",
@@ -151,7 +151,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         {
           title: "Premium Membership",
           content:
-            "Premium memberships, billing, cancellation, and refund terms will be shown at checkout only when paid plans are available. Pricing shown before launch is informational or exploratory unless a final checkout screen is visible and accepted.",
+            "Premium memberships, billing, cancellation, and refund terms will be shown at checkout when paid plans are available. Pricing shown outside a final checkout screen is informational only.",
         },
         {
           title: "No Safety Guarantee",
@@ -161,7 +161,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         {
           title: "Termination",
           content:
-            "We reserve the right to suspend or terminate your account at any time for violation of these terms, fraudulent activity, or for any reason we deem necessary to protect our platform and community. While launch-stage account deletion tools are being finalized, you may request account termination or deletion through support.",
+            "We reserve the right to suspend or terminate your account at any time for violation of these terms, fraudulent activity, or for any reason we deem necessary to protect our platform and community. You may request account termination or deletion through support if the in-app controls are not shown in your account.",
         },
         {
           title: "Limitation of Liability",
@@ -227,7 +227,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed mt-2"
             >
               Please read this {selectedContent.title.toLowerCase()} carefully.
-              The current site is launch-stage, so waitlist/support terms may
+              The current site is a waitlist and support surface, so terms may
               apply before full mobile app features are publicly available.
             </p>
           </div>

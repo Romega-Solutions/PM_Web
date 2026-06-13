@@ -14,7 +14,7 @@ const waitlistSignals = [
   {
     icon: ShieldCheck,
     title: "Review before broad reach",
-    text: "Launch access is being shaped around verification cues, report paths, and safer conversation boundaries before wide availability.",
+    text: "The access path emphasizes verification cues, report paths, and safer conversation boundaries before broad matching.",
   },
   {
     icon: Sparkles,
@@ -24,13 +24,13 @@ const waitlistSignals = [
   {
     icon: UsersRound,
     title: "Built for cross-cultural clarity",
-    text: "PinayMate is planned around expectations, location context, and communication readiness before a conversation starts.",
+    text: "PinayMate is designed around expectations, location context, and communication comfort before a conversation starts.",
   },
 ];
 
 const featureTags = [
   "Interest only",
-  "Launch updates",
+  "Access updates",
   "No payment today",
   "Platform preference",
 ];
@@ -38,13 +38,13 @@ const featureTags = [
 const privacyNotes = [
   "Send your platform preference and email only.",
   "Keep passwords, ID documents, payment details, precise location, and private profile information out of waitlist messages.",
-  "Profile and verification details belong in the app after launch.",
+  "Profile and verification details belong in the app.",
 ];
 
 const waitlistSteps = [
   "Choose iOS or Android and send only email plus platform preference.",
-  "PinayMate uses that signal to plan launch cohorts and support coverage.",
-  "You receive updates when access is ready. Matching starts only after the app opens and you choose to set up a profile.",
+  "PinayMate uses that signal to plan access and support coverage.",
+  "You receive access updates. You can decide later whether to create a profile and start matching in the app.",
 ];
 
 const waitlistLinks = [
@@ -69,11 +69,11 @@ const waitlistLinks = [
 const storeLinkStates = [
   {
     label: "App Store",
-    detail: "Unavailable until iOS release sign-off.",
+    detail: "Choose iOS when joining the waitlist.",
   },
   {
     label: "Google Play",
-    detail: "Unavailable until Android release sign-off.",
+    detail: "Choose Android when joining the waitlist.",
   },
 ];
 
@@ -93,7 +93,7 @@ const Download = () => {
           <div>
             <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/15 bg-white/8 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-2xl shadow-black/20 backdrop-blur">
               <Heart className="h-4 w-4 text-[#F4376D]" fill="#F4376D" aria-hidden="true" />
-              Launch-stage waitlist
+              Private waitlist
             </div>
 
             <h2 className="max-w-2xl font-lora text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
@@ -108,19 +108,19 @@ const Download = () => {
 
             <WaitlistCaptureForm />
 
-            <div className="mt-8 rounded-lg border border-white/12 bg-white/[0.07] p-3 shadow-xl shadow-black/15 backdrop-blur">
-              <p className="px-2 pb-3 text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
-                Email fallback if needed
+            <div className="mt-8 border-t border-white/12 pt-6">
+              <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
+                Email option
               </p>
-              <p className="px-2 pb-3 text-sm leading-6 text-[#cbbade]">
-                Choose your launch path by email only if the private launch
-                form is unavailable or you prefer your mail app.
+              <p className="mt-2 max-w-xl text-sm leading-6 text-[#cbbade]">
+                Choose your platform by email if you prefer using your mail app
+                or want a direct support path.
               </p>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 {waitlistLinks.map((link) => (
                   <div
                     key={link.label}
-                    className="rounded-lg border border-white/10 bg-[#251633]/70 p-2 shadow-lg shadow-black/10"
+                    className="border-l border-white/14 pl-4"
                   >
                     <a
                       href={link.href}
@@ -135,9 +135,9 @@ const Download = () => {
                       <Smartphone className="h-5 w-5" aria-hidden="true" />
                       {link.label}
                     </a>
-                    <p className="px-2 pt-2 text-sm leading-6 text-[#cbbade]">
-                      {link.detail} Use this if the private launch form is
-                      unavailable or you prefer email.
+                    <p className="mt-2 text-sm leading-6 text-[#cbbade]">
+                      {link.detail} Use this if you prefer email or want a
+                      direct support path.
                     </p>
                   </div>
                 ))}
@@ -153,11 +153,11 @@ const Download = () => {
               app account, dating profile, match request, matching session,
               checkout, payment record, precise location, or matching data is
               created from this page. The form above is the primary waitlist
-              path; email stays available as fallback.
+              path; email stays available as another direct option.
             </p>
 
-            <div className="mt-5 rounded-lg border border-[#f0b6df]/25 bg-[#fff7fb] p-4 text-[#21132f] shadow-xl shadow-black/10">
-              <div className="flex items-start gap-3">
+            <div className="mt-6 border-l-2 border-[#f0b6df] bg-[#fff7fb]/95 py-1 pl-4 pr-2 text-[#21132f]">
+              <div className="flex items-start gap-3 py-3">
                 <ShieldCheck
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
                   aria-hidden="true"
@@ -181,7 +181,7 @@ const Download = () => {
               </div>
             </div>
 
-            <div className="mt-6 rounded-lg border border-white/12 bg-white/[0.07] p-5 shadow-xl shadow-black/15 backdrop-blur">
+            <div className="mt-8 border-t border-white/12 pt-6">
               <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
                 What happens next
               </p>
@@ -214,81 +214,83 @@ const Download = () => {
             </div>
           </div>
 
-          <div className="rounded-lg border border-white/12 bg-white/[0.06] p-4 shadow-2xl shadow-black/25 backdrop-blur sm:p-6 lg:p-8">
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+          <div className="lg:border-l lg:border-white/12 lg:pl-10">
+            <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1">
               {waitlistSignals.map((item) => {
                 const Icon = item.icon;
 
                 return (
                   <article
                     key={item.title}
-                    className="rounded-lg border border-white/10 bg-[#251633]/80 p-5 shadow-xl shadow-black/15 transition duration-200 hover:border-[#f0b6df]/35 hover:bg-[#2c193c]"
+                    className="border-b border-white/10 pb-6 last:border-b-0 sm:border-b-0 sm:pb-0 lg:border-b lg:pb-6"
                   >
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#ef3e78] text-white">
-                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white">
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <h3 className="font-lora text-xl font-bold text-white">{item.title}</h3>
+                        <p className="mt-3 text-base leading-7 text-[#d7c7ed]">{item.text}</p>
+                      </div>
                     </div>
-                    <h3 className="font-lora text-xl font-bold text-white">{item.title}</h3>
-                    <p className="mt-3 text-base leading-7 text-[#d7c7ed]">{item.text}</p>
                   </article>
                 );
               })}
             </div>
 
-            <div className="mt-5 rounded-lg border border-[#F4376D]/20 bg-[#F4376D]/10 p-5">
-              <div className="flex items-start gap-3">
-                <ShieldCheck className="mt-1 h-5 w-5 shrink-0 text-[#f7a4c8]" aria-hidden="true" />
-              <div>
-                <p className="font-dm-sans-bold text-white">What the waitlist means</p>
-                  <p className="mt-1 text-sm leading-6 text-[#eadff7]">
-                    It is a launch interest signal, not a live
-                    membership, app account, dating profile, match request,
-                    matching session, checkout step, or payment record.
-                    Joining does not start matching today, create a public
-                    profile, or require payment. It is an interest signal for
-                    launch planning, not a live membership, match request, or
-                    checkout step.
-                    {" Joining does not start matching today, create a public profile, or require payment. This is an interest signal for launch planning, not a live membership, match request, or checkout step."}
-                  </p>
-              </div>
-              </div>
-            </div>
-
-            <div className="mt-4 rounded-lg border border-white/12 bg-white/[0.06] p-5">
-              <div className="flex items-start gap-3">
-                <Mail className="mt-1 h-5 w-5 shrink-0 text-[#f7a4c8]" aria-hidden="true" />
-                <div>
-                  <p className="font-dm-sans-bold text-white">Launch note</p>
-                  <p className="mt-1 text-sm leading-6 text-[#eadff7]">
-                    Store links, social channels, and community invitations
-                    should be added only after production QA, Supabase migration
-                    sign-off, and support inbox routing are confirmed.
-                  </p>
+            <div className="mt-8 border-t border-[#F4376D]/25 pt-6">
+              <dl className="grid gap-5">
+                <div className="grid gap-2 sm:grid-cols-[9rem_1fr] sm:gap-5">
+                  <dt className="flex items-center gap-2 text-sm font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]">
+                    <ShieldCheck
+                      className="h-4 w-4 text-[#f7a4c8]"
+                      aria-hidden="true"
+                    />
+                    Waitlist
+                  </dt>
+                  <dd className="text-sm leading-6 text-[#eadff7]">
+                    It is a waitlist signal, not a live membership, app account,
+                    dating profile, match request, matching session, checkout
+                    step, or payment record.
+                  </dd>
                 </div>
-              </div>
+
+                <div className="grid gap-2 sm:grid-cols-[9rem_1fr] sm:gap-5">
+                  <dt className="flex items-center gap-2 text-sm font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]">
+                    <Mail
+                      className="h-4 w-4 text-[#f7a4c8]"
+                      aria-hidden="true"
+                    />
+                    Access
+                  </dt>
+                  <dd className="text-sm leading-6 text-[#eadff7]">
+                    Store links, social channels, and community invitations
+                    will appear when each channel is available for members.
+                  </dd>
+                </div>
+              </dl>
             </div>
 
-            <div className="mt-4 rounded-lg border border-white/12 bg-white/[0.06] p-5">
-              <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
-                Store availability
+            <div className="mt-6 border-t border-white/10 pt-6">
+              <p className="text-sm font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]">
+                Store links
               </p>
               <p className="mt-2 text-sm leading-6 text-[#cbbade]">
-                App Store link locked. Google Play link locked until release
-                sign-off.
+                Join the waitlist first; official store links will be shared there.
               </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 {storeLinkStates.map((store) => (
                   <div
                     key={store.label}
-                    className="rounded-lg border border-white/10 bg-[#120a1b]/50 p-3 opacity-90"
+                    className="border-l border-white/14 pl-4 opacity-90"
                   >
-                    <button
-                      type="button"
-                      disabled
-                      aria-disabled="true"
-                      className="inline-flex min-h-12 w-full cursor-not-allowed items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-dm-sans-bold text-[#b9aec8]"
+                    <div
+                      role="status"
+                      aria-label={`${store.label} updates are shared through the waitlist`}
+                      className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-dm-sans-bold text-[#d7c7ed]"
                     >
-                      {store.label} link locked
-                    </button>
+                      {store.label} updates
+                    </div>
                     <p className="mt-2 text-sm leading-6 text-[#cbbade]">
                       {store.detail}
                     </p>
@@ -299,7 +301,7 @@ const Download = () => {
 
             <div className="mt-4 flex items-center gap-2 text-sm text-[#cbbade]">
               <MapPin className="h-4 w-4 text-[#f7a4c8]" aria-hidden="true" />
-              Built for Filipina and foreigner introductions across launch markets.
+              Built for Filipina and foreigner introductions across priority markets.
             </div>
           </div>
         </div>

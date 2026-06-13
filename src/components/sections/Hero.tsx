@@ -104,7 +104,7 @@ const Hero = () => {
 
           <div
             className="mb-5 flex flex-wrap gap-2 text-sm font-dm-sans-bold text-[#fff7fb]"
-            aria-label="Current PinayMate launch state"
+            aria-label="Current PinayMate access status"
           >
             {launchState.map((state) => (
               <span
@@ -122,9 +122,8 @@ const Hero = () => {
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#e3dcf9] sm:text-xl">
-            PinayMate is building a clearer path for Filipinas and foreigners
-            who want relationship context before chat, matching, or checkout
-            goes live.
+            PinayMate gives Filipinas and foreigners a clearer path to
+            relationship context before chat, matching, or paid access.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -133,7 +132,7 @@ const Hero = () => {
               aria-describedby="hero-cta-note"
               className="inline-flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-7 py-4 text-base font-dm-sans-bold text-white shadow-xl shadow-[#ef3e78]/25 transition duration-200 hover:bg-[#d7346b] hover:shadow-[#ef3e78]/35 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
             >
-              Join the launch waitlist
+              Join the waitlist
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </a>
             <a
@@ -146,13 +145,13 @@ const Hero = () => {
           </div>
 
           <div
-            className="mt-5 grid gap-3 rounded-lg border border-white/12 bg-white/[0.06] p-3 shadow-xl shadow-black/10 backdrop-blur sm:grid-cols-3"
-            aria-label="Why people join the PinayMate launch waitlist"
+            className="mt-7 grid gap-4 border-y border-white/12 py-5 sm:grid-cols-3"
+            aria-label="Why people join the PinayMate waitlist"
           >
             {conversionReasons.map((reason) => (
               <div
                 key={reason.label}
-                className="rounded-lg border border-white/10 bg-[#251633]/70 p-4"
+                className="border-l border-white/14 pl-4"
               >
                 <p className="text-sm font-dm-sans-bold text-white">
                   {reason.label}
@@ -169,13 +168,12 @@ const Hero = () => {
           >
             Takes less than a minute by email. This page collects waitlist
             interest only; matching, public profiles, review badges, and
-            checkout open only after launch readiness is complete. No payment
-            on this page. This website does not create a dating profile, start
-            matching, open checkout, or collect payment.
-            {" No payment on this page. This website does not create a dating profile, start matching, open checkout, or collect payment."}
+            checkout stay inside the app access flow. No payment on this page.
+            This website does not create a dating profile, start matching, open
+            checkout, or collect payment.
           </p>
 
-          <div className="mt-6 rounded-lg border border-white/12 bg-white/[0.07] p-4 shadow-xl shadow-black/10 backdrop-blur sm:max-w-2xl sm:p-5">
+          <div className="mt-7 max-w-2xl border-t border-white/12 pt-5">
             <p className="text-sm font-dm-sans-bold uppercase text-[#f6d0f1]">
               What you are joining
             </p>
@@ -183,7 +181,7 @@ const Hero = () => {
               {launchProof.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-lg border border-white/10 bg-[#251633]/70 p-3"
+                  className="border-l border-white/14 pl-3"
                 >
                   <dt className="text-xs font-dm-sans-bold uppercase text-[#cbbade]">
                     {item.label}
@@ -196,11 +194,11 @@ const Hero = () => {
             </dl>
           </div>
 
-          <ul className="mt-6 grid gap-3 text-sm font-dm-sans-medium text-[#f8f5ff] sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-6 grid gap-2 text-sm font-dm-sans-medium text-[#f8f5ff] sm:grid-cols-2 lg:grid-cols-4">
             {trustSignals.map((signal) => (
               <li
                 key={signal}
-                className="flex min-h-12 items-center gap-2 rounded-lg border border-white/10 bg-white/6 px-3 py-2 shadow-sm shadow-black/5"
+                className="flex min-h-11 items-center gap-2 border-b border-white/10 py-2"
               >
                 <CheckCircle2
                   className="h-4 w-4 shrink-0 text-[#22a574]"
@@ -254,7 +252,7 @@ const Hero = () => {
                 </div>
                 <div>
                   <p className="font-dm-sans-bold text-[#1a1a1a]">
-                    Launch member preview
+                    Member path preview
                   </p>
                   <p className="text-sm leading-6 text-[#5f6572]">
                     Philippines-based profile flow with relationship intent,
@@ -270,7 +268,7 @@ const Hero = () => {
                   return (
                     <div
                       key={row.label}
-                      className="flex items-center gap-3 rounded-lg border border-[#ecebf0] bg-[#faf9fb] p-3"
+                      className="flex items-center gap-3 border-t border-[#ecebf0] pt-3 first:border-t-0 first:pt-0"
                     >
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#f8f5ff] text-[#5a3baf]">
                         <Icon className="h-5 w-5" aria-hidden="true" />
@@ -293,7 +291,7 @@ const Hero = () => {
               {matchNotes.map((note) => (
                 <div
                   key={note}
-                  className="flex min-h-11 items-center gap-3 rounded-lg bg-[#f8f5ff] px-4 py-2 text-sm font-dm-sans-semibold text-[#2e1e5a]"
+                  className="flex min-h-11 items-center gap-3 border-b border-[#ecebf0] py-2 text-sm font-dm-sans-semibold text-[#2e1e5a] last:border-b-0"
                 >
                   <CheckCircle2
                     className="h-4 w-4 text-[#22a574]"
@@ -304,28 +302,27 @@ const Hero = () => {
               ))}
             </div>
 
-            <div className="mt-5 rounded-lg border border-[#f0b6df] bg-[#fff7fb] p-4">
+            <div className="mt-5 border-l-2 border-[#f0b6df] bg-[#fff7fb] py-1 pl-4 pr-2">
               <div className="flex items-start gap-3">
                 <LockKeyhole
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
                   aria-hidden="true"
                 />
                 <p className="text-sm leading-6 text-[#4b5563]">
-                  This is a launch preview, not a live dating session.
-                  Messaging, review badges, and paid plans should only be
-                  treated as available after launch QA and final checkout terms
-                  are live.
+                  This page is for waitlist interest only. Messaging, review
+                  badges, and paid plans belong inside the app access flow,
+                  not this website.
                 </p>
               </div>
             </div>
 
-            <div className="mt-4 rounded-lg bg-[#21132f] p-4 text-white">
+            <div className="mt-5 border-t border-[#ecebf0] pt-4 text-[#21132f]">
               <div className="flex items-start gap-3">
                 <UsersRound
-                  className="mt-0.5 h-5 w-5 shrink-0 text-[#f7a4c8]"
+                  className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
                   aria-hidden="true"
                 />
-                <p className="text-sm leading-6 text-[#eadff7]">
+                <p className="text-sm leading-6 text-[#4b5563]">
                   Designed for serious Filipina and foreigner introductions
                   where intent, respect, and safety context matter before reach.
                 </p>

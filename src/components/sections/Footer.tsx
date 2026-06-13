@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { CheckCircle, Heart, Mail, MapPin, Shield } from "lucide-react";
 import LegalModal from "../modals/LegalModal";
-import { launchEmailLinks } from "../../lib/launchEmailLinks";
+import {
+  LEGAL_EMAIL,
+  SUPPORT_EMAIL,
+  launchEmailLinks,
+} from "../../lib/launchEmailLinks";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -48,13 +52,14 @@ const Footer: React.FC = () => {
                     PinayMate
                   </span>
                   <span className="text-xs font-dm-sans-semibold uppercase text-[#f0b6df]">
-                    Launch-stage dating platform
+                    Filipino-first dating platform
                   </span>
                 </div>
               </div>
 
               <p className="max-w-sm text-sm leading-6 text-[#d7c7ed]">
-                PinayMate is being built for safer, more intentional Filipino dating. Public links and launch claims should follow production QA and support readiness.
+                PinayMate helps people approach Filipino dating with clearer
+                intent, safer introductions, and more respectful first steps.
               </p>
 
               <div className="flex flex-wrap gap-2">
@@ -89,7 +94,7 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="font-dm-sans-bold text-base text-white">Launch support</h3>
+              <h3 className="font-dm-sans-bold text-base text-white">Contact</h3>
               <div className="mt-4 space-y-3">
                 <a
                   href={launchEmailLinks.launchSupport}
@@ -97,7 +102,15 @@ const Footer: React.FC = () => {
                   className="flex min-h-11 items-center gap-2 rounded-lg text-sm text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />
-                  <span className="font-dm-sans-semibold">support@pinaymate.com</span>
+                  <span className="font-dm-sans-semibold">{SUPPORT_EMAIL}</span>
+                </a>
+                <a
+                  href={launchEmailLinks.legalQuestion}
+                  aria-label="Email PinayMate legal and privacy team"
+                  className="flex min-h-11 items-center gap-2 rounded-lg text-sm text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                >
+                  <Shield className="h-4 w-4" aria-hidden="true" />
+                  <span className="font-dm-sans-semibold">{LEGAL_EMAIL}</span>
                 </a>
                 <div className="flex items-center gap-2 text-sm text-[#d7c7ed]">
                   <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -106,7 +119,8 @@ const Footer: React.FC = () => {
               </div>
 
               <div className="mt-5 rounded-lg border border-white/10 bg-white/[0.06] p-4 text-sm leading-6 text-[#d7c7ed]">
-                Store, social, and community links stay intentionally withheld until public channels, monitored mailbox proof, and release evidence are ready.
+                Store, social, and community links will appear when those public
+                channels are available for members.
               </div>
             </div>
           </div>
