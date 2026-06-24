@@ -202,7 +202,7 @@ For technical support or business inquiries:
 
 - 📧 Email: support@pinaymate.com
 - 🌐 Website: https://pinaymate.com
-- 💬 Live Chat: Available on our platform
+
 
 ---
 
