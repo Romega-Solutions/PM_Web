@@ -1,0 +1,37 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    target-branch: "dev"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Manila"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Iron-Mark"
+    assignees:
+      - "Iron-Mark"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      vite-tooling:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+          - "@tailwindcss/*"
+          - "tailwindcss"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      linting:
+        patterns:
+          - "eslint"
+          - "@eslint/*"
+          - "typescript-eslint"
+          - "eslint-plugin-*"
