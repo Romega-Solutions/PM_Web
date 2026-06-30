@@ -127,7 +127,7 @@ const Faqs = () => {
                       className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition duration-200 ${
                         isOpen
                           ? "bg-gradient-to-br from-[#F4376D] to-[#8d69f6]"
-                          : "bg-white/10"
+                          : "bg-[#2e1e5a]/65"
                       }`}
                     >
                       <Icon className="h-5 w-5" aria-hidden="true" />
@@ -141,7 +141,7 @@ const Faqs = () => {
                       </span>
                     </span>
                     <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#f0b6df] transition-transform duration-300 ${
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2e1e5a]/65 text-[#f0b6df] transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                       aria-hidden="true"

@@ -64,7 +64,7 @@ const Features = () => {
 
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/12 bg-white/[0.07] px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
+          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
             <HeartHandshake className="h-4 w-4" aria-hidden="true" />
             Built for trust, not hype
           </div>
@@ -132,7 +132,7 @@ const Features = () => {
                 The public story should help people understand moderation,
                 review, and privacy expectations before they join the waitlist.
               </p>
-              <p className="mt-4 rounded-lg border border-white/10 bg-white/8 p-4 text-sm leading-6 text-[#f6d0f1]">
+              <p className="mt-4 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 p-4 text-sm leading-6 text-[#f6d0f1]">
                 These are safety controls and review paths, not guarantees,
                 background checks, or promises that every member is safe.
               </p>
@@ -149,7 +149,7 @@ const Features = () => {
               {safetyItems.map((item) => (
                 <div
                   key={item}
-                  className="flex min-h-14 items-center gap-3 rounded-lg border border-white/10 bg-white/8 px-4 py-3 text-sm font-dm-sans-semibold text-[#f8f5ff] shadow-sm shadow-black/10"
+                  className="flex min-h-14 items-center gap-3 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-4 py-3 text-sm font-dm-sans-semibold text-[#f8f5ff] shadow-sm shadow-black/10"
                 >
                   <CheckCircle2
                     className="h-5 w-5 shrink-0 text-[#22a574]"
@@ -165,7 +165,7 @@ const Features = () => {
             {safetyExpectations.map((item) => (
               <article
                 key={item.title}
-                className="rounded-lg border border-white/10 bg-white/[0.07] p-4"
+                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 p-4"
               >
                 <p className="font-dm-sans-bold text-white">{item.title}</p>
                 <p className="mt-2 text-sm leading-6 text-[#d7c7ed]">

@@ -101,7 +101,7 @@ const Header: React.FC = () => {
       className={`fixed top-0 w-full z-50 transition-all duration-200 ${
         isScrolled
           ? isOnLightSection
-            ? "bg-white/95 backdrop-blur-xl border-b border-gray-200/60 shadow-lg"
+            ? "bg-dalisay-950/95 backdrop-blur-xl border-b border-amihan-500/25 shadow-2xl"
             : "bg-dalisay-950/95 backdrop-blur-xl border-b border-amihan-500/25 shadow-2xl"
           : "bg-dalisay-950/82 backdrop-blur-lg border-b border-luna-300/20"
       }`}
@@ -128,7 +128,7 @@ const Header: React.FC = () => {
             className={`flex min-h-12 items-center space-x-3 cursor-pointer rounded-lg border px-3 py-2 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
               isOnLightSection
                 ? "border-transparent hover:border-pink-500 hover:bg-pink-50"
-                : "border-transparent hover:border-[#F4376D] hover:bg-white/8"
+                : "border-transparent hover:border-[#F4376D] hover:bg-[#2e1e5a]/45"
             }`}
           >
             <div className="relative">
@@ -165,7 +165,7 @@ const Header: React.FC = () => {
                   className={`group nav-item relative min-h-11 rounded-lg border px-4 py-2 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
                     isOnLightSection
                       ? "border-transparent hover:border-pink-500 hover:bg-pink-50"
-                      : "border-transparent hover:border-[#F4376D] hover:bg-white/8"
+                      : "border-transparent hover:border-[#F4376D] hover:bg-[#2e1e5a]/45"
                   }`}
                 >
                   <div className="flex items-center">
@@ -189,7 +189,7 @@ const Header: React.FC = () => {
               className={`hidden min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-dm-sans-bold transition-all duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] sm:inline-flex ${
                 isOnLightSection
                   ? "bg-[#21132f] text-white shadow-lg shadow-[#2e1e5a]/15 hover:bg-[#3b2255]"
-                  : "bg-white text-[#21132f] shadow-lg shadow-black/15 hover:bg-[#fff4fa]"
+                  : "bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25 hover:bg-[#d7346b]"
               }`}
             >
               Join waitlist
@@ -204,7 +204,7 @@ const Header: React.FC = () => {
               className={`group relative min-h-11 min-w-11 rounded-lg border p-3 backdrop-blur-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] md:hidden ${
                 isOnLightSection
                   ? "border-transparent hover:border-pink-500 bg-gray-100/50 text-gray-900 hover:text-pink-500 hover:bg-pink-50"
-                  : "border-transparent hover:border-[#F4376D] bg-white/8 text-white hover:text-[#F4376D] hover:bg-white/12"
+                  : "border-transparent hover:border-[#F4376D] bg-[#2e1e5a]/55 text-white hover:text-[#f7a4c8] hover:bg-[#3b2255]/70"
               }`}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
@@ -243,7 +243,7 @@ const Header: React.FC = () => {
               aria-label="PinayMate mobile navigation"
               className={`relative max-h-[calc(100dvh-4rem)] overflow-y-auto border-t px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl backdrop-blur-xl animate-slideInDown ${
                 isOnLightSection
-                  ? "border-gray-200/50 bg-white/98"
+                  ? "border-amihan-500/30 bg-dalisay-950/98"
                   : "border-amihan-500/30 bg-dalisay-950/98"
               }`}
             >
@@ -263,7 +263,7 @@ const Header: React.FC = () => {
                     className={`group flex min-h-12 items-center space-x-3 rounded-lg border px-4 py-3 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
                       isOnLightSection
                         ? "border-transparent text-gray-800 hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600"
-                        : "border-transparent text-white hover:border-[#F4376D] hover:bg-white/8 hover:text-[#f7a4c8]"
+                        : "border-transparent text-white hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 hover:text-[#f7a4c8]"
                     }`}
                     style={{ animationDelay: `${index * 40}ms` }}
                     onClick={closeMenu}
@@ -290,7 +290,7 @@ const Header: React.FC = () => {
                 className={`mt-4 flex min-h-14 items-center justify-center gap-2 rounded-lg px-5 py-3 text-center font-dm-sans-bold shadow-xl transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
                   isOnLightSection
                     ? "bg-[#21132f] text-white shadow-[#2e1e5a]/15 hover:bg-[#3b2255]"
-                    : "bg-white text-[#21132f] shadow-black/20 hover:bg-[#fff4fa]"
+                    : "bg-[#ef3e78] text-white shadow-[#ef3e78]/25 hover:bg-[#d7346b]"
                 }`}
               >
                 Join the waitlist

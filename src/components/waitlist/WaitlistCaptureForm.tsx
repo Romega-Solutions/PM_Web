@@ -140,7 +140,7 @@ export function WaitlistCaptureForm() {
               {formPromise.map((item) => (
                 <span
                   key={item}
-                  className="inline-flex min-h-9 items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-3 py-1.5 text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]"
+                  className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-1.5 text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]"
                 >
                   <CheckCircle2
                     className="h-4 w-4 text-[#49d49a]"
@@ -153,8 +153,8 @@ export function WaitlistCaptureForm() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between gap-4 rounded-[1.5rem] bg-gradient-to-br from-[#fff7fb]/14 via-[#ef3e78]/12 to-transparent p-4">
-          <div className="inline-flex min-h-11 items-center gap-2 self-start rounded-full border border-[#f0b6df]/25 bg-[#fff7fb]/10 px-4 py-2 text-sm font-dm-sans-bold text-[#ffe8f1]">
+        <div className="flex flex-col justify-between gap-4 rounded-[1.5rem] bg-gradient-to-br from-[#2e1e5a]/70 via-[#ef3e78]/12 to-transparent p-4">
+          <div className="inline-flex min-h-11 items-center gap-2 self-start rounded-full border border-[#f0b6df]/25 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#ffe8f1]">
             <Sparkles className="h-5 w-5" aria-hidden="true" />
             <span>Less than 1 minute</span>
           </div>
@@ -233,7 +233,7 @@ export function WaitlistCaptureForm() {
                   className={`flex min-h-16 cursor-pointer items-start gap-3 rounded-2xl border px-3 py-3 text-left text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#91b1ff] ${
                     isSelected
                       ? "border-[#f0b6df] bg-[#ef3e78]/18 text-white shadow-lg shadow-[#ef3e78]/15"
-                      : "border-white/12 bg-[#120a1b]/80 text-[#eadff7] hover:border-[#f0b6df]/50 hover:bg-white/[0.08]"
+                      : "border-white/12 bg-[#120a1b]/80 text-[#eadff7] hover:border-[#f0b6df]/50 hover:bg-[#2e1e5a]/65"
                   }`}
                 >
                   <input
@@ -258,7 +258,7 @@ export function WaitlistCaptureForm() {
                     aria-hidden="true"
                   >
                     {isSelected ? (
-                      <span className="h-2 w-2 rounded-full bg-white" />
+                      <span className="h-2 w-2 rounded-full bg-[#ffe8f1]" />
                     ) : null}
                   </span>
                   <span>
@@ -326,7 +326,7 @@ export function WaitlistCaptureForm() {
           <a
             href={emailHref}
             aria-label={`Continue ${selectedPlatform.emailLabel} waitlist request by email`}
-            className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/8 px-5 py-3 font-dm-sans-bold text-white transition hover:border-[#f0b6df] hover:bg-white/12 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-white/15 sm:flex-none"
+            className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-2xl border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-5 py-3 font-dm-sans-bold text-white transition hover:border-[#f0b6df] hover:bg-[#3b2255]/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#2e1e5a] sm:flex-none"
           >
             <Mail className="h-5 w-5" aria-hidden="true" />
             Continue by email
@@ -347,7 +347,7 @@ export function WaitlistCaptureForm() {
             ? "border-[#49d49a]/30 bg-[#22a574]/12 text-[#d9ffe6]"
             : result
               ? "border-[#f7a4c8]/35 bg-[#ef3e78]/12 text-[#ffe8f1]"
-              : "border-white/10 bg-white/[0.05] text-[#eadff7]"
+              : "border-[#f0b6df]/14 bg-[#2e1e5a]/45 text-[#eadff7]"
         }`}
         role={result?.ok === false ? "alert" : "status"}
         aria-live={result?.ok === false ? "assertive" : "polite"}
