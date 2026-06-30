@@ -232,7 +232,7 @@ export function WaitlistCaptureForm() {
                   key={option.value}
                   className={`flex min-h-16 cursor-pointer items-start gap-3 rounded-2xl border px-3 py-3 text-left text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#91b1ff] ${
                     isSelected
-                      ? "border-[#f0b6df] bg-[#fff7fb] text-[#21132f] shadow-lg shadow-[#ef3e78]/15"
+                      ? "border-[#f0b6df] bg-[#ef3e78]/18 text-white shadow-lg shadow-[#ef3e78]/15"
                       : "border-white/12 bg-[#120a1b]/80 text-[#eadff7] hover:border-[#f0b6df]/50 hover:bg-white/[0.08]"
                   }`}
                 >
@@ -252,7 +252,7 @@ export function WaitlistCaptureForm() {
                   <span
                     className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
                       isSelected
-                        ? "border-[#21132f] bg-[#21132f]"
+                        ? "border-[#f0b6df] bg-[#ef3e78]"
                         : "border-[#f0b6df]/55"
                     }`}
                     aria-hidden="true"
@@ -265,7 +265,7 @@ export function WaitlistCaptureForm() {
                     <span className="font-dm-sans-bold">{option.label}</span>
                     <span
                       className={`mt-1 block text-xs leading-4 ${
-                        isSelected ? "text-[#5f536d]" : "text-[#cbbade]"
+                        isSelected ? "text-[#f6d0f1]" : "text-[#cbbade]"
                       }`}
                     >
                       {option.helper}
@@ -309,7 +309,7 @@ export function WaitlistCaptureForm() {
           type="submit"
           disabled={isSubmitting}
           aria-busy={isSubmitting}
-          className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 font-dm-sans-bold text-[#21132f] shadow-2xl shadow-[#F4376D]/25 transition hover:bg-[#fff4fa] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#ffe6f3] disabled:cursor-wait disabled:opacity-70 sm:flex-none"
+          className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-2xl bg-[#ef3e78] px-5 py-3 font-dm-sans-bold text-white shadow-2xl shadow-[#F4376D]/25 transition hover:bg-[#d7346b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#b31460] disabled:cursor-wait disabled:opacity-70 sm:flex-none"
         >
           {isSubmitting ? (
             <LoaderCircle

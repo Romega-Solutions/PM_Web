@@ -55,7 +55,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="relative overflow-hidden bg-[#fff7fb] py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-[#170f22] py-20 text-white sm:py-24 lg:py-28"
     >
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ef3e78]/25 to-transparent" />
@@ -64,23 +64,23 @@ const Features = () => {
 
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df] bg-white px-4 py-2 text-sm font-dm-sans-bold text-[#b31460] shadow-sm">
+          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/12 bg-white/[0.07] px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
             <HeartHandshake className="h-4 w-4" aria-hidden="true" />
             Built for trust, not hype
           </div>
 
-          <h2 className="font-lora text-4xl font-bold leading-tight text-[#1a1a1a] sm:text-5xl">
+          <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             A dating experience that explains what you can do now and what
             happens inside the app.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#4b5563]">
+          <p className="mt-5 text-lg leading-8 text-[#d7c7ed]">
             PinayMate should feel premium because it is clear, careful, and
             honest. The public experience separates product direction from
             waitlist interest.
           </p>
         </div>
 
-        <div className="mt-12 divide-y divide-[#eadfea] border-y border-[#eadfea]">
+        <div className="mt-12 divide-y divide-white/10 border-y border-white/12">
           {features.map((feature, index) => {
             const Icon = feature.icon;
 
@@ -89,24 +89,24 @@ const Features = () => {
                 key={feature.title}
                 className="grid gap-5 py-7 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-6 lg:grid-cols-[auto_0.7fr_1fr]"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2e1e5a] text-white shadow-lg shadow-[#2e1e5a]/10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/15">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
 
                 <div>
-                  <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#b31460]">
+                  <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f3c7de]">
                     {String(index + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mt-2 font-lora text-2xl font-bold leading-tight text-[#1a1a1a]">
+                  <h3 className="mt-2 font-lora text-2xl font-bold leading-tight text-white">
                     {feature.title}
                   </h3>
                 </div>
 
                 <div>
-                  <p className="text-base leading-7 text-[#5f6572]">
+                  <p className="text-base leading-7 text-[#d7c7ed]">
                     {feature.copy}
                   </p>
-                  <p className="mt-4 inline-flex items-start gap-2 text-sm font-dm-sans-semibold leading-6 text-[#5a3baf]">
+                  <p className="mt-4 inline-flex items-start gap-2 text-sm font-dm-sans-semibold leading-6 text-[#f0b6df]">
                     <CheckCircle2
                       className="mt-0.5 h-4 w-4 shrink-0"
                       aria-hidden="true"
@@ -139,7 +139,7 @@ const Features = () => {
               <a
                 href={launchEmailLinks.safetyQuestion}
                 aria-label="Email PinayMate support about trust and safety"
-                className="mt-4 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg bg-white px-5 py-3 text-sm font-dm-sans-bold text-[#21132f] shadow-lg shadow-black/15 transition duration-200 hover:bg-[#fff4fa] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="mt-4 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg bg-[#ef3e78] px-5 py-3 text-sm font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/20 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 Ask a safety question
               </a>

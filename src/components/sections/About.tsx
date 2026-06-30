@@ -82,7 +82,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-gradient-to-br from-[#fff7fb] via-white to-[#f4f8ff] py-20 sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-gradient-to-br from-[#120a1b] via-[#1a1026] to-[#21132f] py-20 text-white sm:py-24 lg:py-28"
     >
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ef3e78]/30 to-transparent"></div>
@@ -96,16 +96,16 @@ const About = () => {
           }`}
         >
           <div className="max-w-2xl">
-            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#F4376D]/20 bg-white/80 px-4 py-2 text-sm font-dm-sans-bold text-[#b31460] shadow-sm">
+            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/12 bg-white/[0.07] px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
               <HeartHandshake className="h-4 w-4" aria-hidden="true" />
               Filipino dating product direction, built around trust
             </div>
 
-            <h2 className="font-lora text-4xl font-bold leading-tight text-[#1a1a1a] sm:text-5xl lg:text-6xl">
+            <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
               A calmer path from interest to real connection.
             </h2>
 
-            <p className="mt-6 text-lg leading-8 text-[#4b5563] sm:text-xl">
+            <p className="mt-6 text-lg leading-8 text-[#d7c7ed] sm:text-xl">
               PinayMate is shaped for people who want more than a busy dating
               feed. The product path keeps the first step clear: safer
               discovery, stronger intent, and conversations that can turn into
@@ -123,14 +123,14 @@ const About = () => {
               <a
                 href="#pricing"
                 aria-describedby="about-membership-note"
-                className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg border border-[#c5b1e4] bg-white px-6 py-3 font-dm-sans-bold text-[#5a3baf] shadow-sm transition duration-200 hover:border-[#8d69f6] hover:bg-[#f8f5ff] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3f6fe4]"
+                className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg border border-white/18 bg-white/[0.07] px-6 py-3 font-dm-sans-bold text-[#eadff7] shadow-sm transition duration-200 hover:border-[#f0b6df]/70 hover:bg-white/[0.12] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 Review planned memberships
               </a>
             </div>
             <p
               id="about-membership-note"
-              className="mt-3 text-sm leading-6 text-[#6b5f75]"
+              className="mt-3 text-sm leading-6 text-[#cbbade]"
             >
               Membership links collect interest only. They do not create a
               dating profile, start matching, or open checkout.
@@ -140,7 +140,7 @@ const About = () => {
               {memberSignals.map((signal) => (
                 <div
                   key={signal}
-                  className="border-l border-[#e7dff1] pl-3 text-sm font-dm-sans-semibold text-[#374151]"
+                  className="border-l border-white/14 pl-3 text-sm font-dm-sans-semibold text-[#eadff7]"
                 >
                   <CheckCircle2
                     className="mb-2 h-4 w-4 text-[#22a574]"
@@ -151,28 +151,28 @@ const About = () => {
               ))}
             </div>
 
-            <dl className="mt-8 grid gap-4 border-y border-[#ecebf0] py-5 sm:grid-cols-3">
+            <dl className="mt-8 grid gap-4 border-y border-white/12 py-5 sm:grid-cols-3">
               {credibilityStats.map((stat) => (
                 <div key={stat.label} className="min-w-0">
-                  <dt className="font-lora text-3xl font-bold text-[#21132f]">
+                  <dt className="font-lora text-3xl font-bold text-white">
                     {stat.value}
                   </dt>
-                  <dd className="mt-1 text-sm leading-6 text-[#5f6572]">
+                  <dd className="mt-1 text-sm leading-6 text-[#cbbade]">
                     {stat.label}
                   </dd>
                 </div>
               ))}
             </dl>
 
-            <div className="mt-8 border-t border-[#e7e6eb] pt-6">
-              <p className="text-sm font-dm-sans-bold uppercase text-[#b31460]">
+            <div className="mt-8 border-t border-white/12 pt-6">
+              <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
                 The access path
               </p>
               <ol className="mt-4 grid gap-4 sm:grid-cols-3">
                 {trustFlow.map((step, index) => (
                   <li
                     key={step}
-                    className="flex items-start gap-3 text-sm leading-6 text-[#374151]"
+                    className="flex items-start gap-3 text-sm leading-6 text-[#eadff7]"
                   >
                     <span
                       className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#2e1e5a] text-sm font-dm-sans-bold text-white"
@@ -187,14 +187,14 @@ const About = () => {
             </div>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-[#ecebf0] lg:pl-10">
+          <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-white/12 lg:pl-10">
             {trustPoints.map((point, index) => {
               const Icon = point.icon;
 
               return (
                 <article
                   key={point.title}
-                  className="border-b border-[#ecebf0] pb-6 last:border-b-0 sm:border-b-0 sm:pb-0 lg:border-b lg:pb-6"
+                  className="border-b border-white/10 pb-6 last:border-b-0 sm:border-b-0 sm:pb-0 lg:border-b lg:pb-6"
                   style={{ transitionDelay: `${index * 60}ms` }}
                 >
                   <div className="flex items-start gap-4">
@@ -202,10 +202,10 @@ const About = () => {
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="font-lora text-xl font-bold text-[#1a1a1a]">
+                      <h3 className="font-lora text-xl font-bold text-white">
                         {point.title}
                       </h3>
-                      <p className="mt-2 text-base leading-7 text-[#5f6572]">
+                      <p className="mt-2 text-base leading-7 text-[#d7c7ed]">
                         {point.copy}
                       </p>
                     </div>
@@ -214,7 +214,7 @@ const About = () => {
               );
             })}
 
-            <div className="border-t border-[#2e1e5a]/20 bg-[#2e1e5a] p-6 text-white sm:col-span-3 lg:col-span-1">
+            <div className="border border-white/10 bg-white/[0.07] p-6 text-white shadow-xl shadow-black/20 sm:col-span-3 lg:col-span-1">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/12">
                   <Users className="h-5 w-5" aria-hidden="true" />

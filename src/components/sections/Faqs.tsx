@@ -56,7 +56,7 @@ const Faqs = () => {
   return (
     <section
       id="faq"
-      className="relative overflow-hidden bg-gradient-to-br from-[#f9f3ff] via-white to-[#eef4ff] py-20 sm:py-24"
+      className="relative overflow-hidden bg-gradient-to-br from-[#120a1b] via-[#1a1026] to-[#170f22] py-20 text-white sm:py-24"
     >
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ef3e78]/25 to-transparent" />
@@ -65,13 +65,13 @@ const Faqs = () => {
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-dm-sans-bold uppercase text-[#b31460]">
+          <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
             FAQ and access clarity
           </p>
-          <h2 className="mt-4 font-lora text-4xl font-bold leading-tight text-[#21132f] sm:text-5xl">
+          <h2 className="mt-4 font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             Straight answers before anyone joins.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#5f6572]">
+          <p className="mt-5 text-lg leading-8 text-[#d7c7ed]">
             The path is simple: join the waitlist first, then use the app for
             profiles, matching, privacy controls, and paid access inside the
             account flow.
@@ -79,20 +79,20 @@ const Faqs = () => {
         </div>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-          <aside className="border-y border-[#eadfea] py-6 lg:sticky lg:top-28">
-            <p className="text-sm font-dm-sans-bold uppercase text-[#b31460]">
+          <aside className="border-y border-white/12 py-6 lg:sticky lg:top-28">
+            <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
               Support boundary
             </p>
-            <h3 className="mt-3 font-lora text-2xl font-bold text-[#21132f]">
+            <h3 className="mt-3 font-lora text-2xl font-bold text-white">
               Need a direct answer?
             </h3>
-            <p className="mt-3 text-sm leading-7 text-[#5f6572]">
+            <p className="mt-3 text-sm leading-7 text-[#d7c7ed]">
               Use support for waitlist, verification, access timing, or
               partnership questions. Support can explain current access and
               next steps, but it cannot create accounts, profiles, matches,
               checkout sessions, or payment records from this website.
             </p>
-            <p className="mt-4 border-l-2 border-[#F4376D]/35 pl-4 text-sm leading-7 text-[#5f6572]">
+            <p className="mt-4 border-l-2 border-[#F4376D]/55 pl-4 text-sm leading-7 text-[#d7c7ed]">
               Do not send passwords, payment details, ID documents, precise
               location, private profile information, or private message
               screenshots by email.
@@ -100,13 +100,13 @@ const Faqs = () => {
             <a
               href={launchEmailLinks.supportQuestion}
               aria-label="Email PinayMate support without sending sensitive account data"
-              className="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg bg-[#21132f] px-6 py-3 font-dm-sans-bold text-white shadow-lg shadow-[#21132f]/15 transition duration-200 hover:bg-[#3b2255] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3f6fe4]"
+              className="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg bg-[#ef3e78] px-6 py-3 font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/20 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
             >
               Contact support
             </a>
           </aside>
 
-          <div className="divide-y divide-[#eadfea] border-y border-[#eadfea]">
+          <div className="divide-y divide-white/10 border-y border-white/12">
             {faqData.map((faq, index) => {
               const isOpen = openFaq === index;
               const Icon = faq.icon;
@@ -121,27 +121,27 @@ const Faqs = () => {
                     onClick={() => toggleFaq(index)}
                     aria-expanded={isOpen}
                     aria-controls={panelId}
-                    className="grid min-h-16 w-full cursor-pointer gap-4 py-5 text-left transition duration-200 hover:text-[#b31460] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3f6fe4] sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-5"
+                    className="grid min-h-16 w-full cursor-pointer gap-4 py-5 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-5"
                   >
                     <span
                       className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition duration-200 ${
                         isOpen
                           ? "bg-gradient-to-br from-[#F4376D] to-[#8d69f6]"
-                          : "bg-[#2e1e5a]"
+                          : "bg-white/10"
                       }`}
                     >
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                     <span>
-                      <span className="block font-dm-sans-bold text-base text-[#21132f] sm:text-lg">
+                      <span className="block font-dm-sans-bold text-base text-white sm:text-lg">
                         {faq.question}
                       </span>
-                      <span className="mt-2 block text-xs font-dm-sans-bold uppercase tracking-[0.2em] text-[#b31460]">
+                      <span className="mt-2 block text-xs font-dm-sans-bold uppercase tracking-[0.2em] text-[#f3c7de]">
                         {faq.status}
                       </span>
                     </span>
                     <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#f4efff] text-[#5a3baf] transition-transform duration-300 ${
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-[#f0b6df] transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                       aria-hidden="true"
@@ -162,7 +162,7 @@ const Faqs = () => {
                     } motion-reduce:transition-none`}
                   >
                     <div className="overflow-hidden">
-                      <p className="pb-6 text-base leading-7 text-[#5f6572] sm:ml-16">
+                      <p className="pb-6 text-base leading-7 text-[#d7c7ed] sm:ml-16">
                         {faq.answer}
                       </p>
                     </div>

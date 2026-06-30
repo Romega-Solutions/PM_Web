@@ -128,7 +128,7 @@ const Download = () => {
                       aria-describedby="waitlist-email-note"
                       className={`inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] ${
                         link.isPrimary
-                          ? "bg-white text-[#21132f] shadow-2xl shadow-[#F4376D]/20 hover:bg-[#fff4fa] hover:shadow-[#F4376D]/30"
+                          ? "bg-[#ef3e78] text-white shadow-2xl shadow-[#F4376D]/20 hover:bg-[#d7346b] hover:shadow-[#F4376D]/30"
                           : "border border-white/20 bg-white/8 text-white backdrop-blur hover:border-[#f0b6df] hover:bg-white/12"
                       }`}
                     >
@@ -156,7 +156,7 @@ const Download = () => {
               path; email stays available as another direct option.
             </p>
 
-            <div className="mt-6 border-l-2 border-[#f0b6df] bg-[#fff7fb]/95 py-1 pl-4 pr-2 text-[#21132f]">
+            <div className="mt-6 border-l-2 border-[#f0b6df] bg-white/[0.06] py-1 pl-4 pr-2 text-white">
               <div className="flex items-start gap-3 py-3">
                 <ShieldCheck
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
@@ -166,7 +166,7 @@ const Download = () => {
                   <p className="font-dm-sans-bold">
                     Send only what the waitlist needs
                   </p>
-                  <ul className="mt-2 grid gap-2 text-sm leading-6 text-[#4b5563]">
+                  <ul className="mt-2 grid gap-2 text-sm leading-6 text-[#d7c7ed]">
                     {privacyNotes.map((note) => (
                       <li key={note} className="flex gap-2">
                         <span
@@ -189,7 +189,7 @@ const Download = () => {
                 {waitlistSteps.map((step, index) => (
                   <li key={step} className="flex items-start gap-3">
                     <span
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-[#fff7fb] text-sm font-dm-sans-bold text-[#b31460]"
+                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-white/10 text-sm font-dm-sans-bold text-[#f3c7de]"
                       aria-hidden="true"
                     >
                       {index + 1}
