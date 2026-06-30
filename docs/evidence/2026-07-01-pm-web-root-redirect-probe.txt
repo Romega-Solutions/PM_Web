@@ -1,0 +1,10 @@
+HTTP/1.1 308 Permanent Redirect
+Cache-Control: public, max-age=0, must-revalidate
+Content-Type: text/plain
+Date: Tue, 30 Jun 2026 19:17:16 GMT
+Location: https://www.pinaymate.com/
+Refresh: 0;url=https://www.pinaymate.com/
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+X-Vercel-Id: sin1::tslj4-1782847036319-5389c619aeb2
+

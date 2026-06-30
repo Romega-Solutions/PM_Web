@@ -1,0 +1,54 @@
+# PM_Web Local CTA and Link Audit
+
+Date: 2026-06-30T19:13:01.945Z
+Scope: local source audit only. This does not prove production DNS, mailbox delivery, or deployed URL behavior.
+Evidence write mode: enabled by --write-report or PINAYMATE_WRITE_REPORT=1
+
+## Required evidence
+- Pass: download section waitlist links
+- Pass: membership interest mailto links
+- Pass: membership interest email is checkout-safe and data-minimized
+- Pass: membership interest mailto uses explicit percent encoding
+- Pass: support mailto link
+- Pass: legal mailto link
+- Pass: footer exposes support and legal contact paths
+- Pass: footer support mailto uses launch-support subject
+- Pass: legal modal contact mailtos use clear subjects
+- Pass: legal email body warns against sensitive data
+- Pass: mailto helpers use literal support and legal prefixes
+- Pass: no external app-store or checkout URLs in source CTA surface
+- Pass: waitlist and membership mailto bodies avoid personal-data prompts
+- Pass: membership interest email warns against sensitive data
+- Pass: FAQ support email warns against sensitive data
+- Pass: support email bodies are not account profile match or payment creation
+
+## Mailto helper boundaries
+- Waitlist helper: Present
+- Waitlist launch boundary: Present
+- Support helper: Present
+- Support launch boundary: Present
+- Legal helper: Present
+- Legal sensitive-data warning: Present
+
+## Mailto links
+- src/lib/launchEmailLinks.ts: mailto:support@pinaymate.com?
+- src/lib/launchEmailLinks.ts: mailto:legal@pinaymate.com?
+
+## External URLs in source CTA surface
+- None found.
+
+## Data minimization
+- Pass: no Preferred name or Location prompts found in waitlist/membership mailto bodies or CTA source text.
+
+## Sensitive-data warnings
+- Found warning in src/components/sections/Membership.tsx
+- Found warning in src/lib/launchEmailLinks.ts
+
+## Result
+Pass: local CTA/link source audit found only waitlist/support/legal mailto flows, no live app-store or checkout destinations, and no prefilled personal-data prompts.
+
+## Not proven
+- Production domain or DNS.
+- Actual mailbox deliverability for support/legal/waitlist links.
+- App-store availability.
+- Checkout or payment readiness.

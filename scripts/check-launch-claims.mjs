@@ -24,6 +24,7 @@ const centralLaunchStateMatrixPath = path.resolve(
   "..",
   "PM_App",
   "docs",
+  "release",
   "PINAYMATE_LAUNCH_STATE_MATRIX.md",
 );
 const shouldCheckCentralLaunchStateMatrix =
