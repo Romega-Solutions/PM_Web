@@ -84,14 +84,14 @@ const Download = () => {
       className="relative overflow-hidden bg-[#160d20] py-20 text-white sm:py-24 lg:py-28"
     >
       <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#f0b6df]/22 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#ef3e78]/25 to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
-            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/15 bg-white/8 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-2xl shadow-black/20 backdrop-blur">
+            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-2xl shadow-black/20 backdrop-blur">
               <Heart className="h-4 w-4 text-[#F4376D]" fill="#F4376D" aria-hidden="true" />
               Private waitlist
             </div>
@@ -128,8 +128,8 @@ const Download = () => {
                       aria-describedby="waitlist-email-note"
                       className={`inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] ${
                         link.isPrimary
-                          ? "bg-white text-[#21132f] shadow-2xl shadow-[#F4376D]/20 hover:bg-[#fff4fa] hover:shadow-[#F4376D]/30"
-                          : "border border-white/20 bg-white/8 text-white backdrop-blur hover:border-[#f0b6df] hover:bg-white/12"
+                          ? "bg-[#ef3e78] text-white shadow-2xl shadow-[#F4376D]/20 hover:bg-[#d7346b] hover:shadow-[#F4376D]/30"
+                          : "border border-[#f0b6df]/22 bg-[#2e1e5a]/55 text-white backdrop-blur hover:border-[#f0b6df] hover:bg-[#3b2255]/75"
                       }`}
                     >
                       <Smartphone className="h-5 w-5" aria-hidden="true" />
@@ -156,7 +156,7 @@ const Download = () => {
               path; email stays available as another direct option.
             </p>
 
-            <div className="mt-6 border-l-2 border-[#f0b6df] bg-[#fff7fb]/95 py-1 pl-4 pr-2 text-[#21132f]">
+            <div className="mt-6 border-l-2 border-[#f0b6df] bg-[#2e1e5a]/45 py-1 pl-4 pr-2 text-white">
               <div className="flex items-start gap-3 py-3">
                 <ShieldCheck
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
@@ -166,7 +166,7 @@ const Download = () => {
                   <p className="font-dm-sans-bold">
                     Send only what the waitlist needs
                   </p>
-                  <ul className="mt-2 grid gap-2 text-sm leading-6 text-[#4b5563]">
+                  <ul className="mt-2 grid gap-2 text-sm leading-6 text-[#d7c7ed]">
                     {privacyNotes.map((note) => (
                       <li key={note} className="flex gap-2">
                         <span
@@ -189,7 +189,7 @@ const Download = () => {
                 {waitlistSteps.map((step, index) => (
                   <li key={step} className="flex items-start gap-3">
                     <span
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-[#fff7fb] text-sm font-dm-sans-bold text-[#b31460]"
+                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-[#2e1e5a]/65 text-sm font-dm-sans-bold text-[#f3c7de]"
                       aria-hidden="true"
                     >
                       {index + 1}
@@ -206,7 +206,7 @@ const Download = () => {
               {featureTags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex min-h-10 items-center rounded-lg border border-white/12 bg-white/8 px-3 py-2 text-sm font-dm-sans-semibold text-[#eadff7]"
+                  className="inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-sm font-dm-sans-semibold text-[#eadff7]"
                 >
                   {tag}
                 </span>
@@ -287,7 +287,7 @@ const Download = () => {
                     <div
                       role="status"
                       aria-label={`${store.label} updates are shared through the waitlist`}
-                      className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-dm-sans-bold text-[#d7c7ed]"
+                      className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-4 py-3 text-sm font-dm-sans-bold text-[#d7c7ed]"
                     >
                       {store.label} updates
                     </div>

@@ -93,7 +93,7 @@ const Membership = () => {
     <section id="pricing" className="bg-[#170f22] py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/12 bg-white/8 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
+          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             Membership direction
           </div>
@@ -200,7 +200,7 @@ const Membership = () => {
                     className={`inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] sm:w-fit ${
                       plan.id === "gold-interest"
                         ? "bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25 hover:bg-[#db2866] hover:shadow-[#ef3e78]/35"
-                        : "bg-white text-[#2e1e5a] shadow-lg shadow-black/10 hover:bg-[#fff7fb]"
+                        : "border border-[#f0b6df]/22 bg-[#2e1e5a]/55 text-white shadow-lg shadow-black/10 hover:border-[#f0b6df]/70 hover:bg-[#3b2255]/75"
                     }`}
                   >
                     <Mail className="h-4 w-4" aria-hidden="true" />
@@ -243,7 +243,7 @@ const Membership = () => {
           ))}
         </div>
 
-        <div className="mt-8 border-l-2 border-[#f0b6df] bg-[#fff7fb] py-1 pl-5 pr-3 text-[#1a1a1a] sm:pl-6">
+        <div className="mt-8 border-l-2 border-[#f0b6df] bg-[#2e1e5a]/45 py-1 pl-5 pr-3 text-white sm:pl-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a] text-white">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" />
@@ -252,7 +252,7 @@ const Membership = () => {
               <h3 className="font-lora text-2xl font-bold">
                 Pricing notice
               </h3>
-              <p className="mt-2 text-base leading-7 text-[#4b5563]">
+              <p className="mt-2 text-base leading-7 text-[#d7c7ed]">
                 Paid plans should not be treated as purchased, active, or
                 guaranteed until final plan details, checkout terms,
                 cancellation/refund policy, support coverage, and billing

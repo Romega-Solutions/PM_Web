@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
     <>
       <footer className="relative overflow-hidden bg-[#120a1b] text-white">
         <div className="absolute inset-0" aria-hidden="true">
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#f0b6df]/18 to-transparent" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-5 rounded-lg border border-white/10 bg-white/[0.06] p-4 text-sm leading-6 text-[#d7c7ed]">
+              <div className="mt-5 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 p-4 text-sm leading-6 text-[#d7c7ed]">
                 Store, social, and community links will appear when those public
                 channels are available for members.
               </div>
