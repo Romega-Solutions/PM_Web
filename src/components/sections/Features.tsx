@@ -80,33 +80,32 @@ const Features = () => {
           </p>
         </div>
 
-        <div className="mt-12 divide-y divide-white/10 border-y border-white/12">
+        <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {features.map((feature, index) => {
             const Icon = feature.icon;
 
             return (
               <article
                 key={feature.title}
-                className="grid gap-5 py-7 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-6 lg:grid-cols-[auto_0.7fr_1fr]"
+                className="group flex min-h-full flex-col rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/78 p-5 shadow-2xl shadow-black/15 transition duration-200 hover:border-[#f0b6df]/32 hover:bg-[#21132f]/92 sm:p-6"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/15">
-                  <Icon className="h-6 w-6" aria-hidden="true" />
-                </div>
-
-                <div>
-                  <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f3c7de]">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/15">
+                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                  <p className="rounded-full border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-1 text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f3c7de]">
                     {String(index + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mt-2 font-lora text-2xl font-bold leading-tight text-white">
-                    {feature.title}
-                  </h3>
                 </div>
 
-                <div>
-                  <p className="text-base leading-7 text-[#d7c7ed]">
+                <div className="mt-6 flex flex-1 flex-col">
+                  <h3 className="font-lora text-2xl font-bold leading-tight text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-4 text-base leading-7 text-[#d7c7ed]">
                     {feature.copy}
                   </p>
-                  <p className="mt-4 inline-flex items-start gap-2 text-sm font-dm-sans-semibold leading-6 text-[#f0b6df]">
+                  <p className="mt-5 inline-flex items-start gap-2 border-t border-[#f0b6df]/12 pt-4 text-sm font-dm-sans-semibold leading-6 text-[#f0b6df]">
                     <CheckCircle2
                       className="mt-0.5 h-4 w-4 shrink-0"
                       aria-hidden="true"
@@ -119,7 +118,7 @@ const Features = () => {
           })}
         </div>
 
-        <div className="mt-10 rounded-lg bg-[#170f22] p-6 text-white shadow-2xl shadow-[#2e1e5a]/18 sm:p-8 lg:p-10">
+        <div className="mt-10 rounded-lg border border-[#f0b6df]/14 bg-gradient-to-br from-[#21132f]/92 via-[#170f22] to-[#120a1b] p-6 text-white shadow-2xl shadow-[#2e1e5a]/18 sm:p-8 lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#ef3e78]">
