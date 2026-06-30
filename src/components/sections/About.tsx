@@ -68,7 +68,7 @@ const About = () => {
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <div className="max-w-2xl">
-            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/12 bg-white/[0.07] px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
+            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
               <HeartHandshake className="h-4 w-4" aria-hidden="true" />
               Filipino dating product direction, built around trust
             </div>
@@ -95,7 +95,7 @@ const About = () => {
               <a
                 href="#pricing"
                 aria-describedby="about-membership-note"
-                className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg border border-white/18 bg-white/[0.07] px-6 py-3 font-dm-sans-bold text-[#eadff7] shadow-sm transition duration-200 hover:border-[#f0b6df]/70 hover:bg-white/[0.12] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-6 py-3 font-dm-sans-bold text-[#eadff7] shadow-sm transition duration-200 hover:border-[#f0b6df]/70 hover:bg-[#3b2255]/75 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 Review planned memberships
               </a>
@@ -186,9 +186,9 @@ const About = () => {
               );
             })}
 
-            <div className="border border-white/10 bg-white/[0.07] p-6 text-white shadow-xl shadow-black/20 sm:col-span-3 lg:col-span-1">
+            <div className="border border-[#f0b6df]/14 bg-[#2e1e5a]/50 p-6 text-white shadow-xl shadow-black/20 sm:col-span-3 lg:col-span-1">
               <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/12">
+                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#170f22]/70">
                   <Users className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>

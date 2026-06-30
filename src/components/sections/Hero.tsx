@@ -97,7 +97,7 @@ const Hero = () => {
 
       <div className="relative z-10 mx-auto grid max-w-[1360px] items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:pb-24 xl:px-16">
         <div className="max-w-3xl">
-          <div className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/14 bg-white/8 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1] shadow-sm backdrop-blur">
+          <div className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1] shadow-sm backdrop-blur">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             Premium Filipino-first dating waitlist
           </div>
@@ -109,7 +109,7 @@ const Hero = () => {
             {launchState.map((state) => (
               <span
                 key={state}
-                className="inline-flex min-h-9 items-center rounded-lg border border-white/12 bg-white/8 px-3 py-1.5 shadow-sm backdrop-blur"
+                className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-3 py-1.5 shadow-sm backdrop-blur"
               >
                 {state}
               </span>
@@ -137,7 +137,7 @@ const Hero = () => {
             </a>
             <a
               href="#features"
-              className="inline-flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-lg border border-white/18 bg-white/8 px-7 py-4 text-base font-dm-sans-bold text-white transition duration-200 hover:border-white/30 hover:bg-white/14 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+              className="inline-flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-7 py-4 text-base font-dm-sans-bold text-white transition duration-200 hover:border-[#f0b6df]/45 hover:bg-[#3b2255]/75 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
             >
               See safety approach
               <ShieldCheck className="h-5 w-5" aria-hidden="true" />
@@ -216,7 +216,7 @@ const Hero = () => {
             {audiencePillars.map((pillar) => (
               <span
                 key={pillar}
-                className="inline-flex min-h-10 items-center rounded-lg border border-white/10 bg-white/6 px-3 py-2 text-sm font-dm-sans-semibold text-[#eadff7]"
+                className="inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-sm font-dm-sans-semibold text-[#eadff7]"
               >
                 {pillar}
               </span>
@@ -245,7 +245,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-6 border-y border-white/10 bg-white/[0.06] px-1 py-5">
+            <div className="mt-6 border-y border-[#f0b6df]/14 bg-[#170f22]/65 px-1 py-5">
               <div className="flex items-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-br from-[#ef3e78] to-[#8d69f6] text-xl font-dm-sans-bold text-white">
                   PM
@@ -270,7 +270,7 @@ const Hero = () => {
                       key={row.label}
                       className="flex items-center gap-3 border-t border-white/10 pt-3 first:border-t-0 first:pt-0"
                     >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f0b6df]">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a]/75 text-[#f0b6df]">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
                       <div>
@@ -302,7 +302,7 @@ const Hero = () => {
               ))}
             </div>
 
-            <div className="mt-5 border-l-2 border-[#f0b6df] bg-white/[0.06] py-1 pl-4 pr-2">
+            <div className="mt-5 border-l-2 border-[#f0b6df] bg-[#170f22]/65 py-1 pl-4 pr-2">
               <div className="flex items-start gap-3">
                 <LockKeyhole
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
