@@ -1,0 +1,7 @@
+
+> pinaymate@0.0.0 check:product-design-contract
+> node scripts/check-product-design-contract.mjs
+
+PASS PM_Web product design contract
+Checked conversion hierarchy, waitlist boundary, safety copy, membership framing, legal limits, anti-card-spam rules, and design QA release hooks.
+Scope: source contract only. This does not prove browser rendering, desktop/mobile screenshots, production URL behavior, mailbox delivery, checkout readiness, app-store availability, or live PM_App readiness.
