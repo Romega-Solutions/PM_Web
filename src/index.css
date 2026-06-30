@@ -398,15 +398,15 @@ h6 {
 
 .group:hover .hover-contrast-bg,
 .hover-contrast-bg:hover {
-  /* switch to white background for max contrast, dark brand text */
-  background: var(--color-neutral-white) !important;
-  color: var(--color-dalisay-950) !important;
+  background: rgba(46, 30, 90, 0.68) !important;
+  color: var(--color-amihan-100) !important;
   background-image: none !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border-color: rgba(240, 182, 223, 0.28) !important;
+  box-shadow: 0 12px 28px rgba(15, 10, 26, 0.18);
   transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
 
-/* ensure gradient overlays don't hide the white variant */
+/* ensure gradient overlays don't muddy the dark hover variant */
 .group:hover .hover-contrast-bg > .contrast-overlay,
 .hover-contrast-bg:hover > .contrast-overlay {
   opacity: 0 !important;

@@ -98,8 +98,8 @@ const Header: React.FC = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-200 ${
         isScrolled
-          ? "bg-dalisay-950/95 backdrop-blur-xl border-b border-amihan-500/25 shadow-2xl"
-          : "bg-dalisay-950/82 backdrop-blur-lg border-b border-luna-300/20"
+          ? "border-b border-[#f0b6df]/16 bg-dalisay-950/95 shadow-xl shadow-black/18 backdrop-blur-xl"
+          : "border-b border-[#f0b6df]/12 bg-dalisay-950/82 backdrop-blur-lg"
       }`}
     >
       <div
@@ -117,7 +117,7 @@ const Header: React.FC = () => {
           <a
             href="#home"
             aria-label="Go to PinayMate home"
-            className="flex min-h-12 cursor-pointer items-center space-x-3 rounded-lg border border-transparent px-3 py-2 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+            className="flex min-h-12 cursor-pointer items-center space-x-3 rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/35 px-3 py-2 transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
           >
             <div className="relative">
               {/* Main Logo Container */}
@@ -146,7 +146,7 @@ const Header: React.FC = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group nav-item relative min-h-11 rounded-lg border border-transparent px-4 py-2 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+                  className="group nav-item relative min-h-11 rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/35 px-4 py-2 transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
                 >
                   <div className="flex items-center">
                     <span className="font-dm-sans-medium text-base text-white transition-all duration-300 group-hover:text-[#F4376D]">
@@ -171,7 +171,7 @@ const Header: React.FC = () => {
               ref={menuButtonRef}
               type="button"
               onClick={toggleMenu}
-              className="group relative min-h-11 min-w-11 rounded-lg border border-transparent bg-[#2e1e5a]/55 p-3 text-white backdrop-blur-sm transition-all duration-200 hover:border-[#F4376D] hover:bg-[#3b2255]/70 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] md:hidden"
+              className="group relative min-h-11 min-w-11 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 p-3 text-white backdrop-blur-sm transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#3b2255]/70 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] md:hidden"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
@@ -198,7 +198,7 @@ const Header: React.FC = () => {
             <button
               type="button"
               aria-label="Close mobile navigation"
-              className="fixed left-0 right-0 top-16 h-[calc(100dvh-4rem)] bg-black/45"
+              className="fixed left-0 right-0 top-16 h-[calc(100dvh-4rem)] bg-black/62 backdrop-blur-sm"
               onClick={closeMenu}
             />
             <div
@@ -207,7 +207,7 @@ const Header: React.FC = () => {
               role="dialog"
               aria-modal="true"
               aria-label="PinayMate mobile navigation"
-              className="relative max-h-[calc(100dvh-4rem)] animate-slideInDown overflow-y-auto border-t border-amihan-500/30 bg-dalisay-950/98 px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl backdrop-blur-xl"
+              className="relative max-h-[calc(100dvh-4rem)] animate-slideInDown overflow-y-auto border-t border-[#f0b6df]/16 bg-dalisay-950/98 px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-xl shadow-black/25 backdrop-blur-xl"
             >
               <p className="px-4 pb-2 text-xs font-dm-sans-bold uppercase text-[#cbbade]">
                 Menu
@@ -218,7 +218,7 @@ const Header: React.FC = () => {
                     key={item.href}
                     ref={index === 0 ? firstMobileLinkRef : undefined}
                     href={item.href}
-                    className="group flex min-h-12 items-center space-x-3 rounded-lg border border-transparent px-4 py-3 text-white transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+                    className="group flex min-h-12 items-center space-x-3 rounded-lg border border-[#f0b6df]/12 bg-[#1a0d27]/45 px-4 py-3 text-white transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/55 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
                     style={{ animationDelay: `${index * 40}ms` }}
                     onClick={closeMenu}
                   >
@@ -241,9 +241,20 @@ const Header: React.FC = () => {
                 Join the waitlist
                 <Heart className="h-5 w-5" aria-hidden="true" />
               </a>
-              <p className="mt-3 px-1 text-sm leading-6 text-[#cbbade]">
-                Waitlist links open email. No profile, checkout, or payment is
-                created from this website.
+              <p className="mt-3 grid grid-cols-3 gap-2 px-1 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]">
+                <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+                  Email
+                </span>
+                <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+                  No profile
+                </span>
+                <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+                  No payment
+                </span>
+                <span className="sr-only">
+                  Waitlist links open email. No profile, checkout, or payment is
+                  created from this website.
+                </span>
               </p>
             </div>
           </div>

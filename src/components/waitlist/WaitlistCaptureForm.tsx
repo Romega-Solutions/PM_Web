@@ -21,25 +21,37 @@ const platformOptions: Array<{
   label: string;
   emailLabel: "iOS" | "Android";
   helper: string;
+  bars: string[];
 }> = [
   {
     value: "ios",
     label: "iOS",
     emailLabel: "iOS",
     helper: "Best if you use iPhone or iPad.",
+    bars: ["w-4/5", "w-2/3", "w-1/2"],
   },
   {
     value: "android",
     label: "Android",
     emailLabel: "Android",
     helper: "Best if you use an Android phone.",
+    bars: ["w-3/4", "w-5/6", "w-1/2"],
   },
 ];
 
 const formPromise = [
-  "Launch access updates",
-  "Safety tips before you join",
-  "Platform-specific timing",
+  {
+    label: "Access",
+    detail: "Launch access updates",
+  },
+  {
+    label: "Safety",
+    detail: "Safety tips before you join",
+  },
+  {
+    label: "Timing",
+    detail: "Platform-specific timing",
+  },
 ];
 
 const privacyPromise = [
@@ -49,9 +61,18 @@ const privacyPromise = [
 ];
 
 const waitlistBoundaries = [
-  "Waitlist only",
-  "No account created here",
-  "No profile answers",
+  {
+    label: "Waitlist",
+    detail: "Waitlist only",
+  },
+  {
+    label: "No account",
+    detail: "No account created here",
+  },
+  {
+    label: "No profile",
+    detail: "No profile answers",
+  },
 ];
 
 function getUserMessage(
@@ -88,9 +109,8 @@ export function WaitlistCaptureForm() {
   const message = getUserMessage(result, selectedPlatform.emailLabel);
   const shouldShowEmailFallback = result?.ok === false && result.mode === "email_fallback";
   const statusMessage = isSubmitting
-    ? "Submitting your waitlist request."
-    : message ||
-      "Private waitlist capture only asks for your email and platform preference. Do not send passwords, payment details, ID documents, precise location, or private profile information in this form.";
+    ? "Submitting..."
+    : message || "Email + platform only.";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -111,12 +131,12 @@ export function WaitlistCaptureForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-8 overflow-hidden rounded-[2rem] border border-white/15 bg-[#1a0d27]/82 shadow-2xl shadow-black/25 backdrop-blur"
+      className="mt-8 overflow-hidden rounded-lg border border-[#f0b6df]/16 bg-[#1a0d27]/86 shadow-xl shadow-black/20 backdrop-blur"
       aria-describedby="waitlist-form-boundary waitlist-form-status"
     >
       <div className="grid gap-6 p-5 sm:p-6 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="flex items-start gap-3">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25">
             <Sparkles className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
@@ -124,51 +144,74 @@ export function WaitlistCaptureForm() {
               Private waitlist
             </p>
             <p className="mt-1 font-dm-sans-bold text-white">
-              Get notified when your platform opens
+              Platform access signal
+              <span className="sr-only">
+                . Get notified when your platform opens.
+              </span>
             </p>
             <p
               id="waitlist-form-boundary"
-              className="mt-1 max-w-2xl text-sm leading-6 text-[#d7c7ed]"
+              className="mt-2 flex flex-wrap gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]"
             >
-              Share your email, choose your phone, and receive only the launch
-              updates that matter before the app opens.
+              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2">
+                Email
+              </span>
+              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2">
+                Platform
+              </span>
+              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2">
+                Launch updates
+              </span>
+              <span className="sr-only">
+                Share your email, choose your phone, and receive only the
+                launch updates that matter before the app opens.
+              </span>
             </p>
             <div
-              className="mt-4 flex flex-wrap gap-2"
+              className="mt-4 grid gap-2 sm:grid-cols-3"
               aria-label="What the waitlist includes"
             >
               {formPromise.map((item) => (
                 <span
-                  key={item}
-                  className="inline-flex min-h-9 items-center gap-2 rounded-full border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-1.5 text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]"
+                  key={item.label}
+                  className="inline-flex min-h-9 items-center gap-2 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-1.5 text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]"
                 >
                   <CheckCircle2
                     className="h-4 w-4 text-[#49d49a]"
                     aria-hidden="true"
                   />
-                  {item}
+                  {item.label}
+                  <span className="sr-only">: {item.detail}</span>
                 </span>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col justify-between gap-4 rounded-[1.5rem] bg-gradient-to-br from-[#2e1e5a]/70 via-[#ef3e78]/12 to-transparent p-4">
-          <div className="inline-flex min-h-11 items-center gap-2 self-start rounded-full border border-[#f0b6df]/25 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#ffe8f1]">
+        <div className="flex flex-col justify-between gap-4 rounded-lg border border-[#f0b6df]/14 bg-gradient-to-br from-[#2e1e5a]/70 via-[#ef3e78]/12 to-transparent p-4">
+          <div className="inline-flex min-h-11 items-center gap-2 self-start rounded-lg border border-[#f0b6df]/25 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#ffe8f1]">
             <Sparkles className="h-5 w-5" aria-hidden="true" />
             <span>Less than 1 minute</span>
+          </div>
+          <div className="grid grid-cols-3 gap-2" aria-hidden="true">
+            <span className="h-12 rounded-lg bg-[#ef3e78]/24" />
+            <span className="h-12 rounded-lg bg-[#8d69f6]/24" />
+            <span className="h-12 rounded-lg bg-[#5c83e9]/20" />
           </div>
           <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
             {waitlistBoundaries.map((item) => (
               <div
-                key={item}
+                key={item.label}
                 className="flex min-h-10 items-center gap-2 text-sm leading-5 text-[#eadff7]"
               >
                 <ShieldCheck
                   className="h-4 w-4 shrink-0 text-[#f0b6df]"
                   aria-hidden="true"
                 />
-                <span>{item}</span>
+                <span>
+                  {item.label}
+                  <span className="sr-only">: {item.detail}</span>
+                </span>
               </div>
             ))}
           </div>
@@ -176,13 +219,13 @@ export function WaitlistCaptureForm() {
       </div>
 
       <div
-        className="flex flex-wrap gap-2 border-y border-white/10 bg-[#120a1b]/45 px-5 py-3 sm:px-6"
+        className="flex flex-wrap gap-2 border-y border-[#f0b6df]/12 bg-[#120a1b]/58 px-5 py-3 sm:px-6"
         aria-label="Sensitive details not needed for the waitlist"
       >
         {privacyPromise.map((item) => (
           <span
             key={item}
-            className="inline-flex min-h-9 items-center rounded-full border border-white/10 bg-[#120a1b]/65 px-3 py-1.5 text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]"
+            className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#170f22]/78 px-3 py-1.5 text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]"
           >
             {item}
           </span>
@@ -209,13 +252,16 @@ export function WaitlistCaptureForm() {
             autoComplete="email"
             aria-describedby="waitlist-email-helper waitlist-form-status"
             required
-            className="min-h-12 rounded-2xl border border-white/14 bg-[#120a1b]/80 px-4 py-3 text-base text-white outline-none transition placeholder:text-[#9c89b3] hover:border-white/25 focus:border-[#f0b6df] focus:ring-2 focus:ring-[#f0b6df]/25"
+            className="min-h-12 rounded-lg border border-[#f0b6df]/16 bg-[#120a1b]/80 px-4 py-3 text-base text-white outline-none transition placeholder:text-[#9c89b3] hover:border-[#f0b6df]/34 focus:border-[#f0b6df] focus:ring-2 focus:ring-[#f0b6df]/25"
           />
           <span
             id="waitlist-email-helper"
-            className="text-xs leading-5 text-[#cbbade]"
+            className="text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#cbbade]"
           >
-            Use the inbox where you want launch access and safety updates.
+            Launch updates inbox
+            <span className="sr-only">
+              Use the inbox where you want launch access and safety updates.
+            </span>
           </span>
         </label>
 
@@ -230,10 +276,10 @@ export function WaitlistCaptureForm() {
               return (
                 <label
                   key={option.value}
-                  className={`flex min-h-16 cursor-pointer items-start gap-3 rounded-2xl border px-3 py-3 text-left text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#91b1ff] ${
+                  className={`flex min-h-16 cursor-pointer items-start gap-3 rounded-lg border px-3 py-3 text-left text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#91b1ff] ${
                     isSelected
                       ? "border-[#f0b6df] bg-[#ef3e78]/18 text-white shadow-lg shadow-[#ef3e78]/15"
-                      : "border-white/12 bg-[#120a1b]/80 text-[#eadff7] hover:border-[#f0b6df]/50 hover:bg-[#2e1e5a]/65"
+                      : "border-[#f0b6df]/14 bg-[#120a1b]/80 text-[#eadff7] hover:border-[#f0b6df]/50 hover:bg-[#2e1e5a]/65"
                   }`}
                 >
                   <input
@@ -263,27 +309,48 @@ export function WaitlistCaptureForm() {
                   </span>
                   <span>
                     <span className="font-dm-sans-bold">{option.label}</span>
+                    <span className="mt-2 grid gap-1" aria-hidden="true">
+                      {option.bars.map((bar, index) => (
+                        <span
+                          key={`${option.value}-${index}`}
+                          className={`block h-1.5 rounded-lg bg-[#f0b6df]/24 ${bar}`}
+                        />
+                      ))}
+                    </span>
                     <span
-                      className={`mt-1 block text-xs leading-4 ${
+                      className={`mt-2 block text-xs font-dm-sans-bold uppercase tracking-[0.12em] ${
                         isSelected ? "text-[#f6d0f1]" : "text-[#cbbade]"
                       }`}
                     >
-                      {option.helper}
+                      {isSelected ? "Selected" : "Available"}
+                      <span className="sr-only">. {option.helper}</span>
                     </span>
                   </span>
                 </label>
               );
             })}
           </div>
-          <p className="text-xs leading-5 text-[#cbbade]">
-            Selected: {selectedPlatform.emailLabel}. You can update your
-            platform preference when app access opens.
+          <p className="text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#cbbade]">
+            Selected: {selectedPlatform.emailLabel}
+            <span className="sr-only">
+              . You can update your platform preference when app access opens.
+            </span>
           </p>
         </fieldset>
       </div>
 
       <div className="px-5 pb-5 sm:px-6 sm:pb-6">
-        <p className="text-sm leading-6 text-[#d7c7ed]">
+        <div className="grid gap-2 sm:grid-cols-3">
+          {["No photos", "No ID", "No payment"].map((item) => (
+            <span
+              key={item}
+              className="inline-flex min-h-10 items-center justify-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2 text-center text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+        <p className="sr-only">
           We will not ask for photos, ID, payment, exact location, or dating
           profile answers from this website waitlist.
         </p>
@@ -309,7 +376,7 @@ export function WaitlistCaptureForm() {
           type="submit"
           disabled={isSubmitting}
           aria-busy={isSubmitting}
-          className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-2xl bg-[#ef3e78] px-5 py-3 font-dm-sans-bold text-white shadow-2xl shadow-[#F4376D]/25 transition hover:bg-[#d7346b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#b31460] disabled:cursor-wait disabled:opacity-70 sm:flex-none"
+          className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-5 py-3 font-dm-sans-bold text-white shadow-xl shadow-[#F4376D]/25 transition hover:bg-[#d7346b] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#b31460] disabled:cursor-wait disabled:opacity-70 sm:flex-none"
         >
           {isSubmitting ? (
             <LoaderCircle
@@ -326,7 +393,7 @@ export function WaitlistCaptureForm() {
           <a
             href={emailHref}
             aria-label={`Continue ${selectedPlatform.emailLabel} waitlist request by email`}
-            className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-2xl border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-5 py-3 font-dm-sans-bold text-white transition hover:border-[#f0b6df] hover:bg-[#3b2255]/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#2e1e5a] sm:flex-none"
+            className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-lg border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-5 py-3 font-dm-sans-bold text-white transition hover:border-[#f0b6df] hover:bg-[#3b2255]/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#2e1e5a] sm:flex-none"
           >
             <Mail className="h-5 w-5" aria-hidden="true" />
             Continue by email
@@ -335,14 +402,17 @@ export function WaitlistCaptureForm() {
       </div>
 
       {shouldShowEmailFallback ? (
-        <p className="px-5 pb-3 text-sm leading-6 text-[#d7c7ed] sm:px-6">
-          Email keeps the waitlist open with the same platform preference.
+        <p className="px-5 pb-3 text-sm font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:px-6">
+          Same platform preference
+          <span className="sr-only">
+            Email keeps the waitlist open with the same platform preference.
+          </span>
         </p>
       ) : null}
 
       <div
         id="waitlist-form-status"
-        className={`mx-5 mb-5 flex items-start gap-2 rounded-2xl border p-3 text-sm leading-6 sm:mx-6 sm:mb-6 ${
+        className={`mx-5 mb-5 flex items-start gap-2 rounded-lg border p-3 text-sm leading-6 sm:mx-6 sm:mb-6 ${
           result?.ok
             ? "border-[#49d49a]/30 bg-[#22a574]/12 text-[#d9ffe6]"
             : result
@@ -374,6 +444,13 @@ export function WaitlistCaptureForm() {
           />
         )}
         <span>{statusMessage}</span>
+        {!isSubmitting && !result ? (
+          <span className="sr-only">
+            Private waitlist capture only asks for your email and platform
+            preference. Do not send passwords, payment details, ID documents,
+            precise location, or private profile information in this form.
+          </span>
+        ) : null}
       </div>
     </form>
   );

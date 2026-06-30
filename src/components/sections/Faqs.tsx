@@ -12,6 +12,7 @@ const faqData = [
   {
     question: "Is PinayMate already live?",
     status: "Waitlist only",
+    shortAnswer: "Opening in stages.",
     answer:
       "PinayMate is opening in stages. The website lets you join updates, share plan interest, and contact support while mobile access rolls out.",
     icon: HeartHandshake,
@@ -19,6 +20,7 @@ const faqData = [
   {
     question: "Can I pay or create a dating profile today?",
     status: "No payment today",
+    shortAnswer: "No checkout or profile here.",
     answer:
       "No. This website lets you join updates or share interest. Your app account, dating profile, matches, checkout, and payments stay inside the app access flow.",
     icon: MailCheck,
@@ -26,6 +28,7 @@ const faqData = [
   {
     question: "How is privacy handled?",
     status: "Privacy first",
+    shortAnswer: "Keep private data out of email.",
     answer:
       "This website is for waitlist and support contact only. Do not send passwords, payment details, ID documents, exact location, or private profile information by email. Profile visibility, account settings, deletion controls, and safety actions belong inside the app.",
     icon: ShieldCheck,
@@ -33,6 +36,7 @@ const faqData = [
   {
     question: "What does verification mean?",
     status: "Manual review",
+    shortAnswer: "Review is private and staged.",
     answer:
       "Verification is designed as a private review process, not an email attachment process. Uploading documents does not automatically approve a member.",
     icon: LockKeyhole,
@@ -40,14 +44,32 @@ const faqData = [
   {
     question: "Where do I get app links?",
     status: "Waitlist first",
+    shortAnswer: "Choose your platform first.",
     answer:
       "Join the waitlist and choose your platform. PinayMate will share the right download and access path through official updates.",
     icon: ShieldCheck,
   },
 ];
 
+const faqSignals = ["Waitlist first", "App handles private data", "No checkout here"];
+
+const supportSignals = [
+  {
+    label: "Help",
+    bars: ["w-5/6", "w-2/3"],
+  },
+  {
+    label: "Access",
+    bars: ["w-3/4", "w-1/2"],
+  },
+  {
+    label: "Boundary",
+    bars: ["w-4/5", "w-3/5"],
+  },
+];
+
 const Faqs = () => {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -65,37 +87,79 @@ const Faqs = () => {
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
+          <p className="mx-auto inline-flex min-h-11 items-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold uppercase text-[#f3c7de] shadow-sm">
             FAQ and access clarity
           </p>
           <h2 className="mt-4 font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             Straight answers before anyone joins.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[#d7c7ed]">
-            The path is simple: join the waitlist first, then use the app for
-            profiles, matching, privacy controls, and paid access inside the
-            account flow.
+            Waitlist first. App for personal details.
+            <span className="sr-only">
+              Join the waitlist first. Use the app for everything personal.
+              The path is simple: join the waitlist first, then use the app for
+              profiles, matching, privacy controls, and paid access inside the
+              account flow.
+            </span>
           </p>
+          <div className="mx-auto mt-6 grid max-w-2xl gap-2 sm:grid-cols-3">
+            {faqSignals.map((signal) => (
+              <span
+                key={signal}
+                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]"
+              >
+                {signal}
+              </span>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-          <aside className="border-y border-white/12 py-6 lg:sticky lg:top-28">
+          <aside className="rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/76 p-5 shadow-xl shadow-black/15 lg:sticky lg:top-28 lg:p-6">
             <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
               Support boundary
             </p>
             <h3 className="mt-3 font-lora text-2xl font-bold text-white">
-              Need a direct answer?
+              Direct support.
+              <span className="sr-only"> Need a direct answer?</span>
             </h3>
-            <p className="mt-3 text-sm leading-7 text-[#d7c7ed]">
-              Use support for waitlist, verification, access timing, or
-              partnership questions. Support can explain current access and
-              next steps, but it cannot create accounts, profiles, matches,
-              checkout sessions, or payment records from this website.
+            <p className="mt-4 grid gap-2">
+              {supportSignals.map((signal) => (
+                <span
+                  key={signal.label}
+                  className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/42 px-3 py-3"
+                >
+                  <span className="flex items-center justify-between gap-3 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                    {signal.label}
+                    <span
+                      className="h-1.5 w-10 rounded-lg bg-[#ef3e78]"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span className="mt-3 block space-y-1.5" aria-hidden="true">
+                    {signal.bars.map((bar, index) => (
+                      <span
+                        key={`${signal.label}-${index}`}
+                        className={`block h-1.5 rounded-lg bg-[#f0b6df]/24 ${bar}`}
+                      />
+                    ))}
+                  </span>
+                </span>
+              ))}
+              <span className="sr-only">
+                Use support for waitlist, verification, access timing, or
+                partnership questions. Support can explain current access and
+                next steps, but it cannot create accounts, profiles, matches,
+                checkout sessions, or payment records from this website.
+              </span>
             </p>
-            <p className="mt-4 border-l-2 border-[#F4376D]/55 pl-4 text-sm leading-7 text-[#d7c7ed]">
-              Do not send passwords, payment details, ID documents, precise
-              location, private profile information, or private message
-              screenshots by email.
+            <p className="mt-4 border-l-2 border-[#F4376D]/55 bg-[#2e1e5a]/40 py-2 pl-4 pr-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
+              No sensitive data by email.
+              <span className="sr-only">
+                Do not send passwords, payment details, ID documents, precise
+                location, private profile information, or private message
+                screenshots by email.
+              </span>
             </p>
             <a
               href={launchEmailLinks.supportQuestion}
@@ -106,7 +170,7 @@ const Faqs = () => {
             </a>
           </aside>
 
-          <div className="divide-y divide-white/10 border-y border-white/12">
+          <div className="divide-y divide-white/10 border-y border-white/12 rounded-lg bg-[#1a0d27]/62 px-4 shadow-xl shadow-black/15 sm:px-5">
             {faqData.map((faq, index) => {
               const isOpen = openFaq === index;
               const Icon = faq.icon;
@@ -124,7 +188,7 @@ const Faqs = () => {
                     className="grid min-h-16 w-full cursor-pointer gap-4 py-5 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-5"
                   >
                     <span
-                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition duration-200 ${
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-white transition duration-200 ${
                         isOpen
                           ? "bg-gradient-to-br from-[#F4376D] to-[#8d69f6]"
                           : "bg-[#2e1e5a]/65"
@@ -141,7 +205,7 @@ const Faqs = () => {
                       </span>
                     </span>
                     <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#2e1e5a]/65 text-[#f0b6df] transition-transform duration-300 ${
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a]/65 text-[#f0b6df] transition-transform duration-300 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                       aria-hidden="true"
@@ -163,7 +227,8 @@ const Faqs = () => {
                   >
                     <div className="overflow-hidden">
                       <p className="pb-6 text-base leading-7 text-[#d7c7ed] sm:ml-16">
-                        {faq.answer}
+                        {faq.shortAnswer}
+                        <span className="sr-only"> {faq.answer}</span>
                       </p>
                     </div>
                   </div>

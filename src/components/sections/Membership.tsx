@@ -15,8 +15,10 @@ import {
 const plans = [
   {
     name: "Filipina Waitlist",
+    displayName: "Free",
     id: "filipina-waitlist",
     label: "No-card waitlist",
+    shortDecision: "Launch timing first.",
     decision: "Best first step if you want launch timing before sharing profile details.",
     price: "Free waitlist",
     priceDetail: "no payment step",
@@ -27,16 +29,18 @@ const plans = [
     subject: "PinayMate waitlist - Filipina access",
     cta: "Join free waitlist",
     features: [
-      "Launch update emails",
-      "Profile setup guidance",
-      "Verification review path",
-      "Community access updates when ready",
+      { label: "Updates", detail: "Launch update emails" },
+      { label: "Setup", detail: "Profile setup guidance" },
+      { label: "Review", detail: "Verification review path" },
+      { label: "Community", detail: "Community access updates when ready" },
     ],
   },
   {
     name: "Gold Interest",
+    displayName: "Gold",
     id: "gold-interest",
     label: "Most relevant for serious search",
+    shortDecision: "Curated discovery focus.",
     decision: "Best fit if curated discovery, clearer preferences, and support expectations matter most.",
     price: "Gold interest",
     priceDetail: "interest only",
@@ -47,16 +51,18 @@ const plans = [
     subject: "PinayMate waitlist - Gold interest",
     cta: "Register Gold interest",
     features: [
-      "Messaging direction when launched",
-      "Advanced preference filters",
-      "Profile presentation options",
-      "Support response model direction",
+      { label: "Messaging", detail: "Messaging direction when launched" },
+      { label: "Filters", detail: "Advanced preference filters" },
+      { label: "Profile", detail: "Profile presentation options" },
+      { label: "Support", detail: "Support response model direction" },
     ],
   },
   {
     name: "Platinum Interest",
+    displayName: "VIP",
     id: "platinum-interest",
     label: "VIP feature direction",
+    shortDecision: "Priority support signal.",
     decision: "Best fit if you want priority support expectations and profile-quality review considered for early access.",
     price: "VIP interest",
     priceDetail: "interest only",
@@ -67,25 +73,65 @@ const plans = [
     subject: "PinayMate waitlist - Platinum interest",
     cta: "Register VIP interest",
     features: [
-      "Gold feature direction plus",
-      "Profile quality review interest",
-      "Badge policy direction after review",
-      "Translation feature interest",
+      { label: "Gold+", detail: "Gold feature direction plus" },
+      { label: "Quality", detail: "Profile quality review interest" },
+      { label: "Badges", detail: "Badge policy direction after review" },
+      { label: "Translate", detail: "Translation feature interest" },
     ],
   },
 ];
 
 const launchBoundaries = [
-  "No card or charge",
-  "No app account or dating profile created",
-  "No match request or matching session starts today",
-  "Matching starts in the app",
+  {
+    label: "No card",
+    detail: "No card or charge",
+  },
+  {
+    label: "No profile",
+    detail: "No app account or dating profile created",
+  },
+  {
+    label: "No match",
+    detail: "No match request or matching session starts today",
+  },
+  {
+    label: "App only",
+    detail: "Matching starts in the app",
+  },
 ];
 
 const decisionPrompts = [
-  "Start free if you only want launch timing and access updates.",
-  "Choose Gold interest if curated discovery is your main launch concern.",
-  "Choose Platinum interest if support expectations and profile quality matter most.",
+  {
+    label: "Start free",
+    detail: "Start free if you only want launch timing and access updates.",
+  },
+  {
+    label: "Choose Gold",
+    detail: "Choose Gold interest if curated discovery is your main launch concern.",
+  },
+  {
+    label: "Choose Platinum",
+    detail:
+      "Choose Platinum interest if support expectations and profile quality matter most.",
+  },
+];
+
+const tierVisuals = [
+  [
+    { height: "h-10", opacity: "opacity-45" },
+    { height: "h-16", opacity: "opacity-90" },
+    { height: "h-8", opacity: "opacity-45" },
+  ],
+  [
+    { height: "h-14", opacity: "opacity-45" },
+    { height: "h-24", opacity: "opacity-90" },
+    { height: "h-12", opacity: "opacity-45" },
+  ],
+  [
+    { height: "h-20", opacity: "opacity-45" },
+    { height: "h-28", opacity: "opacity-90" },
+    { height: "h-16", opacity: "opacity-45" },
+  ],
 ];
 
 const Membership = () => {
@@ -102,9 +148,12 @@ const Membership = () => {
             Clear membership interest, not a live checkout.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[#e3dcf9]">
-            These tiers explain the intended membership model. The current
-            action is email interest only, so pricing expectations stay clear
-            without suggesting signup, checkout, billing, or active matching.
+            Pricing direction without signup pressure.
+            <span className="sr-only">
+              These tiers explain the intended membership model. The current
+              action is email interest only, so pricing expectations stay clear
+              without suggesting signup, checkout, billing, or active matching.
+            </span>
           </p>
         </div>
 
@@ -117,12 +166,13 @@ const Membership = () => {
               <article
                 key={plan.name}
                 aria-labelledby={`${plan.id}-title`}
-                className={`flex min-h-full flex-col rounded-lg border p-5 shadow-2xl transition duration-200 sm:p-6 ${
+                className={`flex min-h-full flex-col overflow-hidden rounded-lg border shadow-xl transition duration-200 ${
                   isFeatured
                     ? "border-[#ef3e78]/55 bg-[#21132f]/92 shadow-[#ef3e78]/12"
                     : "border-[#f0b6df]/14 bg-[#1a0d27]/78 shadow-black/15 hover:border-[#f0b6df]/32"
                 }`}
               >
+                <div className="border-b border-[#f0b6df]/12 p-5 sm:p-6">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex items-center gap-3">
                     <div
@@ -131,76 +181,116 @@ const Membership = () => {
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f0b6df]">
-                      {String(index + 1).padStart(2, "0")}
+                      Tier {String(index + 1).padStart(2, "0")}
+                      <span className="sr-only">. {plan.label}</span>
                     </p>
                   </div>
                   {isFeatured && (
-                    <span className="rounded-full bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold uppercase text-white shadow-lg shadow-[#ef3e78]/20">
+                    <span className="rounded-lg bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold uppercase text-white shadow-lg shadow-[#ef3e78]/20">
                       Best fit
                     </span>
                   )}
                 </div>
 
                 <div className="mt-6">
-                  <p className="text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f0b6df]">
-                    {plan.label}
-                  </p>
                   <h3
                     id={`${plan.id}-title`}
-                    className="mt-3 font-lora text-3xl font-bold leading-tight text-white"
+                    className="font-lora text-4xl font-bold leading-tight text-white"
                   >
-                    {plan.name}
+                    {plan.displayName}
+                    <span className="sr-only">. {plan.name}</span>
                   </h3>
-                  <p className="mt-3 text-sm font-dm-sans-semibold leading-6 text-[#f8f5ff]">
-                    {plan.decision}
+                  <p className="mt-3 text-sm font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                    {plan.shortDecision}
+                    <span className="sr-only"> {plan.decision}</span>
                   </p>
                 </div>
+                </div>
 
-                <div className="mt-6 border-y border-[#f0b6df]/12 py-5">
-                  <p className="font-dm-sans-bold text-3xl leading-tight text-white">
-                    {plan.price}
-                  </p>
-                  <p className="mt-1 text-sm font-dm-sans-bold text-[#f0b6df]">
-                    {plan.priceDetail}
-                  </p>
+                <div className="px-5 py-5 sm:px-6">
+                  <div className="grid h-32 grid-cols-3 items-end gap-2" aria-hidden="true">
+                    {tierVisuals[index].map((bar, barIndex) => (
+                      <span
+                        key={`${plan.id}-${barIndex}`}
+                        className={`${bar.height} ${bar.opacity} rounded-lg bg-gradient-to-t ${plan.tone}`}
+                      />
+                    ))}
+                  </div>
+                  <div className="mt-5 grid grid-cols-2 gap-2">
+                    <p className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2">
+                      <span className="block text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f0b6df]">
+                        Access
+                      </span>
+                      <span className="mt-1 block font-dm-sans-bold text-white">
+                        {plan.price}
+                      </span>
+                    </p>
+                    <p className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2">
+                      <span className="block text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f0b6df]">
+                        Today
+                      </span>
+                      <span className="mt-1 block font-dm-sans-bold text-white">
+                        {plan.priceDetail}
+                      </span>
+                    </p>
+                  </div>
                   {plan.plannedPrice ? (
-                    <div className="mt-4 border-l border-[#f0b6df]/35 pl-3">
-                      <p className="text-xs font-dm-sans-bold uppercase text-[#f0b6df]">
+                    <div className="mt-3 rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/48 px-3 py-2">
+                      <p className="text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f0b6df]">
                         Planned pricing, not checkout
                       </p>
-                      <p className="mt-1 text-base font-dm-sans-bold text-white">
+                      <p className="mt-1 text-sm font-dm-sans-bold text-white">
                         {plan.plannedPrice}
                       </p>
                     </div>
                   ) : null}
-                  <p className="mt-4 text-sm leading-6 text-[#c5b1e4]">
-                    {plan.note}
+                  <p className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                    Interest only
+                    <span className="sr-only"> {plan.note}</span>
                   </p>
                 </div>
 
-                <div className="mt-6 flex flex-1 flex-col gap-5">
-                  <ul className="grid gap-3">
+                <div className="flex flex-1 flex-col gap-5 px-5 pb-5 sm:px-6 sm:pb-6">
+                  <ul className="grid grid-cols-4 gap-2">
                     {plan.features.map((feature) => (
                       <li
-                        key={feature}
-                        className="flex items-start gap-3 text-sm leading-6 text-[#f8f5ff]"
+                        key={feature.label}
+                        className="min-h-16 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 p-2 text-center"
                       >
-                        <CheckCircleIcon />
-                        {feature}
+                        <span className="mx-auto flex justify-center">
+                          <CheckCircleIcon />
+                        </span>
+                        <span className="mt-2 block text-[0.66rem] font-dm-sans-bold uppercase tracking-[0.08em] text-[#f6d0f1]">
+                          {feature.label}
+                        </span>
+                        <span className="sr-only">{feature.detail}</span>
                       </li>
                     ))}
                   </ul>
 
                   <p
                     id={`${plan.id}-action-note`}
-                    className="mt-auto border-t border-[#f0b6df]/12 pt-4 text-xs leading-5 text-[#e3dcf9]"
+                    className="mt-auto border-t border-[#f0b6df]/12 pt-4"
                   >
-                    Opens a plan-interest email only. It does not create an app
-                    account, dating profile, match request, matching session,
-                    checkout step, or payment record. This is plan-interest
-                    email only. Do not include payment details, ID documents,
-                    location, or private profile information.{" "}
-                    {PLAN_INTEREST_EMAIL_WARNING}
+                    <span className="grid gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                      <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                        Email only
+                      </span>
+                      <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                        Not checkout
+                      </span>
+                      <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                        No payment
+                      </span>
+                    </span>
+                    <span className="sr-only">
+                      Opens a plan-interest email only. It does not create an app
+                      account, dating profile, match request, matching session,
+                      checkout step, or payment record. This is plan-interest
+                      email only. Do not include payment details, ID documents,
+                      location, or private profile information.{" "}
+                      {PLAN_INTEREST_EMAIL_WARNING}
+                    </span>
                   </p>
 
                   <a
@@ -229,31 +319,40 @@ const Membership = () => {
           <ul className="mt-4 grid gap-3 lg:grid-cols-3">
             {decisionPrompts.map((prompt) => (
               <li
-                key={prompt}
-                className="flex min-h-14 items-start gap-3 border-l border-white/14 pl-4 text-sm leading-6 text-[#f8f5ff]"
+                key={prompt.label}
+                className="rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/58 p-4 text-sm leading-6 text-[#f8f5ff]"
               >
-                <CheckCircleIcon />
-                <span>{prompt}</span>
+                <span className="flex items-center gap-3 font-dm-sans-bold">
+                  <CheckCircleIcon />
+                  {prompt.label}
+                  <span className="sr-only">: {prompt.detail}</span>
+                </span>
+                <span className="mt-3 grid grid-cols-3 gap-2" aria-hidden="true">
+                  <span className="h-2 rounded-lg bg-[#ef3e78]/35" />
+                  <span className="h-2 rounded-lg bg-[#8d69f6]/28" />
+                  <span className="h-2 rounded-lg bg-[#5c83e9]/24" />
+                </span>
               </li>
             ))}
           </ul>
         </div>
 
         <div
-          className="mt-8 grid gap-3 border-y border-white/10 py-5 sm:grid-cols-3"
+          className="mt-8 grid gap-3 border-y border-[#f0b6df]/12 py-5 sm:grid-cols-3"
           aria-label="Current membership boundaries"
         >
           {launchBoundaries.map((boundary) => (
             <div
-              key={boundary}
-              className="flex min-h-12 items-center justify-center text-center text-sm font-dm-sans-bold text-[#f8f5ff]"
+              key={boundary.label}
+              className="flex min-h-16 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/42 px-4 py-3 text-center text-sm font-dm-sans-bold text-[#f8f5ff]"
             >
-              {boundary}
+              {boundary.label}
+              <span className="sr-only">: {boundary.detail}</span>
             </div>
           ))}
         </div>
 
-        <div className="mt-8 border-l-2 border-[#f0b6df] bg-[#2e1e5a]/45 py-1 pl-5 pr-3 text-white sm:pl-6">
+        <div className="mt-8 rounded-lg border border-[#f0b6df]/18 bg-gradient-to-br from-[#2e1e5a]/62 via-[#21132f]/70 to-[#170f22] p-5 text-white sm:p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a] text-white">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" />
@@ -262,11 +361,22 @@ const Membership = () => {
               <h3 className="font-lora text-2xl font-bold">
                 Pricing notice
               </h3>
-              <p className="mt-2 text-base leading-7 text-[#d7c7ed]">
-                Paid plans should not be treated as purchased, active, or
-                guaranteed until final plan details, checkout terms,
-                cancellation/refund policy, support coverage, and billing
-                provider flow are visible and confirmed.
+              <p className="mt-3 grid gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:grid-cols-3">
+                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 px-3 py-2 text-center">
+                  Not purchased
+                </span>
+                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 px-3 py-2 text-center">
+                  Not active
+                </span>
+                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 px-3 py-2 text-center">
+                  Not guaranteed
+                </span>
+                <span className="sr-only">
+                  Paid plans should not be treated as purchased, active, or
+                  guaranteed until final plan details, checkout terms,
+                  cancellation/refund policy, support coverage, and billing
+                  provider flow are visible and confirmed.
+                </span>
               </p>
             </div>
           </div>

@@ -177,7 +177,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+      className="fixed inset-0 z-50 flex animate-fadeIn items-center justify-center bg-black/72 p-4 backdrop-blur-md"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -191,17 +191,17 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         aria-labelledby={`legal-modal-title-${type}`}
         aria-describedby={`legal-modal-description-${type}`}
         tabIndex={-1}
-        className="bg-gradient-to-br from-[#1a202c] via-[#283040] to-[#1a202c] rounded-xl max-w-4xl w-full max-h-[min(90dvh,48rem)] overflow-hidden border border-[#8D99B2]/20 shadow-2xl animate-slideInUp"
+        className="max-h-[min(90dvh,48rem)] w-full max-w-4xl animate-slideInUp overflow-hidden rounded-lg border border-[#f0b6df]/18 bg-gradient-to-br from-[#1a0d27] via-[#21132f] to-[#120a1b] shadow-xl shadow-black/35"
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#F4376D]/10 via-[#A855F7]/10 to-[#3B82F6]/10 border-b border-[#8D99B2]/20 p-6 flex items-center justify-between sticky top-0 backdrop-blur-lg z-10">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#f0b6df]/14 bg-[#1a0d27]/92 p-5 backdrop-blur-lg sm:p-6">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-[#F4376D] via-[#A855F7] to-[#3B82F6] rounded-lg flex items-center justify-center shadow-lg">
-              <IconComponent className="w-6 h-6 text-white" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-[#F4376D] to-[#8d69f6] text-white shadow-lg shadow-[#F4376D]/18">
+              <IconComponent className="h-6 w-6 text-white" />
             </div>
             <h2
               id={`legal-modal-title-${type}`}
-              className="text-2xl md:text-3xl font-dm-sans-black text-white"
+              className="text-2xl font-dm-sans-black text-white md:text-3xl"
             >
               {selectedContent.title}
             </h2>
@@ -209,22 +209,22 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           <button
             onClick={onClose}
             aria-label={`Close ${selectedContent.title}`}
-            className="w-11 h-11 bg-[#283040] hover:bg-[#F4376D] rounded-lg flex items-center justify-center transition-all duration-300 group border border-[#8D99B2]/20 hover:border-[#F4376D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4376D]"
+            className="group flex h-11 w-11 items-center justify-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/65 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#F4376D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4376D]"
           >
-            <X className="w-5 h-5 text-[#C8B5E6] group-hover:text-white transition-colors" />
+            <X className="h-5 w-5 text-[#f0b6df] transition-colors group-hover:text-white" />
           </button>
         </div>
 
         {/* Content */}
         <div className="overflow-y-auto max-h-[calc(min(90dvh,48rem)-100px)] p-5 space-y-7 sm:p-6 sm:space-y-8">
-          <div className="bg-gradient-to-r from-[#F4376D]/5 via-[#A855F7]/5 to-[#3B82F6]/5 border border-[#F4376D]/20 rounded-lg p-6">
-            <p className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed">
+          <div className="rounded-lg border border-[#f0b6df]/16 bg-[#2e1e5a]/42 p-5 sm:p-6">
+            <p className="font-dm-sans-regular leading-relaxed text-[#d7c7ed]">
               <strong className="text-white">Last Updated:</strong> June 11,
               2026
             </p>
             <p
               id={`legal-modal-description-${type}`}
-              className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed mt-2"
+              className="mt-2 font-dm-sans-regular leading-relaxed text-[#d7c7ed]"
             >
               Please read this {selectedContent.title.toLowerCase()} carefully.
               The current site is a waitlist and support surface, so terms may
@@ -239,25 +239,25 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-r from-[#F4376D] to-[#A855F7] text-sm font-bold text-white">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-bold text-white shadow-md shadow-[#ef3e78]/18">
                   {index + 1}
                 </div>
                 <h3 className="text-xl font-dm-sans-bold text-white">
                   {section.title}
                 </h3>
               </div>
-              <p className="pl-0 text-[#C8B5E6] font-dm-sans-regular leading-relaxed sm:pl-11">
+              <p className="pl-0 font-dm-sans-regular leading-relaxed text-[#d7c7ed] sm:pl-11">
                 {section.content}
               </p>
             </div>
           ))}
 
           {/* Contact Section */}
-          <div className="bg-gradient-to-r from-[#F4376D]/10 via-[#A855F7]/10 to-[#3B82F6]/10 border border-[#F4376D]/30 rounded-lg p-6 mt-8">
+          <div className="mt-8 rounded-lg border border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/62 via-[#21132f]/72 to-[#170f22] p-5 sm:p-6">
             <h3 className="text-xl font-dm-sans-bold text-white mb-4">
               Questions or Concerns?
             </h3>
-            <p className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed mb-4">
+            <p className="mb-4 font-dm-sans-regular leading-relaxed text-[#d7c7ed]">
               If you have any questions about our{" "}
               {selectedContent.title.toLowerCase()}, contact the launch support
               team:
@@ -266,15 +266,15 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               <a
                 href={launchEmailLinks.legalQuestion}
                 aria-label="Email PinayMate legal support"
-                className="inline-flex min-h-11 items-center space-x-2 rounded-xl text-[#ff8fb8] hover:text-white transition-colors font-dm-sans-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-11 items-center space-x-2 rounded-lg text-[#ff8fb8] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] font-dm-sans-bold"
               >
                 <span>legal@pinaymate.com</span>
               </a>
-              <span className="text-[#8D99B2] hidden sm:block">•</span>
+              <span className="hidden text-[#7d6f91] sm:block">•</span>
               <a
                 href={launchEmailLinks.supportQuestion}
                 aria-label="Email PinayMate support"
-                className="inline-flex min-h-11 items-center space-x-2 rounded-xl text-[#cbb2ff] hover:text-white transition-colors font-dm-sans-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-11 items-center space-x-2 rounded-lg text-[#cbb2ff] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] font-dm-sans-bold"
               >
                 <span>support@pinaymate.com</span>
               </a>

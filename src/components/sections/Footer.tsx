@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { CheckCircle, Heart, Mail, MapPin, Shield } from "lucide-react";
+import {
+  ArrowUpRight,
+  CheckCircle,
+  Heart,
+  Mail,
+  MapPin,
+  Shield,
+} from "lucide-react";
 import LegalModal from "../modals/LegalModal";
 import {
   LEGAL_EMAIL,
@@ -29,6 +36,24 @@ const Footer: React.FC = () => {
     { name: "Waitlist", href: "#download" },
   ];
 
+  const footerSignals = ["Intent", "Review", "Privacy"];
+  const contactLinks = [
+    {
+      href: launchEmailLinks.launchSupport,
+      label: "Support",
+      value: SUPPORT_EMAIL,
+      ariaLabel: "Email PinayMate launch support",
+      icon: Mail,
+    },
+    {
+      href: launchEmailLinks.legalQuestion,
+      label: "Legal",
+      value: LEGAL_EMAIL,
+      ariaLabel: "Email PinayMate legal and privacy team",
+      icon: Shield,
+    },
+  ];
+
   return (
     <>
       <footer className="relative overflow-hidden bg-[#120a1b] text-white">
@@ -37,7 +62,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
-          <div className="grid gap-10 border-b border-white/10 py-12 md:grid-cols-[1.1fr_0.8fr_1fr] lg:py-14">
+          <div className="grid gap-6 border-b border-[#f0b6df]/12 py-12 md:grid-cols-[1.2fr_0.65fr_1.15fr] lg:gap-8 lg:py-14">
             <div className="space-y-5">
               <div className="flex items-center gap-3">
                 <div className="relative h-11 w-11">
@@ -57,19 +82,45 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <p className="max-w-sm text-sm leading-6 text-[#d7c7ed]">
-                PinayMate helps people approach Filipino dating with clearer
-                intent, safer introductions, and more respectful first steps.
+              <p className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]">
+                Intent. Safety. Respect.
+                <span className="sr-only">
+                  PinayMate helps people approach Filipino dating with clearer
+                  intent, safer introductions, and more respectful first steps.
+                </span>
               </p>
 
+              <div
+                className="rounded-lg border border-[#f0b6df]/12 bg-[#1a0d27]/55 p-4"
+                aria-hidden="true"
+              >
+                <div className="grid grid-cols-3 gap-2">
+                  {footerSignals.map((signal, index) => (
+                    <div key={signal} className="min-h-20 rounded-lg bg-[#2e1e5a]/45 p-3">
+                      <span
+                        className={`block h-2 rounded-lg ${
+                          index === 0
+                            ? "bg-[#ef3e78]"
+                            : index === 1
+                              ? "bg-[#8d69f6]"
+                              : "bg-[#5c83e9]"
+                        }`}
+                      />
+                      <span className="mt-3 block h-2 rounded-lg bg-[#f0b6df]/20" />
+                      <span className="mt-2 block h-2 w-2/3 rounded-lg bg-[#f0b6df]/14" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div className="flex flex-wrap gap-2">
-                <div className="flex items-center gap-1.5 rounded-full border border-[#22a574]/20 bg-[#22a574]/10 px-3 py-1.5">
+                <div className="flex items-center gap-1.5 rounded-lg border border-[#22a574]/20 bg-[#22a574]/10 px-3 py-1.5">
                   <CheckCircle className="h-3.5 w-3.5 text-[#49d49a]" aria-hidden="true" />
                   <span className="text-xs font-dm-sans-semibold text-[#aaf1cf]">
                     Review cues
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 rounded-full border border-[#5c83e9]/25 bg-[#5c83e9]/10 px-3 py-1.5">
+                <div className="flex items-center gap-1.5 rounded-lg border border-[#5c83e9]/25 bg-[#5c83e9]/10 px-3 py-1.5">
                   <Shield className="h-3.5 w-3.5 text-[#91b1ff]" aria-hidden="true" />
                   <span className="text-xs font-dm-sans-semibold text-[#cddcff]">
                     Safety first
@@ -80,14 +131,15 @@ const Footer: React.FC = () => {
 
             <div>
               <h3 className="font-dm-sans-bold text-base text-white">Navigate</h3>
-              <div className="mt-4 grid grid-cols-2 gap-2">
+              <div className="mt-4 grid grid-cols-2 gap-2 md:grid-cols-1 xl:grid-cols-2">
                 {quickLinks.map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className="inline-flex min-h-11 items-center rounded-lg px-1 text-sm font-dm-sans-semibold text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                    className="inline-flex min-h-11 items-center justify-between gap-2 rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/50 px-3 text-sm font-dm-sans-semibold text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/28 hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
                   >
                     {link.name}
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </a>
                 ))}
               </div>
@@ -95,32 +147,62 @@ const Footer: React.FC = () => {
 
             <div>
               <h3 className="font-dm-sans-bold text-base text-white">Contact</h3>
-              <div className="mt-4 space-y-3">
-                <a
-                  href={launchEmailLinks.launchSupport}
-                  aria-label="Email PinayMate launch support"
-                  className="flex min-h-11 items-center gap-2 rounded-lg text-sm text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
-                >
-                  <Mail className="h-4 w-4" aria-hidden="true" />
-                  <span className="font-dm-sans-semibold">{SUPPORT_EMAIL}</span>
-                </a>
-                <a
-                  href={launchEmailLinks.legalQuestion}
-                  aria-label="Email PinayMate legal and privacy team"
-                  className="flex min-h-11 items-center gap-2 rounded-lg text-sm text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
-                >
-                  <Shield className="h-4 w-4" aria-hidden="true" />
-                  <span className="font-dm-sans-semibold">{LEGAL_EMAIL}</span>
-                </a>
-                <div className="flex items-center gap-2 text-sm text-[#d7c7ed]">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+                {contactLinks.map((link) => {
+                  const Icon = link.icon;
+
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      aria-label={link.ariaLabel}
+                      className="rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/50 p-3 text-sm text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/28 hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                    >
+                      <span className="flex items-center justify-between gap-3">
+                        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#2e1e5a]/70 text-[#f3c7de]">
+                          <Icon className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                      </span>
+                      <span className="mt-3 block font-dm-sans-bold text-white">
+                        {link.label}
+                      </span>
+                      <span className="sr-only">{link.value}</span>
+                    </a>
+                  );
+                })}
+                <div className="rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/50 p-3 text-sm text-[#d7c7ed] sm:col-span-2 md:col-span-1 xl:col-span-2">
+                  <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" aria-hidden="true" />
-                  <span>Philippines, US, and launch-market members</span>
+                    <span className="font-dm-sans-bold text-white">
+                      Launch markets
+                    </span>
+                  </div>
+                  <div className="mt-3 grid grid-cols-3 gap-2" aria-hidden="true">
+                    <span className="h-8 rounded-lg bg-[#ef3e78]/24" />
+                    <span className="h-8 rounded-lg bg-[#8d69f6]/22" />
+                    <span className="h-8 rounded-lg bg-[#5c83e9]/18" />
+                  </div>
+                  <span className="sr-only">
+                    Philippines, US, and launch-market members
+                  </span>
                 </div>
               </div>
 
-              <div className="mt-5 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 p-4 text-sm leading-6 text-[#d7c7ed]">
-                Store, social, and community links will appear when those public
-                channels are available for members.
+              <div className="mt-5 grid gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:grid-cols-3">
+                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-center">
+                  Store
+                </span>
+                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-center">
+                  Social
+                </span>
+                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-center">
+                  Community
+                </span>
+                <span className="sr-only">
+                  Store, social, and community links will appear when those public
+                  channels are available for members.
+                </span>
               </div>
             </div>
           </div>
@@ -135,7 +217,7 @@ const Footer: React.FC = () => {
                 type="button"
                 onClick={() => openLegalModal("privacy")}
                 aria-label="Open PinayMate privacy notice"
-                className="min-h-11 text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="min-h-11 rounded-lg px-2 text-[#d7c7ed] transition-colors hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 Privacy
               </button>
@@ -144,7 +226,7 @@ const Footer: React.FC = () => {
                 type="button"
                 onClick={() => openLegalModal("terms")}
                 aria-label="Open PinayMate terms notice"
-                className="min-h-11 text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="min-h-11 rounded-lg px-2 text-[#d7c7ed] transition-colors hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 Terms
               </button>
