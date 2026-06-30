@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   ArrowRight,
   CheckCircle2,
@@ -56,29 +55,6 @@ const trustFlow = [
 ];
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
-
-  useEffect(() => {
-    const section = document.getElementById("about");
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="about"
@@ -90,11 +66,7 @@ const About = () => {
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
-        <div
-          className={`grid items-center gap-12 transition-all duration-700 motion-reduce:transform-none motion-reduce:transition-none lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-          }`}
-        >
+        <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <div className="max-w-2xl">
             <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/12 bg-white/[0.07] px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
               <HeartHandshake className="h-4 w-4" aria-hidden="true" />
