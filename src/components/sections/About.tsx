@@ -11,26 +11,38 @@ import {
 const trustPoints = [
   {
     icon: ShieldCheck,
-    title: "Profile review first",
+    title: "Review",
     copy: "Helpful prompts and safety-first onboarding help members understand what to complete before starting a conversation.",
   },
   {
     icon: Sparkles,
-    title: "Intent-led matching",
+    title: "Intent",
     copy: "Profiles emphasize values, family goals, lifestyle, and relationship intent instead of only swipe-level attraction.",
   },
   {
     icon: MessageCircle,
-    title: "Conversations with context",
+    title: "Context",
     copy: "Prompt and profile-detail direction helps first messages feel easier, warmer, and more useful when chat is live.",
   },
 ];
 
 const memberSignals = [
-  "Review cues",
-  "Goals first",
-  "Culture fit",
-  "Mobile chat",
+  {
+    label: "Review",
+    detail: "Review cues",
+  },
+  {
+    label: "Goals",
+    detail: "Goals first",
+  },
+  {
+    label: "Culture",
+    detail: "Culture fit",
+  },
+  {
+    label: "Mobile",
+    detail: "Mobile chat",
+  },
 ];
 
 const connectionVisual = [
@@ -74,15 +86,15 @@ const credibilityStats = [
 
 const trustFlow = [
   {
-    label: "Choose platform",
+    label: "Platform",
     detail: "Join by platform preference",
   },
   {
-    label: "Get updates",
+    label: "Updates",
     detail: "Get access and safety updates",
   },
   {
-    label: "Open in app",
+    label: "App",
     detail: "Create a profile inside the app when access is available",
   },
 ];
@@ -103,14 +115,17 @@ const About = () => {
           <div className="max-w-2xl">
             <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
               <HeartHandshake className="h-4 w-4" aria-hidden="true" />
-              Filipino dating product direction, built around trust
+              Trust direction
+              <span className="sr-only">
+                . Filipino dating product direction, built around trust
+              </span>
             </div>
 
             <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
               A calmer path from interest to real connection.
             </h2>
 
-            <p className="mt-6 text-lg leading-8 text-[#d7c7ed] sm:text-xl">
+            <p className="mt-6 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#d7c7ed]">
               Intent. Review. Context.
               <span className="sr-only">
                 Clear intent. Safer pacing. Less noise before anyone starts a
@@ -135,7 +150,8 @@ const About = () => {
                 href="#features"
                 className="inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-6 py-3 font-dm-sans-bold text-white shadow-lg shadow-[#F4376D]/20 transition duration-200 hover:bg-[#d7346b] hover:shadow-[#F4376D]/30 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3f6fe4]"
               >
-                See how it works
+                How it works
+                <span className="sr-only">. See how it works</span>
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
@@ -143,20 +159,21 @@ const About = () => {
                 aria-describedby="about-membership-note"
                 className="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-6 py-3 font-dm-sans-bold text-[#eadff7] shadow-sm transition duration-200 hover:border-[#f0b6df]/70 hover:bg-[#3b2255]/75 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
-                Review planned memberships
+                Memberships
+                <span className="sr-only">. Review planned memberships</span>
               </a>
             </div>
             <p
               id="about-membership-note"
-              className="mt-3 flex flex-wrap gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]"
+              className="mt-4 grid max-w-xl grid-cols-3 border-y border-[#f0b6df]/12 py-3 text-xs font-dm-sans-bold text-[#f3c7de]"
             >
-              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/36 px-3 py-2">
+              <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
                 Interest only
               </span>
-              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/36 px-3 py-2">
+              <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
                 No matching
               </span>
-              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/36 px-3 py-2">
+              <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
                 No checkout
               </span>
               <span className="sr-only">
@@ -168,14 +185,15 @@ const About = () => {
             <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4">
               {memberSignals.map((signal) => (
                 <div
-                  key={signal}
-                  className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 p-3 text-sm font-dm-sans-semibold text-[#eadff7]"
+                  key={signal.label}
+                  className="min-h-16 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 p-3 text-center text-sm font-dm-sans-semibold text-[#eadff7]"
                 >
                   <CheckCircle2
-                    className="mb-2 h-4 w-4 text-[#22a574]"
+                    className="mx-auto mb-2 h-4 w-4 text-[#22a574]"
                     aria-hidden="true"
                   />
-                  {signal}
+                  {signal.label}
+                  <span className="sr-only">. {signal.detail}</span>
                 </div>
               ))}
             </div>
@@ -198,22 +216,23 @@ const About = () => {
             </dl>
 
             <div className="mt-8 border-t border-white/12 pt-6">
-              <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
-                The access path
+              <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
+                Path
+                <span className="sr-only">. The access path</span>
               </p>
-              <ol className="mt-4 grid gap-3 sm:grid-cols-3">
+              <ol className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
                 {trustFlow.map((step, index) => (
                   <li
                     key={step.label}
-                    className="flex min-h-20 items-center gap-3 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 p-4 text-sm leading-6 text-[#eadff7]"
+                    className="min-h-16 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-xs font-dm-sans-bold text-[#eadff7] first:border-l-0"
                   >
                     <span
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ef3e78] text-sm font-dm-sans-bold text-white"
+                      className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ef3e78] text-sm font-dm-sans-bold text-white"
                       aria-hidden="true"
                     >
                       {index + 1}
                     </span>
-                    <span>
+                    <span className="mt-2 block">
                       {step.label}
                       <span className="sr-only">: {step.detail}</span>
                     </span>
@@ -241,7 +260,7 @@ const About = () => {
                       >
                         {item.value}
                       </span>
-                      <span className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f6d0f1]">
+                      <span className="text-xs font-dm-sans-bold text-[#f6d0f1]">
                         {item.label}
                       </span>
                     </div>
@@ -287,9 +306,9 @@ const About = () => {
                       <h3 className="font-lora text-xl font-bold text-white">
                         {point.title}
                       </h3>
-                      <p className="mt-2 text-sm font-dm-sans-bold uppercase tracking-[0.14em] text-[#f0b6df]">
+                      <p className="mt-2 text-sm font-dm-sans-bold text-[#f0b6df]">
                         Step {index + 1}
-                        <span className="sr-only">. {point.copy}</span>
+                        <span className="sr-only">. {point.title}. {point.copy}</span>
                       </p>
                     </div>
                   </div>
@@ -303,8 +322,9 @@ const About = () => {
                   <Users className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-sm font-dm-sans-bold uppercase text-[#f0b6df]">
-                    Product promise
+                  <p className="text-sm font-dm-sans-bold text-[#f0b6df]">
+                    Promise
+                    <span className="sr-only">. Product promise</span>
                   </p>
                   <p className="text-xl font-lora font-bold">
                     Less noise. Better signals.
@@ -325,7 +345,7 @@ const About = () => {
                 safety posture, and value before they choose to start a
                 conversation in the app.
               </p>
-              <p className="mt-4 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]">
+              <p className="mt-4 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
                 Intent before chat
                 <span className="sr-only">
                   . Better signals before conversation.

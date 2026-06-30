@@ -56,11 +56,11 @@ const formPromise = [
 
 const privacyPromise = [
   {
-    label: "Email only",
+    label: "Email",
     detail: "Email only",
   },
   {
-    label: "No password",
+    label: "No pass",
     detail: "No password",
   },
   {
@@ -75,7 +75,7 @@ const waitlistBoundaries = [
     detail: "Waitlist only",
   },
   {
-    label: "No account",
+    label: "No acct",
     detail: "No account created here",
   },
   {
@@ -84,7 +84,20 @@ const waitlistBoundaries = [
   },
 ];
 
-const waitlistExclusions = ["No photos", "No ID", "No payment"];
+const waitlistExclusions = [
+  {
+    label: "No photos",
+    detail: "No photos",
+  },
+  {
+    label: "No ID",
+    detail: "No ID",
+  },
+  {
+    label: "No pay",
+    detail: "No payment",
+  },
+];
 
 function getUserMessage(
   result: WaitlistBackendResult | null,
@@ -151,8 +164,9 @@ export function WaitlistCaptureForm() {
             <Sparkles className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
-            <p className="text-xs font-dm-sans-bold uppercase text-[#f3c7de]">
-              Private waitlist
+            <p className="text-xs font-dm-sans-bold text-[#f3c7de]">
+              Waitlist
+              <span className="sr-only">. Private waitlist</span>
             </p>
             <p className="mt-1 font-dm-sans-bold text-white">
               Access signal
@@ -163,7 +177,7 @@ export function WaitlistCaptureForm() {
             </p>
             <p
               id="waitlist-form-boundary"
-              className="mt-3 grid grid-cols-3 gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]"
+              className="mt-3 grid grid-cols-3 gap-2 text-xs font-dm-sans-bold text-[#f6d0f1]"
             >
               <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-2 py-2 text-center">
                 Email
@@ -186,7 +200,7 @@ export function WaitlistCaptureForm() {
               {formPromise.map((item) => (
                 <span
                   key={item.label}
-                  className="min-h-16 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 p-3 text-center text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]"
+                  className="min-h-16 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 p-3 text-center text-xs font-dm-sans-bold text-[#f3c7de]"
                 >
                   <CheckCircle2
                     className="mx-auto h-4 w-4 text-[#49d49a]"
@@ -217,7 +231,7 @@ export function WaitlistCaptureForm() {
             {waitlistBoundaries.map((item) => (
               <div
                 key={item.label}
-                className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/34 px-2 py-2 text-center text-xs font-dm-sans-bold uppercase tracking-[0.1em] text-[#eadff7]"
+                className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/34 px-2 py-2 text-center text-xs font-dm-sans-bold text-[#eadff7]"
               >
                 <ShieldCheck
                   className="mx-auto h-4 w-4 shrink-0 text-[#f0b6df]"
@@ -240,7 +254,7 @@ export function WaitlistCaptureForm() {
         {privacyPromise.map((item) => (
           <span
             key={item.label}
-            className="min-h-12 rounded-lg border border-[#f0b6df]/12 bg-[#170f22]/78 px-2 py-2 text-center text-[0.68rem] font-dm-sans-bold uppercase tracking-[0.08em] text-[#f3c7de]"
+            className="min-h-12 rounded-lg border border-[#f0b6df]/12 bg-[#170f22]/78 px-2 py-2 text-center text-[0.68rem] font-dm-sans-bold text-[#f3c7de]"
           >
             <ShieldCheck
               className="mx-auto h-3.5 w-3.5 text-[#f0b6df]"
@@ -277,7 +291,7 @@ export function WaitlistCaptureForm() {
           />
           <span
             id="waitlist-email-helper"
-            className="text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#cbbade]"
+            className="text-xs font-dm-sans-bold text-[#cbbade]"
           >
             Inbox
             <span className="sr-only">
@@ -289,7 +303,8 @@ export function WaitlistCaptureForm() {
 
         <fieldset className="grid gap-2">
           <legend className="text-sm font-dm-sans-bold text-[#f3c7de]">
-            Platform
+            Phone
+            <span className="sr-only">. Platform</span>
           </legend>
           <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
             {platformOptions.map((option) => {
@@ -358,14 +373,15 @@ export function WaitlistCaptureForm() {
         <div className="grid grid-cols-3 gap-2">
           {waitlistExclusions.map((item) => (
             <span
-              key={item}
-              className="min-h-14 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-2 py-2 text-center text-[0.68rem] font-dm-sans-bold uppercase tracking-[0.08em] text-[#f3c7de]"
+              key={item.label}
+              className="min-h-14 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-2 py-2 text-center text-[0.68rem] font-dm-sans-bold text-[#f3c7de]"
             >
               <CheckCircle2
                 className="mx-auto h-3.5 w-3.5 text-[#49d49a]"
                 aria-hidden="true"
               />
-              <span className="mt-1.5 block">{item}</span>
+              <span className="mt-1.5 block">{item.label}</span>
+              <span className="sr-only">. {item.detail}</span>
             </span>
           ))}
         </div>
@@ -422,13 +438,14 @@ export function WaitlistCaptureForm() {
             className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-lg border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-5 py-3 font-dm-sans-bold text-white transition hover:border-[#f0b6df] hover:bg-[#3b2255]/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#2e1e5a] sm:flex-none"
           >
             <Mail className="h-5 w-5" aria-hidden="true" />
-            Continue by email
+            Email
+            <span className="sr-only">. Continue by email</span>
           </a>
         ) : null}
       </div>
 
       {shouldShowEmailFallback ? (
-        <p className="px-5 pb-3 text-sm font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:px-6">
+        <p className="px-5 pb-3 text-sm font-dm-sans-bold text-[#f6d0f1] sm:px-6">
           Same platform preference
           <span className="sr-only">
             Email keeps the waitlist open with the same platform preference.
@@ -440,7 +457,7 @@ export function WaitlistCaptureForm() {
         id="waitlist-form-status"
         className={`mx-5 mb-5 rounded-lg border sm:mx-6 sm:mb-6 ${
           !isSubmitting && !result
-            ? "inline-flex items-center gap-2 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em]"
+            ? "inline-flex items-center gap-2 px-3 py-2 text-xs font-dm-sans-bold"
             : "flex items-start gap-2 p-3 text-sm leading-6"
         } ${
           result?.ok

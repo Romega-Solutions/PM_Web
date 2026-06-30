@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
   const quickLinks = [
     { name: "Trust", href: "#about" },
     { name: "Safety", href: "#features" },
-    { name: "Membership", href: "#pricing" },
+    { name: "Plans", detail: "Membership", href: "#pricing" },
     { name: "Waitlist", href: "#download" },
   ];
 
@@ -76,15 +76,17 @@ const Footer: React.FC = () => {
                   <span className="block text-2xl font-hello-paris-bold text-white">
                     PinayMate
                   </span>
-                  <span className="text-xs font-dm-sans-semibold uppercase text-[#f0b6df]">
-                    Filipino-first dating platform
+                  <span className="text-xs font-dm-sans-semibold text-[#f0b6df]">
+                    Filipino-first dating
+                    <span className="sr-only"> platform</span>
                   </span>
                 </div>
               </div>
 
-              <p className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]">
-                Intent. Safety. Respect.
+              <p className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
+                Intent + safety
                 <span className="sr-only">
+                  . Intent. Safety. Respect.
                   PinayMate helps people approach Filipino dating with clearer
                   intent, safer introductions, and more respectful first steps.
                 </span>
@@ -130,7 +132,10 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="font-dm-sans-bold text-base text-white">Navigate</h3>
+              <h3 className="font-dm-sans-bold text-base text-white">
+                Explore
+                <span className="sr-only">. Navigate</span>
+              </h3>
               <div className="mt-4 grid grid-cols-2 gap-2 md:grid-cols-1 xl:grid-cols-2">
                 {quickLinks.map((link) => (
                   <a
@@ -139,6 +144,9 @@ const Footer: React.FC = () => {
                     className="inline-flex min-h-11 items-center justify-between gap-2 rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/50 px-3 text-sm font-dm-sans-semibold text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/28 hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
                   >
                     {link.name}
+                    {"detail" in link ? (
+                      <span className="sr-only">. {link.detail}</span>
+                    ) : null}
                     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </a>
                 ))}
@@ -146,7 +154,10 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="font-dm-sans-bold text-base text-white">Contact</h3>
+              <h3 className="font-dm-sans-bold text-base text-white">
+                Email
+                <span className="sr-only">. Contact</span>
+              </h3>
               <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
                 {contactLinks.map((link) => {
                   const Icon = link.icon;
@@ -175,7 +186,8 @@ const Footer: React.FC = () => {
                   <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" aria-hidden="true" />
                     <span className="font-dm-sans-bold text-white">
-                      Launch markets
+                      Markets
+                      <span className="sr-only">. Launch markets</span>
                     </span>
                   </div>
                   <div className="mt-3 grid grid-cols-3 gap-2" aria-hidden="true">
@@ -189,7 +201,7 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:grid-cols-3">
+              <div className="mt-5 grid gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
                 <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-center">
                   Store
                 </span>
@@ -234,7 +246,8 @@ const Footer: React.FC = () => {
 
             <p className="flex items-center gap-1 text-xs text-[#9b8fac]">
               <Heart className="h-3 w-3 text-[#F4376D]" fill="#F4376D" aria-hidden="true" />
-              Built for safer introductions
+              Safer intros
+              <span className="sr-only">. Built for safer introductions</span>
             </p>
           </div>
         </div>

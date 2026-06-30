@@ -30,10 +30,22 @@ const trustSignals = [
 ];
 
 const launchState = [
-  "Waitlist only",
-  "No profile today",
-  "No matching today",
-  "No payment today",
+  {
+    label: "Waitlist",
+    detail: "Waitlist only",
+  },
+  {
+    label: "No profile",
+    detail: "No profile today",
+  },
+  {
+    label: "No match",
+    detail: "No matching today",
+  },
+  {
+    label: "No pay",
+    detail: "No payment today",
+  },
 ];
 
 const conversionReasons = [
@@ -56,19 +68,19 @@ const conversionReasons = [
 
 const launchProof = [
   {
-    label: "Best for",
+    label: "Best",
     shortValue: "Serious intent",
-    value: "Filipinas and foreigners dating with long-term intent",
+    value: "Best for Filipinas and foreigners dating with long-term intent",
   },
   {
-    label: "First step",
-    shortValue: "Pick platform",
-    value: "Pick iOS or Android waitlist",
+    label: "First",
+    shortValue: "Platform",
+    value: "First step: Pick iOS or Android waitlist",
   },
   {
-    label: "Safety posture",
-    shortValue: "Review cues",
-    value: "Review-status cues before matching is promoted",
+    label: "Safety",
+    shortValue: "Review",
+    value: "Safety posture: Review-status cues before matching is promoted",
   },
 ];
 
@@ -94,22 +106,31 @@ const previewRows = [
 ];
 
 const matchNotes = [
-  "Relationship goals",
-  "Culture and location context",
-  "Review status before reach",
+  {
+    label: "Goals",
+    detail: "Relationship goals",
+  },
+  {
+    label: "Context",
+    detail: "Culture and location context",
+  },
+  {
+    label: "Review",
+    detail: "Review status before reach",
+  },
 ];
 
 const audiencePillars = [
   {
-    label: "Filipina-first",
+    label: "Filipina",
     detail: "Filipina-first onboarding",
   },
   {
-    label: "Foreigner context",
+    label: "Foreigner",
     detail: "Foreigner introduction context",
   },
   {
-    label: "Respectful chat",
+    label: "Respect",
     detail: "Respectful cross-cultural messaging",
   },
 ];
@@ -129,19 +150,27 @@ const Hero = () => {
         <div className="max-w-3xl">
           <div className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1] shadow-sm backdrop-blur">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Premium Filipino-first dating waitlist
+            PinayMate waitlist
+            <span className="sr-only">
+              . Premium Filipino-first dating waitlist
+            </span>
           </div>
 
           <div
-            className="mb-5 flex flex-wrap gap-2 text-sm font-dm-sans-bold text-[#fff7fb]"
+            className="mb-5 grid max-w-xl grid-cols-4 border-y border-[#f0b6df]/12 py-3 text-xs font-dm-sans-bold text-[#fff7fb]"
             aria-label="Current PinayMate access status"
           >
             {launchState.map((state) => (
               <span
-                key={state}
-                className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-3 py-1.5 shadow-sm backdrop-blur"
+                key={state.detail}
+                className="min-h-12 border-l border-[#f0b6df]/12 px-2 py-1.5 text-center first:border-l-0"
               >
-                {state}
+                <CheckCircle2
+                  className="mx-auto h-3.5 w-3.5 text-[#49d49a]"
+                  aria-hidden="true"
+                />
+                <span className="mt-1.5 block">{state.label}</span>
+                <span className="sr-only">. {state.detail}</span>
               </span>
             ))}
           </div>
@@ -151,7 +180,7 @@ const Hero = () => {
             respect.
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#e3dcf9] sm:text-xl">
+          <p className="mt-6 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#e3dcf9]">
             Intent before chat. Review before reach.
             <span className="sr-only">
               PinayMate gives Filipinas and foreigners a clearer path to
@@ -170,14 +199,16 @@ const Hero = () => {
               aria-describedby="hero-cta-note"
               className="inline-flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-7 py-4 text-base font-dm-sans-bold text-white shadow-xl shadow-[#ef3e78]/25 transition duration-200 hover:bg-[#d7346b] hover:shadow-[#ef3e78]/35 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
             >
-              Join the waitlist
+              Join waitlist
+              <span className="sr-only">. Join the waitlist</span>
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </a>
             <a
               href="#features"
               className="inline-flex min-h-14 cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-7 py-4 text-base font-dm-sans-bold text-white transition duration-200 hover:border-[#f0b6df]/45 hover:bg-[#3b2255]/75 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
             >
-              See safety approach
+              Safety
+              <span className="sr-only">. See safety approach</span>
               <ShieldCheck className="h-5 w-5" aria-hidden="true" />
             </a>
           </div>
@@ -191,7 +222,7 @@ const Hero = () => {
                 key={reason.label}
                 className="border-l border-[#f0b6df]/16 pl-4 first:border-l-0 first:pl-0 sm:pr-5 sm:not-first:pl-5"
               >
-                <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f6d0f1]">
+                <p className="text-xs font-dm-sans-bold text-[#f6d0f1]">
                   {reason.signal}
                 </p>
                 <div className="mt-3 h-2 rounded-lg bg-[#f0b6df]/16" aria-hidden="true">
@@ -207,16 +238,28 @@ const Hero = () => {
             id="hero-cta-note"
             className="mt-4 grid max-w-2xl gap-2 sm:grid-cols-3"
           >
-            {["Waitlist interest only", "No profile or matching", "No checkout or payment"].map(
-              (item) => (
+            {[
+              {
+                label: "Interest",
+                detail: "Waitlist interest only",
+              },
+              {
+                label: "No profile",
+                detail: "No profile or matching",
+              },
+              {
+                label: "No checkout",
+                detail: "No checkout or payment",
+              },
+            ].map((item) => (
                 <span
-                  key={item}
-                  className="inline-flex min-h-10 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 px-3 py-2 text-center text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]"
+                  key={item.label}
+                  className="inline-flex min-h-10 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 px-3 py-2 text-center text-xs font-dm-sans-bold text-[#f6d0f1]"
                 >
-                  {item}
+                  {item.label}
+                  <span className="sr-only">. {item.detail}</span>
                 </span>
-              ),
-            )}
+              ))}
             <span className="sr-only">
               Takes less than a minute by email. This page collects waitlist
               interest only; matching, public profiles, review badges, and
@@ -227,8 +270,9 @@ const Hero = () => {
           </div>
 
           <div className="mt-7 max-w-2xl border-t border-white/12 pt-5">
-            <p className="text-sm font-dm-sans-bold uppercase text-[#f6d0f1]">
-              What you are joining
+            <p className="text-sm font-dm-sans-bold text-[#f6d0f1]">
+              Joining
+              <span className="sr-only">. What you are joining</span>
             </p>
             <dl className="mt-3 grid gap-2 sm:grid-cols-3">
               {launchProof.map((item) => (
@@ -236,7 +280,7 @@ const Hero = () => {
                   key={item.label}
                   className="border-l-2 border-[#f0b6df]/22 bg-[#2e1e5a]/24 py-2 pl-3 pr-2"
                 >
-                  <dt className="text-xs font-dm-sans-bold uppercase text-[#cbbade]">
+                  <dt className="text-xs font-dm-sans-bold text-[#cbbade]">
                     {item.label}
                   </dt>
                   <dd className="mt-1 text-sm font-dm-sans-semibold leading-6 text-white sm:min-h-12">
@@ -258,7 +302,7 @@ const Hero = () => {
                   className="mx-auto h-4 w-4 shrink-0 text-[#22a574]"
                   aria-hidden="true"
                 />
-                <span className="mt-2 block text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                <span className="mt-2 block text-xs font-dm-sans-bold text-[#f6d0f1]">
                   {signal.label}
                 </span>
                 <span className="sr-only">. {signal.detail}</span>
@@ -291,7 +335,7 @@ const Hero = () => {
           <div className="relative rounded-lg border border-[#f0b6df]/14 bg-[#21132f]/96 p-5 text-white shadow-xl shadow-black/25 backdrop-blur sm:p-6">
             <div className="flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-dm-sans-bold uppercase text-[#f7a4c8]">
+                <p className="text-sm font-dm-sans-bold text-[#f7a4c8]">
                   Product preview
                 </p>
                 <h2 className="mt-1 font-lora text-2xl font-bold text-white">
@@ -311,7 +355,7 @@ const Hero = () => {
                 />
                 <div className="relative flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f0b6df]">
+                    <p className="text-xs font-dm-sans-bold text-[#f0b6df]">
                       Member path
                     </p>
                     <p className="mt-1 font-lora text-xl font-bold text-white">
@@ -367,7 +411,7 @@ const Hero = () => {
                       <div className="mx-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a]/75 text-[#f0b6df]">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
-                      <p className="mt-3 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                      <p className="mt-3 text-xs font-dm-sans-bold text-[#f6d0f1]">
                         {row.shortValue}
                       </p>
                       <p className="sr-only">
@@ -379,17 +423,18 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-5 grid gap-2">
+            <div className="mt-5 grid grid-cols-3 gap-2">
               {matchNotes.map((note) => (
                 <div
-                  key={note}
-                  className="flex min-h-11 items-center gap-3 border-b border-white/10 py-2 text-sm font-dm-sans-semibold text-[#eadff7] last:border-b-0"
+                  key={note.label}
+                  className="min-h-16 rounded-lg border border-white/10 bg-[#2e1e5a]/28 p-3 text-center text-xs font-dm-sans-bold text-[#eadff7]"
                 >
                   <CheckCircle2
-                    className="h-4 w-4 text-[#22a574]"
+                    className="mx-auto h-4 w-4 text-[#22a574]"
                     aria-hidden="true"
                   />
-                  {note}
+                  <span className="mt-2 block">{note.label}</span>
+                  <span className="sr-only">. {note.detail}</span>
                 </div>
               ))}
             </div>
@@ -400,7 +445,7 @@ const Hero = () => {
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#f7a4c8]"
                   aria-hidden="true"
                 />
-                <p className="grid flex-1 gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:grid-cols-3">
+                <p className="grid flex-1 gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
                   <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
                     Waitlist
                   </span>
@@ -425,7 +470,7 @@ const Hero = () => {
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#f7a4c8]"
                   aria-hidden="true"
                 />
-                <p className="text-sm font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                <p className="text-sm font-dm-sans-bold text-[#f6d0f1]">
                   Intent + respect + safety
                   <span className="sr-only">
                     Designed for serious Filipina and foreigner introductions

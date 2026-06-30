@@ -11,48 +11,69 @@ import { launchEmailLinks } from "../../lib/launchEmailLinks";
 const features = [
   {
     icon: SlidersHorizontal,
-    title: "Preference-led discovery",
+    title: "Discovery",
+    fullTitle: "Preference-led discovery",
     signal: "Goals before photos",
     visual: ["w-5/6", "w-2/3", "w-3/4"],
     copy: "The discovery flow prioritizes relationship goals, lifestyle, culture, and profile context instead of making photos carry the whole decision.",
+    proofLabel: "Fit",
     proof: "Designed for clearer fit before members message.",
   },
   {
     icon: UserCheck,
-    title: "Profile review cues",
+    title: "Review",
+    fullTitle: "Profile review cues",
     signal: "Review before reach",
     visual: ["w-2/3", "w-4/5", "w-1/2"],
     copy: "Verification labels are framed as review cues, not guarantees. Badges should appear only after the relevant email, profile, or ID/photo review step is approved.",
+    proofLabel: "Careful",
     proof: "Clear safety language without overpromising.",
   },
   {
     icon: MessageCircleHeart,
-    title: "Conversation prompts",
+    title: "Prompts",
+    fullTitle: "Conversation prompts",
     signal: "Context before chat",
     visual: ["w-3/4", "w-1/2", "w-5/6"],
     copy: "Messaging previews focus on respectful openers and shared values so first contact can feel more intentional when chat opens.",
+    proofLabel: "App flow",
     proof: "Messaging stays inside the app account flow.",
   },
 ];
 
 const safetyItems = [
-  "Age-gated 18+ positioning",
-  "Profile and photo review path",
-  "Report and moderation path planned",
-  "Privacy-aware onboarding copy",
+  {
+    label: "18+",
+    detail: "Age-gated 18+ positioning",
+  },
+  {
+    label: "Review",
+    detail: "Profile and photo review path",
+  },
+  {
+    label: "Report",
+    detail: "Report and moderation path planned",
+  },
+  {
+    label: "Privacy",
+    detail: "Privacy-aware onboarding copy",
+  },
 ];
 
 const safetyExpectations = [
   {
-    title: "Respectful reach",
+    title: "Reach",
+    fullTitle: "Respectful reach",
     copy: "Member discovery should favor clear intent and profile context before chat access.",
   },
   {
-    title: "Review language",
+    title: "Language",
+    fullTitle: "Review language",
     copy: "Safety labels stay framed as review status, not identity guarantees or background checks.",
   },
   {
-    title: "Private waitlist",
+    title: "Private",
+    fullTitle: "Private waitlist",
     copy: "Waitlist interest does not publish a profile or expose personal dating details.",
   },
 ];
@@ -92,7 +113,8 @@ const Features = () => {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
             <HeartHandshake className="h-4 w-4" aria-hidden="true" />
-            Built for trust, not hype
+            Trust, not hype
+            <span className="sr-only">. Built for trust, not hype</span>
           </div>
 
           <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
@@ -102,7 +124,7 @@ const Features = () => {
               happens inside the app.
             </span>
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#d7c7ed]">
+          <p className="mt-5 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#d7c7ed]">
             No fake launch promises.
             <span className="sr-only">
               Clear now. Careful later.
@@ -115,7 +137,7 @@ const Features = () => {
             {featureIntroSignals.map((signal) => (
               <span
                 key={signal}
-                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]"
+                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]"
               >
                 {signal}
               </span>
@@ -136,7 +158,7 @@ const Features = () => {
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/15">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <p className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-1 text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f3c7de]">
+                  <p className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
                     {String(index + 1).padStart(2, "0")}
                   </p>
                 </div>
@@ -144,6 +166,7 @@ const Features = () => {
                 <div className="mt-6 flex flex-1 flex-col">
                   <h3 className="font-lora text-2xl font-bold leading-tight text-white">
                     {feature.title}
+                    <span className="sr-only">. {feature.fullTitle}</span>
                   </h3>
                   <div
                     className="mt-5 rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/64 p-4"
@@ -166,7 +189,7 @@ const Features = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="mt-4 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-4 py-3 text-sm font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                  <p className="mt-4 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-4 py-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
                     {feature.signal}
                     <span className="sr-only">. {feature.copy}</span>
                   </p>
@@ -175,7 +198,10 @@ const Features = () => {
                       className="mt-0.5 h-4 w-4 shrink-0"
                       aria-hidden="true"
                     />
-                    <span>{feature.proof}</span>
+                    <span>
+                      {feature.proofLabel}
+                      <span className="sr-only">. {feature.proof}</span>
+                    </span>
                   </p>
                 </div>
               </article>
@@ -200,7 +226,7 @@ const Features = () => {
                 <span className="h-9 rounded-lg bg-[#8d69f6]/22" />
                 <span className="h-9 rounded-lg bg-[#5c83e9]/18" />
               </div>
-              <p className="mt-4 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]">
+              <p className="mt-4 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
                 Review paths
                 <span className="sr-only">
                   Moderation, review, and privacy belong in the product story.
@@ -209,7 +235,7 @@ const Features = () => {
                   waitlist.
                 </span>
               </p>
-              <p className="mt-4 grid gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              <p className="mt-4 grid gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                 <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-2 text-center">
                   Review paths
                 </span>
@@ -229,7 +255,8 @@ const Features = () => {
                 aria-label="Email PinayMate support about trust and safety"
                 className="mt-4 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg bg-[#ef3e78] px-5 py-3 text-sm font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/20 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
-                Ask a safety question
+                Ask safety
+                <span className="sr-only">. Ask a safety question</span>
               </a>
             </div>
 
@@ -248,7 +275,7 @@ const Features = () => {
                       <p className="mt-3 text-sm font-dm-sans-bold text-white">
                         {item.label}
                       </p>
-                      <p className="mt-1 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                      <p className="mt-1 text-xs font-dm-sans-bold text-[#f6d0f1]">
                         {item.value}
                       </p>
                     </div>
@@ -258,14 +285,15 @@ const Features = () => {
 
               {safetyItems.map((item) => (
                 <div
-                  key={item}
-                  className="flex min-h-14 items-center gap-3 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-4 py-3 text-sm font-dm-sans-semibold text-[#f8f5ff] shadow-sm shadow-black/10"
+                  key={item.label}
+                  className="min-h-16 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-3 text-center text-xs font-dm-sans-bold text-[#f8f5ff] shadow-sm shadow-black/10"
                 >
                   <CheckCircle2
-                    className="h-5 w-5 shrink-0 text-[#22a574]"
+                    className="mx-auto h-5 w-5 shrink-0 text-[#22a574]"
                     aria-hidden="true"
                   />
-                  {item}
+                  <span className="mt-2 block">{item.label}</span>
+                  <span className="sr-only">. {item.detail}</span>
                 </div>
               ))}
             </div>
@@ -277,7 +305,10 @@ const Features = () => {
                 key={item.title}
                 className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 p-4"
               >
-                <p className="font-dm-sans-bold text-white">{item.title}</p>
+                <p className="font-dm-sans-bold text-white">
+                  {item.title}
+                  <span className="sr-only">. {item.fullTitle}</span>
+                </p>
                 <p className="mt-2 h-1.5 rounded-lg bg-[#ef3e78]/35">
                   <span className="sr-only">{item.copy}</span>
                 </p>

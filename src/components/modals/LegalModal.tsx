@@ -216,15 +216,23 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto max-h-[calc(min(90dvh,48rem)-100px)] p-5 space-y-7 sm:p-6 sm:space-y-8">
-          <div className="rounded-lg border border-[#f0b6df]/16 bg-[#2e1e5a]/42 p-5 sm:p-6">
-            <p className="font-dm-sans-regular leading-relaxed text-[#d7c7ed]">
-              <strong className="text-white">Last Updated:</strong> June 11,
-              2026
-            </p>
+        <div className="max-h-[calc(min(90dvh,48rem)-100px)] space-y-5 overflow-y-auto p-5 sm:p-6">
+          <div className="rounded-lg border border-[#f0b6df]/16 bg-[#2e1e5a]/42 p-4 sm:p-5">
+            <div className="grid gap-2 text-xs font-dm-sans-bold text-[#f3c7de] sm:grid-cols-3">
+              <span className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-center">
+                Updated
+                <span className="sr-only">. Last Updated: June 11, 2026</span>
+              </span>
+              <span className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-center">
+                Waitlist
+              </span>
+              <span className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-center">
+                Support
+              </span>
+            </div>
             <p
               id={`legal-modal-description-${type}`}
-              className="mt-2 font-dm-sans-regular leading-relaxed text-[#d7c7ed]"
+              className="mt-4 font-dm-sans-regular leading-7 text-[#d7c7ed]"
             >
               Please read this {selectedContent.title.toLowerCase()} carefully.
               The current site is a waitlist and support surface, so terms may
@@ -235,48 +243,50 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           {selectedContent.sections.map((section, index) => (
             <div
               key={index}
-              className="space-y-3 animate-fadeInUp"
+              className="animate-fadeInUp rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/46 p-4"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex items-start gap-3">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-bold text-white shadow-md shadow-[#ef3e78]/18">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-dm-sans-bold text-white">
+                <h3 className="pt-0.5 text-lg font-dm-sans-bold text-white">
                   {section.title}
                 </h3>
               </div>
-              <p className="pl-0 font-dm-sans-regular leading-relaxed text-[#d7c7ed] sm:pl-11">
+              <p className="mt-3 border-t border-[#f0b6df]/10 pt-3 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:ml-11">
                 {section.content}
               </p>
             </div>
           ))}
 
           {/* Contact Section */}
-          <div className="mt-8 rounded-lg border border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/62 via-[#21132f]/72 to-[#170f22] p-5 sm:p-6">
-            <h3 className="text-xl font-dm-sans-bold text-white mb-4">
-              Questions or Concerns?
+          <div className="mt-6 rounded-lg border border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/62 via-[#21132f]/72 to-[#170f22] p-5 sm:p-6">
+            <h3 className="mb-4 text-xl font-dm-sans-bold text-white">
+              Questions?
+              <span className="sr-only"> Questions or Concerns?</span>
             </h3>
             <p className="mb-4 font-dm-sans-regular leading-relaxed text-[#d7c7ed]">
               If you have any questions about our{" "}
               {selectedContent.title.toLowerCase()}, contact the launch support
               team:
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="grid gap-3 sm:grid-cols-2">
               <a
                 href={launchEmailLinks.legalQuestion}
                 aria-label="Email PinayMate legal support"
-                className="inline-flex min-h-11 items-center space-x-2 rounded-lg text-[#ff8fb8] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] font-dm-sans-bold"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/42 px-4 py-2 font-dm-sans-bold text-[#ff8fb8] transition-colors hover:border-[#f0b6df]/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
-                <span>legal@pinaymate.com</span>
+                <span>Legal</span>
+                <span className="sr-only">. legal@pinaymate.com</span>
               </a>
-              <span className="hidden text-[#7d6f91] sm:block">•</span>
               <a
                 href={launchEmailLinks.supportQuestion}
                 aria-label="Email PinayMate support"
-                className="inline-flex min-h-11 items-center space-x-2 rounded-lg text-[#cbb2ff] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] font-dm-sans-bold"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/42 px-4 py-2 font-dm-sans-bold text-[#cbb2ff] transition-colors hover:border-[#f0b6df]/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
-                <span>support@pinaymate.com</span>
+                <span>Support</span>
+                <span className="sr-only">. support@pinaymate.com</span>
               </a>
             </div>
           </div>

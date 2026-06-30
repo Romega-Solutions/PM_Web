@@ -11,6 +11,7 @@ import { launchEmailLinks } from "../../lib/launchEmailLinks";
 const faqData = [
   {
     question: "Is PinayMate already live?",
+    shortQuestion: "Already live?",
     status: "Waitlist only",
     shortAnswer: "Opening in stages.",
     answer:
@@ -19,6 +20,7 @@ const faqData = [
   },
   {
     question: "Can I pay or create a dating profile today?",
+    shortQuestion: "Pay or profile?",
     status: "No payment today",
     shortAnswer: "No checkout or profile here.",
     answer:
@@ -27,6 +29,7 @@ const faqData = [
   },
   {
     question: "How is privacy handled?",
+    shortQuestion: "Privacy?",
     status: "Privacy first",
     shortAnswer: "Keep private data out of email.",
     answer:
@@ -35,6 +38,7 @@ const faqData = [
   },
   {
     question: "What does verification mean?",
+    shortQuestion: "Verification?",
     status: "Manual review",
     shortAnswer: "Review is private and staged.",
     answer:
@@ -43,6 +47,7 @@ const faqData = [
   },
   {
     question: "Where do I get app links?",
+    shortQuestion: "App links?",
     status: "Waitlist first",
     shortAnswer: "Choose your platform first.",
     answer:
@@ -51,7 +56,20 @@ const faqData = [
   },
 ];
 
-const faqSignals = ["Waitlist first", "App handles private data", "No checkout here"];
+const faqSignals = [
+  {
+    label: "Waitlist",
+    detail: "Waitlist first",
+  },
+  {
+    label: "App data",
+    detail: "App handles private data",
+  },
+  {
+    label: "No checkout",
+    detail: "No checkout here",
+  },
+];
 
 const supportSignals = [
   {
@@ -63,7 +81,7 @@ const supportSignals = [
     bars: ["w-3/4", "w-1/2"],
   },
   {
-    label: "Boundary",
+    label: "Limits",
     bars: ["w-4/5", "w-3/5"],
   },
 ];
@@ -87,13 +105,13 @@ const Faqs = () => {
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mx-auto inline-flex min-h-11 items-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold uppercase text-[#f3c7de] shadow-sm">
+          <p className="mx-auto inline-flex min-h-11 items-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
             FAQ and access clarity
           </p>
           <h2 className="mt-4 font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             Straight answers before anyone joins.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#d7c7ed]">
+          <p className="mt-5 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#d7c7ed]">
             Waitlist first. App for personal details.
             <span className="sr-only">
               Join the waitlist first. Use the app for everything personal.
@@ -105,10 +123,11 @@ const Faqs = () => {
           <div className="mx-auto mt-6 grid max-w-2xl gap-2 sm:grid-cols-3">
             {faqSignals.map((signal) => (
               <span
-                key={signal}
-                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]"
+                key={signal.label}
+                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]"
               >
-                {signal}
+                {signal.label}
+                <span className="sr-only">. {signal.detail}</span>
               </span>
             ))}
           </div>
@@ -116,12 +135,13 @@ const Faqs = () => {
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
           <aside className="rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/76 p-5 shadow-xl shadow-black/15 lg:sticky lg:top-28 lg:p-6">
-            <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
-              Support boundary
+            <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
+              Support
+              <span className="sr-only">. Support boundary</span>
             </p>
             <h3 className="mt-3 font-lora text-2xl font-bold text-white">
-              Direct support.
-              <span className="sr-only"> Need a direct answer?</span>
+              Direct answers.
+              <span className="sr-only"> Direct support. Need a direct answer?</span>
             </h3>
             <p className="mt-4 grid gap-2">
               {supportSignals.map((signal) => (
@@ -129,7 +149,7 @@ const Faqs = () => {
                   key={signal.label}
                   className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/42 px-3 py-3"
                 >
-                  <span className="flex items-center justify-between gap-3 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                  <span className="flex items-center justify-between gap-3 text-xs font-dm-sans-bold text-[#f6d0f1]">
                     {signal.label}
                     <span
                       className="h-1.5 w-10 rounded-lg bg-[#ef3e78]"
@@ -154,23 +174,25 @@ const Faqs = () => {
               </span>
             </p>
             <p className="mt-4 border-l-2 border-[#F4376D]/55 bg-[#2e1e5a]/40 py-2 pl-4 pr-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
-              No sensitive data by email.
+              No private data.
               <span className="sr-only">
+                No sensitive data by email.
                 Do not send passwords, payment details, ID documents, precise
                 location, private profile information, or private message
                 screenshots by email.
               </span>
             </p>
-            <a
+              <a
               href={launchEmailLinks.supportQuestion}
               aria-label="Email PinayMate support without sending sensitive account data"
               className="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg bg-[#ef3e78] px-6 py-3 font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/20 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
             >
-              Contact support
+              Support
+              <span className="sr-only">. Contact support</span>
             </a>
           </aside>
 
-          <div className="divide-y divide-white/10 border-y border-white/12 rounded-lg bg-[#1a0d27]/62 px-4 shadow-xl shadow-black/15 sm:px-5">
+          <div className="divide-y divide-white/10 border-y border-white/12 rounded-lg bg-[#1a0d27]/62 p-3 shadow-xl shadow-black/15 sm:p-4">
             {faqData.map((faq, index) => {
               const isOpen = openFaq === index;
               const Icon = faq.icon;
@@ -185,7 +207,11 @@ const Faqs = () => {
                     onClick={() => toggleFaq(index)}
                     aria-expanded={isOpen}
                     aria-controls={panelId}
-                    className="grid min-h-16 w-full cursor-pointer gap-4 py-5 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-5"
+                    className={`grid min-h-16 w-full cursor-pointer gap-3 rounded-lg border px-3 py-4 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-4 ${
+                      isOpen
+                        ? "border-[#f0b6df]/26 bg-[#2e1e5a]/46"
+                        : "border-[#f0b6df]/10 bg-[#120a1b]/38"
+                    }`}
                   >
                     <span
                       className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-white transition duration-200 ${
@@ -198,9 +224,10 @@ const Faqs = () => {
                     </span>
                     <span>
                       <span className="block font-dm-sans-bold text-base text-white sm:text-lg">
-                        {faq.question}
+                        {faq.shortQuestion}
+                        <span className="sr-only">. {faq.question}</span>
                       </span>
-                      <span className="mt-2 block text-xs font-dm-sans-bold uppercase tracking-[0.2em] text-[#f3c7de]">
+                      <span className="mt-2 block text-xs font-dm-sans-bold text-[#f3c7de]">
                         {faq.status}
                       </span>
                     </span>
@@ -226,7 +253,7 @@ const Faqs = () => {
                     } motion-reduce:transition-none`}
                   >
                     <div className="overflow-hidden">
-                      <p className="pb-6 text-base leading-7 text-[#d7c7ed] sm:ml-16">
+                      <p className="px-3 pb-5 pt-3 text-sm font-dm-sans-bold text-[#d7c7ed] sm:ml-16">
                         {faq.shortAnswer}
                         <span className="sr-only"> {faq.answer}</span>
                       </p>

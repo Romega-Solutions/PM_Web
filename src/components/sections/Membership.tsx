@@ -28,6 +28,7 @@ const plans = [
     tone: "from-[#ef3e78] to-[#8d69f6]",
     subject: "PinayMate waitlist - Filipina access",
     cta: "Join free waitlist",
+    ctaLabel: "Join free",
     features: [
       { label: "Updates", detail: "Launch update emails" },
       { label: "Setup", detail: "Profile setup guidance" },
@@ -50,6 +51,7 @@ const plans = [
     tone: "from-[#ef3e78] to-[#5c83e9]",
     subject: "PinayMate waitlist - Gold interest",
     cta: "Register Gold interest",
+    ctaLabel: "Gold interest",
     features: [
       { label: "Messaging", detail: "Messaging direction when launched" },
       { label: "Filters", detail: "Advanced preference filters" },
@@ -72,6 +74,7 @@ const plans = [
     tone: "from-[#8d69f6] to-[#5c83e9]",
     subject: "PinayMate waitlist - Platinum interest",
     cta: "Register VIP interest",
+    ctaLabel: "VIP interest",
     features: [
       { label: "Gold+", detail: "Gold feature direction plus" },
       { label: "Quality", detail: "Profile quality review interest" },
@@ -147,7 +150,7 @@ const Membership = () => {
           <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             Clear membership interest, not a live checkout.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-[#e3dcf9]">
+          <p className="mt-5 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#e3dcf9]">
             Pricing direction without signup pressure.
             <span className="sr-only">
               These tiers explain the intended membership model. The current
@@ -180,13 +183,13 @@ const Membership = () => {
                     >
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
-                    <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f0b6df]">
+                    <p className="text-xs font-dm-sans-bold text-[#f0b6df]">
                       Tier {String(index + 1).padStart(2, "0")}
                       <span className="sr-only">. {plan.label}</span>
                     </p>
                   </div>
                   {isFeatured && (
-                    <span className="rounded-lg bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold uppercase text-white shadow-lg shadow-[#ef3e78]/20">
+                    <span className="rounded-lg bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/20">
                       Best fit
                     </span>
                   )}
@@ -200,7 +203,7 @@ const Membership = () => {
                     {plan.displayName}
                     <span className="sr-only">. {plan.name}</span>
                   </h3>
-                  <p className="mt-3 text-sm font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                  <p className="mt-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
                     {plan.shortDecision}
                     <span className="sr-only"> {plan.decision}</span>
                   </p>
@@ -218,7 +221,7 @@ const Membership = () => {
                   </div>
                   <div className="mt-5 grid grid-cols-2 gap-2">
                     <p className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2">
-                      <span className="block text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f0b6df]">
+                      <span className="block text-xs font-dm-sans-bold text-[#f0b6df]">
                         Access
                       </span>
                       <span className="mt-1 block font-dm-sans-bold text-white">
@@ -226,7 +229,7 @@ const Membership = () => {
                       </span>
                     </p>
                     <p className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2">
-                      <span className="block text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f0b6df]">
+                      <span className="block text-xs font-dm-sans-bold text-[#f0b6df]">
                         Today
                       </span>
                       <span className="mt-1 block font-dm-sans-bold text-white">
@@ -236,15 +239,18 @@ const Membership = () => {
                   </div>
                   {plan.plannedPrice ? (
                     <div className="mt-3 rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/48 px-3 py-2">
-                      <p className="text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f0b6df]">
-                        Planned pricing, not checkout
+                      <p className="text-xs font-dm-sans-bold text-[#f0b6df]">
+                        Planned
+                        <span className="sr-only">
+                          . Planned pricing, not checkout
+                        </span>
                       </p>
                       <p className="mt-1 text-sm font-dm-sans-bold text-white">
                         {plan.plannedPrice}
                       </p>
                     </div>
                   ) : null}
-                  <p className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                  <p className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]">
                     Interest only
                     <span className="sr-only"> {plan.note}</span>
                   </p>
@@ -260,7 +266,7 @@ const Membership = () => {
                         <span className="mx-auto flex justify-center">
                           <CheckCircleIcon />
                         </span>
-                        <span className="mt-2 block text-[0.66rem] font-dm-sans-bold uppercase tracking-[0.08em] text-[#f6d0f1]">
+                        <span className="mt-2 block text-[0.66rem] font-dm-sans-bold text-[#f6d0f1]">
                           {feature.label}
                         </span>
                         <span className="sr-only">{feature.detail}</span>
@@ -272,7 +278,7 @@ const Membership = () => {
                     id={`${plan.id}-action-note`}
                     className="mt-auto border-t border-[#f0b6df]/12 pt-4"
                   >
-                    <span className="grid gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                    <span className="grid gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                       <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
                         Email only
                       </span>
@@ -304,7 +310,8 @@ const Membership = () => {
                     }`}
                   >
                     <Mail className="h-4 w-4" aria-hidden="true" />
-                    {plan.cta}
+                    {plan.ctaLabel}
+                    <span className="sr-only">. {plan.cta}</span>
                   </a>
                 </div>
               </article>
@@ -313,8 +320,11 @@ const Membership = () => {
         </div>
 
         <div className="mt-8 border-t border-white/10 pt-6 text-white">
-          <p className="text-sm font-dm-sans-bold uppercase text-[#f0b6df]">
-            Not sure which interest path fits?
+          <p className="text-sm font-dm-sans-bold text-[#f0b6df]">
+            Pick a path
+            <span className="sr-only">
+              . Not sure which interest path fits?
+            </span>
           </p>
           <ul className="mt-4 grid gap-3 lg:grid-cols-3">
             {decisionPrompts.map((prompt) => (
@@ -361,7 +371,7 @@ const Membership = () => {
               <h3 className="font-lora text-2xl font-bold">
                 Pricing notice
               </h3>
-              <p className="mt-3 grid gap-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1] sm:grid-cols-3">
+              <p className="mt-3 grid gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
                 <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 px-3 py-2 text-center">
                   Not purchased
                 </span>

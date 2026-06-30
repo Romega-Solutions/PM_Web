@@ -13,58 +13,70 @@ import { WaitlistCaptureForm } from "../waitlist/WaitlistCaptureForm";
 const waitlistSignals = [
   {
     icon: ShieldCheck,
-    title: "Review first",
+    title: "Review",
     signal: "Review first",
     text: "The access path emphasizes verification cues, report paths, and safer conversation boundaries before broad matching.",
   },
   {
     icon: Sparkles,
-    title: "Intent led",
+    title: "Intent",
     signal: "Intent led",
     text: "The experience highlights relationship goals, lifestyle fit, and profile context instead of encouraging low-intent swiping.",
   },
   {
     icon: UsersRound,
-    title: "Culture clarity",
+    title: "Clarity",
     signal: "Clarity built in",
     text: "PinayMate is designed around expectations, location context, and communication comfort before a conversation starts.",
   },
 ];
 
 const featureTags = [
-  "Interest only",
-  "Access updates",
-  "No payment today",
-  "Platform preference",
+  {
+    label: "Interest",
+    detail: "Interest only",
+  },
+  {
+    label: "Updates",
+    detail: "Access updates",
+  },
+  {
+    label: "No pay",
+    detail: "No payment today",
+  },
+  {
+    label: "Platform",
+    detail: "Platform preference",
+  },
 ];
 
 const privacyNotes = [
   {
-    label: "Email and platform only",
+    label: "Email + platform",
     detail: "Send your platform preference and email only.",
   },
   {
-    label: "No private documents",
+    label: "No docs",
     detail:
       "Keep passwords, ID documents, payment details, precise location, and private profile information out of waitlist messages.",
   },
   {
-    label: "Profile details stay in app",
+    label: "App profile",
     detail: "Profile and verification details belong in the app.",
   },
 ];
 
 const waitlistSteps = [
   {
-    label: "Pick platform",
+    label: "Platform",
     detail: "Choose iOS or Android and send only email plus platform preference.",
   },
   {
-    label: "Access planning",
+    label: "Updates",
     detail: "PinayMate uses that signal to plan access and support coverage.",
   },
   {
-    label: "Decide later",
+    label: "App later",
     detail:
       "You receive access updates. You can decide later whether to create a profile and start matching in the app.",
   },
@@ -73,7 +85,8 @@ const waitlistSteps = [
 const waitlistLinks = [
   {
     href: launchEmailLinks.iosWaitlist,
-    label: "Join iOS waitlist",
+    label: "iOS waitlist",
+    fullLabel: "Join iOS waitlist",
     ariaLabel:
       "Join the PinayMate iOS waitlist by email without creating an app account, dating profile, match request, or payment record",
     isPrimary: true,
@@ -82,7 +95,8 @@ const waitlistLinks = [
   },
   {
     href: launchEmailLinks.androidWaitlist,
-    label: "Join Android waitlist",
+    label: "Android waitlist",
+    fullLabel: "Join Android waitlist",
     ariaLabel:
       "Join the PinayMate Android waitlist by email without creating an app account, dating profile, match request, or payment record",
     isPrimary: false,
@@ -138,7 +152,7 @@ const Download = () => {
               Pick your platform. Keep the first step private.
             </h2>
 
-            <p className="mt-6 max-w-xl text-lg leading-8 text-[#d7c7ed]">
+            <p className="mt-6 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#d7c7ed]">
               Email. Platform. Nothing more.
               <span className="sr-only">
                 Share only your email and platform preference so the team knows
@@ -150,12 +164,13 @@ const Download = () => {
             <WaitlistCaptureForm />
 
             <div className="mt-8 border-t border-white/12 pt-6">
-              <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
+              <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
                 Email option
               </p>
-              <p className="mt-2 max-w-xl text-sm leading-6 text-[#cbbade]">
-                Same waitlist, through your mail app.
+              <p className="mt-2 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#cbbade]">
+                Mail app
                 <span className="sr-only">
+                  . Same waitlist, through your mail app.
                   Choose your platform by email if you prefer using your mail
                   app or want a direct support path.
                 </span>
@@ -175,7 +190,10 @@ const Download = () => {
                   >
                     <span className="flex min-h-11 items-center gap-3 font-dm-sans-bold">
                       <Smartphone className="h-5 w-5" aria-hidden="true" />
-                      <span>{link.label}</span>
+                      <span>
+                        {link.label}
+                        <span className="sr-only">. {link.fullLabel}</span>
+                      </span>
                     </span>
                     <span className="mt-3 grid gap-1.5" aria-hidden="true">
                       {link.bars.map((bar, index) => (
@@ -187,7 +205,7 @@ const Download = () => {
                         />
                       ))}
                     </span>
-                    <span className={`mt-3 block text-xs font-dm-sans-bold uppercase tracking-[0.12em] ${link.isPrimary ? "text-[#ffe8f1]" : "text-[#f3c7de]"}`}>
+                    <span className={`mt-3 block text-xs font-dm-sans-bold ${link.isPrimary ? "text-[#ffe8f1]" : "text-[#f3c7de]"}`}>
                       Email path
                       <span className="sr-only">
                         . {link.detail} Use this if you prefer email or want a
@@ -201,7 +219,7 @@ const Download = () => {
 
             <p
               id="waitlist-email-note"
-              className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]"
+              className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]"
               aria-live="polite"
             >
               Platform-only email
@@ -232,7 +250,7 @@ const Download = () => {
                     {privacyNotes.map((note) => (
                       <li
                         key={note.label}
-                        className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]"
+                        className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]"
                       >
                         <span
                           className="mb-2 block h-1.5 w-10 rounded-lg bg-[#ef3e78]"
@@ -250,19 +268,23 @@ const Download = () => {
             </div>
 
             <div className="mt-8 border-t border-white/12 pt-6">
-              <p className="text-sm font-dm-sans-bold uppercase text-[#f3c7de]">
-                What happens next
+              <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
+                Next
+                <span className="sr-only">. What happens next</span>
               </p>
-              <ol className="mt-4 grid gap-3">
+              <ol className="mt-4 grid grid-cols-3 gap-2">
                 {waitlistSteps.map((step, index) => (
-                  <li key={step.label} className="flex items-start gap-3">
+                  <li
+                    key={step.label}
+                    className="min-h-20 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 px-2 py-3 text-center"
+                  >
                     <span
-                      className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-[#2e1e5a]/65 text-sm font-dm-sans-bold text-[#f3c7de]"
+                      className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-[#2e1e5a]/65 text-sm font-dm-sans-bold text-[#f3c7de]"
                       aria-hidden="true"
                     >
                       {index + 1}
                     </span>
-                    <span className="pt-0.5 text-sm leading-6 text-[#eadff7]">
+                    <span className="mt-2 block text-xs font-dm-sans-bold text-[#eadff7]">
                       {step.label}
                       <span className="sr-only">: {step.detail}</span>
                     </span>
@@ -274,10 +296,11 @@ const Download = () => {
             <div className="mt-6 flex flex-wrap gap-2">
               {featureTags.map((tag) => (
                 <span
-                  key={tag}
+                  key={tag.label}
                   className="inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-sm font-dm-sans-semibold text-[#eadff7]"
                 >
-                  {tag}
+                  {tag.label}
+                  <span className="sr-only">. {tag.detail}</span>
                 </span>
               ))}
             </div>
@@ -317,7 +340,7 @@ const Download = () => {
                         <span className="h-8 rounded-lg bg-[#ffe8f1]/20" />
                       </div>
                     </div>
-                    <p className="mt-3 text-center text-sm font-dm-sans-bold uppercase tracking-[0.14em] text-[#f6d0f1]">
+                    <p className="mt-3 text-center text-sm font-dm-sans-bold text-[#f6d0f1]">
                       {item.label}
                     </p>
                   </div>
@@ -348,8 +371,10 @@ const Download = () => {
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
                       <div>
-                        <h3 className="font-lora text-xl font-bold text-white">{item.title}</h3>
-                        <p className="mt-3 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f6d0f1]">
+                        <h3 className="font-lora text-xl font-bold text-white">
+                          {item.title}
+                        </h3>
+                        <p className="mt-3 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]">
                           {item.signal}
                           <span className="sr-only">. {item.text}</span>
                         </p>
@@ -363,16 +388,17 @@ const Download = () => {
             <div className="mt-8 border-t border-[#F4376D]/25 pt-6">
               <dl className="grid gap-5">
                 <div className="grid gap-2 sm:grid-cols-[9rem_1fr] sm:gap-5">
-                  <dt className="flex items-center gap-2 text-sm font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]">
+                  <dt className="flex items-center gap-2 text-sm font-dm-sans-bold text-[#f3c7de]">
                     <ShieldCheck
                       className="h-4 w-4 text-[#f7a4c8]"
                       aria-hidden="true"
                     />
                     Waitlist
                   </dt>
-                  <dd className="text-sm leading-6 text-[#eadff7]">
-                    Signal only. No account, match, checkout, or payment.
+                  <dd className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#eadff7]">
+                    Signal only
                     <span className="sr-only">
+                      . Signal only. No account, match, checkout, or payment.
                       It is a waitlist signal, not a live membership, app
                       account, dating profile, match request, matching session,
                       checkout step, or payment record.
@@ -381,16 +407,17 @@ const Download = () => {
                 </div>
 
                 <div className="grid gap-2 sm:grid-cols-[9rem_1fr] sm:gap-5">
-                  <dt className="flex items-center gap-2 text-sm font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]">
+                  <dt className="flex items-center gap-2 text-sm font-dm-sans-bold text-[#f3c7de]">
                     <Mail
                       className="h-4 w-4 text-[#f7a4c8]"
                       aria-hidden="true"
                     />
                     Access
                   </dt>
-                  <dd className="text-sm leading-6 text-[#eadff7]">
-                    Public channels appear when ready.
+                  <dd className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#eadff7]">
+                    When ready
                     <span className="sr-only">
+                      . Public channels appear when ready.
                       Store links, social channels, and community invitations
                       will appear when each channel is available for members.
                     </span>
@@ -400,13 +427,13 @@ const Download = () => {
             </div>
 
             <div className="mt-6 border-t border-white/10 pt-6">
-              <p className="text-sm font-dm-sans-bold uppercase tracking-[0.14em] text-[#f3c7de]">
+              <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
                 Store links
                 <span className="sr-only">
                   . Join the waitlist first; official store links will be shared there.
                 </span>
               </p>
-              <p className="mt-2 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]">
+              <p className="mt-2 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
                 Waitlist first
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -431,7 +458,7 @@ const Download = () => {
               </div>
             </div>
 
-            <div className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]">
+            <div className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
               <MapPin className="h-4 w-4 text-[#f7a4c8]" aria-hidden="true" />
               Priority markets
               <span className="sr-only">

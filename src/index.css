@@ -854,17 +854,57 @@ h6 {
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
+  background: #120a1b;
 }
 
 body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(239, 62, 120, 0.1), transparent 28rem),
+    #120a1b;
+  color: #f8f5ff;
+  -webkit-tap-highlight-color: rgba(239, 62, 120, 0.18);
 }
 
 a,
 button {
   touch-action: manipulation;
   cursor: pointer;
+}
+
+main:focus {
+  outline: none;
+}
+
+::selection {
+  background: rgba(239, 62, 120, 0.38);
+  color: #ffffff;
+}
+
+* {
+  scrollbar-color: rgba(240, 182, 223, 0.32) #120a1b;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #120a1b;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 0.18rem solid #120a1b;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ef3e78, #8d69f6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f0b6df, #5c83e9);
 }
 
 :target {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Heart, Menu, X } from "lucide-react";
+import { ArrowRight, Heart, Menu, X } from "lucide-react";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -209,8 +209,9 @@ const Header: React.FC = () => {
               aria-label="PinayMate mobile navigation"
               className="relative max-h-[calc(100dvh-4rem)] animate-slideInDown overflow-y-auto border-t border-[#f0b6df]/16 bg-dalisay-950/98 px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-xl shadow-black/25 backdrop-blur-xl"
             >
-              <p className="px-4 pb-2 text-xs font-dm-sans-bold uppercase text-[#cbbade]">
-                Menu
+              <p className="px-4 pb-2 text-xs font-dm-sans-bold text-[#cbbade]">
+                Navigate
+                <span className="sr-only">. Menu</span>
               </p>
               <div className="space-y-3">
                 {navItems.map((item, index) => (
@@ -225,8 +226,8 @@ const Header: React.FC = () => {
                     <span className="font-dm-sans-medium text-base transition-all duration-200">
                       {item.label}
                     </span>
-                    <span className="ml-auto text-sm text-[#f7a4c8]" aria-hidden="true">
-                      View
+                    <span className="ml-auto flex h-8 w-8 items-center justify-center rounded-lg bg-[#2e1e5a]/55 text-[#f7a4c8]" aria-hidden="true">
+                      <ArrowRight className="h-4 w-4" />
                     </span>
                   </a>
                 ))}
@@ -238,10 +239,11 @@ const Header: React.FC = () => {
                 aria-label="Go to PinayMate waitlist options"
                 className="mt-4 flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-5 py-3 text-center font-dm-sans-bold text-white shadow-xl shadow-[#ef3e78]/25 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
               >
-                Join the waitlist
+                Join waitlist
+                <span className="sr-only">. Join the waitlist</span>
                 <Heart className="h-5 w-5" aria-hidden="true" />
               </a>
-              <p className="mt-3 grid grid-cols-3 gap-2 px-1 text-xs font-dm-sans-bold uppercase tracking-[0.12em] text-[#f3c7de]">
+              <p className="mt-3 grid grid-cols-3 gap-2 px-1 text-xs font-dm-sans-bold text-[#f3c7de]">
                 <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-2 py-2 text-center">
                   Email
                 </span>
