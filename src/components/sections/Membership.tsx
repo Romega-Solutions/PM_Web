@@ -108,47 +108,56 @@ const Membership = () => {
           </p>
         </div>
 
-        <div className="mt-12 divide-y divide-white/10 border-y border-white/10">
+        <div className="mt-12 grid gap-4 lg:grid-cols-3">
           {plans.map((plan, index) => {
             const Icon = plan.icon;
+            const isFeatured = plan.id === "gold-interest";
 
             return (
               <article
                 key={plan.name}
                 aria-labelledby={`${plan.id}-title`}
-                className="grid gap-6 py-8 lg:grid-cols-[0.8fr_1fr_0.9fr] lg:items-start lg:gap-10"
+                className={`flex min-h-full flex-col rounded-lg border p-5 shadow-2xl transition duration-200 sm:p-6 ${
+                  isFeatured
+                    ? "border-[#ef3e78]/55 bg-[#21132f]/92 shadow-[#ef3e78]/12"
+                    : "border-[#f0b6df]/14 bg-[#1a0d27]/78 shadow-black/15 hover:border-[#f0b6df]/32"
+                }`}
               >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${plan.tone} text-white shadow-lg shadow-black/15`}
-                  >
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f0b6df]">
-                        {String(index + 1).padStart(2, "0")} / {plan.label}
-                      </p>
-                      {plan.id === "gold-interest" && (
-                        <span className="rounded-full bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold uppercase text-white shadow-lg shadow-[#ef3e78]/20">
-                          Serious-search path
-                        </span>
-                      )}
-                    </div>
-                    <h3
-                      id={`${plan.id}-title`}
-                      className="mt-3 font-lora text-3xl font-bold text-white"
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${plan.tone} text-white shadow-lg shadow-black/15`}
                     >
-                      {plan.name}
-                    </h3>
-                    <p className="mt-3 text-sm font-dm-sans-semibold leading-6 text-[#f8f5ff]">
-                      {plan.decision}
+                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    </div>
+                    <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f0b6df]">
+                      {String(index + 1).padStart(2, "0")}
                     </p>
                   </div>
+                  {isFeatured && (
+                    <span className="rounded-full bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold uppercase text-white shadow-lg shadow-[#ef3e78]/20">
+                      Best fit
+                    </span>
+                  )}
                 </div>
 
-                <div>
-                  <p className="font-dm-sans-bold text-3xl text-white">
+                <div className="mt-6">
+                  <p className="text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f0b6df]">
+                    {plan.label}
+                  </p>
+                  <h3
+                    id={`${plan.id}-title`}
+                    className="mt-3 font-lora text-3xl font-bold leading-tight text-white"
+                  >
+                    {plan.name}
+                  </h3>
+                  <p className="mt-3 text-sm font-dm-sans-semibold leading-6 text-[#f8f5ff]">
+                    {plan.decision}
+                  </p>
+                </div>
+
+                <div className="mt-6 border-y border-[#f0b6df]/12 py-5">
+                  <p className="font-dm-sans-bold text-3xl leading-tight text-white">
                     {plan.price}
                   </p>
                   <p className="mt-1 text-sm font-dm-sans-bold text-[#f0b6df]">
@@ -167,20 +176,9 @@ const Membership = () => {
                   <p className="mt-4 text-sm leading-6 text-[#c5b1e4]">
                     {plan.note}
                   </p>
-                  <p
-                    id={`${plan.id}-action-note`}
-                    className="mt-3 text-xs leading-5 text-[#e3dcf9]"
-                  >
-                    Opens a plan-interest email only. It does not create an app
-                    account, dating profile, match request, matching session,
-                    checkout step, or payment record. This is plan-interest
-                    email only. Do not include payment details, ID documents,
-                    location, or private profile information.{" "}
-                    {PLAN_INTEREST_EMAIL_WARNING}
-                  </p>
                 </div>
 
-                <div className="flex flex-col gap-5">
+                <div className="mt-6 flex flex-1 flex-col gap-5">
                   <ul className="grid gap-3">
                     {plan.features.map((feature) => (
                       <li
@@ -193,12 +191,24 @@ const Membership = () => {
                     ))}
                   </ul>
 
+                  <p
+                    id={`${plan.id}-action-note`}
+                    className="mt-auto border-t border-[#f0b6df]/12 pt-4 text-xs leading-5 text-[#e3dcf9]"
+                  >
+                    Opens a plan-interest email only. It does not create an app
+                    account, dating profile, match request, matching session,
+                    checkout step, or payment record. This is plan-interest
+                    email only. Do not include payment details, ID documents,
+                    location, or private profile information.{" "}
+                    {PLAN_INTEREST_EMAIL_WARNING}
+                  </p>
+
                   <a
                     href={buildPlanInterestEmailHref(plan.name, plan.subject)}
                     aria-describedby={`${plan.id}-action-note`}
                     aria-label={`${plan.cta}. Opens email interest form only. This is not checkout and does not create an app account, dating profile, match request, or payment record.`}
-                    className={`inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] sm:w-fit ${
-                      plan.id === "gold-interest"
+                    className={`inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
+                      isFeatured
                         ? "bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25 hover:bg-[#db2866] hover:shadow-[#ef3e78]/35"
                         : "border border-[#f0b6df]/22 bg-[#2e1e5a]/55 text-white shadow-lg shadow-black/10 hover:border-[#f0b6df]/70 hover:bg-[#3b2255]/75"
                     }`}
