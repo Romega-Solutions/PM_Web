@@ -28,7 +28,7 @@ These PM_Web lanes depend on PM_App hardening now in source:
 
 ## Launch-state source of truth
 
-Use `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` for standalone PM_Web checks. During full workspace release review, compare it against `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` before approving PM_Web copy, CTA, membership, store-link, support, legal, or safety changes.
+Use `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` for standalone PM_Web checks. During full workspace release review, compare it against `../PM_App/docs/release/PINAYMATE_LAUNCH_STATE_MATRIX.md` before approving PM_Web copy, CTA, membership, store-link, support, legal, or safety changes.
 
 PM_Web must keep these boundaries until the central launch packet has current proof:
 
@@ -62,22 +62,22 @@ Avoid nested cards. If a section already has a visible surface, inner content sh
 
 | Gate | Owner | Backup | Required evidence | Date | Decision |
 | ---- | ----- | ------ | ----------------- | ---- | -------- |
-| Local release gate | Engineering owner | Release owner | `npm run check:release-local` output after current UI changes |  | Pending |
-| Production URL | Release owner | Engineering owner | Desktop and mobile production URL screenshots or browser evidence |  | Pending |
-| Product design QA | Product/design owner | Release owner | PM_Web design gates from `../PM_App/docs/PRODUCT_DESIGN_QA_STANDARD.md` completed with desktop/mobile screenshots |  | Pending |
-| Surface/card discipline | Product/design owner | Release owner | PM_Web review confirms editorial sections, trust strips, rows, and CTA blocks are used before nested cards or repeated equal-weight panels |  | Pending |
-| Launch-state matrix alignment | Product owner | Release owner | PM_Web copy and CTAs match `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`; full workspace release review also compares `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` |  | Pending |
-| Mailbox delivery | Support/legal owner | Release owner | Waitlist, support, and legal test emails received by monitored inboxes |  | Pending |
-| Mailto source audit | Engineering owner | Release owner | `npm run check:local-links:report` shows waitlist, support, and legal helper boundaries before mailbox proof is accepted |  | Pending |
-| Plan-interest source audit | Product/engineering owner | Release owner | Membership plan-interest email body proves no app account, dating profile, match request, matching session, checkout step, or payment record is created |  | Pending |
-| Commerce de-scope audit | Product/engineering owner | Release owner | Planned pricing remains plan-interest only; no checkout, subscription, card collection, paid ranking, paid verification, paid boost, or paid feature-access claim is published |  | Pending |
-| Waitlist-only copy | Product owner | Release owner | Copy audit proving no live checkout, app-store, active-matching, or guaranteed-safety claims |  | Pending |
-| Backend waitlist handoff | Product/engineering owner | Release owner | PM_Web waitlist form falls back to email until `waitlist_signups`, `submit_waitlist_signup`, `waitlist-signup` Edge Function deploy, direct RPC denial, edge rate-limit proof, and production evidence are approved |  | Pending |
-| Waitlist backend env gates | Product/engineering owner | Release owner | `VITE_PINAYMATE_WAITLIST_BACKEND_ENABLED`, `VITE_PINAYMATE_WAITLIST_BACKEND_PROOF_ACCEPTED`, and `VITE_PINAYMATE_WAITLIST_ABUSE_CONTROL_APPROVED` stay disabled until backend proof is approved |  | Pending |
-| Waitlist Edge header contract | Product/engineering owner | Release owner | `npm run check:waitlist-handoff` passes; PM_Web waitlist handoff uses the public `apikey` header only with `Content-Type: application/json`, keeps service-role credentials server-side, and does not add browser `Authorization` or Bearer anon-token headers |  | Pending |
-| Waitlist Edge Function proof | Product/engineering owner | Release owner | `waitlist-signup` is deployed with approved origins, rate-limit salt, service-role secret kept server-side, direct RPC execution denied, and repeated-request behavior proven |  | Pending |
-| Support email boundary | Product/support owner | Release owner | FAQ/support copy proves email does not create an app account, dating profile, match request, or payment record |  | Pending |
-| PM_App dependency closure | Engineering owner | Product owner | PM_App central launch packet shows blockers closed or explicitly deferred |  | Pending |
+| Local release gate | Engineering owner | Release owner | `npm run check:release-local` output after current UI changes | 2026-07-01 | Pass locally: `docs/evidence/2026-07-01-pm-web-local-quality.txt` |
+| Production URL | Release owner | Engineering owner | Desktop and mobile production URL screenshots or browser evidence | 2026-07-01 | Pass URL smoke: `docs/evidence/2026-07-01-pm-web-production-url-probe.txt`, `docs/evidence/2026-07-01-pm-web-root-redirect-probe.txt`, and production screenshots |
+| Product design QA | Product/design owner | Release owner | PM_Web design gates from `../PM_App/docs/testing/PRODUCT_DESIGN_QA_STANDARD.md` completed with desktop/mobile screenshots | 2026-07-01 | Evidence captured; product/design owner review still required |
+| Surface/card discipline | Product/design owner | Release owner | PM_Web review confirms editorial sections, trust strips, rows, and CTA blocks are used before nested cards or repeated equal-weight panels | 2026-07-01 | Source contract and screenshots pass locally; owner signoff still required |
+| Launch-state matrix alignment | Product owner | Release owner | PM_Web copy and CTAs match `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`; full workspace release review also compares `../PM_App/docs/release/PINAYMATE_LAUNCH_STATE_MATRIX.md` | 2026-07-01 | Pass locally with central matrix detection: `docs/evidence/2026-07-01-pm-web-launch-claims-audit.txt` |
+| Mailbox delivery | Support/legal owner | Release owner | Waitlist, support, and legal test emails received by monitored inboxes |  | Blocked: receipt, owner, backup, and SLA proof not captured |
+| Mailto source audit | Engineering owner | Release owner | `npm run check:local-links:report` shows waitlist, support, and legal helper boundaries before mailbox proof is accepted | 2026-07-01 | Pass locally: `docs/evidence/2026-07-01-pm-web-local-cta-audit.txt` |
+| Plan-interest source audit | Product/engineering owner | Release owner | Membership plan-interest email body proves no app account, dating profile, match request, matching session, checkout step, or payment record is created | 2026-07-01 | Pass locally through CTA/link and launch-claims reports |
+| Commerce de-scope audit | Product/engineering owner | Release owner | Planned pricing remains plan-interest only; no checkout, subscription, card collection, paid ranking, paid verification, paid boost, or paid feature-access claim is published | 2026-07-01 | Pass locally through launch-claims report |
+| Waitlist-only copy | Product owner | Release owner | Copy audit proving no live checkout, app-store, active-matching, or guaranteed-safety claims | 2026-07-01 | Pass locally through launch-claims report |
+| Backend waitlist handoff | Product/engineering owner | Release owner | PM_Web waitlist form falls back to email until `waitlist_signups`, `submit_waitlist_signup`, `waitlist-signup` Edge Function deploy, direct RPC denial, edge rate-limit proof, and production evidence are approved | 2026-07-01 | Pass source contract only; backend runtime proof still governed by PM_App release packet |
+| Waitlist backend env gates | Product/engineering owner | Release owner | `VITE_PINAYMATE_WAITLIST_BACKEND_ENABLED`, `VITE_PINAYMATE_WAITLIST_BACKEND_PROOF_ACCEPTED`, and `VITE_PINAYMATE_WAITLIST_ABUSE_CONTROL_APPROVED` stay disabled until backend proof is approved | 2026-07-01 | Pass source contract only: `docs/evidence/2026-07-01-pm-web-waitlist-handoff.txt` |
+| Waitlist Edge header contract | Product/engineering owner | Release owner | `npm run check:waitlist-handoff` passes; PM_Web waitlist handoff uses the public `apikey` header only with `Content-Type: application/json`, keeps service-role credentials server-side, and does not add browser `Authorization` or Bearer anon-token headers | 2026-07-01 | Pass locally: `docs/evidence/2026-07-01-pm-web-waitlist-handoff.txt` |
+| Waitlist Edge Function proof | Product/engineering owner | Release owner | `waitlist-signup` is deployed with approved origins, rate-limit salt, service-role secret kept server-side, direct RPC execution denied, and repeated-request behavior proven |  | Blocked: live Edge Function proof belongs in PM_App/Supabase evidence |
+| Support email boundary | Product/support owner | Release owner | FAQ/support copy proves email does not create an app account, dating profile, match request, or payment record | 2026-07-01 | Pass locally through CTA/link and launch-claims reports |
+| PM_App dependency closure | Engineering owner | Product owner | PM_App central launch packet shows blockers closed or explicitly deferred |  | Blocked/pending owner review: PM_Web remains waitlist-only until central packet is accepted as current |
 
 ## Local gates
 
@@ -107,13 +107,13 @@ npm run check:release-local:report
 
 To compare against the central PM_App matrix instead of the PM_Web-local snapshot, run the launch-claims script with `PINAYMATE_LAUNCH_MATRIX_PATH` pointed at the central matrix.
 
-When this repo is checked out inside the full Romega workspace and `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` exists, `npm run check:launch-claims` also performs a non-mutating central-matrix drift check. This does not write PM_App evidence and does not make PM_App a hard dependency for standalone PM_Web checkouts.
+When this repo is checked out inside the full Romega workspace and `../PM_App/docs/release/PINAYMATE_LAUNCH_STATE_MATRIX.md` exists, `npm run check:launch-claims` also performs a non-mutating central-matrix drift check. This does not write PM_App evidence and does not make PM_App a hard dependency for standalone PM_Web checkouts.
 
 ## Production gates
 
-- PM_Web copy and CTAs match `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`; full workspace release review also compares `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`.
+- PM_Web copy and CTAs match `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`; full workspace release review also compares `../PM_App/docs/release/PINAYMATE_LAUNCH_STATE_MATRIX.md`.
 - Final production URL loads successfully on desktop and mobile.
-- Product design QA passes the PM_Web gates in `../PM_App/docs/PRODUCT_DESIGN_QA_STANDARD.md`.
+- Product design QA passes the PM_Web gates in `../PM_App/docs/testing/PRODUCT_DESIGN_QA_STANDARD.md`.
 - PM_Web surface/card discipline is reviewed so the page does not regress into card spam or nested-card-heavy sections.
 - Waitlist, support, and legal mailboxes receive test messages.
 - Waitlist mailbox delivery is proven separately from app notification/email-provider delivery.

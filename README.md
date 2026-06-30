@@ -14,7 +14,7 @@ PinayMate is a launch-stage dating product for people seeking serious Filipino c
 
 - **Scope:** PM_Web static/site readiness + public launch messaging alignment with PM_App blockers.
 - **Status:** Local PM_Web quality is current and passing, but public launch remains blocked by production URL, mailbox proof, and PM_App launch blockers. PM_Web remains waitlist-only until those coordinated launch gates close.
-- **Launch-state source of truth:** `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` is the PM_Web-local snapshot used by standalone checks. `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` remains the cross-product source when the full Romega workspace is available.
+- **Launch-state source of truth:** `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` is the PM_Web-local snapshot used by standalone checks. `../PM_App/docs/release/PINAYMATE_LAUNCH_STATE_MATRIX.md` remains the cross-product source when the full Romega workspace is available.
 
 ### Done
 
@@ -35,8 +35,8 @@ PinayMate is a launch-stage dating product for people seeking serious Filipino c
 
 - PM_App blocker closure is a launch gate: ordered launch migrations, Supabase policy verification, and OCR endpoint readiness.
 - PM_Web production checks are still open: final domain, deployed URL, support/legal mailbox routing, and production CTA verification.
-- PM_Web now has a project-local release checklist in `RELEASE_CHECKLIST.md`; the central launch evidence tracker remains in `PM_App/docs/RELEASE_READINESS.md`.
-- PM_Web claims must stay aligned to `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` for standalone checks and to `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` during full workspace release review; if the matrix says a feature is waitlist-only, gated, source-only, or blocked pending proof, README, section copy, CTA copy, and release notes must not imply that the feature is live.
+- PM_Web now has a project-local release checklist in `RELEASE_CHECKLIST.md`; the central launch evidence tracker remains in `PM_App/docs/release/RELEASE_READINESS.md`.
+- PM_Web claims must stay aligned to `docs/PINAYMATE_LAUNCH_STATE_MATRIX.md` for standalone checks and to `../PM_App/docs/release/PINAYMATE_LAUNCH_STATE_MATRIX.md` during full workspace release review; if the matrix says a feature is waitlist-only, gated, source-only, or blocked pending proof, README, section copy, CTA copy, and release notes must not imply that the feature is live.
 
 ### PM_Web release owner proof block
 
@@ -55,7 +55,7 @@ PinayMate is a launch-stage dating product for people seeking serious Filipino c
 ### Next
 
 - Keep `npm run check:local-quality` and `npm run check:release-local` green after any PM_Web copy, CTA, membership, support, legal, or safety copy change.
-- For full workspace release review, compare PM_Web claims against `../PM_App/docs/PINAYMATE_LAUNCH_STATE_MATRIX.md`.
+- For full workspace release review, compare PM_Web claims against `../PM_App/docs/release/PINAYMATE_LAUNCH_STATE_MATRIX.md`.
 - Validate production host/domain behavior for CTA deep links and support paths.
 - Publish only after PM_App launch blockers are closed and recorded in PM_App docs.
 

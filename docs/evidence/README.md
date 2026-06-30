@@ -6,6 +6,12 @@ This folder keeps compact PM_Web evidence only.
 
 - `2026-06-11-pm-web-local-cta-audit.txt` - local CTA/link audit output.
 - `2026-06-11-pm-web-launch-claims-audit.txt` - local launch-claim audit output.
+- `2026-07-01-pm-web-current-evidence-summary.md` - current PM_Web local, browser, production URL, and remaining-blocker summary.
+- `2026-07-01-pm-web-local-quality.txt` - current local quality command output.
+- `2026-07-01-pm-web-local-cta-audit.txt` - current CTA/link audit output.
+- `2026-07-01-pm-web-launch-claims-audit.txt` - current launch-claims audit output with central PM_App matrix detection.
+- `2026-07-01-pm-web-browser-smoke.txt` - current desktop/mobile local and production smoke summary.
+- `2026-07-01-pm-web-*.png` - current local and production desktop/mobile screenshots.
 
 ## Trimmed
 

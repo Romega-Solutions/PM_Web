@@ -1,0 +1,38 @@
+# PM_Web Browser Smoke
+
+Date: 2026-07-01 Asia/Manila
+
+## Scope
+
+- Local preview: `http://127.0.0.1:5173/`
+- Production URL: `https://www.pinaymate.com/`
+- Desktop viewport: 1440 x 1200
+- Mobile viewport: 390 x 844
+
+## Evidence
+
+- Local desktop screenshot: `2026-07-01-pm-web-local-desktop.png`
+- Local mobile screenshot: `2026-07-01-pm-web-local-mobile.png`
+- Production desktop screenshot: `2026-07-01-pm-web-production-desktop.png`
+- Production mobile screenshot: `2026-07-01-pm-web-production-mobile.png`
+- Production URL probe: `2026-07-01-pm-web-production-url-probe.txt`
+- Root redirect probe: `2026-07-01-pm-web-root-redirect-probe.txt`
+- Local CTA/link audit: `2026-07-01-pm-web-local-cta-audit.txt`
+- Launch-claims audit: `2026-07-01-pm-web-launch-claims-audit.txt`
+
+## Result
+
+Pass: desktop and mobile screenshots render the hero, waitlist CTA, trust/safety section, membership section, FAQ section, download/waitlist section, footer, support path, and legal/privacy footer controls without visible clipping or horizontal overflow.
+
+Pass: source audits confirm local CTA/link boundaries, waitlist-only launch claims, central PM_App matrix alignment, no external app-store or checkout links, no profile/matching/payment creation claim, and helper-generated support/legal mailto paths.
+
+Pass: production `https://www.pinaymate.com/` returns HTTP 200 from Vercel, and `https://pinaymate.com/` returns a 308 redirect to `https://www.pinaymate.com/`.
+
+## Not Proven
+
+- Mailbox receipt for `support@pinaymate.com` or `legal@pinaymate.com`.
+- Human review of email inbox ownership, backup access, and SLA.
+- Live app-store availability.
+- Checkout/payment readiness.
+- Live PM_App matching/profile behavior.
+- Automated modal interaction was not added because the temporary `npx` Playwright test runner could not resolve `@playwright/test` without adding a project dependency.

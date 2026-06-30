@@ -1,0 +1,6 @@
+
+> pinaymate@0.0.0 check:waitlist-handoff
+> node scripts/check-waitlist-backend-handoff.mjs
+
+PASS PM_Web waitlist backend handoff contract
+Checked backend flag gates, Edge Function path, public apikey header, client marker, contract token, honeypot reset, forbidden browser secret/auth headers, and operator doc markers.
