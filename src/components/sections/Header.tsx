@@ -4,7 +4,6 @@ import { Heart, Menu, X } from "lucide-react";
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOnLightSection, setIsOnLightSection] = useState(false);
   const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -80,7 +79,6 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      setIsOnLightSection(false);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -100,18 +98,12 @@ const Header: React.FC = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-200 ${
         isScrolled
-          ? isOnLightSection
-            ? "bg-dalisay-950/95 backdrop-blur-xl border-b border-amihan-500/25 shadow-2xl"
-            : "bg-dalisay-950/95 backdrop-blur-xl border-b border-amihan-500/25 shadow-2xl"
+          ? "bg-dalisay-950/95 backdrop-blur-xl border-b border-amihan-500/25 shadow-2xl"
           : "bg-dalisay-950/82 backdrop-blur-lg border-b border-luna-300/20"
       }`}
     >
       <div
-        className={`absolute inset-0 bg-gradient-to-r transition-opacity duration-200 ${
-          isOnLightSection
-            ? "from-pink-500/5 via-purple-500/5 to-blue-500/5 opacity-40"
-            : "from-amihan-500/5 via-dalisay-500/5 to-luna-500/5 opacity-40"
-        }`}
+        className="absolute inset-0 bg-gradient-to-r from-amihan-500/5 via-dalisay-500/5 to-luna-500/5 opacity-40 transition-opacity duration-200"
         aria-hidden="true"
       ></div>
 
@@ -125,11 +117,7 @@ const Header: React.FC = () => {
           <a
             href="#home"
             aria-label="Go to PinayMate home"
-            className={`flex min-h-12 items-center space-x-3 cursor-pointer rounded-lg border px-3 py-2 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
-              isOnLightSection
-                ? "border-transparent hover:border-pink-500 hover:bg-pink-50"
-                : "border-transparent hover:border-[#F4376D] hover:bg-[#2e1e5a]/45"
-            }`}
+            className="flex min-h-12 cursor-pointer items-center space-x-3 rounded-lg border border-transparent px-3 py-2 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
           >
             <div className="relative">
               {/* Main Logo Container */}
@@ -144,11 +132,7 @@ const Header: React.FC = () => {
 
             {/* Main Brand Name - Always visible, changes color based on section */}
             <span
-              className={`text-2xl font-hello-paris-bold transition-all duration-300 ${
-                isOnLightSection
-                  ? "text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text"
-                  : "text-white"
-              }`}
+              className="text-2xl font-hello-paris-bold text-white transition-all duration-300"
             >
               PinayMate
             </span>
@@ -162,20 +146,10 @@ const Header: React.FC = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`group nav-item relative min-h-11 rounded-lg border px-4 py-2 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
-                    isOnLightSection
-                      ? "border-transparent hover:border-pink-500 hover:bg-pink-50"
-                      : "border-transparent hover:border-[#F4376D] hover:bg-[#2e1e5a]/45"
-                  }`}
+                  className="group nav-item relative min-h-11 rounded-lg border border-transparent px-4 py-2 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
                 >
                   <div className="flex items-center">
-                    <span
-                      className={`font-dm-sans-medium text-base transition-all duration-300 ${
-                        isOnLightSection
-                          ? "text-gray-800 group-hover:text-pink-600"
-                          : "text-white group-hover:text-[#F4376D]"
-                      }`}
-                    >
+                    <span className="font-dm-sans-medium text-base text-white transition-all duration-300 group-hover:text-[#F4376D]">
                       {item.label}
                     </span>
                   </div>
@@ -186,11 +160,7 @@ const Header: React.FC = () => {
             <a
               href="#download"
               aria-label="Go to PinayMate waitlist options"
-              className={`hidden min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-dm-sans-bold transition-all duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] sm:inline-flex ${
-                isOnLightSection
-                  ? "bg-[#21132f] text-white shadow-lg shadow-[#2e1e5a]/15 hover:bg-[#3b2255]"
-                  : "bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25 hover:bg-[#d7346b]"
-              }`}
+              className="hidden min-h-11 items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-4 py-2 text-sm font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/25 transition-all duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] sm:inline-flex"
             >
               Join waitlist
               <Heart className="h-4 w-4" aria-hidden="true" />
@@ -201,11 +171,7 @@ const Header: React.FC = () => {
               ref={menuButtonRef}
               type="button"
               onClick={toggleMenu}
-              className={`group relative min-h-11 min-w-11 rounded-lg border p-3 backdrop-blur-sm transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] md:hidden ${
-                isOnLightSection
-                  ? "border-transparent hover:border-pink-500 bg-gray-100/50 text-gray-900 hover:text-pink-500 hover:bg-pink-50"
-                  : "border-transparent hover:border-[#F4376D] bg-[#2e1e5a]/55 text-white hover:text-[#f7a4c8] hover:bg-[#3b2255]/70"
-              }`}
+              className="group relative min-h-11 min-w-11 rounded-lg border border-transparent bg-[#2e1e5a]/55 p-3 text-white backdrop-blur-sm transition-all duration-200 hover:border-[#F4376D] hover:bg-[#3b2255]/70 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] md:hidden"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
@@ -241,17 +207,9 @@ const Header: React.FC = () => {
               role="dialog"
               aria-modal="true"
               aria-label="PinayMate mobile navigation"
-              className={`relative max-h-[calc(100dvh-4rem)] overflow-y-auto border-t px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl backdrop-blur-xl animate-slideInDown ${
-                isOnLightSection
-                  ? "border-amihan-500/30 bg-dalisay-950/98"
-                  : "border-amihan-500/30 bg-dalisay-950/98"
-              }`}
+              className="relative max-h-[calc(100dvh-4rem)] animate-slideInDown overflow-y-auto border-t border-amihan-500/30 bg-dalisay-950/98 px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl backdrop-blur-xl"
             >
-              <p
-                className={`px-4 pb-2 text-xs font-dm-sans-bold uppercase ${
-                  isOnLightSection ? "text-gray-600" : "text-[#cbbade]"
-                }`}
-              >
+              <p className="px-4 pb-2 text-xs font-dm-sans-bold uppercase text-[#cbbade]">
                 Menu
               </p>
               <div className="space-y-3">
@@ -260,23 +218,14 @@ const Header: React.FC = () => {
                     key={item.href}
                     ref={index === 0 ? firstMobileLinkRef : undefined}
                     href={item.href}
-                    className={`group flex min-h-12 items-center space-x-3 rounded-lg border px-4 py-3 transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
-                      isOnLightSection
-                        ? "border-transparent text-gray-800 hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600"
-                        : "border-transparent text-white hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 hover:text-[#f7a4c8]"
-                    }`}
+                    className="group flex min-h-12 items-center space-x-3 rounded-lg border border-transparent px-4 py-3 text-white transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
                     style={{ animationDelay: `${index * 40}ms` }}
                     onClick={closeMenu}
                   >
                     <span className="font-dm-sans-medium text-base transition-all duration-200">
                       {item.label}
                     </span>
-                    <span
-                      className={`ml-auto text-sm ${
-                        isOnLightSection ? "text-pink-600" : "text-[#f7a4c8]"
-                      }`}
-                      aria-hidden="true"
-                    >
+                    <span className="ml-auto text-sm text-[#f7a4c8]" aria-hidden="true">
                       View
                     </span>
                   </a>
@@ -287,20 +236,12 @@ const Header: React.FC = () => {
                 href="#download"
                 onClick={closeMenu}
                 aria-label="Go to PinayMate waitlist options"
-                className={`mt-4 flex min-h-14 items-center justify-center gap-2 rounded-lg px-5 py-3 text-center font-dm-sans-bold shadow-xl transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
-                  isOnLightSection
-                    ? "bg-[#21132f] text-white shadow-[#2e1e5a]/15 hover:bg-[#3b2255]"
-                    : "bg-[#ef3e78] text-white shadow-[#ef3e78]/25 hover:bg-[#d7346b]"
-                }`}
+                className="mt-4 flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-5 py-3 text-center font-dm-sans-bold text-white shadow-xl shadow-[#ef3e78]/25 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
               >
                 Join the waitlist
                 <Heart className="h-5 w-5" aria-hidden="true" />
               </a>
-              <p
-                className={`mt-3 px-1 text-sm leading-6 ${
-                  isOnLightSection ? "text-gray-600" : "text-[#cbbade]"
-                }`}
-              >
+              <p className="mt-3 px-1 text-sm leading-6 text-[#cbbade]">
                 Waitlist links open email. No profile, checkout, or payment is
                 created from this website.
               </p>
