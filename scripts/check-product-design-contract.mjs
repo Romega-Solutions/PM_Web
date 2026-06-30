@@ -236,7 +236,7 @@ const requiredFiles = [
     path: "src/components/sections/Features.tsx",
     markers: [
       "Built for trust, not hype",
-      "divide-y divide-[#eadfea] border-y",
+      "divide-y divide-white/10 border-y",
       "lg:grid-cols-[auto_0.7fr_1fr]",
       "Verification labels are framed as review cues",
       "Safety labels stay framed as review status",
@@ -296,7 +296,7 @@ const requiredFiles = [
       "Support boundary",
       "This website is for waitlist and support contact only",
       "Do not send passwords",
-      "divide-y divide-[#eadfea] border-y",
+      "divide-y divide-white/10 border-y",
       "aria-expanded",
       "aria-controls",
       "role=\"region\"",

@@ -92,7 +92,7 @@ const Hero = () => {
     >
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-x-0 top-0 h-64 bg-[radial-gradient(circle_at_top_left,rgba(239,62,120,0.28),transparent_34%),radial-gradient(circle_at_top_right,rgba(92,131,233,0.2),transparent_30%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#fff7fb] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#120a1b] to-transparent" />
       </div>
 
       <div className="relative z-10 mx-auto grid max-w-[1360px] items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:pb-24 xl:px-16">
@@ -230,13 +230,13 @@ const Hero = () => {
             aria-hidden="true"
           />
 
-          <div className="relative rounded-xl border border-white/12 bg-[#fff7fb] p-5 text-[#1a1a1a] shadow-2xl sm:p-6">
+          <div className="relative rounded-xl border border-white/12 bg-[#21132f]/96 p-5 text-white shadow-2xl shadow-black/35 backdrop-blur sm:p-6">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-dm-sans-bold uppercase text-[#b31460]">
                   Product preview
                 </p>
-                <h2 className="mt-1 font-lora text-2xl font-bold">
+                <h2 className="mt-1 font-lora text-2xl font-bold text-white">
                   A calmer match path
                 </h2>
               </div>
@@ -245,16 +245,16 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-6 border-y border-[#ecebf0] bg-white px-1 py-5">
+            <div className="mt-6 border-y border-white/10 bg-white/[0.06] px-1 py-5">
               <div className="flex items-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-br from-[#ef3e78] to-[#8d69f6] text-xl font-dm-sans-bold text-white">
                   PM
                 </div>
                 <div>
-                  <p className="font-dm-sans-bold text-[#1a1a1a]">
+                  <p className="font-dm-sans-bold text-white">
                     Member path preview
                   </p>
-                  <p className="text-sm leading-6 text-[#5f6572]">
+                  <p className="text-sm leading-6 text-[#d7c7ed]">
                     Philippines-based profile flow with relationship intent,
                     interests, review status, and conversation context.
                   </p>
@@ -268,16 +268,16 @@ const Hero = () => {
                   return (
                     <div
                       key={row.label}
-                      className="flex items-center gap-3 border-t border-[#ecebf0] pt-3 first:border-t-0 first:pt-0"
+                      className="flex items-center gap-3 border-t border-white/10 pt-3 first:border-t-0 first:pt-0"
                     >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#f8f5ff] text-[#5a3baf]">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10 text-[#f0b6df]">
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
                       <div>
-                        <p className="text-xs font-dm-sans-bold uppercase text-[#6a6a72]">
+                        <p className="text-xs font-dm-sans-bold uppercase text-[#cbbade]">
                           {row.label}
                         </p>
-                        <p className="font-dm-sans-semibold text-[#1a1a1a]">
+                        <p className="font-dm-sans-semibold text-white">
                           {row.value}
                         </p>
                       </div>
@@ -291,7 +291,7 @@ const Hero = () => {
               {matchNotes.map((note) => (
                 <div
                   key={note}
-                  className="flex min-h-11 items-center gap-3 border-b border-[#ecebf0] py-2 text-sm font-dm-sans-semibold text-[#2e1e5a] last:border-b-0"
+                  className="flex min-h-11 items-center gap-3 border-b border-white/10 py-2 text-sm font-dm-sans-semibold text-[#eadff7] last:border-b-0"
                 >
                   <CheckCircle2
                     className="h-4 w-4 text-[#22a574]"
@@ -302,13 +302,13 @@ const Hero = () => {
               ))}
             </div>
 
-            <div className="mt-5 border-l-2 border-[#f0b6df] bg-[#fff7fb] py-1 pl-4 pr-2">
+            <div className="mt-5 border-l-2 border-[#f0b6df] bg-white/[0.06] py-1 pl-4 pr-2">
               <div className="flex items-start gap-3">
                 <LockKeyhole
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
                   aria-hidden="true"
                 />
-                <p className="text-sm leading-6 text-[#4b5563]">
+                <p className="text-sm leading-6 text-[#d7c7ed]">
                   This page is for waitlist interest only. Messaging, review
                   badges, and paid plans belong inside the app access flow,
                   not this website.
@@ -316,13 +316,13 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-5 border-t border-[#ecebf0] pt-4 text-[#21132f]">
+            <div className="mt-5 border-t border-white/10 pt-4 text-[#d7c7ed]">
               <div className="flex items-start gap-3">
                 <UsersRound
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#b31460]"
                   aria-hidden="true"
                 />
-                <p className="text-sm leading-6 text-[#4b5563]">
+                <p className="text-sm leading-6 text-[#d7c7ed]">
                   Designed for serious Filipina and foreigner introductions
                   where intent, respect, and safety context matter before reach.
                 </p>

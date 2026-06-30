@@ -80,14 +80,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-
-      // Check if we're on the About section (light background)
-      const aboutSection = document.getElementById("about");
-      if (aboutSection) {
-        const rect = aboutSection.getBoundingClientRect();
-        const isInAboutSection = rect.top <= 80 && rect.bottom >= 0;
-        setIsOnLightSection(isInAboutSection);
-      }
+      setIsOnLightSection(false);
     };
 
     window.addEventListener("scroll", handleScroll);
