@@ -167,7 +167,7 @@ const Download = () => {
               <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
                 Email option
               </p>
-              <p className="mt-2 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#cbbade]">
+              <p className="mt-2 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#cbbade]">
                 Mail app
                 <span className="sr-only">
                   . Same waitlist, through your mail app.
@@ -205,12 +205,26 @@ const Download = () => {
                         />
                       ))}
                     </span>
-                    <span className={`mt-3 block text-xs font-dm-sans-bold ${link.isPrimary ? "text-[#ffe8f1]" : "text-[#f3c7de]"}`}>
-                      Email path
-                      <span className="sr-only">
-                        . {link.detail} Use this if you prefer email or want a
-                        direct support path.
-                      </span>
+                    <span className="mt-3 grid grid-cols-3 gap-2" aria-hidden="true">
+                      <span
+                        className={`h-1.5 rounded-lg ${
+                          link.isPrimary ? "bg-[#ffe8f1]/50" : "bg-[#f0b6df]/28"
+                        }`}
+                      />
+                      <span
+                        className={`h-1.5 rounded-lg ${
+                          link.isPrimary ? "bg-[#ffe8f1]/35" : "bg-[#8d69f6]/28"
+                        }`}
+                      />
+                      <span
+                        className={`h-1.5 rounded-lg ${
+                          link.isPrimary ? "bg-[#ffe8f1]/25" : "bg-[#5c83e9]/24"
+                        }`}
+                      />
+                    </span>
+                    <span className="sr-only">
+                      {link.detail} Use this if you prefer email or want a
+                      direct support path.
                     </span>
                   </a>
                 ))}
@@ -219,7 +233,7 @@ const Download = () => {
 
             <p
               id="waitlist-email-note"
-              className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]"
+              className="mt-3 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]"
               aria-live="polite"
             >
               Platform-only email
@@ -357,14 +371,14 @@ const Download = () => {
               </p>
             </div>
 
-            <div className="mt-4 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            <div className="mt-4 grid border-y border-[#f0b6df]/12 py-3 sm:grid-cols-3 lg:grid-cols-1">
               {waitlistSignals.map((item) => {
                 const Icon = item.icon;
 
                 return (
                   <article
                     key={item.title}
-                    className="rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/66 p-5 shadow-xl shadow-black/12"
+                    className="border-t border-[#f0b6df]/12 px-4 py-3 first:border-t-0 sm:border-l sm:border-t-0 sm:first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0"
                   >
                     <div className="flex items-start gap-4">
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white">
@@ -374,7 +388,11 @@ const Download = () => {
                         <h3 className="font-lora text-xl font-bold text-white">
                           {item.title}
                         </h3>
-                        <p className="mt-3 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                        <p className="mt-3 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                          <span
+                            className="mb-2 block h-1.5 w-16 rounded-lg bg-[#ef3e78]"
+                            aria-hidden="true"
+                          />
                           {item.signal}
                           <span className="sr-only">. {item.text}</span>
                         </p>
@@ -386,7 +404,7 @@ const Download = () => {
             </div>
 
             <div className="mt-8 border-t border-[#F4376D]/25 pt-6">
-              <dl className="grid gap-5">
+              <dl className="grid border-y border-[#f0b6df]/12 py-3">
                 <div className="grid gap-2 sm:grid-cols-[9rem_1fr] sm:gap-5">
                   <dt className="flex items-center gap-2 text-sm font-dm-sans-bold text-[#f3c7de]">
                     <ShieldCheck
@@ -395,7 +413,7 @@ const Download = () => {
                     />
                     Waitlist
                   </dt>
-                  <dd className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#eadff7]">
+                  <dd className="inline-flex min-h-9 items-center border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#eadff7]">
                     Signal only
                     <span className="sr-only">
                       . Signal only. No account, match, checkout, or payment.
@@ -414,7 +432,7 @@ const Download = () => {
                     />
                     Access
                   </dt>
-                  <dd className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#eadff7]">
+                  <dd className="inline-flex min-h-9 items-center border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#eadff7]">
                     When ready
                     <span className="sr-only">
                       . Public channels appear when ready.
@@ -433,16 +451,16 @@ const Download = () => {
                   . Join the waitlist first; official store links will be shared there.
                 </span>
               </p>
-              <p className="mt-2 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
+              <p className="mt-2 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
                 Waitlist first
               </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="mt-4 grid border-y border-[#f0b6df]/12 py-3 sm:grid-cols-2">
                 {storeLinkStates.map((store) => (
                   <div
                     key={store.label}
                     role="status"
                     aria-label={`${store.label} updates are shared through the waitlist`}
-                    className="min-h-24 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/40 p-4 text-[#d7c7ed]"
+                    className="min-h-20 border-t border-[#f0b6df]/12 px-4 py-2 text-[#d7c7ed] first:border-t-0 sm:border-l sm:border-t-0 sm:first:border-l-0"
                   >
                     <div className="mb-4 grid grid-cols-3 gap-2" aria-hidden="true">
                       <span className="h-8 rounded-lg bg-[#ef3e78]/24" />
@@ -450,7 +468,7 @@ const Download = () => {
                       <span className="h-8 rounded-lg bg-[#5c83e9]/18" />
                     </div>
                     <p className="text-sm font-dm-sans-bold text-white">
-                      {store.label} updates
+                      {store.label}
                     </p>
                     <p className="sr-only">{store.detail}</p>
                   </div>
@@ -458,7 +476,7 @@ const Download = () => {
               </div>
             </div>
 
-            <div className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
+            <div className="mt-4 inline-flex min-h-10 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
               <MapPin className="h-4 w-4 text-[#f7a4c8]" aria-hidden="true" />
               Priority markets
               <span className="sr-only">

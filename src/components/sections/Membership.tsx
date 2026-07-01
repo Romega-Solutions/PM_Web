@@ -203,9 +203,13 @@ const Membership = () => {
                     {plan.displayName}
                     <span className="sr-only">. {plan.name}</span>
                   </h3>
-                  <p className="mt-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
-                    {plan.shortDecision}
-                    <span className="sr-only"> {plan.decision}</span>
+                  <div className="mt-4 grid max-w-40 grid-cols-3 gap-2" aria-hidden="true">
+                    <span className={`h-2 rounded-lg bg-gradient-to-r ${plan.tone}`} />
+                    <span className={`h-2 rounded-lg bg-gradient-to-r ${plan.tone} opacity-70`} />
+                    <span className={`h-2 rounded-lg bg-gradient-to-r ${plan.tone} opacity-45`} />
+                  </div>
+                  <p className="sr-only">
+                    {plan.shortDecision} {plan.decision}
                   </p>
                 </div>
                 </div>
@@ -219,8 +223,8 @@ const Membership = () => {
                       />
                     ))}
                   </div>
-                  <div className="mt-5 grid grid-cols-2 gap-2">
-                    <p className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2">
+                  <div className="mt-5 grid grid-cols-2 border-y border-[#f0b6df]/12 py-3">
+                    <p className="border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                       <span className="block text-xs font-dm-sans-bold text-[#f0b6df]">
                         Access
                       </span>
@@ -228,7 +232,7 @@ const Membership = () => {
                         {plan.price}
                       </span>
                     </p>
-                    <p className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2">
+                    <p className="border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                       <span className="block text-xs font-dm-sans-bold text-[#f0b6df]">
                         Today
                       </span>
@@ -238,7 +242,7 @@ const Membership = () => {
                     </p>
                   </div>
                   {plan.plannedPrice ? (
-                    <div className="mt-3 rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/48 px-3 py-2">
+                    <div className="mt-3 border-l-2 border-[#f0b6df]/18 bg-[#120a1b]/28 px-3 py-2">
                       <p className="text-xs font-dm-sans-bold text-[#f0b6df]">
                         Planned
                         <span className="sr-only">
@@ -250,7 +254,7 @@ const Membership = () => {
                       </p>
                     </div>
                   ) : null}
-                  <p className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-3 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                  <p className="mt-3 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f6d0f1]">
                     Interest only
                     <span className="sr-only"> {plan.note}</span>
                   </p>
@@ -326,11 +330,11 @@ const Membership = () => {
               . Not sure which interest path fits?
             </span>
           </p>
-          <ul className="mt-4 grid gap-3 lg:grid-cols-3">
+          <ul className="mt-4 grid border-y border-[#f0b6df]/12 py-3 lg:grid-cols-3">
             {decisionPrompts.map((prompt) => (
               <li
                 key={prompt.label}
-                className="rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/58 p-4 text-sm leading-6 text-[#f8f5ff]"
+                className="border-t border-[#f0b6df]/12 px-4 py-2 text-sm leading-6 text-[#f8f5ff] first:border-t-0 lg:border-l lg:border-t-0 lg:first:border-l-0"
               >
                 <span className="flex items-center gap-3 font-dm-sans-bold">
                   <CheckCircleIcon />
@@ -362,9 +366,9 @@ const Membership = () => {
           ))}
         </div>
 
-        <div className="mt-8 rounded-lg border border-[#f0b6df]/18 bg-gradient-to-br from-[#2e1e5a]/62 via-[#21132f]/70 to-[#170f22] p-5 text-white sm:p-6">
+        <div className="mt-8 border-y border-[#f0b6df]/18 bg-gradient-to-br from-[#2e1e5a]/36 via-[#21132f]/44 to-[#170f22] py-5 text-white sm:py-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a] text-white">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a]/70 text-white">
               <ShieldCheck className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
