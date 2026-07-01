@@ -117,7 +117,7 @@ const Header: React.FC = () => {
           <a
             href="#home"
             aria-label="Go to PinayMate home"
-            className="flex min-h-12 cursor-pointer items-center space-x-3 rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/35 px-3 py-2 transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+            className="flex min-h-12 cursor-pointer items-center space-x-3 border-l-2 border-[#f0b6df]/18 bg-[#1a0d27]/20 px-3 py-2 transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/38 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
           >
             <div className="relative">
               {/* Main Logo Container */}
@@ -146,7 +146,7 @@ const Header: React.FC = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group nav-item relative min-h-11 rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/35 px-4 py-2 transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+                  className="group nav-item relative min-h-11 border-b border-transparent px-4 py-2 transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/28 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
                 >
                   <div className="flex items-center">
                     <span className="font-dm-sans-medium text-base text-white transition-all duration-300 group-hover:text-[#F4376D]">
@@ -213,13 +213,13 @@ const Header: React.FC = () => {
                 Navigate
                 <span className="sr-only">. Menu</span>
               </p>
-              <div className="space-y-3">
+              <div className="border-y border-[#f0b6df]/12">
                 {navItems.map((item, index) => (
                   <a
                     key={item.href}
                     ref={index === 0 ? firstMobileLinkRef : undefined}
                     href={item.href}
-                    className="group flex min-h-12 items-center space-x-3 rounded-lg border border-[#f0b6df]/12 bg-[#1a0d27]/45 px-4 py-3 text-white transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/55 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+                    className="group flex min-h-12 items-center space-x-3 border-t border-[#f0b6df]/10 px-4 py-3 text-white transition-all duration-200 first:border-t-0 hover:bg-[#2e1e5a]/38 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
                     style={{ animationDelay: `${index * 40}ms` }}
                     onClick={closeMenu}
                   >
@@ -243,14 +243,14 @@ const Header: React.FC = () => {
                 <span className="sr-only">. Join the waitlist</span>
                 <Heart className="h-5 w-5" aria-hidden="true" />
               </a>
-              <p className="mt-3 grid grid-cols-3 gap-2 px-1 text-xs font-dm-sans-bold text-[#f3c7de]">
-                <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+              <p className="mt-3 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
+                <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
                   Email
                 </span>
-                <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+                <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
                   No profile
                 </span>
-                <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+                <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
                   No payment
                 </span>
                 <span className="sr-only">

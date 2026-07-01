@@ -182,11 +182,11 @@ const About = () => {
               </span>
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div className="mt-8 grid grid-cols-4 border-y border-[#f0b6df]/12 py-3">
               {memberSignals.map((signal) => (
                 <div
                   key={signal.label}
-                  className="min-h-16 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 p-3 text-center text-sm font-dm-sans-semibold text-[#eadff7]"
+                  className="min-h-14 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-sm font-dm-sans-semibold text-[#eadff7] first:border-l-0"
                 >
                   <CheckCircle2
                     className="mx-auto mb-2 h-4 w-4 text-[#22a574]"
@@ -202,7 +202,7 @@ const About = () => {
               {credibilityStats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="min-w-0 rounded-lg bg-[#120a1b]/52 p-4"
+                  className="min-w-0 border-l border-[#f0b6df]/12 px-4 py-1 first:border-l-0"
                 >
                   <dt className="font-lora text-3xl font-bold text-white">
                     {stat.value}
@@ -252,7 +252,7 @@ const About = () => {
                 {connectionVisual.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/68 p-4"
+                    className="border-l border-[#f0b6df]/12 bg-[#120a1b]/38 px-4 py-3 first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0"
                   >
                     <div className="flex items-center justify-between">
                       <span
@@ -295,7 +295,7 @@ const About = () => {
               return (
                 <article
                   key={point.title}
-                  className="rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/72 p-5 shadow-xl shadow-black/10 transition duration-200 hover:border-[#f0b6df]/32 hover:bg-[#21132f]/86"
+                  className="border-l-2 border-[#f0b6df]/18 bg-[#1a0d27]/48 p-5 shadow-xl shadow-black/10 transition duration-200 hover:border-[#f0b6df]/45 hover:bg-[#21132f]/70"
                   style={{ transitionDelay: `${index * 60}ms` }}
                 >
                   <div className="flex items-start gap-4">

@@ -217,22 +217,22 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
 
         {/* Content */}
         <div className="max-h-[calc(min(90dvh,48rem)-100px)] space-y-5 overflow-y-auto p-5 sm:p-6">
-          <div className="rounded-lg border border-[#f0b6df]/16 bg-[#2e1e5a]/42 p-4 sm:p-5">
-            <div className="grid gap-2 text-xs font-dm-sans-bold text-[#f3c7de] sm:grid-cols-3">
-              <span className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-center">
+          <div className="border-y border-[#f0b6df]/14 bg-[#2e1e5a]/24 py-4 sm:py-5">
+            <div className="grid grid-cols-3 text-xs font-dm-sans-bold text-[#f3c7de]">
+              <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                 Updated
                 <span className="sr-only">. Last Updated: June 11, 2026</span>
               </span>
-              <span className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-center">
+              <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                 Waitlist
               </span>
-              <span className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-center">
+              <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                 Support
               </span>
             </div>
             <p
               id={`legal-modal-description-${type}`}
-              className="mt-4 font-dm-sans-regular leading-7 text-[#d7c7ed]"
+              className="mt-4 px-4 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:px-5"
             >
               Please read this {selectedContent.title.toLowerCase()} carefully.
               The current site is a waitlist and support surface, so terms may
@@ -243,7 +243,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           {selectedContent.sections.map((section, index) => (
             <div
               key={index}
-              className="animate-fadeInUp rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/46 p-4"
+              className="animate-fadeInUp border-l-2 border-[#f0b6df]/16 bg-[#120a1b]/38 p-4"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex items-start gap-3">
@@ -261,7 +261,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           ))}
 
           {/* Contact Section */}
-          <div className="mt-6 rounded-lg border border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/62 via-[#21132f]/72 to-[#170f22] p-5 sm:p-6">
+          <div className="mt-6 border-y border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/46 via-[#21132f]/56 to-[#170f22] py-5 sm:py-6">
             <h3 className="mb-4 text-xl font-dm-sans-bold text-white">
               Questions?
               <span className="sr-only"> Questions or Concerns?</span>
@@ -271,11 +271,11 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               {selectedContent.title.toLowerCase()}, contact the launch support
               team:
             </p>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-2 border-y border-[#f0b6df]/12 py-2">
               <a
                 href={launchEmailLinks.legalQuestion}
                 aria-label="Email PinayMate legal support"
-                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/42 px-4 py-2 font-dm-sans-bold text-[#ff8fb8] transition-colors hover:border-[#f0b6df]/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-11 items-center justify-center border-l border-[#f0b6df]/12 px-4 py-1 font-dm-sans-bold text-[#ff8fb8] transition-colors first:border-l-0 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 <span>Legal</span>
                 <span className="sr-only">. legal@pinaymate.com</span>
@@ -283,7 +283,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               <a
                 href={launchEmailLinks.supportQuestion}
                 aria-label="Email PinayMate support"
-                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/42 px-4 py-2 font-dm-sans-bold text-[#cbb2ff] transition-colors hover:border-[#f0b6df]/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-11 items-center justify-center border-l border-[#f0b6df]/12 px-4 py-1 font-dm-sans-bold text-[#cbb2ff] transition-colors first:border-l-0 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
                 <span>Support</span>
                 <span className="sr-only">. support@pinaymate.com</span>

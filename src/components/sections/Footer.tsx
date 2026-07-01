@@ -115,14 +115,14 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2">
-                <div className="flex items-center gap-1.5 rounded-lg border border-[#22a574]/20 bg-[#22a574]/10 px-3 py-1.5">
+              <div className="grid max-w-sm grid-cols-2 border-y border-[#f0b6df]/12 py-2">
+                <div className="flex min-h-9 items-center justify-center gap-1.5 border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                   <CheckCircle className="h-3.5 w-3.5 text-[#49d49a]" aria-hidden="true" />
                   <span className="text-xs font-dm-sans-semibold text-[#aaf1cf]">
                     Review cues
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 rounded-lg border border-[#5c83e9]/25 bg-[#5c83e9]/10 px-3 py-1.5">
+                <div className="flex min-h-9 items-center justify-center gap-1.5 border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                   <Shield className="h-3.5 w-3.5 text-[#91b1ff]" aria-hidden="true" />
                   <span className="text-xs font-dm-sans-semibold text-[#cddcff]">
                     Safety first
@@ -201,14 +201,14 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-center">
+              <div className="mt-5 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                   Store
                 </span>
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-center">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                   Social
                 </span>
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-center">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                   Community
                 </span>
                 <span className="sr-only">

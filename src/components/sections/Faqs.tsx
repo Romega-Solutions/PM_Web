@@ -120,11 +120,11 @@ const Faqs = () => {
               account flow.
             </span>
           </p>
-          <div className="mx-auto mt-6 grid max-w-2xl gap-2 sm:grid-cols-3">
+          <div className="mx-auto mt-6 grid max-w-2xl grid-cols-3 border-y border-[#f0b6df]/12 py-3">
             {faqSignals.map((signal) => (
               <span
                 key={signal.label}
-                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]"
+                className="border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de] first:border-l-0"
               >
                 {signal.label}
                 <span className="sr-only">. {signal.detail}</span>
@@ -143,11 +143,11 @@ const Faqs = () => {
               Direct answers.
               <span className="sr-only"> Direct support. Need a direct answer?</span>
             </h3>
-            <p className="mt-4 grid gap-2">
+            <p className="mt-4 grid border-y border-[#f0b6df]/12 py-3">
               {supportSignals.map((signal) => (
                 <span
                   key={signal.label}
-                  className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/42 px-3 py-3"
+                  className="border-t border-[#f0b6df]/12 px-1 py-3 first:border-t-0"
                 >
                   <span className="flex items-center justify-between gap-3 text-xs font-dm-sans-bold text-[#f6d0f1]">
                     {signal.label}
@@ -192,7 +192,7 @@ const Faqs = () => {
             </a>
           </aside>
 
-          <div className="divide-y divide-white/10 border-y border-white/12 rounded-lg bg-[#1a0d27]/62 p-3 shadow-xl shadow-black/15 sm:p-4">
+          <div className="divide-y divide-white/10 border-y border-white/12 bg-[#1a0d27]/62 p-3 shadow-xl shadow-black/15 sm:p-4">
             {faqData.map((faq, index) => {
               const isOpen = openFaq === index;
               const Icon = faq.icon;
@@ -207,10 +207,10 @@ const Faqs = () => {
                     onClick={() => toggleFaq(index)}
                     aria-expanded={isOpen}
                     aria-controls={panelId}
-                    className={`grid min-h-16 w-full cursor-pointer gap-3 rounded-lg border px-3 py-4 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-4 ${
+                    className={`grid min-h-16 w-full cursor-pointer gap-3 border-l-2 px-3 py-4 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-4 ${
                       isOpen
-                        ? "border-[#f0b6df]/26 bg-[#2e1e5a]/46"
-                        : "border-[#f0b6df]/10 bg-[#120a1b]/38"
+                        ? "border-[#f0b6df] bg-[#2e1e5a]/46"
+                        : "border-[#f0b6df]/18 bg-[#120a1b]/28"
                     }`}
                   >
                     <span

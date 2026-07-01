@@ -236,7 +236,7 @@ const Hero = () => {
           </div>
           <div
             id="hero-cta-note"
-            className="mt-4 grid max-w-2xl gap-2 sm:grid-cols-3"
+            className="mt-4 grid max-w-2xl grid-cols-3 border-y border-[#f0b6df]/12 py-3"
           >
             {[
               {
@@ -254,7 +254,7 @@ const Hero = () => {
             ].map((item) => (
                 <span
                   key={item.label}
-                  className="inline-flex min-h-10 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 px-3 py-2 text-center text-xs font-dm-sans-bold text-[#f6d0f1]"
+                  className="min-h-10 border-l border-[#f0b6df]/12 px-3 py-1 text-center text-xs font-dm-sans-bold text-[#f6d0f1] first:border-l-0"
                 >
                   {item.label}
                   <span className="sr-only">. {item.detail}</span>
@@ -292,11 +292,11 @@ const Hero = () => {
             </dl>
           </div>
 
-          <ul className="mt-6 grid gap-2 text-sm font-dm-sans-medium text-[#f8f5ff] sm:grid-cols-4">
+          <ul className="mt-6 grid grid-cols-4 border-y border-[#f0b6df]/12 py-3 text-sm font-dm-sans-medium text-[#f8f5ff]">
             {trustSignals.map((signal) => (
               <li
                 key={signal.label}
-                className="min-h-16 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/32 p-3 text-center"
+                className="min-h-14 border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0"
               >
                 <CheckCircle2
                   className="mx-auto h-4 w-4 shrink-0 text-[#22a574]"
@@ -311,13 +311,13 @@ const Hero = () => {
           </ul>
 
           <div
-            className="mt-4 flex flex-wrap gap-2"
+            className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3"
             aria-label="PinayMate audience focus"
           >
             {audiencePillars.map((pillar) => (
               <span
                 key={pillar.label}
-                className="inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-sm font-dm-sans-semibold text-[#eadff7]"
+                className="min-h-10 border-l border-[#f0b6df]/12 px-3 py-1 text-center text-sm font-dm-sans-semibold text-[#eadff7] first:border-l-0"
               >
                 {pillar.label}
                 <span className="sr-only">. {pillar.detail}</span>
@@ -399,14 +399,14 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="grid gap-3 border-t border-[#f0b6df]/12 p-5 sm:grid-cols-3">
+              <div className="grid border-t border-[#f0b6df]/12 p-5 sm:grid-cols-3">
                 {previewRows.map((row) => {
                   const Icon = row.icon;
 
                   return (
                     <div
                       key={row.label}
-                      className="rounded-lg border border-white/10 bg-[#2e1e5a]/32 p-3 text-center"
+                      className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0"
                     >
                       <div className="mx-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a]/75 text-[#f0b6df]">
                         <Icon className="h-5 w-5" aria-hidden="true" />
@@ -423,11 +423,11 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-2">
+            <div className="mt-5 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
               {matchNotes.map((note) => (
                 <div
                   key={note.label}
-                  className="min-h-16 rounded-lg border border-white/10 bg-[#2e1e5a]/28 p-3 text-center text-xs font-dm-sans-bold text-[#eadff7]"
+                  className="min-h-14 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-xs font-dm-sans-bold text-[#eadff7] first:border-l-0"
                 >
                   <CheckCircle2
                     className="mx-auto h-4 w-4 text-[#22a574]"
@@ -445,14 +445,14 @@ const Hero = () => {
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#f7a4c8]"
                   aria-hidden="true"
                 />
-                <p className="grid flex-1 gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
-                  <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                <p className="grid flex-1 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
+                  <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                     Waitlist
                   </span>
-                  <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                  <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                     App flow
                   </span>
-                  <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                  <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                     No checkout
                   </span>
                   <span className="sr-only">

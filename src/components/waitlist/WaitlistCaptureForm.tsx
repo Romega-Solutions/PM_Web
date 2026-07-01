@@ -177,15 +177,15 @@ export function WaitlistCaptureForm() {
             </p>
             <p
               id="waitlist-form-boundary"
-              className="mt-3 grid grid-cols-3 gap-2 text-xs font-dm-sans-bold text-[#f6d0f1]"
+              className="mt-3 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]"
             >
-              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+              <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
                 Email
               </span>
-              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+              <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
                 Platform
               </span>
-              <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-2 py-2 text-center">
+              <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
                 Updates
               </span>
               <span className="sr-only">
@@ -194,13 +194,13 @@ export function WaitlistCaptureForm() {
               </span>
             </p>
             <div
-              className="mt-4 grid gap-2 sm:grid-cols-3"
+              className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3"
               aria-label="What the waitlist includes"
             >
               {formPromise.map((item) => (
                 <span
                   key={item.label}
-                  className="min-h-16 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 p-3 text-center text-xs font-dm-sans-bold text-[#f3c7de]"
+                  className="min-h-14 border-l border-[#f0b6df]/12 px-2 text-center text-xs font-dm-sans-bold text-[#f3c7de] first:border-l-0"
                 >
                   <CheckCircle2
                     className="mx-auto h-4 w-4 text-[#49d49a]"
@@ -227,11 +227,11 @@ export function WaitlistCaptureForm() {
             <span className="h-12 rounded-lg bg-[#8d69f6]/24" />
             <span className="h-12 rounded-lg bg-[#5c83e9]/20" />
           </div>
-          <div className="grid grid-cols-3 gap-2 lg:grid-cols-1">
+          <div className="grid grid-cols-3 border-y border-[#f0b6df]/12 py-3 lg:grid-cols-1 lg:border-y-0 lg:py-0">
             {waitlistBoundaries.map((item) => (
               <div
                 key={item.label}
-                className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/34 px-2 py-2 text-center text-xs font-dm-sans-bold text-[#eadff7]"
+                className="border-l border-[#f0b6df]/12 px-2 py-1 text-center text-xs font-dm-sans-bold text-[#eadff7] first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0"
               >
                 <ShieldCheck
                   className="mx-auto h-4 w-4 shrink-0 text-[#f0b6df]"
@@ -248,13 +248,13 @@ export function WaitlistCaptureForm() {
       </div>
 
       <div
-        className="grid grid-cols-3 gap-2 border-y border-[#f0b6df]/12 bg-[#120a1b]/58 px-5 py-3 sm:px-6"
+        className="grid grid-cols-3 border-y border-[#f0b6df]/12 bg-[#120a1b]/58 px-5 py-3 sm:px-6"
         aria-label="Sensitive details not needed for the waitlist"
       >
         {privacyPromise.map((item) => (
           <span
             key={item.label}
-            className="min-h-12 rounded-lg border border-[#f0b6df]/12 bg-[#170f22]/78 px-2 py-2 text-center text-[0.68rem] font-dm-sans-bold text-[#f3c7de]"
+            className="min-h-12 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-[0.68rem] font-dm-sans-bold text-[#f3c7de] first:border-l-0"
           >
             <ShieldCheck
               className="mx-auto h-3.5 w-3.5 text-[#f0b6df]"
@@ -370,11 +370,11 @@ export function WaitlistCaptureForm() {
       </div>
 
       <div className="px-5 pb-5 sm:px-6 sm:pb-6">
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
           {waitlistExclusions.map((item) => (
             <span
               key={item.label}
-              className="min-h-14 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 px-2 py-2 text-center text-[0.68rem] font-dm-sans-bold text-[#f3c7de]"
+              className="min-h-12 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-[0.68rem] font-dm-sans-bold text-[#f3c7de] first:border-l-0"
             >
               <CheckCircle2
                 className="mx-auto h-3.5 w-3.5 text-[#49d49a]"

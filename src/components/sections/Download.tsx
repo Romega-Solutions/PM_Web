@@ -246,11 +246,11 @@ const Download = () => {
                       . Send only what the waitlist needs.
                     </span>
                   </p>
-                  <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+                  <ul className="mt-3 grid border-y border-[#f0b6df]/12 py-3 sm:grid-cols-3">
                     {privacyNotes.map((note) => (
                       <li
                         key={note.label}
-                        className="rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/42 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]"
+                        className="border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de] first:border-l-0"
                       >
                         <span
                           className="mb-2 block h-1.5 w-10 rounded-lg bg-[#ef3e78]"
@@ -272,11 +272,11 @@ const Download = () => {
                 Next
                 <span className="sr-only">. What happens next</span>
               </p>
-              <ol className="mt-4 grid grid-cols-3 gap-2">
+              <ol className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
                 {waitlistSteps.map((step, index) => (
                   <li
                     key={step.label}
-                    className="min-h-20 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/34 px-2 py-3 text-center"
+                    className="min-h-16 border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0"
                   >
                     <span
                       className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-[#2e1e5a]/65 text-sm font-dm-sans-bold text-[#f3c7de]"
@@ -293,11 +293,11 @@ const Download = () => {
               </ol>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-6 grid grid-cols-4 border-y border-[#f0b6df]/12 py-3">
               {featureTags.map((tag) => (
                 <span
                   key={tag.label}
-                  className="inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/45 px-3 py-2 text-sm font-dm-sans-semibold text-[#eadff7]"
+                  className="min-h-10 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-xs font-dm-sans-bold text-[#eadff7] first:border-l-0 sm:text-sm"
                 >
                   {tag.label}
                   <span className="sr-only">. {tag.detail}</span>

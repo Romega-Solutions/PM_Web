@@ -133,11 +133,11 @@ const Features = () => {
               waitlist interest.
             </span>
           </p>
-          <div className="mx-auto mt-6 grid max-w-xl gap-2 sm:grid-cols-3">
+          <div className="mx-auto mt-6 grid max-w-xl grid-cols-3 border-y border-[#f0b6df]/12 py-3">
             {featureIntroSignals.map((signal) => (
               <span
                 key={signal}
-                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]"
+                className="border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de] first:border-l-0"
               >
                 {signal}
               </span>
@@ -235,14 +235,14 @@ const Features = () => {
                   waitlist.
                 </span>
               </p>
-              <p className="mt-4 grid gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-2 text-center">
+              <p className="mt-4 grid border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
                   Review paths
                 </span>
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-2 text-center">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
                   Not guarantees
                 </span>
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-2 text-center">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
                   No background checks
                 </span>
                 <span className="sr-only">
@@ -261,12 +261,12 @@ const Features = () => {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/62 p-4 sm:col-span-2">
+              <div className="border-y border-[#f0b6df]/12 bg-[#120a1b]/38 py-4 sm:col-span-2">
                 <div className="grid gap-3 sm:grid-cols-3">
                   {safetyDashboard.map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/42 p-3"
+                      className="border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0"
                     >
                       <div
                         className={`h-2 rounded-lg ${item.tone}`}
@@ -286,7 +286,7 @@ const Features = () => {
               {safetyItems.map((item) => (
                 <div
                   key={item.label}
-                  className="min-h-16 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-3 text-center text-xs font-dm-sans-bold text-[#f8f5ff] shadow-sm shadow-black/10"
+                  className="min-h-14 border-l-2 border-[#f0b6df]/18 bg-[#2e1e5a]/30 px-3 py-3 text-center text-xs font-dm-sans-bold text-[#f8f5ff] shadow-sm shadow-black/10"
                 >
                   <CheckCircle2
                     className="mx-auto h-5 w-5 shrink-0 text-[#22a574]"
@@ -299,11 +299,11 @@ const Features = () => {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-3 lg:grid-cols-3">
+          <div className="mt-8 grid border-y border-[#f0b6df]/12 py-3 lg:grid-cols-3">
             {safetyExpectations.map((item) => (
               <article
                 key={item.title}
-                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 p-4"
+                className="border-l border-[#f0b6df]/12 px-4 py-2 first:border-l-0"
               >
                 <p className="font-dm-sans-bold text-white">
                   {item.title}

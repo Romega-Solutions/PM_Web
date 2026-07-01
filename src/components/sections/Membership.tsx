@@ -257,11 +257,11 @@ const Membership = () => {
                 </div>
 
                 <div className="flex flex-1 flex-col gap-5 px-5 pb-5 sm:px-6 sm:pb-6">
-                  <ul className="grid grid-cols-4 gap-2">
+                  <ul className="grid grid-cols-4 border-y border-[#f0b6df]/12 py-3">
                     {plan.features.map((feature) => (
                       <li
                         key={feature.label}
-                        className="min-h-16 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/34 p-2 text-center"
+                        className="min-h-14 border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0"
                       >
                         <span className="mx-auto flex justify-center">
                           <CheckCircleIcon />
@@ -278,14 +278,14 @@ const Membership = () => {
                     id={`${plan.id}-action-note`}
                     className="mt-auto border-t border-[#f0b6df]/12 pt-4"
                   >
-                    <span className="grid gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                      <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                    <span className="grid border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                      <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
                         Email only
                       </span>
-                      <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                      <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
                         Not checkout
                       </span>
-                      <span className="rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-center">
+                      <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
                         No payment
                       </span>
                     </span>
@@ -348,13 +348,13 @@ const Membership = () => {
         </div>
 
         <div
-          className="mt-8 grid gap-3 border-y border-[#f0b6df]/12 py-5 sm:grid-cols-3"
+          className="mt-8 grid border-y border-[#f0b6df]/12 py-5 sm:grid-cols-4"
           aria-label="Current membership boundaries"
         >
           {launchBoundaries.map((boundary) => (
             <div
               key={boundary.label}
-              className="flex min-h-16 items-center justify-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/42 px-4 py-3 text-center text-sm font-dm-sans-bold text-[#f8f5ff]"
+              className="flex min-h-14 items-center justify-center border-l border-[#f0b6df]/12 px-4 py-2 text-center text-sm font-dm-sans-bold text-[#f8f5ff] first:border-l-0"
             >
               {boundary.label}
               <span className="sr-only">: {boundary.detail}</span>
@@ -371,14 +371,14 @@ const Membership = () => {
               <h3 className="font-lora text-2xl font-bold">
                 Pricing notice
               </h3>
-              <p className="mt-3 grid gap-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 px-3 py-2 text-center">
+              <p className="mt-3 grid border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                   Not purchased
                 </span>
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 px-3 py-2 text-center">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                   Not active
                 </span>
-                <span className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 px-3 py-2 text-center">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
                   Not guaranteed
                 </span>
                 <span className="sr-only">
