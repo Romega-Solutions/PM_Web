@@ -209,25 +209,41 @@ const Header: React.FC = () => {
               aria-label="PinayMate mobile navigation"
               className="relative max-h-[calc(100dvh-4rem)] animate-slideInDown overflow-y-auto border-t border-[#f0b6df]/16 bg-dalisay-950/98 px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-xl shadow-black/25 backdrop-blur-xl"
             >
-              <p className="px-4 pb-2 text-xs font-dm-sans-bold text-[#cbbade]">
+              <p className="grid grid-cols-3 gap-2 px-4 pb-3" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
+                <span className="h-1.5 rounded-lg bg-[#8d69f6]/44" />
+                <span className="h-1.5 rounded-lg bg-[#5c83e9]/34" />
+              </p>
+              <p className="sr-only">
                 Navigate
                 <span className="sr-only">. Menu</span>
               </p>
-              <div className="border-y border-[#f0b6df]/12">
+              <div className="grid grid-cols-2 gap-2 border-y border-[#f0b6df]/12 py-3">
                 {navItems.map((item, index) => (
                   <a
                     key={item.href}
                     ref={index === 0 ? firstMobileLinkRef : undefined}
                     href={item.href}
-                    className="group flex min-h-12 items-center space-x-3 border-t border-[#f0b6df]/10 px-4 py-3 text-white transition-all duration-200 first:border-t-0 hover:bg-[#2e1e5a]/38 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+                    className={`group flex min-h-14 items-center gap-3 border-l-2 px-3 py-3 text-white transition-all duration-200 hover:bg-[#2e1e5a]/38 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
+                      index === navItems.length - 1
+                        ? "col-span-2 border-[#f0b6df]/18"
+                        : "border-[#f0b6df]/12"
+                    }`}
                     style={{ animationDelay: `${index * 40}ms` }}
                     onClick={closeMenu}
                   >
-                    <span className="font-dm-sans-medium text-base transition-all duration-200">
-                      {item.label}
-                    </span>
-                    <span className="ml-auto flex h-8 w-8 items-center justify-center border-l border-[#f0b6df]/14 text-[#f7a4c8]" aria-hidden="true">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a]/65 text-[#f7a4c8]" aria-hidden="true">
                       <ArrowRight className="h-4 w-4" />
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block font-dm-sans-medium text-sm transition-all duration-200">
+                        {item.label}
+                      </span>
+                      <span className="mt-2 grid grid-cols-3 gap-1.5" aria-hidden="true">
+                        <span className="h-1.5 rounded-lg bg-[#ef3e78]/45" />
+                        <span className="h-1.5 rounded-lg bg-[#8d69f6]/34" />
+                        <span className="h-1.5 rounded-lg bg-[#5c83e9]/28" />
+                      </span>
                     </span>
                   </a>
                 ))}

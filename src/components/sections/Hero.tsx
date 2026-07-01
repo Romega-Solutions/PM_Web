@@ -169,7 +169,11 @@ const Hero = () => {
                   className="mx-auto h-3.5 w-3.5 text-[#49d49a]"
                   aria-hidden="true"
                 />
-                <span className="sr-only sm:not-sr-only sm:mt-1.5 sm:block">
+                <span
+                  className="mx-auto mt-2 hidden h-1.5 w-12 rounded-lg bg-[#f0b6df]/26 sm:block"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">
                   {state.label}
                 </span>
                 <span className="sr-only">. {state.detail}</span>
@@ -224,7 +228,7 @@ const Hero = () => {
                 key={reason.label}
                 className="border-l border-[#f0b6df]/16 px-3 first:border-l-0 sm:px-5"
               >
-                <p className="sr-only text-xs font-dm-sans-bold text-[#f6d0f1] sm:not-sr-only sm:block">
+                <p className="sr-only">
                   {reason.signal}
                 </p>
                 <div className="h-2 rounded-lg bg-[#f0b6df]/16 sm:mt-3" aria-hidden="true">
@@ -254,11 +258,17 @@ const Hero = () => {
                 detail: "No checkout or payment",
               },
             ].map((item) => (
-                <span
-                  key={item.label}
-                  className="min-h-10 border-l border-[#f0b6df]/12 px-3 py-1 text-center text-xs font-dm-sans-bold text-[#f6d0f1] first:border-l-0"
-                >
-                  {item.label}
+              <span
+                key={item.label}
+                className="min-h-10 border-l border-[#f0b6df]/12 px-3 py-1 text-center text-xs font-dm-sans-bold text-[#f6d0f1] first:border-l-0"
+              >
+                  <span
+                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
+                    {item.label}
+                  </span>
                   <span className="sr-only">. {item.detail}</span>
                 </span>
               ))}
@@ -268,7 +278,7 @@ const Hero = () => {
               checkout stay inside the app access flow. No payment on this page.
               This website does not create a dating profile, start matching,
               open checkout, or collect payment.
-              </span>
+            </span>
           </div>
 
           <p className="sr-only">
@@ -278,7 +288,12 @@ const Hero = () => {
           </p>
 
           <div className="mt-7 hidden max-w-2xl border-t border-white/12 pt-5 sm:block">
-            <p className="text-sm font-dm-sans-bold text-[#f6d0f1]">
+            <p className="grid max-w-32 grid-cols-3 gap-2" aria-hidden="true">
+              <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
+              <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
+              <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+            </p>
+            <p className="sr-only">
               Joining
               <span className="sr-only">. What you are joining</span>
             </p>
@@ -289,10 +304,22 @@ const Hero = () => {
                   className="border-l-2 border-[#f0b6df]/22 bg-[#2e1e5a]/24 py-2 pl-3 pr-2"
                 >
                   <dt className="text-xs font-dm-sans-bold text-[#cbbade]">
-                    {item.label}
+                    <span
+                      className="block h-1.5 w-10 rounded-lg bg-[#f0b6df]/26"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
+                      {item.label}
+                    </span>
                   </dt>
                   <dd className="mt-1 text-sm font-dm-sans-semibold leading-6 text-white sm:min-h-12">
-                    {item.shortValue}
+                    <span
+                      className="block h-1.5 w-20 rounded-lg bg-[#f0b6df]/22"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
+                      {item.shortValue}
+                    </span>
                     <span className="sr-only">. {item.value}</span>
                   </dd>
                 </div>
@@ -310,7 +337,11 @@ const Hero = () => {
                   className="mx-auto h-4 w-4 shrink-0 text-[#22a574]"
                   aria-hidden="true"
                 />
-                <span className="mt-2 block text-xs font-dm-sans-bold text-[#f6d0f1]">
+                <span
+                  className="mx-auto mt-3 block h-1.5 w-10 rounded-lg bg-[#f0b6df]/26"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">
                   {signal.label}
                 </span>
                 <span className="sr-only">. {signal.detail}</span>
@@ -327,7 +358,13 @@ const Hero = () => {
                 key={pillar.label}
                 className="min-h-10 border-l border-[#f0b6df]/12 px-3 py-1 text-center text-sm font-dm-sans-semibold text-[#eadff7] first:border-l-0"
               >
-                {pillar.label}
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">
+                  {pillar.label}
+                </span>
                 <span className="sr-only">. {pillar.detail}</span>
               </span>
             ))}
@@ -407,7 +444,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="grid border-t border-[#f0b6df]/12 p-5 sm:grid-cols-3">
+              <div className="grid grid-cols-3 border-t border-[#f0b6df]/12 p-5">
                 {previewRows.map((row) => {
                   const Icon = row.icon;
 
@@ -420,7 +457,13 @@ const Hero = () => {
                         <Icon className="h-5 w-5" aria-hidden="true" />
                       </div>
                       <p className="mt-3 text-xs font-dm-sans-bold text-[#f6d0f1]">
-                        {row.shortValue}
+                        <span
+                          className="mx-auto block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">
+                          {row.shortValue}
+                        </span>
                       </p>
                       <p className="sr-only">
                         {row.label}: {row.value}
@@ -441,7 +484,11 @@ const Hero = () => {
                     className="mx-auto h-4 w-4 text-[#22a574]"
                     aria-hidden="true"
                   />
-                  <span className="mt-2 block">{note.label}</span>
+                  <span
+                    className="mx-auto mt-3 block h-1.5 w-10 rounded-lg bg-[#f0b6df]/26"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">{note.label}</span>
                   <span className="sr-only">. {note.detail}</span>
                 </div>
               ))}
@@ -453,15 +500,33 @@ const Hero = () => {
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#f7a4c8]"
                   aria-hidden="true"
                 />
-                <p className="grid flex-1 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
+                <p className="grid flex-1 grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]">
                   <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                    Waitlist
+                    <span
+                      className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/38"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
+                      Waitlist
+                    </span>
                   </span>
                   <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                    App flow
+                    <span
+                      className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/36"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
+                      App flow
+                    </span>
                   </span>
                   <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                    No checkout
+                    <span
+                      className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/32"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
+                      No checkout
+                    </span>
                   </span>
                   <span className="sr-only">
                     This page is for waitlist interest only. Messaging, review
@@ -478,7 +543,12 @@ const Hero = () => {
                   className="mt-0.5 h-5 w-5 shrink-0 text-[#f7a4c8]"
                   aria-hidden="true"
                 />
-                <p className="text-sm font-dm-sans-bold text-[#f6d0f1]">
+                <p className="grid w-full max-w-44 grid-cols-3 gap-2" aria-hidden="true">
+                  <span className="h-1.5 rounded-lg bg-[#ef3e78]/45" />
+                  <span className="h-1.5 rounded-lg bg-[#8d69f6]/34" />
+                  <span className="h-1.5 rounded-lg bg-[#5c83e9]/28" />
+                </p>
+                <p className="sr-only">
                   Intent + respect + safety
                   <span className="sr-only">
                     Designed for serious Filipina and foreigner introductions

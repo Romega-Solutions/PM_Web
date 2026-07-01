@@ -126,7 +126,13 @@ const Faqs = () => {
                 key={signal.label}
                 className="border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de] first:border-l-0"
               >
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#f0b6df]/30"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">
                 {signal.label}
+                </span>
                 <span className="sr-only">. {signal.detail}</span>
               </span>
             ))}
@@ -150,7 +156,13 @@ const Faqs = () => {
                   className="border-t border-[#f0b6df]/12 px-1 py-3 first:border-t-0"
                 >
                   <span className="flex items-center justify-between gap-3 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                    <span
+                      className="h-1.5 w-14 rounded-lg bg-[#f0b6df]/26"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
                     {signal.label}
+                    </span>
                     <span
                       className="h-1.5 w-10 rounded-lg bg-[#ef3e78]"
                       aria-hidden="true"
@@ -182,7 +194,7 @@ const Faqs = () => {
                 screenshots by email.
               </span>
             </p>
-              <a
+            <a
               href={launchEmailLinks.supportQuestion}
               aria-label="Email PinayMate support without sending sensitive account data"
               className="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg bg-[#ef3e78] px-6 py-3 font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/20 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"

@@ -206,7 +206,11 @@ export function WaitlistCaptureForm() {
                     className="mx-auto h-4 w-4 text-[#49d49a]"
                     aria-hidden="true"
                   />
-                  <span className="mt-2 block">{item.label}</span>
+                  <span
+                    className="mx-auto mt-3 block h-1.5 w-10 rounded-lg bg-[#f0b6df]/30"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">{item.label}</span>
                   <span className="sr-only">: {item.detail}</span>
                 </span>
               ))}
@@ -237,7 +241,11 @@ export function WaitlistCaptureForm() {
                   className="mx-auto h-4 w-4 shrink-0 text-[#f0b6df]"
                   aria-hidden="true"
                 />
-                <span className="mt-2 block">
+                <span
+                  className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">
                   {item.label}
                   <span className="sr-only">: {item.detail}</span>
                 </span>
@@ -260,7 +268,11 @@ export function WaitlistCaptureForm() {
               className="mx-auto h-3.5 w-3.5 text-[#f0b6df]"
               aria-hidden="true"
             />
-            <span className="mt-1.5 block">{item.label}</span>
+            <span
+              className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
+              aria-hidden="true"
+            />
+            <span className="sr-only">{item.label}</span>
             <span className="sr-only">. {item.detail}</span>
           </span>
         ))}
@@ -380,7 +392,11 @@ export function WaitlistCaptureForm() {
                 className="mx-auto h-3.5 w-3.5 text-[#49d49a]"
                 aria-hidden="true"
               />
-              <span className="mt-1.5 block">{item.label}</span>
+              <span
+                className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
+                aria-hidden="true"
+              />
+              <span className="sr-only">{item.label}</span>
               <span className="sr-only">. {item.detail}</span>
             </span>
           ))}

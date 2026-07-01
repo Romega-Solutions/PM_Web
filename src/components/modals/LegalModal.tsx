@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { X, Shield, FileText } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { ChevronDown, X, Shield, FileText } from "lucide-react";
 import { launchEmailLinks } from "../../lib/launchEmailLinks";
 
 interface LegalModalProps {
@@ -10,6 +10,7 @@ interface LegalModalProps {
 
 const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const [openSection, setOpenSection] = useState(0);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -240,25 +241,77 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
             </p>
           </div>
 
-          {selectedContent.sections.map((section, index) => (
-            <div
-              key={index}
-              className="animate-fadeInUp border-l-2 border-[#f0b6df]/16 bg-[#120a1b]/24 px-4 py-3"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-bold text-white">
-                  {index + 1}
-                </div>
-                <h3 className="pt-0.5 text-lg font-dm-sans-bold text-white">
-                  {section.title}
-                </h3>
-              </div>
-              <p className="mt-3 border-t border-[#f0b6df]/10 pt-3 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:ml-11">
-                {section.content}
-              </p>
-            </div>
-          ))}
+          <div className="divide-y divide-[#f0b6df]/10 border-y border-[#f0b6df]/14">
+            {selectedContent.sections.map((section, index) => {
+              const isSectionOpen = openSection === index;
+              const sectionButtonId = `legal-${type}-button-${index}`;
+              const sectionPanelId = `legal-${type}-panel-${index}`;
+
+              return (
+                <article
+                  key={section.title}
+                  className="animate-fadeInUp bg-[#120a1b]/18"
+                  style={{ animationDelay: `${index * 60}ms` }}
+                >
+                  <button
+                    id={sectionButtonId}
+                    type="button"
+                    aria-expanded={isSectionOpen}
+                    aria-controls={sectionPanelId}
+                    onClick={() => setOpenSection(isSectionOpen ? -1 : index)}
+                    className={`grid min-h-16 w-full cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-3 border-l-2 px-3 py-3 text-left transition duration-200 hover:bg-[#2e1e5a]/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:px-4 ${
+                      isSectionOpen
+                        ? "border-[#f0b6df] bg-[#2e1e5a]/32"
+                        : "border-[#f0b6df]/16"
+                    }`}
+                  >
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-dm-sans-bold text-white">
+                      {index + 1}
+                    </span>
+                    <span>
+                      <span className="block text-base font-dm-sans-bold text-white sm:text-lg">
+                        {section.title}
+                      </span>
+                      <span
+                        className="mt-3 grid max-w-36 grid-cols-3 gap-1.5"
+                        aria-hidden="true"
+                      >
+                        <span className="h-1.5 rounded-lg bg-[#ef3e78]/55" />
+                        <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
+                        <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+                      </span>
+                    </span>
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a]/62 text-[#f0b6df] transition-transform duration-300 ${
+                        isSectionOpen ? "rotate-180" : ""
+                      }`}
+                      aria-hidden="true"
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                    </span>
+                  </button>
+
+                  <div
+                    id={sectionPanelId}
+                    role="region"
+                    aria-labelledby={sectionButtonId}
+                    aria-hidden={!isSectionOpen}
+                    className={`grid transition-all duration-300 ${
+                      isSectionOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    } motion-reduce:transition-none`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="border-t border-[#f0b6df]/10 px-4 pb-5 pt-4 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:ml-11 sm:px-5">
+                        {section.content}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
 
           {/* Contact Section */}
           <div className="mt-6 border-y border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/46 via-[#21132f]/56 to-[#170f22] py-5 sm:py-6">

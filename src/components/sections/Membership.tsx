@@ -270,9 +270,10 @@ const Membership = () => {
                         <span className="mx-auto flex justify-center">
                           <CheckCircleIcon />
                         </span>
-                        <span className="mt-2 block text-[0.66rem] font-dm-sans-bold text-[#f6d0f1]">
+                        <span className="sr-only">
                           {feature.label}
                         </span>
+                        <span className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/30" aria-hidden="true" />
                         <span className="sr-only">{feature.detail}</span>
                       </li>
                     ))}
@@ -282,7 +283,7 @@ const Membership = () => {
                     id={`${plan.id}-action-note`}
                     className="mt-auto border-t border-[#f0b6df]/12 pt-4"
                   >
-                    <span className="grid border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                    <span className="hidden border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                       <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
                         Email only
                       </span>

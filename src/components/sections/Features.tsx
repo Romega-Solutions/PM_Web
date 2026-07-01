@@ -139,7 +139,13 @@ const Features = () => {
                 key={signal}
                 className="border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de] first:border-l-0"
               >
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#f0b6df]/30"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">
                 {signal}
+                </span>
               </span>
             ))}
           </div>
@@ -203,7 +209,11 @@ const Features = () => {
                       className="mt-0.5 h-4 w-4 shrink-0"
                       aria-hidden="true"
                     />
-                    <span>
+                    <span
+                      className="mt-1 block h-1.5 w-16 rounded-lg bg-[#f0b6df]/30"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
                       {feature.proofLabel}
                       <span className="sr-only">. {feature.proof}</span>
                     </span>
@@ -232,7 +242,13 @@ const Features = () => {
                 <span className="h-9 rounded-lg bg-[#5c83e9]/18" />
               </div>
               <p className="mt-4 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
-                Review paths
+                <span
+                  className="h-1.5 w-20 rounded-lg bg-[#f0b6df]/30"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">
+                  Review paths
+                </span>
                 <span className="sr-only">
                   Moderation, review, and privacy belong in the product story.
                   The public story should help people understand moderation,
@@ -242,13 +258,31 @@ const Features = () => {
               </p>
               <p className="mt-4 grid border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/38"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                   Review paths
+                  </span>
                 </span>
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/36"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                   Not guarantees
+                  </span>
                 </span>
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/32"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                   No background checks
+                  </span>
                 </span>
                 <span className="sr-only">
                   These are safety controls and review paths, not guarantees,
@@ -278,10 +312,22 @@ const Features = () => {
                         aria-hidden="true"
                       />
                       <p className="mt-3 text-sm font-dm-sans-bold text-white">
+                        <span
+                          className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">
                         {item.label}
+                        </span>
                       </p>
                       <p className="mt-1 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                        <span
+                          className="block h-1.5 w-16 rounded-lg bg-[#f0b6df]/20"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">
                         {item.value}
+                        </span>
                       </p>
                     </div>
                   ))}
@@ -297,7 +343,11 @@ const Features = () => {
                     className="mx-auto h-5 w-5 shrink-0 text-[#22a574]"
                     aria-hidden="true"
                   />
-                  <span className="mt-2 block">{item.label}</span>
+                  <span
+                    className="mx-auto mt-3 block h-1.5 w-10 rounded-lg bg-[#f0b6df]/26"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">{item.label}</span>
                   <span className="sr-only">. {item.detail}</span>
                 </div>
               ))}
@@ -311,7 +361,13 @@ const Features = () => {
                 className="border-l border-[#f0b6df]/12 px-4 py-2 first:border-l-0"
               >
                 <p className="font-dm-sans-bold text-white">
+                  <span
+                    className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/28"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                   {item.title}
+                  </span>
                   <span className="sr-only">. {item.fullTitle}</span>
                 </p>
                 <p className="mt-2 h-1.5 rounded-lg bg-[#ef3e78]/35">

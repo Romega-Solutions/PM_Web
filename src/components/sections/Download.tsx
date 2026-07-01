@@ -270,7 +270,11 @@ const Download = () => {
                           className="mb-2 block h-1.5 w-10 rounded-lg bg-[#ef3e78]"
                           aria-hidden="true"
                         />
-                        <span>
+                        <span
+                          className="block h-1.5 w-16 rounded-lg bg-[#f0b6df]/24"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">
                           {note.label}
                           <span className="sr-only">: {note.detail}</span>
                         </span>
@@ -293,12 +297,16 @@ const Download = () => {
                     className="min-h-16 border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0"
                   >
                     <span
-                      className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f0b6df]/40 bg-[#2e1e5a]/65 text-sm font-dm-sans-bold text-[#f3c7de]"
+                      className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[#f0b6df]/40 bg-[#2e1e5a]/65 text-sm font-dm-sans-bold text-[#f3c7de]"
                       aria-hidden="true"
                     >
                       {index + 1}
                     </span>
-                    <span className="mt-2 block text-xs font-dm-sans-bold text-[#eadff7]">
+                    <span className="mt-3 grid grid-cols-2 gap-1.5" aria-hidden="true">
+                      <span className="h-1.5 rounded-lg bg-[#f0b6df]/30" />
+                      <span className="h-1.5 rounded-lg bg-[#8d69f6]/28" />
+                    </span>
+                    <span className="sr-only">
                       {step.label}
                       <span className="sr-only">: {step.detail}</span>
                     </span>
@@ -313,7 +321,13 @@ const Download = () => {
                   key={tag.label}
                   className="min-h-10 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-xs font-dm-sans-bold text-[#eadff7] first:border-l-0 sm:text-sm"
                 >
+                  <span
+                    className="mx-auto block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                   {tag.label}
+                  </span>
                   <span className="sr-only">. {tag.detail}</span>
                 </span>
               ))}
@@ -393,7 +407,13 @@ const Download = () => {
                             className="mb-2 block h-1.5 w-16 rounded-lg bg-[#ef3e78]"
                             aria-hidden="true"
                           />
+                          <span
+                            className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/26"
+                            aria-hidden="true"
+                          />
+                          <span className="sr-only">
                           {item.signal}
+                          </span>
                           <span className="sr-only">. {item.text}</span>
                         </p>
                       </div>
@@ -414,7 +434,13 @@ const Download = () => {
                     Waitlist
                   </dt>
                   <dd className="inline-flex min-h-9 items-center border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#eadff7]">
+                    <span
+                      className="h-1.5 w-16 rounded-lg bg-[#f0b6df]/28"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
                     Signal only
+                    </span>
                     <span className="sr-only">
                       . Signal only. No account, match, checkout, or payment.
                       It is a waitlist signal, not a live membership, app
@@ -433,7 +459,13 @@ const Download = () => {
                     Access
                   </dt>
                   <dd className="inline-flex min-h-9 items-center border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#eadff7]">
+                    <span
+                      className="h-1.5 w-16 rounded-lg bg-[#f0b6df]/28"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">
                     When ready
+                    </span>
                     <span className="sr-only">
                       . Public channels appear when ready.
                       Store links, social channels, and community invitations

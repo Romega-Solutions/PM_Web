@@ -182,7 +182,7 @@ const About = () => {
               </span>
             </p>
 
-            <div className="mt-8 grid grid-cols-4 border-y border-[#f0b6df]/12 py-3">
+            <div className="mt-8 hidden grid-cols-4 border-y border-[#f0b6df]/12 py-3 sm:grid">
               {memberSignals.map((signal) => (
                 <div
                   key={signal.label}
@@ -198,17 +198,19 @@ const About = () => {
               ))}
             </div>
 
-            <dl className="mt-8 grid gap-3 border-y border-white/12 py-5 sm:grid-cols-3">
+            <dl className="mt-8 grid grid-cols-3 gap-2 border-y border-white/12 py-4 sm:gap-3 sm:py-5">
               {credibilityStats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="min-w-0 border-l border-[#f0b6df]/12 px-4 py-1 first:border-l-0"
+                  className="min-w-0 border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0 sm:px-4"
                 >
-                  <dt className="font-lora text-3xl font-bold text-white">
+                  <dt className="font-lora text-3xl font-bold text-white sm:text-4xl">
                     {stat.value}
                   </dt>
-                  <dd className="mt-1 text-sm leading-6 text-[#cbbade]">
+                  <dd className="mt-2 h-1.5 rounded-lg bg-[#ef3e78]/42 sm:h-auto sm:rounded-none sm:bg-transparent sm:text-sm sm:leading-6 sm:text-[#cbbade]">
+                    <span className="sr-only sm:not-sr-only">
                     {stat.shortLabel}
+                    </span>
                     <span className="sr-only">. {stat.label}</span>
                   </dd>
                 </div>
@@ -227,12 +229,16 @@ const About = () => {
                     className="min-h-16 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-xs font-dm-sans-bold text-[#eadff7] first:border-l-0"
                   >
                     <span
-                      className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#ef3e78] text-sm font-dm-sans-bold text-white"
+                      className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-dm-sans-bold text-white"
                       aria-hidden="true"
                     >
                       {index + 1}
                     </span>
-                    <span className="mt-2 block">
+                    <span className="mt-3 grid grid-cols-2 gap-1.5" aria-hidden="true">
+                      <span className="h-1.5 rounded-lg bg-[#f0b6df]/35" />
+                      <span className="h-1.5 rounded-lg bg-[#8d69f6]/32" />
+                    </span>
+                    <span className="sr-only">
                       {step.label}
                       <span className="sr-only">: {step.detail}</span>
                     </span>
@@ -306,7 +312,12 @@ const About = () => {
                       <h3 className="font-lora text-xl font-bold text-white">
                         {point.title}
                       </h3>
-                      <p className="mt-2 text-sm font-dm-sans-bold text-[#f0b6df]">
+                      <p className="mt-3 grid max-w-24 grid-cols-3 gap-1.5" aria-hidden="true">
+                        <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
+                        <span className="h-1.5 rounded-lg bg-[#8d69f6]/42" />
+                        <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+                      </p>
+                      <p className="sr-only">
                         Step {index + 1}
                         <span className="sr-only">. {point.title}. {point.copy}</span>
                       </p>

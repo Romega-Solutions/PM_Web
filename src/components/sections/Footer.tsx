@@ -121,13 +121,21 @@ const Footer: React.FC = () => {
               <div className="grid max-w-sm grid-cols-2 border-y border-[#f0b6df]/12 py-2">
                 <div className="flex min-h-9 items-center justify-center gap-1.5 border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                   <CheckCircle className="h-3.5 w-3.5 text-[#49d49a]" aria-hidden="true" />
-                  <span className="text-xs font-dm-sans-semibold text-[#aaf1cf]">
+                  <span
+                    className="h-1.5 w-16 rounded-lg bg-[#49d49a]/45"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                     Review cues
                   </span>
                 </div>
                 <div className="flex min-h-9 items-center justify-center gap-1.5 border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                   <Shield className="h-3.5 w-3.5 text-[#91b1ff]" aria-hidden="true" />
-                  <span className="text-xs font-dm-sans-semibold text-[#cddcff]">
+                  <span
+                    className="h-1.5 w-16 rounded-lg bg-[#91b1ff]/45"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                     Safety first
                   </span>
                 </div>
@@ -187,7 +195,7 @@ const Footer: React.FC = () => {
                 })}
                 <div className="border-y border-[#f0b6df]/12 px-3 py-3 text-sm text-[#d7c7ed] sm:col-span-2 md:col-span-1 xl:col-span-2">
                   <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" aria-hidden="true" />
+                    <MapPin className="h-4 w-4" aria-hidden="true" />
                     <span className="font-dm-sans-bold text-white">
                       Markets
                       <span className="sr-only">. Launch markets</span>
@@ -206,13 +214,31 @@ const Footer: React.FC = () => {
 
               <div className="mt-5 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]">
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-10 rounded-lg bg-[#ef3e78]/40"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                   Store
+                  </span>
                 </span>
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-10 rounded-lg bg-[#8d69f6]/38"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                   Social
+                  </span>
                 </span>
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-10 rounded-lg bg-[#5c83e9]/34"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">
                   Community
+                  </span>
                 </span>
                 <span className="sr-only">
                   Store, social, and community links will appear when those public
