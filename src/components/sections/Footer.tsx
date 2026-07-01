@@ -3,9 +3,11 @@ import {
   ArrowUpRight,
   CheckCircle,
   Heart,
+  LockKeyhole,
   Mail,
   MapPin,
   Shield,
+  Sparkles,
 } from "lucide-react";
 import LegalModal from "../modals/LegalModal";
 import {
@@ -37,6 +39,37 @@ const Footer: React.FC = () => {
   ];
 
   const footerSignals = ["Intent", "Review", "Privacy"];
+  const pathModules = [
+    {
+      label: "Waitlist",
+      tone: "bg-[#ef3e78]/68",
+      fill: "w-4/5",
+    },
+    {
+      label: "Review",
+      tone: "bg-[#8d69f6]/52",
+      fill: "w-2/3",
+    },
+    {
+      label: "Access",
+      tone: "bg-[#5c83e9]/44",
+      fill: "w-3/4",
+    },
+  ];
+  const channelSignals = [
+    {
+      label: "Store",
+      tone: "bg-[#ef3e78]/44",
+    },
+    {
+      label: "Social",
+      tone: "bg-[#8d69f6]/38",
+    },
+    {
+      label: "Community",
+      tone: "bg-[#5c83e9]/34",
+    },
+  ];
   const contactLinks = [
     {
       href: launchEmailLinks.launchSupport,
@@ -147,6 +180,34 @@ const Footer: React.FC = () => {
                   </span>
                 </div>
               </div>
+
+              <div className="overflow-hidden border-y border-[#f0b6df]/14 bg-[#1a0d27]/42" aria-hidden="true">
+                <div className="relative p-4">
+                  <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#ef3e78]/14 to-transparent" />
+                  <div className="relative grid grid-cols-[0.72fr_1fr] gap-3">
+                    <div className="border-l-2 border-[#ef3e78]/42 bg-[#120a1b]/62 p-3">
+                      <span className="block h-12 rounded-lg bg-gradient-to-br from-[#ef3e78]/78 to-[#8d69f6]/68" />
+                      <span className="mt-3 block h-1.5 rounded-lg bg-[#f0b6df]/28" />
+                      <span className="mt-2 block h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/18" />
+                    </div>
+                    <div className="grid gap-2">
+                      {pathModules.map((module) => (
+                        <span
+                          key={module.label}
+                          className="border-l border-[#f0b6df]/12 bg-[#21132f]/62 px-3 py-2"
+                        >
+                          <span className={`block h-1.5 rounded-lg ${module.tone} ${module.fill}`} />
+                          <span className="mt-2 grid grid-cols-3 gap-1.5">
+                            <span className="h-5 rounded-lg bg-[#ef3e78]/24" />
+                            <span className="h-5 rounded-lg bg-[#8d69f6]/22" />
+                            <span className="h-5 rounded-lg bg-[#5c83e9]/18" />
+                          </span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div>
@@ -172,6 +233,30 @@ const Footer: React.FC = () => {
                     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </a>
                 ))}
+              </div>
+
+              <div className="mt-5 border-y border-[#f0b6df]/12 py-3" aria-hidden="true">
+                <div className="grid gap-2">
+                  {quickLinks.slice(0, 3).map((link, index) => (
+                    <span key={link.name} className="grid grid-cols-[auto_1fr] items-center gap-3">
+                      <span
+                        className={`flex h-8 w-8 items-center justify-center rounded-lg ${
+                          index === 0
+                            ? "bg-[#ef3e78]/22 text-[#f7a4c8]"
+                            : index === 1
+                              ? "bg-[#8d69f6]/22 text-[#d9c8ff]"
+                              : "bg-[#5c83e9]/20 text-[#c8d8ff]"
+                        }`}
+                      >
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </span>
+                      <span className="grid gap-1.5">
+                        <span className="h-1.5 rounded-lg bg-[#f0b6df]/26" />
+                        <span className="h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/16" />
+                      </span>
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -234,35 +319,28 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-5 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]">
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-10 rounded-lg bg-[#ef3e78]/40"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
-                  Store
+              <div className="mt-5 border-y border-[#f0b6df]/12 py-3 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                <div className="grid grid-cols-3 gap-2" aria-hidden="true">
+                  {channelSignals.map((channel) => (
+                    <span key={channel.label} className="bg-[#1a0d27]/60 p-2">
+                      <span className={`block h-1.5 rounded-lg ${channel.tone}`} />
+                      <span className="mt-2 block h-8 rounded-lg bg-[#f0b6df]/12" />
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-3 grid grid-cols-3 border-t border-[#f0b6df]/12 pt-3" aria-hidden="true">
+                  <span className="flex items-center justify-center border-l border-[#f0b6df]/12 px-3 first:border-l-0">
+                    <Sparkles className="h-4 w-4 text-[#f7a4c8]" />
                   </span>
-                </span>
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-10 rounded-lg bg-[#8d69f6]/38"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
-                  Social
+                  <span className="flex items-center justify-center border-l border-[#f0b6df]/12 px-3 first:border-l-0">
+                    <LockKeyhole className="h-4 w-4 text-[#d9c8ff]" />
                   </span>
-                </span>
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-10 rounded-lg bg-[#5c83e9]/34"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
-                  Community
+                  <span className="flex items-center justify-center border-l border-[#f0b6df]/12 px-3 first:border-l-0">
+                    <Shield className="h-4 w-4 text-[#c8d8ff]" />
                   </span>
-                </span>
+                </div>
                 <span className="sr-only">
+                  Store. Social. Community.
                   Store, social, and community links will appear when those public
                   channels are available for members.
                 </span>

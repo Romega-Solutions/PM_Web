@@ -98,6 +98,27 @@ const safetyDashboard = [
 
 const featureIntroSignals = ["Waitlist", "App flow", "No fake launch"];
 
+const featureFlow = [
+  {
+    label: "Intent",
+    icon: SlidersHorizontal,
+    tone: "bg-[#ef3e78]/68",
+    bars: ["w-4/5", "w-2/3"],
+  },
+  {
+    label: "Review",
+    icon: UserCheck,
+    tone: "bg-[#8d69f6]/54",
+    bars: ["w-3/4", "w-5/6"],
+  },
+  {
+    label: "Chat",
+    icon: MessageCircleHeart,
+    tone: "bg-[#5c83e9]/48",
+    bars: ["w-5/6", "w-1/2"],
+  },
+];
+
 const Features = () => {
   return (
     <section
@@ -157,6 +178,52 @@ const Features = () => {
                 </span>
               </span>
             ))}
+          </div>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-5xl border-y border-[#f0b6df]/14 bg-[#1a0d27]/42 py-5">
+          <div className="grid gap-4 px-4 sm:grid-cols-3 sm:px-5">
+            {featureFlow.map((step, index) => {
+              const Icon = step.icon;
+
+              return (
+                <div
+                  key={step.label}
+                  className="relative min-h-32 border-l-2 border-[#f0b6df]/16 bg-[#120a1b]/45 p-4"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${step.tone} text-white`}
+                      aria-hidden="true"
+                    >
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="text-xs font-dm-sans-bold text-[#f3c7de]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="mt-5 grid grid-cols-3 gap-2" aria-hidden="true">
+                    <span className="h-8 rounded-lg bg-[#ef3e78]/20" />
+                    <span className="h-8 rounded-lg bg-[#8d69f6]/18" />
+                    <span className="h-8 rounded-lg bg-[#5c83e9]/16" />
+                  </div>
+                  <div className="mt-4 space-y-2" aria-hidden="true">
+                    {step.bars.map((bar, barIndex) => (
+                      <span
+                        key={`${step.label}-${barIndex}`}
+                        className={`block h-1.5 rounded-lg bg-[#f0b6df]/24 ${bar}`}
+                      />
+                    ))}
+                  </div>
+                  <span className="sr-only">{step.label}</span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-2 px-4 sm:px-5" aria-hidden="true">
+            <span className="h-2 rounded-lg bg-[#ef3e78]/72" />
+            <span className="h-2 rounded-lg bg-[#8d69f6]/52" />
+            <span className="h-2 rounded-lg bg-[#5c83e9]/42" />
           </div>
         </div>
 

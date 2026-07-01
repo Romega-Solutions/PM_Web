@@ -418,7 +418,7 @@ const Hero = () => {
                 </div>
 
                 <div className="relative mt-6 grid gap-3">
-                  <div className="grid min-h-36 grid-cols-[0.72fr_1fr] gap-3">
+                  <div className="grid min-h-36 gap-3 sm:grid-cols-[0.72fr_1fr]">
                     <div className="relative overflow-hidden border-l-2 border-[#f0b6df]/14 bg-[#120a1b]/58 p-3">
                       <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-[#ef3e78]/24 to-transparent" aria-hidden="true" />
                       <div className="relative mx-auto h-16 w-16 rounded-lg border border-[#f0b6df]/18 bg-gradient-to-br from-[#ef3e78]/86 to-[#8d69f6]/78 p-1.5">
@@ -452,7 +452,7 @@ const Hero = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-[1fr_0.82fr] gap-3" aria-hidden="true">
+                  <div className="grid gap-3 sm:grid-cols-[1fr_0.82fr]" aria-hidden="true">
                     <div className="border-l-2 border-[#ef3e78]/34 bg-[#1a0d27]/48 p-3">
                       <span className="block h-2 w-20 rounded-lg bg-[#ef3e78]/78" />
                       <span className="mt-3 block h-2 rounded-lg bg-[#f0b6df]/20" />

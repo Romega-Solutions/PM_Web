@@ -75,14 +75,50 @@ const supportSignals = [
   {
     label: "Help",
     bars: ["w-5/6", "w-2/3"],
+    level: "w-4/5",
   },
   {
     label: "Access",
     bars: ["w-3/4", "w-1/2"],
+    level: "w-2/3",
   },
   {
     label: "Limits",
     bars: ["w-4/5", "w-3/5"],
+    level: "w-3/4",
+  },
+];
+
+const supportModules = [
+  {
+    label: "Waitlist",
+    tone: "bg-[#ef3e78]/72",
+    fill: "w-3/4",
+  },
+  {
+    label: "Privacy",
+    tone: "bg-[#8d69f6]/58",
+    fill: "w-2/3",
+  },
+  {
+    label: "Access",
+    tone: "bg-[#5c83e9]/52",
+    fill: "w-4/5",
+  },
+];
+
+const pathSteps = [
+  {
+    label: "Question",
+    tone: "bg-[#ef3e78]/70",
+  },
+  {
+    label: "Boundary",
+    tone: "bg-[#8d69f6]/64",
+  },
+  {
+    label: "Support",
+    tone: "bg-[#5c83e9]/58",
   },
 ];
 
@@ -149,7 +185,7 @@ const Faqs = () => {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
           <aside className="border-y border-[#f0b6df]/14 bg-[#1a0d27]/42 py-5 lg:sticky lg:top-28 lg:py-6">
             <p className="grid max-w-24 grid-cols-3 gap-1.5 text-sm font-dm-sans-bold text-[#f3c7de]" aria-hidden="true">
               <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
@@ -164,6 +200,43 @@ const Faqs = () => {
               Direct answers.
               <span className="sr-only"> Direct support. Need a direct answer?</span>
             </h3>
+
+            <div className="mt-5 overflow-hidden border-y border-[#f0b6df]/14 bg-[#120a1b]/42" aria-hidden="true">
+              <div className="relative min-h-48 p-4">
+                <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#ef3e78]/16 to-transparent" />
+                <div className="relative grid grid-cols-[0.72fr_1fr] gap-3">
+                  <div className="border-l-2 border-[#ef3e78]/42 bg-[#2e1e5a]/28 p-3">
+                    <span className="block h-12 rounded-lg bg-[#ef3e78]/72" />
+                    <span className="mt-3 block h-1.5 rounded-lg bg-[#f0b6df]/28" />
+                    <span className="mt-2 block h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/18" />
+                  </div>
+                  <div className="grid gap-2">
+                    {supportModules.map((module) => (
+                      <span
+                        key={module.label}
+                        className="border-l border-[#f0b6df]/12 bg-[#21132f]/62 px-3 py-2"
+                      >
+                        <span className={`block h-1.5 rounded-lg ${module.tone} ${module.fill}`} />
+                        <span className="mt-2 grid grid-cols-3 gap-1.5">
+                          <span className="h-5 rounded-lg bg-[#ef3e78]/24" />
+                          <span className="h-5 rounded-lg bg-[#8d69f6]/22" />
+                          <span className="h-5 rounded-lg bg-[#5c83e9]/18" />
+                        </span>
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="relative mt-4 grid grid-cols-3 gap-2">
+                  {pathSteps.map((step) => (
+                    <span key={step.label} className="bg-[#1a0d27]/68 p-2">
+                      <span className={`block h-1.5 rounded-lg ${step.tone}`} />
+                      <span className="mt-2 block h-8 rounded-lg bg-[#f0b6df]/12" />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             <p className="mt-4 grid border-y border-[#f0b6df]/12 py-3">
               {supportSignals.map((signal) => (
                 <span
@@ -182,6 +255,9 @@ const Faqs = () => {
                       className="h-1.5 w-10 rounded-lg bg-[#ef3e78]"
                       aria-hidden="true"
                     />
+                  </span>
+                  <span className="mt-3 block h-1.5 rounded-lg bg-[#2e1e5a]/62" aria-hidden="true">
+                    <span className={`block h-full rounded-lg bg-[#49d49a]/62 ${signal.level}`} />
                   </span>
                   <span className="mt-3 block space-y-1.5" aria-hidden="true">
                     {signal.bars.map((bar, index) => (
@@ -224,7 +300,7 @@ const Faqs = () => {
             </a>
           </aside>
 
-          <div className="divide-y divide-white/10 border-y border-white/12">
+          <div className="divide-y divide-white/10 border-y border-white/12 bg-[#120a1b]/20">
             {faqData.map((faq, index) => {
               const isOpen = openFaq === index;
               const Icon = faq.icon;
@@ -239,7 +315,7 @@ const Faqs = () => {
                     onClick={() => toggleFaq(index)}
                     aria-expanded={isOpen}
                     aria-controls={panelId}
-                    className={`grid min-h-16 w-full cursor-pointer gap-3 border-l-2 px-3 py-4 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-4 ${
+                    className={`grid min-h-16 w-full cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-3 border-l-2 px-3 py-4 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:gap-4 ${
                       isOpen
                         ? "border-[#f0b6df] bg-[#2e1e5a]/34"
                         : "border-[#f0b6df]/18 bg-[#120a1b]/18"
@@ -254,7 +330,7 @@ const Faqs = () => {
                     >
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <span>
+                    <span className="min-w-0">
                       <span className="block font-dm-sans-bold text-base text-white sm:text-lg">
                         {faq.shortQuestion}
                         <span className="sr-only">. {faq.question}</span>
@@ -266,6 +342,12 @@ const Faqs = () => {
                         <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
                         <span className="h-1.5 rounded-lg bg-[#8d69f6]/42" />
                         <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+                      </span>
+                      <span className="mt-3 hidden grid-cols-4 gap-1.5 sm:grid" aria-hidden="true">
+                        <span className="h-8 rounded-lg bg-[#ef3e78]/18" />
+                        <span className="h-8 rounded-lg bg-[#8d69f6]/18" />
+                        <span className="h-8 rounded-lg bg-[#5c83e9]/16" />
+                        <span className="h-8 rounded-lg bg-[#f0b6df]/10" />
                       </span>
                     </span>
                     <span
@@ -290,10 +372,17 @@ const Faqs = () => {
                     } motion-reduce:transition-none`}
                   >
                     <div className="overflow-hidden">
-                      <p className="px-3 pb-5 pt-3 text-sm font-dm-sans-bold text-[#d7c7ed] sm:ml-16">
-                        {faq.shortAnswer}
-                        <span className="sr-only"> {faq.answer}</span>
-                      </p>
+                      <div className="px-3 pb-5 pt-3 sm:ml-16">
+                        <p className="inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/28 py-1 pl-3 pr-2 text-sm font-dm-sans-bold text-[#d7c7ed]">
+                          {faq.shortAnswer}
+                          <span className="sr-only"> {faq.answer}</span>
+                        </p>
+                        <p className="mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
+                          <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
+                          <span className="h-1.5 rounded-lg bg-[#8d69f6]/38" />
+                          <span className="h-1.5 rounded-lg bg-[#5c83e9]/30" />
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </article>

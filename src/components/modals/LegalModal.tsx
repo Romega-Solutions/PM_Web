@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ChevronDown, X, Shield, FileText } from "lucide-react";
+import {
+  ChevronDown,
+  FileText,
+  Mail,
+  Shield,
+  X,
+} from "lucide-react";
 import { launchEmailLinks } from "../../lib/launchEmailLinks";
 
 interface LegalModalProps {
@@ -7,6 +13,39 @@ interface LegalModalProps {
   onClose: () => void;
   type: "privacy" | "terms";
 }
+
+const legalSignals = [
+  {
+    label: "Waitlist",
+    tone: "bg-[#ef3e78]/58",
+  },
+  {
+    label: "Support",
+    tone: "bg-[#8d69f6]/44",
+  },
+  {
+    label: "App flow",
+    tone: "bg-[#5c83e9]/36",
+  },
+];
+
+const legalPreviewRows = [
+  {
+    label: "Website",
+    fill: "w-4/5",
+    tone: "bg-[#ef3e78]/62",
+  },
+  {
+    label: "Review",
+    fill: "w-2/3",
+    tone: "bg-[#8d69f6]/50",
+  },
+  {
+    label: "Account",
+    fill: "w-3/4",
+    tone: "bg-[#5c83e9]/44",
+  },
+];
 
 const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -194,18 +233,24 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         tabIndex={-1}
         className="max-h-[min(90dvh,48rem)] w-full max-w-4xl animate-slideInUp overflow-hidden border-y border-[#f0b6df]/18 bg-gradient-to-br from-[#1a0d27] via-[#21132f] to-[#120a1b] shadow-xl shadow-black/28"
       >
-        {/* Header */}
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#f0b6df]/14 bg-[#1a0d27]/86 p-5 backdrop-blur-lg sm:p-6">
           <div className="flex items-center space-x-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-[#F4376D] to-[#8d69f6] text-white">
               <IconComponent className="h-6 w-6 text-white" />
             </div>
-            <h2
-              id={`legal-modal-title-${type}`}
-              className="text-2xl font-dm-sans-black text-white md:text-3xl"
-            >
-              {selectedContent.title}
-            </h2>
+            <div>
+              <h2
+                id={`legal-modal-title-${type}`}
+                className="text-2xl font-dm-sans-black text-white md:text-3xl"
+              >
+                {selectedContent.title}
+              </h2>
+              <p className="mt-2 grid max-w-32 grid-cols-3 gap-1.5" aria-hidden="true">
+                {legalSignals.map((signal) => (
+                  <span key={signal.label} className={`h-1.5 rounded-lg ${signal.tone}`} />
+                ))}
+              </p>
+            </div>
           </div>
           <button
             onClick={onClose}
@@ -216,46 +261,71 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           </button>
         </div>
 
-        {/* Content */}
         <div className="max-h-[calc(min(90dvh,48rem)-100px)] space-y-5 overflow-y-auto p-5 sm:p-6">
-          <div className="border-y border-[#f0b6df]/14 bg-[#2e1e5a]/24 py-4 sm:py-5">
-            <div className="grid grid-cols-3 text-xs font-dm-sans-bold text-[#f3c7de]">
-              <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/42"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Updated</span>
-                <span className="sr-only">. Last Updated: June 11, 2026</span>
-              </span>
-              <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/34"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Waitlist</span>
-              </span>
-              <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/28"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Support</span>
-              </span>
+          <div className="grid gap-4 border-y border-[#f0b6df]/14 bg-[#2e1e5a]/24 py-4 sm:py-5 lg:grid-cols-[0.92fr_1.08fr]">
+            <div>
+              <div className="grid grid-cols-3 text-xs font-dm-sans-bold text-[#f3c7de]">
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/42"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">Updated</span>
+                  <span className="sr-only">. Last Updated: June 11, 2026</span>
+                </span>
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/34"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">Waitlist</span>
+                </span>
+                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
+                  <span
+                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/28"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">Support</span>
+                </span>
+              </div>
+              <p
+                id={`legal-modal-description-${type}`}
+                className="mt-4 px-4 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:px-5"
+              >
+                <span className="grid max-w-44 grid-cols-3 gap-2" aria-hidden="true">
+                  <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
+                  <span className="h-1.5 rounded-lg bg-[#8d69f6]/38" />
+                  <span className="h-1.5 rounded-lg bg-[#5c83e9]/30" />
+                </span>
+                <span className="sr-only">
+                  Please read this {selectedContent.title.toLowerCase()} carefully.
+                  The current site is a waitlist and support surface, so terms may
+                  apply before full mobile app features are publicly available.
+                </span>
+              </p>
             </div>
             <p
-              id={`legal-modal-description-${type}`}
-              className="mt-4 px-4 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:px-5"
+              className="mx-4 overflow-hidden border-l-2 border-[#f0b6df]/18 bg-[#120a1b]/42 p-3 sm:mx-5 lg:mx-0 lg:mr-5"
+              aria-hidden="true"
             >
-              <span className="grid max-w-44 grid-cols-3 gap-2" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/38" />
-                <span className="h-1.5 rounded-lg bg-[#5c83e9]/30" />
-              </span>
-              <span className="sr-only">
-                Please read this {selectedContent.title.toLowerCase()} carefully.
-                The current site is a waitlist and support surface, so terms may
-                apply before full mobile app features are publicly available.
+              <span className="grid grid-cols-[0.66fr_1fr] gap-3">
+                <span className="bg-[#1a0d27]/68 p-3">
+                  <span className="block h-12 rounded-lg bg-gradient-to-br from-[#ef3e78]/78 to-[#8d69f6]/70" />
+                  <span className="mt-3 block h-1.5 rounded-lg bg-[#f0b6df]/28" />
+                  <span className="mt-2 block h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/18" />
+                </span>
+                <span className="grid gap-2">
+                  {legalPreviewRows.map((row) => (
+                    <span key={row.label} className="border-l border-[#f0b6df]/12 bg-[#21132f]/62 px-3 py-2">
+                      <span className={`block h-1.5 rounded-lg ${row.tone} ${row.fill}`} />
+                      <span className="mt-2 grid grid-cols-3 gap-1.5">
+                        <span className="h-5 rounded-lg bg-[#ef3e78]/20" />
+                        <span className="h-5 rounded-lg bg-[#8d69f6]/18" />
+                        <span className="h-5 rounded-lg bg-[#5c83e9]/16" />
+                      </span>
+                    </span>
+                  ))}
+                </span>
               </span>
             </p>
           </div>
@@ -332,7 +402,6 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
             })}
           </div>
 
-          {/* Contact Section */}
           <div className="mt-6 border-y border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/46 via-[#21132f]/56 to-[#170f22] py-5 sm:py-6">
             <h3 className="mb-4 text-xl font-dm-sans-bold text-white">
               <span className="grid max-w-28 grid-cols-3 gap-2" aria-hidden="true">
@@ -360,16 +429,18 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               <a
                 href={launchEmailLinks.legalQuestion}
                 aria-label="Email PinayMate legal support"
-                className="inline-flex min-h-11 items-center justify-center border-l border-[#f0b6df]/12 px-4 py-1 font-dm-sans-bold text-[#ff8fb8] transition-colors first:border-l-0 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-11 items-center justify-center gap-2 border-l border-[#f0b6df]/12 px-4 py-1 font-dm-sans-bold text-[#ff8fb8] transition-colors first:border-l-0 hover:bg-[#2e1e5a]/30 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
+                <FileText className="h-4 w-4" aria-hidden="true" />
                 <span>Legal</span>
                 <span className="sr-only">. legal@pinaymate.com</span>
               </a>
               <a
                 href={launchEmailLinks.supportQuestion}
                 aria-label="Email PinayMate support"
-                className="inline-flex min-h-11 items-center justify-center border-l border-[#f0b6df]/12 px-4 py-1 font-dm-sans-bold text-[#cbb2ff] transition-colors first:border-l-0 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-11 items-center justify-center gap-2 border-l border-[#f0b6df]/12 px-4 py-1 font-dm-sans-bold text-[#cbb2ff] transition-colors first:border-l-0 hover:bg-[#2e1e5a]/30 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
+                <Mail className="h-4 w-4" aria-hidden="true" />
                 <span>Support</span>
                 <span className="sr-only">. support@pinaymate.com</span>
               </a>

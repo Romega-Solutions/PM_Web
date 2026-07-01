@@ -3,9 +3,11 @@ import {
   AlertCircle,
   CheckCircle2,
   LoaderCircle,
+  LockKeyhole,
   Mail,
   ShieldCheck,
   Sparkles,
+  Smartphone,
 } from "lucide-react";
 import { buildWaitlistEmailHref } from "../../lib/launchEmailLinks";
 import {
@@ -99,6 +101,24 @@ const waitlistExclusions = [
   },
 ];
 
+const accessPreviewTiles = [
+  {
+    label: "Email",
+    tone: "bg-[#ef3e78]/68",
+    fill: "w-4/5",
+  },
+  {
+    label: "Platform",
+    tone: "bg-[#8d69f6]/54",
+    fill: "w-2/3",
+  },
+  {
+    label: "Update",
+    tone: "bg-[#5c83e9]/48",
+    fill: "w-3/4",
+  },
+];
+
 function getUserMessage(
   result: WaitlistBackendResult | null,
   platformLabel: "iOS" | "Android",
@@ -155,10 +175,10 @@ export function WaitlistCaptureForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-8 overflow-hidden border-y border-[#f0b6df]/16 bg-[#1a0d27]/54 backdrop-blur"
+      className="mt-8 overflow-hidden border-y border-[#f0b6df]/16 bg-[#1a0d27]/58 backdrop-blur"
       aria-describedby="waitlist-form-boundary waitlist-form-status"
     >
-      <div className="grid gap-6 p-5 sm:p-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="flex items-start gap-3">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25">
             <Sparkles className="h-5 w-5" aria-hidden="true" />
@@ -213,7 +233,7 @@ export function WaitlistCaptureForm() {
               </span>
             </p>
             <div
-              className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3"
+              className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2"
               aria-label="What the waitlist includes"
             >
               {formPromise.map((item) => (
@@ -237,23 +257,54 @@ export function WaitlistCaptureForm() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between gap-4 border-y border-[#f0b6df]/14 bg-gradient-to-br from-[#2e1e5a]/42 via-[#ef3e78]/10 to-transparent py-4 lg:border-l lg:border-y-0 lg:px-4">
-          <div className="inline-flex min-h-11 items-center gap-2 self-start border-l-2 border-[#f0b6df]/22 px-4 py-1 text-sm font-dm-sans-bold text-[#ffe8f1]">
-            <Sparkles className="h-5 w-5" aria-hidden="true" />
-            <span>
-              <span className="grid w-20 grid-cols-2 gap-1.5" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ffe8f1]/60" />
-                <span className="h-1.5 rounded-lg bg-[#ffe8f1]/32" />
+        <div className="relative overflow-hidden border-y border-[#f0b6df]/14 bg-gradient-to-br from-[#2e1e5a]/42 via-[#ef3e78]/10 to-transparent p-4 lg:border-l lg:border-y-0">
+          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#ef3e78]/16 to-transparent" aria-hidden="true" />
+          <div className="relative flex items-center justify-between gap-3">
+            <div className="inline-flex min-h-10 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-3 py-1 text-sm font-dm-sans-bold text-[#ffe8f1]">
+              <LockKeyhole className="h-4 w-4 text-[#f7a4c8]" aria-hidden="true" />
+              <span>
+                <span className="grid w-20 grid-cols-2 gap-1.5" aria-hidden="true">
+                  <span className="h-1.5 rounded-lg bg-[#ffe8f1]/60" />
+                  <span className="h-1.5 rounded-lg bg-[#ffe8f1]/32" />
+                </span>
+                <span className="sr-only">. Less than 1 minute</span>
               </span>
-              <span className="sr-only">. Less than 1 minute</span>
-            </span>
+            </div>
+            <Smartphone className="h-5 w-5 text-[#f0b6df]" aria-hidden="true" />
           </div>
-          <div className="grid grid-cols-3 gap-2" aria-hidden="true">
-            <span className="h-12 rounded-lg bg-[#ef3e78]/24" />
-            <span className="h-12 rounded-lg bg-[#8d69f6]/24" />
-            <span className="h-12 rounded-lg bg-[#5c83e9]/20" />
+
+          <div className="relative mt-4 grid gap-3">
+            <div className="grid min-h-28 grid-cols-[0.72fr_1fr] gap-3" aria-hidden="true">
+              <div className="border-l-2 border-[#ef3e78]/42 bg-[#120a1b]/60 p-3">
+                <span className="block h-12 rounded-lg bg-gradient-to-br from-[#ef3e78]/80 to-[#8d69f6]/72" />
+                <span className="mt-3 block h-1.5 rounded-lg bg-[#f0b6df]/28" />
+                <span className="mt-2 block h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/18" />
+              </div>
+              <div className="grid gap-2">
+                {accessPreviewTiles.map((tile) => (
+                  <span
+                    key={tile.label}
+                    className="border-l border-[#f0b6df]/12 bg-[#21132f]/62 px-3 py-2"
+                  >
+                    <span className={`block h-1.5 rounded-lg ${tile.tone} ${tile.fill}`} />
+                    <span className="mt-2 grid grid-cols-3 gap-1.5">
+                      <span className="h-5 rounded-lg bg-[#ef3e78]/24" />
+                      <span className="h-5 rounded-lg bg-[#8d69f6]/22" />
+                      <span className="h-5 rounded-lg bg-[#5c83e9]/18" />
+                    </span>
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="grid grid-cols-3 border-y border-[#f0b6df]/12 py-3 lg:grid-cols-1 lg:border-y-0 lg:py-0">
+
+          <div className="relative mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
+            <span className="h-10 rounded-lg bg-[#ef3e78]/24" />
+            <span className="h-10 rounded-lg bg-[#8d69f6]/24" />
+            <span className="h-10 rounded-lg bg-[#5c83e9]/20" />
+          </div>
+
+          <div className="relative mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3 lg:grid-cols-1 lg:border-y-0 lg:py-0">
             {waitlistBoundaries.map((item) => (
               <div
                 key={item.label}
@@ -274,6 +325,10 @@ export function WaitlistCaptureForm() {
               </div>
             ))}
           </div>
+          <p className="sr-only">
+            The waitlist capture keeps the first step to email and platform
+            preference before app access opens.
+          </p>
         </div>
       </div>
 
@@ -290,12 +345,14 @@ export function WaitlistCaptureForm() {
               className="mx-auto h-3.5 w-3.5 text-[#f0b6df]"
               aria-hidden="true"
             />
-            <span
-              className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
-              aria-hidden="true"
-            />
-            <span className="sr-only">{item.label}</span>
-            <span className="sr-only">. {item.detail}</span>
+            <span>
+              <span
+                className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
+                aria-hidden="true"
+              />
+              <span className="sr-only">{item.label}</span>
+              <span className="sr-only">. {item.detail}</span>
+            </span>
           </span>
         ))}
       </div>
