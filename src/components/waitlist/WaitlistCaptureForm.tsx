@@ -155,7 +155,7 @@ export function WaitlistCaptureForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-8 overflow-hidden rounded-lg border border-[#f0b6df]/16 bg-[#1a0d27]/86 shadow-xl shadow-black/20 backdrop-blur"
+      className="mt-8 overflow-hidden border-y border-[#f0b6df]/16 bg-[#1a0d27]/54 backdrop-blur"
       aria-describedby="waitlist-form-boundary waitlist-form-status"
     >
       <div className="grid gap-6 p-5 sm:p-6 lg:grid-cols-[1.05fr_0.95fr]">
@@ -214,8 +214,8 @@ export function WaitlistCaptureForm() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between gap-4 rounded-lg border border-[#f0b6df]/14 bg-gradient-to-br from-[#2e1e5a]/70 via-[#ef3e78]/12 to-transparent p-4">
-          <div className="inline-flex min-h-11 items-center gap-2 self-start rounded-lg border border-[#f0b6df]/25 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#ffe8f1]">
+        <div className="flex flex-col justify-between gap-4 border-y border-[#f0b6df]/14 bg-gradient-to-br from-[#2e1e5a]/42 via-[#ef3e78]/10 to-transparent py-4 lg:border-l lg:border-y-0 lg:px-4">
+          <div className="inline-flex min-h-11 items-center gap-2 self-start border-l-2 border-[#f0b6df]/22 px-4 py-1 text-sm font-dm-sans-bold text-[#ffe8f1]">
             <Sparkles className="h-5 w-5" aria-hidden="true" />
             <span>
               1 minute
@@ -313,10 +313,10 @@ export function WaitlistCaptureForm() {
               return (
                 <label
                   key={option.value}
-                  className={`flex min-h-16 cursor-pointer items-start gap-2 rounded-lg border px-3 py-3 text-left text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#91b1ff] sm:gap-3 ${
+                  className={`flex min-h-16 cursor-pointer items-start gap-2 border-l-2 px-3 py-3 text-left text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#91b1ff] sm:gap-3 ${
                     isSelected
-                      ? "border-[#f0b6df] bg-[#ef3e78]/18 text-white shadow-lg shadow-[#ef3e78]/15"
-                      : "border-[#f0b6df]/14 bg-[#120a1b]/80 text-[#eadff7] hover:border-[#f0b6df]/50 hover:bg-[#2e1e5a]/65"
+                      ? "border-[#f0b6df] bg-[#ef3e78]/14 text-white"
+                      : "border-[#f0b6df]/14 bg-[#120a1b]/48 text-[#eadff7] hover:border-[#f0b6df]/50 hover:bg-[#2e1e5a]/42"
                   }`}
                 >
                   <input
@@ -435,7 +435,7 @@ export function WaitlistCaptureForm() {
           <a
             href={emailHref}
             aria-label={`Continue ${selectedPlatform.emailLabel} waitlist request by email`}
-            className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-lg border border-[#f0b6df]/22 bg-[#2e1e5a]/55 px-5 py-3 font-dm-sans-bold text-white transition hover:border-[#f0b6df] hover:bg-[#3b2255]/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#2e1e5a] sm:flex-none"
+            className="inline-flex min-h-12 flex-1 touch-manipulation items-center justify-center gap-2 rounded-lg border border-[#f0b6df]/22 bg-[#2e1e5a]/32 px-5 py-3 font-dm-sans-bold text-white transition hover:border-[#f0b6df] hover:bg-[#3b2255]/55 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] active:bg-[#2e1e5a] sm:flex-none"
           >
             <Mail className="h-5 w-5" aria-hidden="true" />
             Email
@@ -455,7 +455,7 @@ export function WaitlistCaptureForm() {
 
       <div
         id="waitlist-form-status"
-        className={`mx-5 mb-5 rounded-lg border sm:mx-6 sm:mb-6 ${
+        className={`mx-5 mb-5 border-y sm:mx-6 sm:mb-6 ${
           !isSubmitting && !result
             ? "inline-flex items-center gap-2 px-3 py-2 text-xs font-dm-sans-bold"
             : "flex items-start gap-2 p-3 text-sm leading-6"

@@ -148,7 +148,7 @@ const Hero = () => {
 
       <div className="relative z-10 mx-auto grid max-w-[1360px] items-center gap-12 px-4 pb-16 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:pb-24 xl:px-16">
         <div className="max-w-3xl">
-          <div className="mb-6 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1] shadow-sm backdrop-blur">
+          <div className="mb-6 inline-flex min-h-11 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             PinayMate waitlist
             <span className="sr-only">
@@ -157,19 +157,21 @@ const Hero = () => {
           </div>
 
           <div
-            className="mb-5 grid max-w-xl grid-cols-4 border-y border-[#f0b6df]/12 py-3 text-xs font-dm-sans-bold text-[#fff7fb]"
+            className="mb-5 grid max-w-xl grid-cols-4 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#fff7fb] sm:py-3"
             aria-label="Current PinayMate access status"
           >
             {launchState.map((state) => (
               <span
                 key={state.detail}
-                className="min-h-12 border-l border-[#f0b6df]/12 px-2 py-1.5 text-center first:border-l-0"
+                className="min-h-9 border-l border-[#f0b6df]/12 px-2 py-1.5 text-center first:border-l-0 sm:min-h-12"
               >
                 <CheckCircle2
                   className="mx-auto h-3.5 w-3.5 text-[#49d49a]"
                   aria-hidden="true"
                 />
-                <span className="mt-1.5 block">{state.label}</span>
+                <span className="sr-only sm:not-sr-only sm:mt-1.5 sm:block">
+                  {state.label}
+                </span>
                 <span className="sr-only">. {state.detail}</span>
               </span>
             ))}
@@ -180,7 +182,7 @@ const Hero = () => {
             respect.
           </h1>
 
-          <p className="mt-6 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#e3dcf9]">
+          <p className="mt-6 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#e3dcf9]">
             Intent before chat. Review before reach.
             <span className="sr-only">
               PinayMate gives Filipinas and foreigners a clearer path to
@@ -214,18 +216,18 @@ const Hero = () => {
           </div>
 
           <div
-            className="mt-7 grid gap-4 border-y border-[#f0b6df]/12 py-5 sm:grid-cols-3 sm:gap-0"
+            className="mt-7 grid grid-cols-3 border-y border-[#f0b6df]/12 py-4 sm:py-5"
             aria-label="Why people join the PinayMate waitlist"
           >
             {conversionReasons.map((reason) => (
               <div
                 key={reason.label}
-                className="border-l border-[#f0b6df]/16 pl-4 first:border-l-0 first:pl-0 sm:pr-5 sm:not-first:pl-5"
+                className="border-l border-[#f0b6df]/16 px-3 first:border-l-0 sm:px-5"
               >
-                <p className="text-xs font-dm-sans-bold text-[#f6d0f1]">
+                <p className="sr-only text-xs font-dm-sans-bold text-[#f6d0f1] sm:not-sr-only sm:block">
                   {reason.signal}
                 </p>
-                <div className="mt-3 h-2 rounded-lg bg-[#f0b6df]/16" aria-hidden="true">
+                <div className="h-2 rounded-lg bg-[#f0b6df]/16 sm:mt-3" aria-hidden="true">
                   <div className="h-full w-2/3 rounded-lg bg-[#ef3e78]/80" />
                 </div>
                 <p className="sr-only">
@@ -236,7 +238,7 @@ const Hero = () => {
           </div>
           <div
             id="hero-cta-note"
-            className="mt-4 grid max-w-2xl grid-cols-3 border-y border-[#f0b6df]/12 py-3"
+            className="sr-only mt-4 max-w-2xl grid-cols-3 border-y border-[#f0b6df]/12 py-3 sm:not-sr-only sm:grid"
           >
             {[
               {
@@ -266,10 +268,16 @@ const Hero = () => {
               checkout stay inside the app access flow. No payment on this page.
               This website does not create a dating profile, start matching,
               open checkout, or collect payment.
-            </span>
+              </span>
           </div>
 
-          <div className="mt-7 max-w-2xl border-t border-white/12 pt-5">
+          <p className="sr-only">
+            Joining PinayMate means serious intent, platform updates, review
+            cues, adult-only positioning, no payment today, and a respectful
+            Filipina and foreigner dating focus.
+          </p>
+
+          <div className="mt-7 hidden max-w-2xl border-t border-white/12 pt-5 sm:block">
             <p className="text-sm font-dm-sans-bold text-[#f6d0f1]">
               Joining
               <span className="sr-only">. What you are joining</span>
@@ -292,7 +300,7 @@ const Hero = () => {
             </dl>
           </div>
 
-          <ul className="mt-6 grid grid-cols-4 border-y border-[#f0b6df]/12 py-3 text-sm font-dm-sans-medium text-[#f8f5ff]">
+          <ul className="mt-6 hidden grid-cols-4 border-y border-[#f0b6df]/12 py-3 text-sm font-dm-sans-medium text-[#f8f5ff] sm:grid">
             {trustSignals.map((signal) => (
               <li
                 key={signal.label}
@@ -311,7 +319,7 @@ const Hero = () => {
           </ul>
 
           <div
-            className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3"
+            className="mt-4 hidden grid-cols-3 border-y border-[#f0b6df]/12 py-3 sm:grid"
             aria-label="PinayMate audience focus"
           >
             {audiencePillars.map((pillar) => (
@@ -332,7 +340,7 @@ const Hero = () => {
             aria-hidden="true"
           />
 
-          <div className="relative rounded-lg border border-[#f0b6df]/14 bg-[#21132f]/96 p-5 text-white shadow-xl shadow-black/25 backdrop-blur sm:p-6">
+          <div className="relative border-y border-[#f0b6df]/14 bg-[#21132f]/74 py-5 text-white backdrop-blur sm:py-6">
             <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-dm-sans-bold text-[#f7a4c8]">
@@ -347,7 +355,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="mt-6 overflow-hidden rounded-lg border border-[#f0b6df]/14 bg-[#170f22]/74">
+            <div className="mt-6 overflow-hidden border-y border-[#f0b6df]/14 bg-[#170f22]/54">
               <div className="relative min-h-60 p-5">
                 <div
                   className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#ef3e78]/16 to-transparent"
@@ -362,7 +370,7 @@ const Hero = () => {
                       Intent before reach
                     </p>
                   </div>
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg border border-[#f0b6df]/18 bg-[#120a1b]/72 p-2 shadow-lg shadow-black/18">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-lg border border-[#f0b6df]/18 bg-[#120a1b]/52 p-2">
                     <img
                       src="/main-logo-no-bg.svg"
                       alt=""
@@ -374,7 +382,7 @@ const Hero = () => {
 
                 <div className="relative mt-6 grid gap-3">
                   <div className="grid grid-cols-[1fr_0.7fr] gap-3">
-                    <div className="min-h-24 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/42 p-4">
+                    <div className="min-h-24 border-l-2 border-[#f0b6df]/14 bg-[#2e1e5a]/28 p-4">
                       <div className="h-2 w-20 rounded-lg bg-[#ef3e78]" />
                       <div className="mt-4 h-2 w-full rounded-lg bg-[#f0b6df]/20" />
                       <div className="mt-2 h-2 w-4/5 rounded-lg bg-[#f0b6df]/14" />
@@ -384,7 +392,7 @@ const Hero = () => {
                         <span className="h-7 rounded-lg bg-[#5c83e9]/20" />
                       </div>
                     </div>
-                    <div className="rounded-lg border border-[#f0b6df]/12 bg-[#1a0d27]/72 p-4">
+                    <div className="border-l-2 border-[#f0b6df]/14 bg-[#1a0d27]/48 p-4">
                       <div className="h-10 rounded-lg bg-[#ef3e78]/90" />
                       <div className="mt-3 h-2 rounded-lg bg-[#f0b6df]/22" />
                       <div className="mt-2 h-2 w-2/3 rounded-lg bg-[#f0b6df]/14" />

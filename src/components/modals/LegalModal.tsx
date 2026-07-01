@@ -191,12 +191,12 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         aria-labelledby={`legal-modal-title-${type}`}
         aria-describedby={`legal-modal-description-${type}`}
         tabIndex={-1}
-        className="max-h-[min(90dvh,48rem)] w-full max-w-4xl animate-slideInUp overflow-hidden rounded-lg border border-[#f0b6df]/18 bg-gradient-to-br from-[#1a0d27] via-[#21132f] to-[#120a1b] shadow-xl shadow-black/35"
+        className="max-h-[min(90dvh,48rem)] w-full max-w-4xl animate-slideInUp overflow-hidden border-y border-[#f0b6df]/18 bg-gradient-to-br from-[#1a0d27] via-[#21132f] to-[#120a1b] shadow-xl shadow-black/28"
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#f0b6df]/14 bg-[#1a0d27]/92 p-5 backdrop-blur-lg sm:p-6">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#f0b6df]/14 bg-[#1a0d27]/86 p-5 backdrop-blur-lg sm:p-6">
           <div className="flex items-center space-x-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-[#F4376D] to-[#8d69f6] text-white shadow-lg shadow-[#F4376D]/18">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-[#F4376D] to-[#8d69f6] text-white">
               <IconComponent className="h-6 w-6 text-white" />
             </div>
             <h2
@@ -209,7 +209,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           <button
             onClick={onClose}
             aria-label={`Close ${selectedContent.title}`}
-            className="group flex h-11 w-11 items-center justify-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/65 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#F4376D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4376D]"
+            className="group flex h-11 w-11 items-center justify-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/38 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#F4376D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4376D]"
           >
             <X className="h-5 w-5 text-[#f0b6df] transition-colors group-hover:text-white" />
           </button>
@@ -243,11 +243,11 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           {selectedContent.sections.map((section, index) => (
             <div
               key={index}
-              className="animate-fadeInUp border-l-2 border-[#f0b6df]/16 bg-[#120a1b]/38 p-4"
+              className="animate-fadeInUp border-l-2 border-[#f0b6df]/16 bg-[#120a1b]/24 px-4 py-3"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-bold text-white shadow-md shadow-[#ef3e78]/18">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-bold text-white">
                   {index + 1}
                 </div>
                 <h3 className="pt-0.5 text-lg font-dm-sans-bold text-white">

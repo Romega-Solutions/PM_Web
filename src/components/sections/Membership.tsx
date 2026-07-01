@@ -142,7 +142,7 @@ const Membership = () => {
     <section id="pricing" className="bg-[#170f22] py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
+          <div className="mb-5 inline-flex min-h-11 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             Membership direction
           </div>
@@ -150,7 +150,7 @@ const Membership = () => {
           <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             Clear membership interest, not a live checkout.
           </h2>
-          <p className="mt-5 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#e3dcf9]">
+          <p className="mt-5 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#e3dcf9]">
             Pricing direction without signup pressure.
             <span className="sr-only">
               These tiers explain the intended membership model. The current
@@ -169,10 +169,10 @@ const Membership = () => {
               <article
                 key={plan.name}
                 aria-labelledby={`${plan.id}-title`}
-                className={`flex min-h-full flex-col overflow-hidden rounded-lg border shadow-xl transition duration-200 ${
+                className={`flex min-h-full flex-col overflow-hidden border-y transition duration-200 lg:border-l lg:border-y-0 ${
                   isFeatured
-                    ? "border-[#ef3e78]/55 bg-[#21132f]/92 shadow-[#ef3e78]/12"
-                    : "border-[#f0b6df]/14 bg-[#1a0d27]/78 shadow-black/15 hover:border-[#f0b6df]/32"
+                    ? "border-[#ef3e78]/55 bg-[#21132f]/72"
+                    : "border-[#f0b6df]/14 bg-[#1a0d27]/48 hover:border-[#f0b6df]/32"
                 }`}
               >
                 <div className="border-b border-[#f0b6df]/12 p-5 sm:p-6">
@@ -189,7 +189,7 @@ const Membership = () => {
                     </p>
                   </div>
                   {isFeatured && (
-                    <span className="rounded-lg bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/20">
+                    <span className="border-l-2 border-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold text-white">
                       Best fit
                     </span>
                   )}
@@ -310,7 +310,7 @@ const Membership = () => {
                     className={`inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
                       isFeatured
                         ? "bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25 hover:bg-[#db2866] hover:shadow-[#ef3e78]/35"
-                        : "border border-[#f0b6df]/22 bg-[#2e1e5a]/55 text-white shadow-lg shadow-black/10 hover:border-[#f0b6df]/70 hover:bg-[#3b2255]/75"
+                        : "border border-[#f0b6df]/22 bg-[#2e1e5a]/32 text-white hover:border-[#f0b6df]/70 hover:bg-[#3b2255]/55"
                     }`}
                   >
                     <Mail className="h-4 w-4" aria-hidden="true" />

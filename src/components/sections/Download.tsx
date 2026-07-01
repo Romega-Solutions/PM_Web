@@ -143,7 +143,7 @@ const Download = () => {
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div>
-            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-xl shadow-black/20 backdrop-blur">
+            <div className="mb-5 inline-flex min-h-11 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
               <Heart className="h-4 w-4 text-[#F4376D]" fill="#F4376D" aria-hidden="true" />
               Private waitlist
             </div>
@@ -152,7 +152,7 @@ const Download = () => {
               Pick your platform. Keep the first step private.
             </h2>
 
-            <p className="mt-6 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#d7c7ed]">
+            <p className="mt-6 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
               Email. Platform. Nothing more.
               <span className="sr-only">
                 Share only your email and platform preference so the team knows
@@ -182,10 +182,10 @@ const Download = () => {
                     href={link.href}
                     aria-label={link.ariaLabel}
                     aria-describedby="waitlist-email-note"
-                    className={`group flex min-h-full flex-col justify-between rounded-lg border p-4 transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] ${
+                    className={`group flex min-h-full flex-col justify-between border-y px-4 py-4 transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:border-l sm:border-y-0 ${
                       link.isPrimary
-                        ? "border-[#ef3e78]/55 bg-[#ef3e78] text-white shadow-xl shadow-[#F4376D]/20 hover:bg-[#d7346b] hover:shadow-[#F4376D]/30"
-                        : "border-[#f0b6df]/18 bg-[#2e1e5a]/48 text-white hover:border-[#f0b6df]/55 hover:bg-[#3b2255]/70"
+                        ? "border-[#ef3e78]/55 bg-[#ef3e78]/88 text-white hover:bg-[#d7346b]"
+                        : "border-[#f0b6df]/18 bg-[#2e1e5a]/28 text-white hover:border-[#f0b6df]/55 hover:bg-[#3b2255]/48"
                     }`}
                   >
                     <span className="flex min-h-11 items-center gap-3 font-dm-sans-bold">
@@ -321,7 +321,7 @@ const Download = () => {
           </div>
 
           <div className="lg:border-l lg:border-white/12 lg:pl-10">
-            <div className="relative overflow-hidden rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/72 p-5 shadow-xl shadow-black/12">
+            <div className="relative overflow-hidden border-y border-[#f0b6df]/14 bg-[#1a0d27]/46 py-5">
               <div
                 className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#ef3e78]/14 to-transparent"
                 aria-hidden="true"
@@ -330,7 +330,7 @@ const Download = () => {
                 {platformPreview.map((item) => (
                   <div
                     key={item.label}
-                    className="rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/68 p-4"
+                    className="border-l border-[#f0b6df]/14 px-4 py-3 first:border-l-0"
                   >
                     <div
                       className={`flex h-36 flex-col justify-between rounded-lg bg-gradient-to-br ${item.tone} p-3 shadow-lg shadow-black/16`}

@@ -105,13 +105,13 @@ const Faqs = () => {
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mx-auto inline-flex min-h-11 items-center rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
+          <p className="mx-auto inline-flex min-h-11 items-center border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
             FAQ and access clarity
           </p>
           <h2 className="mt-4 font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             Straight answers before anyone joins.
           </h2>
-          <p className="mt-5 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#d7c7ed]">
+          <p className="mt-5 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
             Waitlist first. App for personal details.
             <span className="sr-only">
               Join the waitlist first. Use the app for everything personal.
@@ -134,7 +134,7 @@ const Faqs = () => {
         </div>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-          <aside className="rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/76 p-5 shadow-xl shadow-black/15 lg:sticky lg:top-28 lg:p-6">
+          <aside className="border-y border-[#f0b6df]/14 bg-[#1a0d27]/42 py-5 lg:sticky lg:top-28 lg:py-6">
             <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
               Support
               <span className="sr-only">. Support boundary</span>
@@ -173,7 +173,7 @@ const Faqs = () => {
                 checkout sessions, or payment records from this website.
               </span>
             </p>
-            <p className="mt-4 border-l-2 border-[#F4376D]/55 bg-[#2e1e5a]/40 py-2 pl-4 pr-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
+            <p className="mt-4 border-l-2 border-[#F4376D]/55 py-2 pl-4 pr-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
               No private data.
               <span className="sr-only">
                 No sensitive data by email.
@@ -192,7 +192,7 @@ const Faqs = () => {
             </a>
           </aside>
 
-          <div className="divide-y divide-white/10 border-y border-white/12 bg-[#1a0d27]/62 p-3 shadow-xl shadow-black/15 sm:p-4">
+          <div className="divide-y divide-white/10 border-y border-white/12">
             {faqData.map((faq, index) => {
               const isOpen = openFaq === index;
               const Icon = faq.icon;
@@ -209,8 +209,8 @@ const Faqs = () => {
                     aria-controls={panelId}
                     className={`grid min-h-16 w-full cursor-pointer gap-3 border-l-2 px-3 py-4 text-left transition duration-200 hover:text-[#f3c7de] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-4 ${
                       isOpen
-                        ? "border-[#f0b6df] bg-[#2e1e5a]/46"
-                        : "border-[#f0b6df]/18 bg-[#120a1b]/28"
+                        ? "border-[#f0b6df] bg-[#2e1e5a]/34"
+                        : "border-[#f0b6df]/18 bg-[#120a1b]/18"
                     }`}
                   >
                     <span
@@ -227,8 +227,13 @@ const Faqs = () => {
                         {faq.shortQuestion}
                         <span className="sr-only">. {faq.question}</span>
                       </span>
-                      <span className="mt-2 block text-xs font-dm-sans-bold text-[#f3c7de]">
+                      <span className="sr-only">
                         {faq.status}
+                      </span>
+                      <span className="mt-3 grid max-w-28 grid-cols-3 gap-1.5" aria-hidden="true">
+                        <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
+                        <span className="h-1.5 rounded-lg bg-[#8d69f6]/42" />
+                        <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
                       </span>
                     </span>
                     <span

@@ -113,7 +113,7 @@ const About = () => {
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <div className="max-w-2xl">
-            <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
+            <div className="mb-5 inline-flex min-h-11 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
               <HeartHandshake className="h-4 w-4" aria-hidden="true" />
               Trust direction
               <span className="sr-only">
@@ -125,7 +125,7 @@ const About = () => {
               A calmer path from interest to real connection.
             </h2>
 
-            <p className="mt-6 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#d7c7ed]">
+            <p className="mt-6 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
               Intent. Review. Context.
               <span className="sr-only">
                 Clear intent. Safer pacing. Less noise before anyone starts a
@@ -243,7 +243,7 @@ const About = () => {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-white/12 lg:pl-10">
-            <div className="relative overflow-hidden rounded-lg border border-[#f0b6df]/16 bg-[#1a0d27]/76 p-5 shadow-xl shadow-black/12 sm:col-span-3 lg:col-span-1">
+            <div className="relative overflow-hidden border-y border-[#f0b6df]/16 bg-[#1a0d27]/46 py-5 sm:col-span-3 lg:col-span-1">
               <div
                 className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#ef3e78]/14 to-transparent"
                 aria-hidden="true"
@@ -295,7 +295,7 @@ const About = () => {
               return (
                 <article
                   key={point.title}
-                  className="border-l-2 border-[#f0b6df]/18 bg-[#1a0d27]/48 p-5 shadow-xl shadow-black/10 transition duration-200 hover:border-[#f0b6df]/45 hover:bg-[#21132f]/70"
+                  className="border-l-2 border-[#f0b6df]/18 bg-[#1a0d27]/28 px-5 py-4 transition duration-200 hover:border-[#f0b6df]/45 hover:bg-[#21132f]/48"
                   style={{ transitionDelay: `${index * 60}ms` }}
                 >
                   <div className="flex items-start gap-4">
@@ -316,7 +316,7 @@ const About = () => {
               );
             })}
 
-            <div className="rounded-lg border border-[#f0b6df]/18 bg-gradient-to-br from-[#2e1e5a]/72 via-[#21132f]/78 to-[#170f22] p-6 text-white shadow-xl shadow-black/16 sm:col-span-3 lg:col-span-1">
+            <div className="border-y border-[#f0b6df]/18 bg-gradient-to-br from-[#2e1e5a]/42 via-[#21132f]/52 to-[#170f22] py-5 text-white sm:col-span-3 sm:py-6 lg:col-span-1">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#170f22]/70 text-[#f0b6df]">
                   <Users className="h-5 w-5" aria-hidden="true" />
@@ -345,7 +345,7 @@ const About = () => {
                 safety posture, and value before they choose to start a
                 conversation in the app.
               </p>
-              <p className="mt-4 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
+              <p className="mt-4 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
                 Intent before chat
                 <span className="sr-only">
                   . Better signals before conversation.

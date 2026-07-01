@@ -226,7 +226,7 @@ const Header: React.FC = () => {
                     <span className="font-dm-sans-medium text-base transition-all duration-200">
                       {item.label}
                     </span>
-                    <span className="ml-auto flex h-8 w-8 items-center justify-center rounded-lg bg-[#2e1e5a]/55 text-[#f7a4c8]" aria-hidden="true">
+                    <span className="ml-auto flex h-8 w-8 items-center justify-center border-l border-[#f0b6df]/14 text-[#f7a4c8]" aria-hidden="true">
                       <ArrowRight className="h-4 w-4" />
                     </span>
                   </a>
@@ -243,15 +243,18 @@ const Header: React.FC = () => {
                 <span className="sr-only">. Join the waitlist</span>
                 <Heart className="h-5 w-5" aria-hidden="true" />
               </a>
-              <p className="mt-3 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
-                <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                  Email
+              <p className="mt-3 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
+                <span className="border-l border-[#f0b6df]/12 px-3 first:border-l-0">
+                  <span className="block h-1.5 rounded-lg bg-[#ef3e78]/64" aria-hidden="true" />
+                  <span className="sr-only">Email</span>
                 </span>
-                <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                  No profile
+                <span className="border-l border-[#f0b6df]/12 px-3 first:border-l-0">
+                  <span className="block h-1.5 rounded-lg bg-[#8d69f6]/48" aria-hidden="true" />
+                  <span className="sr-only">No profile</span>
                 </span>
-                <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                  No payment
+                <span className="border-l border-[#f0b6df]/12 px-3 first:border-l-0">
+                  <span className="block h-1.5 rounded-lg bg-[#5c83e9]/38" aria-hidden="true" />
+                  <span className="sr-only">No payment</span>
                 </span>
                 <span className="sr-only">
                   Waitlist links open email. No profile, checkout, or payment is

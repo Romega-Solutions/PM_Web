@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
                 </div>
               </div>
 
-              <p className="inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
+              <p className="inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
                 Intent + safety
                 <span className="sr-only">
                   . Intent. Safety. Respect.
@@ -93,12 +93,15 @@ const Footer: React.FC = () => {
               </p>
 
               <div
-                className="rounded-lg border border-[#f0b6df]/12 bg-[#1a0d27]/55 p-4"
+                className="border-y border-[#f0b6df]/12 py-4"
                 aria-hidden="true"
               >
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3">
                   {footerSignals.map((signal, index) => (
-                    <div key={signal} className="min-h-20 rounded-lg bg-[#2e1e5a]/45 p-3">
+                    <div
+                      key={signal}
+                      className="min-h-16 border-l border-[#f0b6df]/12 px-3 py-2 first:border-l-0"
+                    >
                       <span
                         className={`block h-2 rounded-lg ${
                           index === 0
@@ -141,7 +144,7 @@ const Footer: React.FC = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="inline-flex min-h-11 items-center justify-between gap-2 rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/50 px-3 text-sm font-dm-sans-semibold text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/28 hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                    className="inline-flex min-h-11 items-center justify-between gap-2 border-l-2 border-[#f0b6df]/12 px-3 text-sm font-dm-sans-semibold text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/36 hover:bg-[#2e1e5a]/24 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
                   >
                     {link.name}
                     {"detail" in link ? (
@@ -167,7 +170,7 @@ const Footer: React.FC = () => {
                       key={link.label}
                       href={link.href}
                       aria-label={link.ariaLabel}
-                      className="rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/50 p-3 text-sm text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/28 hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                      className="border-y border-[#f0b6df]/12 px-3 py-3 text-sm text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/28 hover:bg-[#2e1e5a]/24 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
                     >
                       <span className="flex items-center justify-between gap-3">
                         <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#2e1e5a]/70 text-[#f3c7de]">
@@ -182,7 +185,7 @@ const Footer: React.FC = () => {
                     </a>
                   );
                 })}
-                <div className="rounded-lg border border-[#f0b6df]/10 bg-[#1a0d27]/50 p-3 text-sm text-[#d7c7ed] sm:col-span-2 md:col-span-1 xl:col-span-2">
+                <div className="border-y border-[#f0b6df]/12 px-3 py-3 text-sm text-[#d7c7ed] sm:col-span-2 md:col-span-1 xl:col-span-2">
                   <div className="flex items-center gap-2">
                   <MapPin className="h-4 w-4" aria-hidden="true" />
                     <span className="font-dm-sans-bold text-white">

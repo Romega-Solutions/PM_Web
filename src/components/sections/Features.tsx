@@ -111,7 +111,7 @@ const Features = () => {
 
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
+          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/14 bg-[#2a1a44]/45 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
             <HeartHandshake className="h-4 w-4" aria-hidden="true" />
             Trust, not hype
             <span className="sr-only">. Built for trust, not hype</span>
@@ -124,7 +124,7 @@ const Features = () => {
               happens inside the app.
             </span>
           </h2>
-          <p className="mt-5 inline-flex min-h-10 items-center rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#d7c7ed]">
+          <p className="mt-5 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
             No fake launch promises.
             <span className="sr-only">
               Clear now. Careful later.
@@ -152,13 +152,13 @@ const Features = () => {
             return (
               <article
                 key={feature.title}
-                className="group flex min-h-full flex-col rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/78 p-5 shadow-xl shadow-black/15 transition duration-200 hover:border-[#f0b6df]/32 hover:bg-[#21132f]/92 sm:p-6"
+                className="group flex min-h-full flex-col border-y border-[#f0b6df]/14 bg-[#1a0d27]/48 px-4 py-5 transition duration-200 hover:border-[#f0b6df]/32 hover:bg-[#21132f]/62 sm:px-5 sm:py-6 lg:border-l lg:border-y-0 lg:first:border-l-0"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/15">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <p className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
+                  <p className="border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
                     {String(index + 1).padStart(2, "0")}
                   </p>
                 </div>
@@ -169,7 +169,7 @@ const Features = () => {
                     <span className="sr-only">. {feature.fullTitle}</span>
                   </h3>
                   <div
-                    className="mt-5 rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/64 p-4"
+                    className="mt-5 border-y border-[#f0b6df]/12 bg-[#120a1b]/38 py-4"
                     aria-hidden="true"
                   >
                     <div className="grid grid-cols-[2.75rem_1fr] gap-3">
@@ -189,7 +189,12 @@ const Features = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="mt-4 rounded-lg border border-[#f0b6df]/12 bg-[#2e1e5a]/38 px-4 py-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
+                  <p className="mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
+                    <span className="h-1.5 rounded-lg bg-[#ef3e78]/55" />
+                    <span className="h-1.5 rounded-lg bg-[#8d69f6]/45" />
+                    <span className="h-1.5 rounded-lg bg-[#5c83e9]/35" />
+                  </p>
+                  <p className="sr-only">
                     {feature.signal}
                     <span className="sr-only">. {feature.copy}</span>
                   </p>
@@ -209,7 +214,7 @@ const Features = () => {
           })}
         </div>
 
-        <div className="mt-10 rounded-lg border border-[#f0b6df]/14 bg-gradient-to-br from-[#21132f]/92 via-[#170f22] to-[#120a1b] p-6 text-white shadow-xl shadow-[#2e1e5a]/18 sm:p-8 lg:p-10">
+        <div className="mt-10 border-y border-[#f0b6df]/14 bg-gradient-to-br from-[#21132f]/58 via-[#170f22] to-[#120a1b] py-6 text-white sm:py-8 lg:py-10">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#ef3e78]">
@@ -226,7 +231,7 @@ const Features = () => {
                 <span className="h-9 rounded-lg bg-[#8d69f6]/22" />
                 <span className="h-9 rounded-lg bg-[#5c83e9]/18" />
               </div>
-              <p className="mt-4 inline-flex min-h-9 items-center rounded-lg border border-[#f0b6df]/14 bg-[#120a1b]/38 px-3 py-2 text-xs font-dm-sans-bold text-[#f3c7de]">
+              <p className="mt-4 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
                 Review paths
                 <span className="sr-only">
                   Moderation, review, and privacy belong in the product story.
@@ -286,7 +291,7 @@ const Features = () => {
               {safetyItems.map((item) => (
                 <div
                   key={item.label}
-                  className="min-h-14 border-l-2 border-[#f0b6df]/18 bg-[#2e1e5a]/30 px-3 py-3 text-center text-xs font-dm-sans-bold text-[#f8f5ff] shadow-sm shadow-black/10"
+                  className="min-h-14 border-l-2 border-[#f0b6df]/18 bg-[#2e1e5a]/22 px-3 py-3 text-center text-xs font-dm-sans-bold text-[#f8f5ff]"
                 >
                   <CheckCircle2
                     className="mx-auto h-5 w-5 shrink-0 text-[#22a574]"
