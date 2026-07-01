@@ -393,7 +393,7 @@ const Hero = () => {
             </div>
 
             <div className="mt-6 overflow-hidden border-y border-[#f0b6df]/14 bg-[#170f22]/54">
-              <div className="relative min-h-60 p-5">
+              <div className="relative min-h-72 p-5">
                 <div
                   className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#ef3e78]/16 to-transparent"
                   aria-hidden="true"
@@ -418,21 +418,49 @@ const Hero = () => {
                 </div>
 
                 <div className="relative mt-6 grid gap-3">
-                  <div className="grid grid-cols-[1fr_0.7fr] gap-3">
-                    <div className="min-h-24 border-l-2 border-[#f0b6df]/14 bg-[#2e1e5a]/28 p-4">
-                      <div className="h-2 w-20 rounded-lg bg-[#ef3e78]" />
-                      <div className="mt-4 h-2 w-full rounded-lg bg-[#f0b6df]/20" />
-                      <div className="mt-2 h-2 w-4/5 rounded-lg bg-[#f0b6df]/14" />
-                      <div className="mt-4 grid grid-cols-3 gap-2">
-                        <span className="h-7 rounded-lg bg-[#ef3e78]/24" />
+                  <div className="grid min-h-36 grid-cols-[0.72fr_1fr] gap-3">
+                    <div className="relative overflow-hidden border-l-2 border-[#f0b6df]/14 bg-[#120a1b]/58 p-3">
+                      <div className="absolute inset-x-0 top-0 h-14 bg-gradient-to-b from-[#ef3e78]/24 to-transparent" aria-hidden="true" />
+                      <div className="relative mx-auto h-16 w-16 rounded-lg border border-[#f0b6df]/18 bg-gradient-to-br from-[#ef3e78]/86 to-[#8d69f6]/78 p-1.5">
+                        <div className="h-full rounded-lg bg-[#ffe8f1]/18" />
+                      </div>
+                      <div className="relative mt-4 grid grid-cols-3 gap-1.5" aria-hidden="true">
+                        <span className="h-7 rounded-lg bg-[#ef3e78]/28" />
                         <span className="h-7 rounded-lg bg-[#8d69f6]/24" />
                         <span className="h-7 rounded-lg bg-[#5c83e9]/20" />
                       </div>
                     </div>
-                    <div className="border-l-2 border-[#f0b6df]/14 bg-[#1a0d27]/48 p-4">
-                      <div className="h-10 rounded-lg bg-[#ef3e78]/90" />
-                      <div className="mt-3 h-2 rounded-lg bg-[#f0b6df]/22" />
-                      <div className="mt-2 h-2 w-2/3 rounded-lg bg-[#f0b6df]/14" />
+                    <div className="relative overflow-hidden border-l-2 border-[#f0b6df]/14 bg-[#2e1e5a]/28 p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="space-y-2">
+                          <div className="h-2 w-24 rounded-lg bg-[#ef3e78]" />
+                          <div className="h-2 w-32 rounded-lg bg-[#f0b6df]/22" />
+                          <div className="h-2 w-20 rounded-lg bg-[#f0b6df]/14" />
+                        </div>
+                        <div className="grid grid-cols-2 gap-1.5" aria-hidden="true">
+                          <span className="h-7 w-7 rounded-lg bg-[#ef3e78]/30" />
+                          <span className="h-7 w-7 rounded-lg bg-[#8d69f6]/26" />
+                          <span className="h-7 w-7 rounded-lg bg-[#5c83e9]/22" />
+                          <span className="h-7 w-7 rounded-lg bg-[#f0b6df]/14" />
+                        </div>
+                      </div>
+                      <div className="mt-5 grid grid-cols-3 gap-2" aria-hidden="true">
+                        <span className="h-9 rounded-lg bg-[#ef3e78]/24" />
+                        <span className="h-9 rounded-lg bg-[#8d69f6]/24" />
+                        <span className="h-9 rounded-lg bg-[#5c83e9]/20" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-[1fr_0.82fr] gap-3" aria-hidden="true">
+                    <div className="border-l-2 border-[#ef3e78]/34 bg-[#1a0d27]/48 p-3">
+                      <span className="block h-2 w-20 rounded-lg bg-[#ef3e78]/78" />
+                      <span className="mt-3 block h-2 rounded-lg bg-[#f0b6df]/20" />
+                      <span className="mt-2 block h-2 w-3/4 rounded-lg bg-[#f0b6df]/14" />
+                    </div>
+                    <div className="border-l-2 border-[#8d69f6]/34 bg-[#1a0d27]/48 p-3">
+                      <span className="block h-8 rounded-lg bg-[#ef3e78]/84" />
+                      <span className="mt-3 block h-2 rounded-lg bg-[#f0b6df]/18" />
                     </div>
                   </div>
 

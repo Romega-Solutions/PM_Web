@@ -142,17 +142,27 @@ const Membership = () => {
     <section id="pricing" className="bg-[#170f22] py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
+          <div className="mb-5 inline-flex min-h-11 items-center gap-3 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Membership direction
+            <span className="grid w-32 grid-cols-3 gap-2" aria-hidden="true">
+              <span className="h-1.5 rounded-lg bg-[#ef3e78]/64" />
+              <span className="h-1.5 rounded-lg bg-[#8d69f6]/42" />
+              <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+            </span>
+            <span className="sr-only">Membership direction</span>
           </div>
 
           <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             Clear membership interest, not a live checkout.
           </h2>
-          <p className="mt-5 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#e3dcf9]">
-            Pricing direction without signup pressure.
+          <p className="mt-5 inline-flex min-h-10 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#e3dcf9]">
+            <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+              <span className="h-1.5 w-9 rounded-lg bg-[#ef3e78]/48" />
+              <span className="h-1.5 w-9 rounded-lg bg-[#8d69f6]/36" />
+              <span className="h-1.5 w-9 rounded-lg bg-[#5c83e9]/28" />
+            </span>
             <span className="sr-only">
+              Pricing direction without signup pressure.
               These tiers explain the intended membership model. The current
               action is email interest only, so pricing expectations stay clear
               without suggesting signup, checkout, billing, or active matching.
@@ -184,13 +194,18 @@ const Membership = () => {
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
                     <p className="text-xs font-dm-sans-bold text-[#f0b6df]">
-                      Tier {String(index + 1).padStart(2, "0")}
+                      {String(index + 1).padStart(2, "0")}
+                      <span className="sr-only">. Tier {String(index + 1).padStart(2, "0")}</span>
                       <span className="sr-only">. {plan.label}</span>
                     </p>
                   </div>
                   {isFeatured && (
-                    <span className="border-l-2 border-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold text-white">
-                      Best fit
+                    <span className="border-l-2 border-[#ef3e78] px-3 py-2 text-xs font-dm-sans-bold text-white">
+                      <span className="grid w-12 grid-cols-2 gap-1.5" aria-hidden="true">
+                        <span className="h-1.5 rounded-lg bg-[#ffe8f1]/72" />
+                        <span className="h-1.5 rounded-lg bg-[#ffe8f1]/42" />
+                      </span>
+                      <span className="sr-only">Best fit</span>
                     </span>
                   )}
                 </div>
@@ -226,7 +241,11 @@ const Membership = () => {
                   <div className="mt-5 grid grid-cols-2 border-y border-[#f0b6df]/12 py-3">
                     <p className="border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                       <span className="block text-xs font-dm-sans-bold text-[#f0b6df]">
-                        Access
+                        <span
+                          className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">Access</span>
                       </span>
                       <span className="mt-1 block font-dm-sans-bold text-white">
                         {plan.price}
@@ -234,7 +253,11 @@ const Membership = () => {
                     </p>
                     <p className="border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                       <span className="block text-xs font-dm-sans-bold text-[#f0b6df]">
-                        Today
+                        <span
+                          className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">Today</span>
                       </span>
                       <span className="mt-1 block font-dm-sans-bold text-white">
                         {plan.priceDetail}
@@ -244,7 +267,11 @@ const Membership = () => {
                   {plan.plannedPrice ? (
                     <div className="mt-3 border-l-2 border-[#f0b6df]/18 bg-[#120a1b]/28 px-3 py-2">
                       <p className="text-xs font-dm-sans-bold text-[#f0b6df]">
-                        Planned
+                        <span
+                          className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/28"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">Planned</span>
                         <span className="sr-only">
                           . Planned pricing, not checkout
                         </span>
@@ -254,8 +281,13 @@ const Membership = () => {
                       </p>
                     </div>
                   ) : null}
-                  <p className="mt-3 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f6d0f1]">
-                    Interest only
+                  <p className="mt-3 inline-flex min-h-9 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                    <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+                      <span className="h-1.5 w-8 rounded-lg bg-[#ef3e78]/48" />
+                      <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/34" />
+                      <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/28" />
+                    </span>
+                    <span className="sr-only">Interest only.</span>
                     <span className="sr-only"> {plan.note}</span>
                   </p>
                 </div>
@@ -285,13 +317,16 @@ const Membership = () => {
                   >
                     <span className="hidden border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
                       <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
-                        Email only
+                        <span className="mx-auto block h-1.5 w-10 rounded-lg bg-[#ef3e78]/38" aria-hidden="true" />
+                        <span className="sr-only">Email only</span>
                       </span>
                       <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
-                        Not checkout
+                        <span className="mx-auto block h-1.5 w-10 rounded-lg bg-[#8d69f6]/32" aria-hidden="true" />
+                        <span className="sr-only">Not checkout</span>
                       </span>
                       <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
-                        No payment
+                        <span className="mx-auto block h-1.5 w-10 rounded-lg bg-[#5c83e9]/28" aria-hidden="true" />
+                        <span className="sr-only">No payment</span>
                       </span>
                     </span>
                     <span className="sr-only">
@@ -325,9 +360,14 @@ const Membership = () => {
         </div>
 
         <div className="mt-8 border-t border-white/10 pt-6 text-white">
-          <p className="text-sm font-dm-sans-bold text-[#f0b6df]">
+          <p className="grid max-w-32 grid-cols-3 gap-2 text-sm font-dm-sans-bold text-[#f0b6df]" aria-hidden="true">
+            <span className="h-1.5 rounded-lg bg-[#ef3e78]/54" />
+            <span className="h-1.5 rounded-lg bg-[#8d69f6]/38" />
+            <span className="h-1.5 rounded-lg bg-[#5c83e9]/30" />
+          </p>
+          <p className="sr-only">
             Pick a path
-            <span className="sr-only">
+            <span>
               . Not sure which interest path fits?
             </span>
           </p>
@@ -339,7 +379,11 @@ const Membership = () => {
               >
                 <span className="flex items-center gap-3 font-dm-sans-bold">
                   <CheckCircleIcon />
-                  {prompt.label}
+                  <span className="grid w-20 grid-cols-2 gap-1.5" aria-hidden="true">
+                    <span className="h-1.5 rounded-lg bg-[#f0b6df]/30" />
+                    <span className="h-1.5 rounded-lg bg-[#f0b6df]/18" />
+                  </span>
+                  <span className="sr-only">{prompt.label}</span>
                   <span className="sr-only">: {prompt.detail}</span>
                 </span>
                 <span className="mt-3 grid grid-cols-3 gap-2" aria-hidden="true">
@@ -361,7 +405,11 @@ const Membership = () => {
               key={boundary.label}
               className="flex min-h-14 items-center justify-center border-l border-[#f0b6df]/12 px-4 py-2 text-center text-sm font-dm-sans-bold text-[#f8f5ff] first:border-l-0"
             >
-              {boundary.label}
+              <span className="grid w-16 gap-1.5" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#f0b6df]/30" />
+                <span className="h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/18" />
+              </span>
+              <span className="sr-only">{boundary.label}</span>
               <span className="sr-only">: {boundary.detail}</span>
             </div>
           ))}
@@ -373,18 +421,26 @@ const Membership = () => {
               <ShieldCheck className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
-              <h3 className="font-lora text-2xl font-bold">
+              <h3 className="sr-only">
                 Pricing notice
               </h3>
+              <p className="grid max-w-36 grid-cols-3 gap-2" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
+                <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
+                <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+              </p>
               <p className="mt-3 grid border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3">
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  Not purchased
+                  <span className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/38" aria-hidden="true" />
+                  <span className="sr-only">Not purchased</span>
                 </span>
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  Not active
+                  <span className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/32" aria-hidden="true" />
+                  <span className="sr-only">Not active</span>
                 </span>
                 <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  Not guaranteed
+                  <span className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/28" aria-hidden="true" />
+                  <span className="sr-only">Not guaranteed</span>
                 </span>
                 <span className="sr-only">
                   Paid plans should not be treated as purchased, active, or

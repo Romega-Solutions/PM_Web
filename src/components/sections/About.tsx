@@ -115,7 +115,12 @@ const About = () => {
           <div className="max-w-2xl">
             <div className="mb-5 inline-flex min-h-11 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
               <HeartHandshake className="h-4 w-4" aria-hidden="true" />
-              Trust direction
+              <span className="grid w-28 grid-cols-3 gap-2" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#ef3e78]/62" />
+                <span className="h-1.5 rounded-lg bg-[#8d69f6]/42" />
+                <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+              </span>
+              <span className="sr-only">Trust direction</span>
               <span className="sr-only">
                 . Filipino dating product direction, built around trust
               </span>
@@ -126,8 +131,13 @@ const About = () => {
             </h2>
 
             <p className="mt-6 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
-              Intent. Review. Context.
+              <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+                <span className="h-1.5 w-9 rounded-lg bg-[#ef3e78]/52" />
+                <span className="h-1.5 w-9 rounded-lg bg-[#8d69f6]/40" />
+                <span className="h-1.5 w-9 rounded-lg bg-[#5c83e9]/32" />
+              </span>
               <span className="sr-only">
+                Intent. Review. Context.
                 Clear intent. Safer pacing. Less noise before anyone starts a
                 conversation.
                 PinayMate is shaped for people who want more than a busy dating
@@ -168,13 +178,25 @@ const About = () => {
               className="mt-4 grid max-w-xl grid-cols-3 border-y border-[#f0b6df]/12 py-3 text-xs font-dm-sans-bold text-[#f3c7de]"
             >
               <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
-                Interest only
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/42"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Interest only</span>
               </span>
               <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
-                No matching
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/34"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">No matching</span>
               </span>
               <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
-                No checkout
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/28"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">No checkout</span>
               </span>
               <span className="sr-only">
                 Membership links collect interest only. They do not create a
@@ -192,7 +214,11 @@ const About = () => {
                     className="mx-auto mb-2 h-4 w-4 text-[#22a574]"
                     aria-hidden="true"
                   />
-                  {signal.label}
+                  <span
+                    className="mx-auto block h-1.5 w-10 rounded-lg bg-[#f0b6df]/26"
+                    aria-hidden="true"
+                  />
+                  <span className="sr-only">{signal.label}</span>
                   <span className="sr-only">. {signal.detail}</span>
                 </div>
               ))}
@@ -218,9 +244,14 @@ const About = () => {
             </dl>
 
             <div className="mt-8 border-t border-white/12 pt-6">
-              <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
+              <p className="grid max-w-28 grid-cols-3 gap-2 text-sm font-dm-sans-bold text-[#f3c7de]" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
+                <span className="h-1.5 rounded-lg bg-[#8d69f6]/36" />
+                <span className="h-1.5 rounded-lg bg-[#5c83e9]/28" />
+              </p>
+              <p className="sr-only">
                 Path
-                <span className="sr-only">. The access path</span>
+                <span>. The access path</span>
               </p>
               <ol className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
                 {trustFlow.map((step, index) => (
@@ -240,7 +271,7 @@ const About = () => {
                     </span>
                     <span className="sr-only">
                       {step.label}
-                      <span className="sr-only">: {step.detail}</span>
+                      <span>: {step.detail}</span>
                     </span>
                   </li>
                 ))}
@@ -267,7 +298,11 @@ const About = () => {
                         {item.value}
                       </span>
                       <span className="text-xs font-dm-sans-bold text-[#f6d0f1]">
-                        {item.label}
+                        <span
+                          className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
+                          aria-hidden="true"
+                        />
+                        <span className="sr-only">{item.label}</span>
                       </span>
                     </div>
                     <div className="mt-4 space-y-2" aria-hidden="true">
@@ -334,8 +369,11 @@ const About = () => {
                 </div>
                 <div>
                   <p className="text-sm font-dm-sans-bold text-[#f0b6df]">
-                    Promise
-                    <span className="sr-only">. Product promise</span>
+                    <span
+                      className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/30"
+                      aria-hidden="true"
+                    />
+                    <span className="sr-only">Promise. Product promise</span>
                   </p>
                   <p className="text-xl font-lora font-bold">
                     Less noise. Better signals.
@@ -356,10 +394,14 @@ const About = () => {
                 safety posture, and value before they choose to start a
                 conversation in the app.
               </p>
-              <p className="mt-4 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
-                Intent before chat
+              <p className="mt-4 inline-flex min-h-9 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
+                <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+                  <span className="h-1.5 w-8 rounded-lg bg-[#ef3e78]/46" />
+                  <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/34" />
+                  <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/28" />
+                </span>
                 <span className="sr-only">
-                  . Better signals before conversation.
+                  Intent before chat. Better signals before conversation.
                 </span>
               </p>
             </div>

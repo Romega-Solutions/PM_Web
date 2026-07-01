@@ -221,23 +221,42 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           <div className="border-y border-[#f0b6df]/14 bg-[#2e1e5a]/24 py-4 sm:py-5">
             <div className="grid grid-cols-3 text-xs font-dm-sans-bold text-[#f3c7de]">
               <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                Updated
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/42"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Updated</span>
                 <span className="sr-only">. Last Updated: June 11, 2026</span>
               </span>
               <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                Waitlist
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/34"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Waitlist</span>
               </span>
               <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                Support
+                <span
+                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/28"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Support</span>
               </span>
             </div>
             <p
               id={`legal-modal-description-${type}`}
               className="mt-4 px-4 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:px-5"
             >
-              Please read this {selectedContent.title.toLowerCase()} carefully.
-              The current site is a waitlist and support surface, so terms may
-              apply before full mobile app features are publicly available.
+              <span className="grid max-w-44 grid-cols-3 gap-2" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
+                <span className="h-1.5 rounded-lg bg-[#8d69f6]/38" />
+                <span className="h-1.5 rounded-lg bg-[#5c83e9]/30" />
+              </span>
+              <span className="sr-only">
+                Please read this {selectedContent.title.toLowerCase()} carefully.
+                The current site is a waitlist and support surface, so terms may
+                apply before full mobile app features are publicly available.
+              </span>
             </p>
           </div>
 
@@ -316,13 +335,26 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           {/* Contact Section */}
           <div className="mt-6 border-y border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/46 via-[#21132f]/56 to-[#170f22] py-5 sm:py-6">
             <h3 className="mb-4 text-xl font-dm-sans-bold text-white">
+              <span className="grid max-w-28 grid-cols-3 gap-2" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
+                <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
+                <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+              </span>
+              <span className="sr-only">
               Questions?
+              </span>
               <span className="sr-only"> Questions or Concerns?</span>
             </h3>
             <p className="mb-4 font-dm-sans-regular leading-relaxed text-[#d7c7ed]">
-              If you have any questions about our{" "}
-              {selectedContent.title.toLowerCase()}, contact the launch support
-              team:
+              <span className="grid max-w-52 gap-2" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#f0b6df]/26" />
+                <span className="h-1.5 w-4/5 rounded-lg bg-[#f0b6df]/18" />
+              </span>
+              <span className="sr-only">
+                If you have any questions about our{" "}
+                {selectedContent.title.toLowerCase()}, contact the launch support
+                team:
+              </span>
             </p>
             <div className="grid grid-cols-2 border-y border-[#f0b6df]/12 py-2">
               <a

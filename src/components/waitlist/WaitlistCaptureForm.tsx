@@ -165,13 +165,20 @@ export function WaitlistCaptureForm() {
           </div>
           <div>
             <p className="text-xs font-dm-sans-bold text-[#f3c7de]">
-              Waitlist
-              <span className="sr-only">. Private waitlist</span>
+              <span
+                className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/30"
+                aria-hidden="true"
+              />
+              <span className="sr-only">Waitlist. Private waitlist</span>
             </p>
             <p className="mt-1 font-dm-sans-bold text-white">
-              Access signal
+              <span className="grid max-w-28 grid-cols-3 gap-1.5" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#ef3e78]/56" />
+                <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
+                <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+              </span>
               <span className="sr-only">
-                . Platform access signal. Get notified when your platform
+                Access signal. Platform access signal. Get notified when your platform
                 opens.
               </span>
             </p>
@@ -180,13 +187,25 @@ export function WaitlistCaptureForm() {
               className="mt-3 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]"
             >
               <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                Email
+                <span
+                  className="mx-auto block h-1.5 w-10 rounded-lg bg-[#ef3e78]/40"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Email</span>
               </span>
               <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                Platform
+                <span
+                  className="mx-auto block h-1.5 w-10 rounded-lg bg-[#8d69f6]/34"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Platform</span>
               </span>
               <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                Updates
+                <span
+                  className="mx-auto block h-1.5 w-10 rounded-lg bg-[#5c83e9]/28"
+                  aria-hidden="true"
+                />
+                <span className="sr-only">Updates</span>
               </span>
               <span className="sr-only">
                 Share your email, choose your phone, and receive only the
@@ -222,7 +241,10 @@ export function WaitlistCaptureForm() {
           <div className="inline-flex min-h-11 items-center gap-2 self-start border-l-2 border-[#f0b6df]/22 px-4 py-1 text-sm font-dm-sans-bold text-[#ffe8f1]">
             <Sparkles className="h-5 w-5" aria-hidden="true" />
             <span>
-              1 minute
+              <span className="grid w-20 grid-cols-2 gap-1.5" aria-hidden="true">
+                <span className="h-1.5 rounded-lg bg-[#ffe8f1]/60" />
+                <span className="h-1.5 rounded-lg bg-[#ffe8f1]/32" />
+              </span>
               <span className="sr-only">. Less than 1 minute</span>
             </span>
           </div>
@@ -305,9 +327,12 @@ export function WaitlistCaptureForm() {
             id="waitlist-email-helper"
             className="text-xs font-dm-sans-bold text-[#cbbade]"
           >
-            Inbox
+            <span
+              className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
+              aria-hidden="true"
+            />
             <span className="sr-only">
-              . Launch updates inbox. Use the inbox where you want launch
+              Inbox. Launch updates inbox. Use the inbox where you want launch
               access and safety updates.
             </span>
           </span>
@@ -509,7 +534,12 @@ export function WaitlistCaptureForm() {
         <span>
           {!isSubmitting && !result ? (
             <>
-              Ready
+              <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+                <span className="h-1.5 w-8 rounded-lg bg-[#49d49a]/46" />
+                <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/30" />
+                <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/24" />
+              </span>
+              <span className="sr-only">Ready</span>
               <span className="sr-only">. {statusMessage}</span>
             </>
           ) : (

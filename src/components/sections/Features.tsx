@@ -113,8 +113,12 @@ const Features = () => {
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/14 bg-[#2a1a44]/45 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
             <HeartHandshake className="h-4 w-4" aria-hidden="true" />
-            Trust, not hype
-            <span className="sr-only">. Built for trust, not hype</span>
+            <span className="grid w-28 grid-cols-3 gap-1.5" aria-hidden="true">
+              <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
+              <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
+              <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+            </span>
+            <span className="sr-only">Trust, not hype. Built for trust, not hype</span>
           </div>
 
           <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
@@ -124,9 +128,14 @@ const Features = () => {
               happens inside the app.
             </span>
           </h2>
-          <p className="mt-5 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
-            No fake launch promises.
+          <p className="mt-5 inline-flex min-h-10 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
+            <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+              <span className="h-1.5 w-8 rounded-lg bg-[#ef3e78]/46" />
+              <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/34" />
+              <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/28" />
+            </span>
             <span className="sr-only">
+              No fake launch promises.
               Clear now. Careful later.
               PinayMate should feel premium because it is clear, careful, and
               honest. The public experience separates product direction from
@@ -178,19 +187,28 @@ const Features = () => {
                     className="mt-5 border-y border-[#f0b6df]/12 bg-[#120a1b]/38 py-4"
                     aria-hidden="true"
                   >
-                    <div className="grid grid-cols-[2.75rem_1fr] gap-3">
-                      <div className="h-24 rounded-lg bg-gradient-to-br from-[#ef3e78]/88 to-[#8d69f6]/80" />
-                      <div className="space-y-2 self-center">
+                    <div className="grid grid-cols-[3.25rem_1fr] gap-3">
+                      <div className="relative h-28 overflow-hidden rounded-lg bg-gradient-to-br from-[#ef3e78]/88 to-[#8d69f6]/80 p-2">
+                        <div className="h-8 rounded-lg bg-[#ffe8f1]/18" />
+                        <div className="mt-2 grid grid-cols-2 gap-1.5">
+                          <span className="h-5 rounded-lg bg-[#ffe8f1]/18" />
+                          <span className="h-5 rounded-lg bg-[#ffe8f1]/12" />
+                        </div>
+                        <div className="absolute inset-x-2 bottom-2 h-2 rounded-lg bg-[#ffe8f1]/34" />
+                      </div>
+                      <div className="self-center">
+                        <div className="mb-3 grid grid-cols-3 gap-2">
+                          <span className="h-8 rounded-lg bg-[#ef3e78]/22" />
+                          <span className="h-8 rounded-lg bg-[#8d69f6]/22" />
+                          <span className="h-8 rounded-lg bg-[#5c83e9]/18" />
+                        </div>
+                        <div className="space-y-2">
                         {feature.visual.map((bar, barIndex) => (
                           <span
                             key={`${feature.title}-${barIndex}`}
                             className={`block h-2 rounded-lg bg-[#f0b6df]/28 ${bar}`}
                           />
                         ))}
-                        <div className="grid grid-cols-3 gap-2 pt-2">
-                          <span className="h-7 rounded-lg bg-[#ef3e78]/24" />
-                          <span className="h-7 rounded-lg bg-[#8d69f6]/24" />
-                          <span className="h-7 rounded-lg bg-[#5c83e9]/20" />
                         </div>
                       </div>
                     </div>

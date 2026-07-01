@@ -105,15 +105,25 @@ const Faqs = () => {
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mx-auto inline-flex min-h-11 items-center border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
-            FAQ and access clarity
+          <p className="mx-auto inline-flex min-h-11 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
+            <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+              <span className="h-1.5 w-9 rounded-lg bg-[#ef3e78]/54" />
+              <span className="h-1.5 w-9 rounded-lg bg-[#8d69f6]/38" />
+              <span className="h-1.5 w-9 rounded-lg bg-[#5c83e9]/30" />
+            </span>
+            <span className="sr-only">FAQ and access clarity</span>
           </p>
           <h2 className="mt-4 font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
             Straight answers before anyone joins.
           </h2>
-          <p className="mt-5 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
-            Waitlist first. App for personal details.
+          <p className="mt-5 inline-flex min-h-10 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
+            <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+              <span className="h-1.5 w-8 rounded-lg bg-[#ef3e78]/46" />
+              <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/34" />
+              <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/28" />
+            </span>
             <span className="sr-only">
+              Waitlist first. App for personal details.
               Join the waitlist first. Use the app for everything personal.
               The path is simple: join the waitlist first, then use the app for
               profiles, matching, privacy controls, and paid access inside the
@@ -141,9 +151,14 @@ const Faqs = () => {
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
           <aside className="border-y border-[#f0b6df]/14 bg-[#1a0d27]/42 py-5 lg:sticky lg:top-28 lg:py-6">
-            <p className="text-sm font-dm-sans-bold text-[#f3c7de]">
+            <p className="grid max-w-24 grid-cols-3 gap-1.5 text-sm font-dm-sans-bold text-[#f3c7de]" aria-hidden="true">
+              <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
+              <span className="h-1.5 rounded-lg bg-[#8d69f6]/36" />
+              <span className="h-1.5 rounded-lg bg-[#5c83e9]/28" />
+            </p>
+            <p className="sr-only">
               Support
-              <span className="sr-only">. Support boundary</span>
+              <span>. Support boundary</span>
             </p>
             <h3 className="mt-3 font-lora text-2xl font-bold text-white">
               Direct answers.
@@ -185,9 +200,14 @@ const Faqs = () => {
                 checkout sessions, or payment records from this website.
               </span>
             </p>
-            <p className="mt-4 border-l-2 border-[#F4376D]/55 py-2 pl-4 pr-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
-              No private data.
+            <p className="mt-4 inline-flex min-h-9 items-center gap-2 border-l-2 border-[#F4376D]/55 py-2 pl-4 pr-3 text-sm font-dm-sans-bold text-[#f6d0f1]">
+              <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+                <span className="h-1.5 w-8 rounded-lg bg-[#ef3e78]/48" />
+                <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/34" />
+                <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/28" />
+              </span>
               <span className="sr-only">
+                No private data.
                 No sensitive data by email.
                 Do not send passwords, payment details, ID documents, precise
                 location, private profile information, or private message
