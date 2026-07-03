@@ -38,22 +38,23 @@ const Footer: React.FC = () => {
     { name: "Waitlist", href: "#download" },
   ];
 
-  const footerSignals = ["Intent", "Review", "Privacy"];
+  const footerSignals = [
+    { label: "Intent", icon: Sparkles },
+    { label: "Review", icon: Shield },
+    { label: "Privacy", icon: LockKeyhole },
+  ];
   const pathModules = [
     {
       label: "Waitlist",
       tone: "bg-[#ef3e78]/68",
-      fill: "w-4/5",
     },
     {
       label: "Review",
       tone: "bg-[#8d69f6]/52",
-      fill: "w-2/3",
     },
     {
       label: "Access",
       tone: "bg-[#5c83e9]/44",
-      fill: "w-3/4",
     },
   ];
   const channelSignals = [
@@ -69,6 +70,29 @@ const Footer: React.FC = () => {
       label: "Community",
       tone: "bg-[#5c83e9]/34",
     },
+  ];
+  const footerRouteNodes = [
+    {
+      label: "Join",
+      tone: "from-[#ef3e78] to-[#8d69f6]",
+      icon: Sparkles,
+    },
+    {
+      label: "Review",
+      tone: "from-[#8d69f6] to-[#5c83e9]",
+      icon: Shield,
+    },
+    {
+      label: "Access",
+      tone: "from-[#ef3e78] to-[#5c83e9]",
+      icon: Mail,
+    },
+  ];
+  const footerDeviceTiles = [
+    { label: "Intent", icon: Sparkles, tone: "bg-[#ef3e78]/22 text-[#ffe8f1]" },
+    { label: "Review", icon: Shield, tone: "bg-[#8d69f6]/20 text-[#f6d0f1]" },
+    { label: "Privacy", icon: LockKeyhole, tone: "bg-[#5c83e9]/18 text-[#e3dcf9]" },
+    { label: "Access", icon: Mail, tone: "bg-[#f0b6df]/12 text-[#f6d0f1]" },
   ];
   const contactLinks = [
     {
@@ -89,7 +113,7 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <footer className="relative overflow-hidden bg-[#120a1b] text-white">
+      <footer className="pm-footer-root relative overflow-hidden bg-[#120a1b] text-white">
         <div className="absolute inset-0" aria-hidden="true">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#f0b6df]/18 to-transparent" />
         </div>
@@ -109,111 +133,85 @@ const Footer: React.FC = () => {
                   <span className="block text-2xl font-hello-paris-bold text-white">
                     PinayMate
                   </span>
-                  <span className="text-xs font-dm-sans-semibold text-[#f0b6df]">
-                    <span
-                      className="block h-1.5 w-20 rounded-lg bg-[#f0b6df]/32"
-                      aria-hidden="true"
-                    />
-                    <span className="sr-only">Filipino-first dating platform</span>
+                  <span className="sr-only">
+                    Filipino-first dating platform
                   </span>
                 </div>
               </div>
 
-              <p className="inline-flex min-h-9 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
-                <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
-                  <span className="h-1.5 w-8 rounded-lg bg-[#ef3e78]/48" />
-                  <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/36" />
-                  <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/28" />
-                </span>
+              <p className="sr-only">
+                Intent. Safety. Respect.
                 <span className="sr-only">
-                  Intent + safety. Intent. Safety. Respect.
+                  Intent + safety.
                   PinayMate helps people approach Filipino dating with clearer
                   intent, safer introductions, and more respectful first steps.
                 </span>
               </p>
 
-              <div
-                className="border-y border-[#f0b6df]/12 py-4"
-                aria-hidden="true"
-              >
-                <div className="grid grid-cols-3">
-                  {footerSignals.map((signal, index) => (
-                    <div
-                      key={signal}
-                      className="min-h-16 border-l border-[#f0b6df]/12 px-3 py-2 first:border-l-0"
-                    >
-                      <span
-                        className={`block h-2 rounded-lg ${
-                          index === 0
-                            ? "bg-[#ef3e78]"
-                            : index === 1
-                              ? "bg-[#8d69f6]"
-                              : "bg-[#5c83e9]"
-                        }`}
-                      />
-                      <span className="mt-3 block h-2 rounded-lg bg-[#f0b6df]/20" />
-                      <span className="mt-2 block h-2 w-2/3 rounded-lg bg-[#f0b6df]/14" />
-                    </div>
-                  ))}
-                </div>
+              <div className="pm-feature-signal-strip max-w-none" aria-hidden="true">
+                {footerSignals.map((signal) => {
+                  const Icon = signal.icon;
+
+                  return (
+                    <span key={signal.label}>
+                      <Icon className="h-5 w-5" />
+                    </span>
+                  );
+                })}
+              </div>
+              <div className="sr-only">
+                {footerSignals.map((signal) => (
+                  <span key={signal.label}>{signal.label}</span>
+                ))}
               </div>
 
-              <div className="grid max-w-sm grid-cols-2 border-y border-[#f0b6df]/12 py-2">
+              <div className="grid max-w-sm grid-cols-2 border-y border-[#f0b6df]/12 py-2" aria-hidden="true">
                 <div className="flex min-h-9 items-center justify-center gap-1.5 border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                   <CheckCircle className="h-3.5 w-3.5 text-[#49d49a]" aria-hidden="true" />
-                  <span
-                    className="h-1.5 w-16 rounded-lg bg-[#49d49a]/45"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
-                    Review cues
+                  <span className="pm-mini-state-chips">
+                    <span>Intent</span>
+                    <span>Fit</span>
                   </span>
                 </div>
                 <div className="flex min-h-9 items-center justify-center gap-1.5 border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0">
                   <Shield className="h-3.5 w-3.5 text-[#91b1ff]" aria-hidden="true" />
-                  <span
-                    className="h-1.5 w-16 rounded-lg bg-[#91b1ff]/45"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
-                    Safety first
+                  <span className="pm-mini-state-chips">
+                    <span>Review</span>
+                    <span>Privacy</span>
                   </span>
                 </div>
               </div>
 
-              <div className="overflow-hidden border-y border-[#f0b6df]/14 bg-[#1a0d27]/42" aria-hidden="true">
-                <div className="relative p-4">
-                  <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#ef3e78]/14 to-transparent" />
-                  <div className="relative grid grid-cols-[0.72fr_1fr] gap-3">
-                    <div className="border-l-2 border-[#ef3e78]/42 bg-[#120a1b]/62 p-3">
-                      <span className="block h-12 rounded-lg bg-gradient-to-br from-[#ef3e78]/78 to-[#8d69f6]/68" />
-                      <span className="mt-3 block h-1.5 rounded-lg bg-[#f0b6df]/28" />
-                      <span className="mt-2 block h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/18" />
-                    </div>
-                    <div className="grid gap-2">
-                      {pathModules.map((module) => (
-                        <span
-                          key={module.label}
-                          className="border-l border-[#f0b6df]/12 bg-[#21132f]/62 px-3 py-2"
-                        >
-                          <span className={`block h-1.5 rounded-lg ${module.tone} ${module.fill}`} />
-                          <span className="mt-2 grid grid-cols-3 gap-1.5">
-                            <span className="h-5 rounded-lg bg-[#ef3e78]/24" />
-                            <span className="h-5 rounded-lg bg-[#8d69f6]/22" />
-                            <span className="h-5 rounded-lg bg-[#5c83e9]/18" />
-                          </span>
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+              <div className="pm-lift-panel overflow-hidden border-y border-[#f0b6df]/14 bg-[#1a0d27]/42">
+                <div className="pm-safety-radar min-h-72" aria-hidden="true">
+                  <span className="pm-safety-radar-core">
+                    <Sparkles className="h-8 w-8" />
+                  </span>
+                  <span className="pm-safety-radar-node pm-safety-radar-node-a">
+                    <Mail className="h-5 w-5" />
+                  </span>
+                  <span className="pm-safety-radar-node pm-safety-radar-node-b">
+                    <Shield className="h-5 w-5" />
+                  </span>
+                  <span className="pm-safety-radar-node pm-safety-radar-node-c">
+                    <LockKeyhole className="h-5 w-5" />
+                  </span>
+                  <span className="pm-safety-radar-node pm-safety-radar-node-d">
+                    <CheckCircle className="h-5 w-5" />
+                  </span>
+                </div>
+                <div className="sr-only">
+                  <span>Launch path.</span>
+                  {pathModules.map((module) => (
+                    <span key={module.label}>{module.label}. Fit. Cue. Safe.</span>
+                  ))}
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="grid max-w-20 grid-cols-2 gap-1.5 font-dm-sans-bold text-base text-white" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/42" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/32" />
+              <h3 className="sr-only">
+                Explore
               </h3>
               <p className="sr-only">
                 Explore
@@ -224,9 +222,17 @@ const Footer: React.FC = () => {
                   <a
                     key={link.name}
                     href={link.href}
-                    className="inline-flex min-h-11 items-center justify-between gap-2 border-l-2 border-[#f0b6df]/12 px-3 text-sm font-dm-sans-semibold text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/36 hover:bg-[#2e1e5a]/24 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                    aria-label={`Go to ${link.name}`}
+                    className="inline-grid min-h-12 grid-cols-[auto_1fr_auto] items-center gap-3 border-l-2 border-[#f0b6df]/12 px-3 text-sm font-dm-sans-semibold text-[#d7c7ed] transition-colors hover:border-[#f0b6df]/36 hover:bg-[#2e1e5a]/24 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
                   >
-                    {link.name}
+                    <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#2e1e5a]/55 text-[#f3c7de]" aria-hidden="true">
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="pm-footer-link-copy" aria-hidden="true">
+                      <span>{link.name}</span>
+                      <span>{"detail" in link ? link.detail : "Open"}</span>
+                    </span>
+                    <span className="sr-only">{link.name}</span>
                     {"detail" in link ? (
                       <span className="sr-only">. {link.detail}</span>
                     ) : null}
@@ -235,7 +241,7 @@ const Footer: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-5 border-y border-[#f0b6df]/12 py-3" aria-hidden="true">
+              <div className="mt-5 border-y border-[#f0b6df]/12 py-3">
                 <div className="grid gap-2">
                   {quickLinks.slice(0, 3).map((link, index) => (
                     <span key={link.name} className="grid grid-cols-[auto_1fr] items-center gap-3">
@@ -250,9 +256,10 @@ const Footer: React.FC = () => {
                       >
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </span>
-                      <span className="grid gap-1.5">
-                        <span className="h-1.5 rounded-lg bg-[#f0b6df]/26" />
-                        <span className="h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/16" />
+                      <span className="pm-mini-state-chips">
+                        <span>{link.name}</span>
+                        <span>{index === 0 ? "Trust" : index === 1 ? "Safety" : "Plans"}</span>
+                        <span className="sr-only">{link.name}</span>
                       </span>
                     </span>
                   ))}
@@ -261,9 +268,8 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h3 className="grid max-w-20 grid-cols-2 gap-1.5 font-dm-sans-bold text-base text-white" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/42" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/32" />
+              <h3 className="sr-only">
+                Contact
               </h3>
               <p className="sr-only">
                 Email
@@ -286,12 +292,13 @@ const Footer: React.FC = () => {
                         </span>
                         <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
-                      <span className="mt-3 block font-dm-sans-bold text-white">
-                        <span
-                          className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/30"
-                          aria-hidden="true"
-                        />
-                        <span className="sr-only">{link.label}</span>
+                      <span className="pm-mini-state-chips mt-3" aria-hidden="true">
+                        <span>{link.label}</span>
+                        <span>{link.label === "Support" ? "Launch" : "Privacy"}</span>
+                        <span>Email</span>
+                      </span>
+                      <span className="sr-only">
+                        {link.label}
                       </span>
                       <span className="sr-only">{link.value}</span>
                     </a>
@@ -300,18 +307,31 @@ const Footer: React.FC = () => {
                 <div className="border-y border-[#f0b6df]/12 px-3 py-3 text-sm text-[#d7c7ed] sm:col-span-2 md:col-span-1 xl:col-span-2">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" aria-hidden="true" />
-                    <span className="font-dm-sans-bold text-white">
-                      <span
-                        className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/30"
-                        aria-hidden="true"
-                      />
-                      <span className="sr-only">Markets. Launch markets</span>
+                    <span className="sr-only">
+                      Launch markets
+                      <span>. Markets</span>
                     </span>
                   </div>
-                  <div className="mt-3 grid grid-cols-3 gap-2" aria-hidden="true">
-                    <span className="h-8 rounded-lg bg-[#ef3e78]/24" />
-                    <span className="h-8 rounded-lg bg-[#8d69f6]/22" />
-                    <span className="h-8 rounded-lg bg-[#5c83e9]/18" />
+                  <div className="pm-footer-market-route mt-3" aria-hidden="true">
+                    <span className="pm-footer-market-node">
+                      <MapPin className="h-4 w-4" />
+                    </span>
+                    <span className="pm-footer-market-line">
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    <span className="pm-footer-market-node pm-footer-market-node-intent">
+                      <Sparkles className="h-4 w-4" />
+                    </span>
+                    <span className="pm-footer-market-line">
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    <span className="pm-footer-market-node pm-footer-market-node-safe">
+                      <Shield className="h-4 w-4" />
+                    </span>
                   </div>
                   <span className="sr-only">
                     Philippines, US, and launch-market members
@@ -320,30 +340,136 @@ const Footer: React.FC = () => {
               </div>
 
               <div className="mt-5 border-y border-[#f0b6df]/12 py-3 text-xs font-dm-sans-bold text-[#f6d0f1]">
-                <div className="grid grid-cols-3 gap-2" aria-hidden="true">
-                  {channelSignals.map((channel) => (
-                    <span key={channel.label} className="bg-[#1a0d27]/60 p-2">
-                      <span className={`block h-1.5 rounded-lg ${channel.tone}`} />
-                      <span className="mt-2 block h-8 rounded-lg bg-[#f0b6df]/12" />
+                <div className="pm-footer-channel-route" aria-hidden="true">
+                  {channelSignals.map((channel, index) => (
+                    <span key={channel.label} className="pm-footer-channel-node">
+                      {index === 0 ? (
+                        <Sparkles className="h-5 w-5 text-[#f7a4c8]" />
+                      ) : index === 1 ? (
+                        <LockKeyhole className="h-5 w-5 text-[#d9c8ff]" />
+                      ) : (
+                        <Shield className="h-5 w-5 text-[#c8d8ff]" />
+                      )}
+                      {index < channelSignals.length - 1 ? (
+                        <span className={`pm-footer-channel-pulse ${channel.tone}`} />
+                      ) : null}
                     </span>
                   ))}
                 </div>
-                <div className="mt-3 grid grid-cols-3 border-t border-[#f0b6df]/12 pt-3" aria-hidden="true">
-                  <span className="flex items-center justify-center border-l border-[#f0b6df]/12 px-3 first:border-l-0">
-                    <Sparkles className="h-4 w-4 text-[#f7a4c8]" />
-                  </span>
-                  <span className="flex items-center justify-center border-l border-[#f0b6df]/12 px-3 first:border-l-0">
-                    <LockKeyhole className="h-4 w-4 text-[#d9c8ff]" />
-                  </span>
-                  <span className="flex items-center justify-center border-l border-[#f0b6df]/12 px-3 first:border-l-0">
-                    <Shield className="h-4 w-4 text-[#c8d8ff]" />
-                  </span>
+                <div className="sr-only">
+                  {channelSignals.map((channel) => (
+                    <span key={channel.label}>{channel.label}. Later.</span>
+                  ))}
+                </div>
+                <div className="pm-footer-channel-meter mt-3" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
                 </div>
                 <span className="sr-only">
                   Store. Social. Community.
                   Store, social, and community links will appear when those public
                   channels are available for members.
                 </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-b border-[#f0b6df]/12 py-6">
+            <div className="grid gap-4 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+              <div className="pm-lift-panel relative overflow-hidden border-y border-[#f0b6df]/14 bg-[#1a0d27]/42 py-5">
+                <div
+                  className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#ef3e78]/14 to-transparent"
+                  aria-hidden="true"
+                />
+                <div className="relative grid gap-4 px-4 sm:grid-cols-[0.72fr_1fr] sm:items-center">
+                  <div className="mx-auto w-full max-w-48 border border-[#f0b6df]/16 bg-[#08050d] p-2 shadow-lg shadow-black/20" aria-hidden="true">
+                    <div className="overflow-hidden rounded-lg border border-[#f0b6df]/12 bg-[#120a1b] p-3">
+                      <div className="pm-footer-device-scene">
+                        <span className="pm-footer-device-person" />
+                        <span className="pm-footer-device-badge">
+                          <Shield className="h-3.5 w-3.5" />
+                        </span>
+                        <span className="pm-footer-device-route">
+                          <span />
+                          <span />
+                          <span />
+                        </span>
+                      </div>
+                      <div className="mt-4 grid grid-cols-2 gap-2 text-center text-[0.62rem] font-dm-sans-bold" aria-hidden="true">
+                        {footerDeviceTiles.map((tile) => (
+                          <span key={tile.label} className={`grid min-h-10 place-items-center rounded-lg px-2 py-2 ${tile.tone}`}>
+                            <tile.icon className="h-4 w-4" />
+                          </span>
+                        ))}
+                      </div>
+                      <span className="sr-only">
+                        {footerDeviceTiles.map((tile) => tile.label).join(". ")}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-2">
+                    {footerRouteNodes.map((node) => {
+                      const Icon = node.icon;
+
+                      return (
+                        <span
+                          key={node.label}
+                          className="pm-footer-route-card grid grid-cols-[auto_1fr] items-center gap-3 border-l border-[#f0b6df]/12 bg-[#120a1b]/48 px-3 py-2"
+                        >
+                          <span
+                            className={`flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br ${node.tone} text-white`}
+                            aria-hidden="true"
+                          >
+                            <Icon className="h-4 w-4" />
+                          </span>
+                          <span className="pm-footer-route-meter" aria-hidden="true">
+                            <span />
+                            <span />
+                            <span />
+                          </span>
+                          <span className="sr-only">
+                            {node.label}
+                          </span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+                <p className="sr-only">
+                  Launch path visual: join the waitlist, follow review cues, and
+                  receive app access updates when available.
+                </p>
+              </div>
+
+              <div className="pm-footer-channel-band">
+                {channelSignals.map((channel, index) => (
+                  <span
+                    key={channel.label}
+                    className="pm-footer-channel-band-node"
+                  >
+                    <span className={`pm-footer-channel-band-icon ${channel.tone}`} aria-hidden="true">
+                      {index === 0 ? (
+                        <Sparkles className="h-4 w-4" />
+                      ) : index === 1 ? (
+                        <LockKeyhole className="h-4 w-4" />
+                      ) : (
+                        <Shield className="h-4 w-4" />
+                      )}
+                    </span>
+                    <span className="pm-footer-signal-meter" aria-hidden="true">
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    <span className="sr-only">Planned</span>
+                    <span className="sr-only">Store. Social. Later.</span>
+                    <span className="sr-only">
+                      {channel.label}
+                    </span>
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -358,25 +484,27 @@ const Footer: React.FC = () => {
                 type="button"
                 onClick={() => openLegalModal("privacy")}
                 aria-label="Open PinayMate privacy notice"
-                className="min-h-11 rounded-lg px-2 text-[#d7c7ed] transition-colors hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="grid h-11 w-11 place-items-center rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/58 text-[#d7c7ed] transition-colors hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
-                Privacy
+                <LockKeyhole className="h-4 w-4" aria-hidden="true" />
+                <span className="sr-only">Privacy</span>
               </button>
               <span className="text-[#5f536d]">•</span>
               <button
                 type="button"
                 onClick={() => openLegalModal("terms")}
                 aria-label="Open PinayMate terms notice"
-                className="min-h-11 rounded-lg px-2 text-[#d7c7ed] transition-colors hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="grid h-11 w-11 place-items-center rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/58 text-[#d7c7ed] transition-colors hover:bg-[#2e1e5a]/42 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
               >
-                Terms
+                <Shield className="h-4 w-4" aria-hidden="true" />
+                <span className="sr-only">Terms</span>
               </button>
             </div>
 
-            <p className="flex items-center gap-1 text-xs text-[#9b8fac]">
+            <p className="sr-only">
               <Heart className="h-3 w-3 text-[#F4376D]" fill="#F4376D" aria-hidden="true" />
-              <span className="h-1.5 w-14 rounded-lg bg-[#f0b6df]/24" aria-hidden="true" />
-              <span className="sr-only">Safer intros. Built for safer introductions</span>
+              Safer intros
+              <span className="sr-only">. Built for safer introductions</span>
             </p>
           </div>
         </div>

@@ -134,6 +134,29 @@ const Header: React.FC = () => {
     },
   ];
 
+  const headerStatusSegments = [
+    {
+      label: "Intent",
+      tone: "bg-[#ef3e78]/72",
+    },
+    {
+      label: "Trust",
+      tone: "bg-[#8d69f6]/56",
+    },
+    {
+      label: "Safety",
+      tone: "bg-[#5c83e9]/48",
+    },
+    {
+      label: "Access",
+      tone: "bg-[#f0b6df]/36",
+    },
+    {
+      label: "Support",
+      tone: "bg-[#49d49a]/38",
+    },
+  ];
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-200 ${
@@ -146,6 +169,14 @@ const Header: React.FC = () => {
         className="absolute inset-0 bg-gradient-to-r from-amihan-500/5 via-dalisay-500/5 to-luna-500/5 opacity-40 transition-opacity duration-200"
         aria-hidden="true"
       ></div>
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 hidden grid-cols-5 md:grid"
+        aria-hidden="true"
+      >
+        {headerStatusSegments.map((segment) => (
+          <span key={segment.label} className={`h-0.5 ${segment.tone}`} />
+        ))}
+      </div>
 
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 relative">
         <div
@@ -156,10 +187,10 @@ const Header: React.FC = () => {
           <a
             href="#home"
             aria-label="Go to PinayMate home"
-            className="group flex min-h-12 cursor-pointer items-center gap-3 border-l-2 border-[#f0b6df]/18 bg-[#1a0d27]/24 px-3 py-2 transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/38 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+            className="group flex min-h-11 cursor-pointer items-center gap-3 border-l-2 border-[#f0b6df]/18 bg-[#1a0d27]/24 px-3 py-1.5 transition-all duration-200 hover:border-[#F4376D]/65 hover:bg-[#2e1e5a]/38 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
           >
             <div className="relative">
-              <div className="relative h-12 w-12">
+              <div className="relative h-10 w-10">
                 <img
                   src="/main-logo-no-bg.svg"
                   alt="PinayMate Logo"
@@ -175,13 +206,16 @@ const Header: React.FC = () => {
             </div>
 
             <span className="hidden sm:block">
-              <span className="block text-2xl font-hello-paris-bold text-white transition-all duration-300 group-hover:text-[#ffe8f1]">
+              <span className="block text-xl font-hello-paris-bold leading-none text-white transition-all duration-300 group-hover:text-[#ffe8f1]">
                 PinayMate
               </span>
-              <span className="mt-1 grid max-w-24 grid-cols-3 gap-1.5" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/44" />
-                <span className="h-1.5 rounded-lg bg-[#5c83e9]/36" />
+              <span className="mt-1 block text-xs font-dm-sans-bold leading-none text-[#f3c7de]">
+                Private waitlist
+              </span>
+              <span className="sr-only">
+                <span className="bg-[#ef3e78]/18 px-1.5 py-1">Intent</span>
+                <span className="bg-[#8d69f6]/16 px-1.5 py-1">Trust</span>
+                <span className="bg-[#5c83e9]/14 px-1.5 py-1">Access</span>
               </span>
             </span>
           </a>
@@ -219,10 +253,13 @@ const Header: React.FC = () => {
             <a
               href="#download"
               aria-label="Go to PinayMate waitlist options"
-              className="hidden min-h-11 items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-4 py-2 text-sm font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/25 transition-all duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] sm:inline-flex"
+              className="group relative hidden min-h-11 overflow-hidden rounded-lg border border-[#ef3e78]/58 bg-[#ef3e78] px-4 py-2 text-sm font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/25 transition-all duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] sm:inline-flex"
             >
-              Join waitlist
-              <Heart className="h-4 w-4" aria-hidden="true" />
+              <span className="absolute inset-x-0 top-0 h-5 bg-gradient-to-b from-[#ffe8f1]/18 to-transparent" aria-hidden="true" />
+              <span className="relative flex items-center gap-2">
+                Join waitlist
+                <Heart className="h-4 w-4" aria-hidden="true" />
+              </span>
             </a>
 
             <button
@@ -264,17 +301,59 @@ const Header: React.FC = () => {
               role="dialog"
               aria-modal="true"
               aria-label="PinayMate mobile navigation"
-              className="relative max-h-[calc(100dvh-4rem)] animate-slideInDown overflow-y-auto border-t border-[#f0b6df]/16 bg-dalisay-950/98 px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-xl shadow-black/25 backdrop-blur-xl"
+              className="relative min-h-[calc(100dvh-4rem)] max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-[#f0b6df]/16 bg-[#120a1b] px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-xl shadow-black/25"
             >
-              <p className="grid grid-cols-3 gap-2 px-4 pb-3" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/44" />
-                <span className="h-1.5 rounded-lg bg-[#5c83e9]/34" />
+              <p className="sr-only">
+                PinayMate menu
               </p>
               <p className="sr-only">
                 Navigate
                 <span className="sr-only">. Menu</span>
               </p>
+              <div className="pm-mobile-menu-hero mb-3">
+                <span className="pm-mobile-menu-logo" aria-hidden="true">
+                  <span className="pm-mobile-menu-scene">
+                    <span className="pm-mobile-menu-person" />
+                    <span className="pm-mobile-menu-badge">
+                      <ShieldCheck className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="pm-mobile-menu-route">
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                  </span>
+                </span>
+                <span className="pm-mobile-menu-status" aria-hidden="true">
+                  <span>Private</span>
+                  <span>Waitlist</span>
+                  <span>No pay</span>
+                  <span>App later</span>
+                </span>
+                <span className="sr-only">Menu path</span>
+              </div>
+              <div className="pm-mobile-menu-segment-route mb-3" aria-hidden="true">
+                {headerStatusSegments.slice(0, 4).map((segment, index) => {
+                  const Icon =
+                    index === 0
+                      ? Sparkles
+                      : index === 1
+                        ? UserCheck
+                        : index === 2
+                          ? ShieldCheck
+                          : Heart;
+
+                  return (
+                  <span key={segment.label} className="pm-mobile-menu-segment-node">
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                    <span className="sr-only">{segment.label}</span>
+                    {index < 3 ? (
+                      <span className="pm-mobile-menu-segment-pulse" />
+                    ) : null}
+                  </span>
+                  );
+                })}
+              </div>
               <div className="grid grid-cols-2 gap-2 border-y border-[#f0b6df]/12 py-3">
                 {navItems.map((item, index) => {
                   const Icon = item.icon;
@@ -302,11 +381,6 @@ const Header: React.FC = () => {
                         <span className="block font-dm-sans-medium text-sm transition-all duration-200">
                           {item.label}
                         </span>
-                        <span className="mt-2 grid grid-cols-3 gap-1.5" aria-hidden="true">
-                          <span className={`h-1.5 rounded-lg ${item.rail}`} />
-                          <span className="h-1.5 rounded-lg bg-[#8d69f6]/34" />
-                          <span className="h-1.5 rounded-lg bg-[#5c83e9]/28" />
-                        </span>
                       </span>
                     </a>
                   );
@@ -323,17 +397,27 @@ const Header: React.FC = () => {
                 <span className="sr-only">. Join the waitlist</span>
                 <Heart className="h-5 w-5" aria-hidden="true" />
               </a>
-              <p className="mt-3 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
-                <span className="border-l border-[#f0b6df]/12 px-3 first:border-l-0">
-                  <span className="block h-1.5 rounded-lg bg-[#ef3e78]/64" aria-hidden="true" />
+              <p className="pm-mobile-waitlist-route mt-3">
+                <span className="pm-mobile-waitlist-node">
+                  <Sparkles className="h-4 w-4" aria-hidden="true" />
                   <span className="sr-only">Email</span>
                 </span>
-                <span className="border-l border-[#f0b6df]/12 px-3 first:border-l-0">
-                  <span className="block h-1.5 rounded-lg bg-[#8d69f6]/48" aria-hidden="true" />
+                <span className="pm-mobile-waitlist-line" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                <span className="pm-mobile-waitlist-node pm-mobile-waitlist-node-profile">
+                  <UserCheck className="h-4 w-4" aria-hidden="true" />
                   <span className="sr-only">No profile</span>
                 </span>
-                <span className="border-l border-[#f0b6df]/12 px-3 first:border-l-0">
-                  <span className="block h-1.5 rounded-lg bg-[#5c83e9]/38" aria-hidden="true" />
+                <span className="pm-mobile-waitlist-line" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                <span className="pm-mobile-waitlist-node pm-mobile-waitlist-node-safe">
+                  <ShieldCheck className="h-4 w-4" aria-hidden="true" />
                   <span className="sr-only">No payment</span>
                 </span>
                 <span className="sr-only">

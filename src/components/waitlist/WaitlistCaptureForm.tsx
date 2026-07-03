@@ -23,21 +23,27 @@ const platformOptions: Array<{
   label: string;
   emailLabel: "iOS" | "Android";
   helper: string;
-  bars: string[];
+  tone: string;
+  surface: string;
+  preview: string[];
 }> = [
   {
     value: "ios",
     label: "iOS",
     emailLabel: "iOS",
     helper: "Best if you use iPhone or iPad.",
-    bars: ["w-4/5", "w-2/3", "w-1/2"],
+    tone: "from-[#ef3e78] to-[#8d69f6]",
+    surface: "bg-[#ef3e78]/18",
+    preview: ["iPhone", "Priority", "Email"],
   },
   {
     value: "android",
     label: "Android",
     emailLabel: "Android",
     helper: "Best if you use an Android phone.",
-    bars: ["w-3/4", "w-5/6", "w-1/2"],
+    tone: "from-[#8d69f6] to-[#5c83e9]",
+    surface: "bg-[#5c83e9]/16",
+    preview: ["Android", "Priority", "Email"],
   },
 ];
 
@@ -104,18 +110,39 @@ const waitlistExclusions = [
 const accessPreviewTiles = [
   {
     label: "Email",
-    tone: "bg-[#ef3e78]/68",
-    fill: "w-4/5",
   },
   {
     label: "Platform",
-    tone: "bg-[#8d69f6]/54",
-    fill: "w-2/3",
   },
   {
     label: "Update",
-    tone: "bg-[#5c83e9]/48",
-    fill: "w-3/4",
+  },
+];
+
+const waitlistRoutePreview = [
+  {
+    label: "Email",
+    status: "Private",
+    tone: "bg-[#ef3e78]/72",
+    width: "w-5/6",
+  },
+  {
+    label: "Phone",
+    status: "Selected",
+    tone: "bg-[#8d69f6]/58",
+    width: "w-2/3",
+  },
+  {
+    label: "Access",
+    status: "Updates",
+    tone: "bg-[#5c83e9]/52",
+    width: "w-3/4",
+  },
+  {
+    label: "App",
+    status: "Later",
+    tone: "bg-[#f0b6df]/34",
+    width: "w-1/2",
   },
 ];
 
@@ -175,7 +202,7 @@ export function WaitlistCaptureForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-8 overflow-hidden border-y border-[#f0b6df]/16 bg-[#1a0d27]/58 backdrop-blur"
+      className="pm-lift-panel mt-8 overflow-hidden border-y border-[#f0b6df]/16 bg-[#1a0d27]/58 backdrop-blur"
       aria-describedby="waitlist-form-boundary waitlist-form-status"
     >
       <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[0.9fr_1.1fr]">
@@ -184,142 +211,166 @@ export function WaitlistCaptureForm() {
             <Sparkles className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
-            <p className="text-xs font-dm-sans-bold text-[#f3c7de]">
-              <span
-                className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/30"
-                aria-hidden="true"
-              />
-              <span className="sr-only">Waitlist. Private waitlist</span>
+            <p className="sr-only">
+              Private waitlist
+              <span>. Waitlist. Private waitlist</span>
             </p>
-            <p className="mt-1 font-dm-sans-bold text-white">
-              <span className="grid max-w-28 grid-cols-3 gap-1.5" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/56" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
-                <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
-              </span>
-              <span className="sr-only">
-                Access signal. Platform access signal. Get notified when your platform
-                opens.
+            <p className="sr-only">
+              Platform access signal
+              <span>
+                . Access signal. Get notified when your platform opens.
               </span>
             </p>
             <p
               id="waitlist-form-boundary"
-              className="mt-3 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1]"
+              className="sr-only"
             >
               <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-10 rounded-lg bg-[#ef3e78]/40"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Email</span>
+                Email
               </span>
               <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-10 rounded-lg bg-[#8d69f6]/34"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Platform</span>
+                Platform
               </span>
               <span className="border-l border-[#f0b6df]/12 px-2 py-1 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-10 rounded-lg bg-[#5c83e9]/28"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Updates</span>
+                Updates
               </span>
               <span className="sr-only">
                 Share your email, choose your phone, and receive only the
                 launch updates that matter before the app opens.
               </span>
             </p>
-            <div
-              className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-2"
-              aria-label="What the waitlist includes"
-            >
+            <div className="pm-waitlist-orbit mt-5" aria-hidden="true">
+              <span>
+                <Mail className="h-5 w-5" />
+              </span>
+              <span>
+                <Smartphone className="h-5 w-5" />
+              </span>
+              <span>
+                <ShieldCheck className="h-5 w-5" />
+              </span>
+            </div>
+            <div className="sr-only" aria-label="What the waitlist includes">
               {formPromise.map((item) => (
-                <span
-                  key={item.label}
-                  className="min-h-14 border-l border-[#f0b6df]/12 px-2 text-center text-xs font-dm-sans-bold text-[#f3c7de] first:border-l-0"
-                >
-                  <CheckCircle2
-                    className="mx-auto h-4 w-4 text-[#49d49a]"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="mx-auto mt-3 block h-1.5 w-10 rounded-lg bg-[#f0b6df]/30"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">{item.label}</span>
-                  <span className="sr-only">: {item.detail}</span>
+                <span key={item.label}>
+                  {item.label}: {item.detail}.
                 </span>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="relative overflow-hidden border-y border-[#f0b6df]/14 bg-gradient-to-br from-[#2e1e5a]/42 via-[#ef3e78]/10 to-transparent p-4 lg:border-l lg:border-y-0">
-          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#ef3e78]/16 to-transparent" aria-hidden="true" />
+        <div className="pm-chip-grid relative overflow-hidden border-y border-[#f0b6df]/14 bg-gradient-to-br from-[#2e1e5a]/42 via-[#ef3e78]/10 to-transparent p-4 lg:border-l lg:border-y-0">
+          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#ef3e78]/16 to-transparent" aria-hidden="true" />
           <div className="relative flex items-center justify-between gap-3">
-            <div className="inline-flex min-h-10 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-3 py-1 text-sm font-dm-sans-bold text-[#ffe8f1]">
+            <div className="inline-grid min-h-10 w-24 place-items-center rounded-lg border border-[#f0b6df]/12 bg-[#120a1b]/58 px-3 py-1 text-sm font-dm-sans-bold text-[#ffe8f1]">
               <LockKeyhole className="h-4 w-4 text-[#f7a4c8]" aria-hidden="true" />
-              <span>
-                <span className="grid w-20 grid-cols-2 gap-1.5" aria-hidden="true">
-                  <span className="h-1.5 rounded-lg bg-[#ffe8f1]/60" />
-                  <span className="h-1.5 rounded-lg bg-[#ffe8f1]/32" />
-                </span>
-                <span className="sr-only">. Less than 1 minute</span>
+              <span className="sr-only">
+                Less than 1 minute
               </span>
             </div>
             <Smartphone className="h-5 w-5 text-[#f0b6df]" aria-hidden="true" />
           </div>
 
-          <div className="relative mt-4 grid gap-3">
-            <div className="grid min-h-28 grid-cols-[0.72fr_1fr] gap-3" aria-hidden="true">
-              <div className="border-l-2 border-[#ef3e78]/42 bg-[#120a1b]/60 p-3">
-                <span className="block h-12 rounded-lg bg-gradient-to-br from-[#ef3e78]/80 to-[#8d69f6]/72" />
-                <span className="mt-3 block h-1.5 rounded-lg bg-[#f0b6df]/28" />
-                <span className="mt-2 block h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/18" />
-              </div>
-              <div className="grid gap-2">
-                {accessPreviewTiles.map((tile) => (
-                  <span
-                    key={tile.label}
-                    className="border-l border-[#f0b6df]/12 bg-[#21132f]/62 px-3 py-2"
-                  >
-                    <span className={`block h-1.5 rounded-lg ${tile.tone} ${tile.fill}`} />
-                    <span className="mt-2 grid grid-cols-3 gap-1.5">
-                      <span className="h-5 rounded-lg bg-[#ef3e78]/24" />
-                      <span className="h-5 rounded-lg bg-[#8d69f6]/22" />
-                      <span className="h-5 rounded-lg bg-[#5c83e9]/18" />
+          <div className="relative mt-4 grid gap-3 sm:grid-cols-[0.74fr_1fr] lg:grid-cols-1 xl:grid-cols-[0.74fr_1fr]">
+            <div className="pm-platform-device mx-auto w-full max-w-44" aria-hidden="true">
+              <div className="pm-platform-device-screen min-h-56">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs font-dm-sans-bold text-[#ffe8f1]">
+                    {selectedPlatform.emailLabel}
+                  </span>
+                  <span className={`h-8 w-8 rounded-lg bg-gradient-to-br ${selectedPlatform.tone}`} />
+                </div>
+                <div className="pm-platform-device-hero mt-4">
+                  <span className="pm-platform-profile-scene">
+                    <span className="pm-platform-profile-person" />
+                    <span className="pm-platform-profile-badge">
+                      <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                    </span>
+                    <span className="pm-platform-profile-route">
+                      <span />
+                      <span />
+                      <span />
                     </span>
                   </span>
-                ))}
+                </div>
+                <div className="pm-platform-action-row">
+                  <span>
+                    <Mail className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <ShieldCheck className="h-4 w-4" />
+                  </span>
+                  <span>
+                    <CheckCircle2 className="h-4 w-4" />
+                  </span>
+                </div>
+                <div className="sr-only">
+                  {selectedPlatform.preview.join(", ")}
+                  {accessPreviewTiles.map((tile) => `${tile.label}.`).join(" ")}
+                </div>
               </div>
+            </div>
+
+            <div className="grid content-center gap-2">
+              {waitlistRoutePreview.map((step, index) => (
+                <span
+                  key={step.label}
+                  className="pm-waitlist-route-card grid grid-cols-[auto_1fr] items-center gap-3 border-l border-[#f0b6df]/12 bg-[#120a1b]/46 px-3 py-2"
+                >
+                  <span
+                    className={`flex h-8 w-8 items-center justify-center rounded-lg text-[0.68rem] font-dm-sans-bold text-white ${
+                      index === 0
+                        ? "bg-[#ef3e78]/28"
+                        : index === 1
+                          ? selectedPlatform.surface
+                          : index === 2
+                            ? "bg-[#5c83e9]/22"
+                            : "bg-[#f0b6df]/14"
+                    }`}
+                  >
+                    {index === 0 ? (
+                      <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                    ) : index === 1 ? (
+                      <Smartphone className="h-3.5 w-3.5" aria-hidden="true" />
+                    ) : index === 2 ? (
+                      <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                    ) : (
+                      <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
+                    )}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="pm-waitlist-route-copy" aria-hidden="true">
+                      <span>{step.label}</span>
+                      <span>{step.status}</span>
+                    </span>
+                    <span className="pm-platform-row-pips" aria-hidden="true">
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    <span className="sr-only">
+                      {step.label}. {step.status}. Waitlist path.
+                    </span>
+                  </span>
+                </span>
+              ))}
             </div>
           </div>
 
-          <div className="relative mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
-            <span className="h-10 rounded-lg bg-[#ef3e78]/24" />
-            <span className="h-10 rounded-lg bg-[#8d69f6]/24" />
-            <span className="h-10 rounded-lg bg-[#5c83e9]/20" />
+          <div className="sr-only">
+            {waitlistRoutePreview.map((step) => (
+              <span key={step.label}>{step.label}. Step.</span>
+            ))}
           </div>
 
-          <div className="relative mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3 lg:grid-cols-1 lg:border-y-0 lg:py-0">
+          <div className="sr-only">
             {waitlistBoundaries.map((item) => (
               <div
                 key={item.label}
-                className="border-l border-[#f0b6df]/12 px-2 py-1 text-center text-xs font-dm-sans-bold text-[#eadff7] first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0"
               >
-                <ShieldCheck
-                  className="mx-auto h-4 w-4 shrink-0 text-[#f0b6df]"
-                  aria-hidden="true"
-                />
-                <span
-                  className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
-                  aria-hidden="true"
-                />
+                <span className="mt-2 block">{item.label}</span>
                 <span className="sr-only">
-                  {item.label}
                   <span className="sr-only">: {item.detail}</span>
                 </span>
               </div>
@@ -333,7 +384,7 @@ export function WaitlistCaptureForm() {
       </div>
 
       <div
-        className="grid grid-cols-3 border-y border-[#f0b6df]/12 bg-[#120a1b]/58 px-5 py-3 sm:px-6"
+        className="sr-only"
         aria-label="Sensitive details not needed for the waitlist"
       >
         {privacyPromise.map((item) => (
@@ -345,12 +396,8 @@ export function WaitlistCaptureForm() {
               className="mx-auto h-3.5 w-3.5 text-[#f0b6df]"
               aria-hidden="true"
             />
-            <span>
-              <span
-                className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
-                aria-hidden="true"
-              />
-              <span className="sr-only">{item.label}</span>
+            <span className="mt-2 block">
+              {item.label}
               <span className="sr-only">. {item.detail}</span>
             </span>
           </span>
@@ -359,9 +406,12 @@ export function WaitlistCaptureForm() {
 
       <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[1fr_0.72fr]">
         <label className="grid gap-2">
-          <span className="text-sm font-dm-sans-bold text-[#f3c7de]">
-            Email <span aria-hidden="true">*</span>
-            <span className="sr-only"> for launch updates</span>
+          <span className="pm-field-icon-label">
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            <span className="sr-only">
+              Email for launch updates
+            </span>
+            <span className="sr-only" aria-hidden="true">*</span>
           </span>
           <input
             id="waitlist-email"
@@ -382,37 +432,45 @@ export function WaitlistCaptureForm() {
           />
           <span
             id="waitlist-email-helper"
-            className="text-xs font-dm-sans-bold text-[#cbbade]"
+            className="sr-only"
           >
-            <span
-              className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
-              aria-hidden="true"
-            />
+            Inbox for launch access
             <span className="sr-only">
-              Inbox. Launch updates inbox. Use the inbox where you want launch
+              . Inbox. Launch updates inbox. Use the inbox where you want launch
               access and safety updates.
             </span>
+          </span>
+          <span className="pm-form-helper-chips" aria-hidden="true">
+            <span>Private</span>
+            <span>Launch</span>
+            <span>No pay</span>
           </span>
         </label>
 
         <fieldset className="grid gap-2">
-          <legend className="text-sm font-dm-sans-bold text-[#f3c7de]">
-            Phone
-            <span className="sr-only">. Platform</span>
+          <legend className="pm-field-icon-label">
+            <Smartphone className="h-4 w-4" aria-hidden="true" />
+            <span className="sr-only">Phone. Platform</span>
           </legend>
-          <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
+          <div className="pm-waitlist-platform-grid grid grid-cols-2 gap-2 lg:grid-cols-1">
             {platformOptions.map((option) => {
               const isSelected = option.value === platform;
 
               return (
                 <label
                   key={option.value}
-                  className={`flex min-h-16 cursor-pointer items-start gap-2 border-l-2 px-3 py-3 text-left text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#91b1ff] sm:gap-3 ${
+                  className={`relative flex min-h-20 cursor-pointer items-start gap-3 overflow-hidden border-l-2 px-3 py-3 text-left text-sm transition focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#91b1ff] sm:gap-3 ${
                     isSelected
                       ? "border-[#f0b6df] bg-[#ef3e78]/14 text-white"
                       : "border-[#f0b6df]/14 bg-[#120a1b]/48 text-[#eadff7] hover:border-[#f0b6df]/50 hover:bg-[#2e1e5a]/42"
                   }`}
                 >
+                  <span
+                    className={`absolute inset-x-0 top-0 h-12 bg-gradient-to-b ${option.tone} ${
+                      isSelected ? "opacity-[0.24]" : "opacity-[0.08]"
+                    }`}
+                    aria-hidden="true"
+                  />
                   <input
                     type="radio"
                     name="waitlist-platform"
@@ -435,18 +493,29 @@ export function WaitlistCaptureForm() {
                     aria-hidden="true"
                   >
                     {isSelected ? (
-                      <span className="h-2 w-2 rounded-full bg-[#ffe8f1]" />
+                      <span className="h-2 w-2 rounded-full bg-[#f0b6df]" />
                     ) : null}
                   </span>
-                  <span>
-                    <span className="font-dm-sans-bold">{option.label}</span>
-                    <span className="mt-2 grid gap-1" aria-hidden="true">
-                      {option.bars.map((bar, index) => (
-                        <span
-                          key={`${option.value}-${index}`}
-                          className={`block h-1.5 rounded-lg bg-[#f0b6df]/24 ${bar}`}
-                        />
-                      ))}
+                  <span className="relative min-w-0 flex-1">
+                    <span className="sr-only">{option.label}</span>
+                    <span className="mt-3 grid grid-cols-[2.8rem_1fr] gap-3">
+                      <span className={`grid h-12 place-items-center rounded-lg bg-gradient-to-br ${option.tone}`}>
+                        <Smartphone className="h-5 w-5 text-white" aria-hidden="true" />
+                      </span>
+                      <span className="grid min-w-0 content-center gap-2">
+                        <span className="pm-waitlist-choice-copy" aria-hidden="true">
+                          <span>{option.label}</span>
+                          <span>{isSelected ? "Selected" : "Available"}</span>
+                        </span>
+                        <span className="pm-platform-row-pips" aria-hidden="true">
+                          <span />
+                          <span />
+                          <span />
+                        </span>
+                        <span className="sr-only">
+                          {option.preview.join(", ")}
+                        </span>
+                      </span>
                     </span>
                     <span className="sr-only">
                       {isSelected ? "Selected" : "Available"}. {option.helper}
@@ -460,25 +529,21 @@ export function WaitlistCaptureForm() {
             Selected: {selectedPlatform.emailLabel}
             . You can update your platform preference when app access opens.
           </p>
+          <span className="pm-form-helper-chips max-w-56" aria-hidden="true">
+            <span>{selectedPlatform.emailLabel}</span>
+            <span>Selected</span>
+            <span>Update later</span>
+          </span>
         </fieldset>
       </div>
 
       <div className="px-5 pb-5 sm:px-6 sm:pb-6">
-        <div className="grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
+        <div className="sr-only">
           {waitlistExclusions.map((item) => (
             <span
               key={item.label}
-              className="min-h-12 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-[0.68rem] font-dm-sans-bold text-[#f3c7de] first:border-l-0"
             >
-              <CheckCircle2
-                className="mx-auto h-3.5 w-3.5 text-[#49d49a]"
-                aria-hidden="true"
-              />
-              <span
-                className="mx-auto mt-3 block h-1.5 w-9 rounded-lg bg-[#f0b6df]/28"
-                aria-hidden="true"
-              />
-              <span className="sr-only">{item.label}</span>
+              <span className="mt-2 block">{item.label}</span>
               <span className="sr-only">. {item.detail}</span>
             </span>
           ))}
@@ -591,11 +656,7 @@ export function WaitlistCaptureForm() {
         <span>
           {!isSubmitting && !result ? (
             <>
-              <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
-                <span className="h-1.5 w-8 rounded-lg bg-[#49d49a]/46" />
-                <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/30" />
-                <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/24" />
-              </span>
+              Ready
               <span className="sr-only">Ready</span>
               <span className="sr-only">. {statusMessage}</span>
             </>

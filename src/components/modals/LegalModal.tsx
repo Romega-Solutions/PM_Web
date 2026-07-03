@@ -18,32 +18,44 @@ const legalSignals = [
   {
     label: "Waitlist",
     tone: "bg-[#ef3e78]/58",
+    borderTone: "border-[#ef3e78]/58",
   },
   {
     label: "Support",
     tone: "bg-[#8d69f6]/44",
+    borderTone: "border-[#8d69f6]/44",
   },
   {
     label: "App flow",
     tone: "bg-[#5c83e9]/36",
+    borderTone: "border-[#5c83e9]/36",
   },
 ];
 
 const legalPreviewRows = [
   {
     label: "Website",
-    fill: "w-4/5",
     tone: "bg-[#ef3e78]/62",
   },
   {
     label: "Review",
-    fill: "w-2/3",
     tone: "bg-[#8d69f6]/50",
   },
   {
     label: "Account",
-    fill: "w-3/4",
     tone: "bg-[#5c83e9]/44",
+  },
+];
+
+const legalSectionVisuals = [
+  {
+    tone: "from-[#ef3e78]/68 to-[#8d69f6]/52",
+  },
+  {
+    tone: "from-[#8d69f6]/62 to-[#5c83e9]/48",
+  },
+  {
+    tone: "from-[#ef3e78]/58 to-[#5c83e9]/44",
   },
 ];
 
@@ -217,7 +229,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex animate-fadeIn items-center justify-center bg-black/72 p-4 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#050208] p-3 sm:p-4"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -231,9 +243,9 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         aria-labelledby={`legal-modal-title-${type}`}
         aria-describedby={`legal-modal-description-${type}`}
         tabIndex={-1}
-        className="max-h-[min(90dvh,48rem)] w-full max-w-4xl animate-slideInUp overflow-hidden border-y border-[#f0b6df]/18 bg-gradient-to-br from-[#1a0d27] via-[#21132f] to-[#120a1b] shadow-xl shadow-black/28"
+        className="pm-legal-modal-panel max-h-[min(90dvh,48rem)] w-full max-w-4xl overflow-hidden border-y border-[#f0b6df]/20 bg-[#120a1b] shadow-xl shadow-black/60 ring-1 ring-[#f0b6df]/10"
       >
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#f0b6df]/14 bg-[#1a0d27]/86 p-5 backdrop-blur-lg sm:p-6">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-[#f0b6df]/14 bg-[#120a1b] p-5 sm:p-6">
           <div className="flex items-center space-x-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-[#F4376D] to-[#8d69f6] text-white">
               <IconComponent className="h-6 w-6 text-white" />
@@ -245,10 +257,21 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               >
                 {selectedContent.title}
               </h2>
-              <p className="mt-2 grid max-w-32 grid-cols-3 gap-1.5" aria-hidden="true">
-                {legalSignals.map((signal) => (
-                  <span key={signal.label} className={`h-1.5 rounded-lg ${signal.tone}`} />
+              <p className="mt-2 grid max-w-40 grid-cols-3 gap-1.5 text-center text-[0.68rem] font-dm-sans-bold text-[#f6d0f1]" aria-hidden="true">
+                {legalSignals.map((signal, index) => (
+                  <span key={signal.label} className={`pm-legal-signal-pill border-t-2 ${signal.borderTone}`}>
+                    {index === 0 ? (
+                      <FileText className="h-3.5 w-3.5" />
+                    ) : index === 1 ? (
+                      <Mail className="h-3.5 w-3.5" />
+                    ) : (
+                      <Shield className="h-3.5 w-3.5" />
+                    )}
+                  </span>
                 ))}
+              </p>
+              <p className="sr-only">
+                {legalSignals.map((signal) => signal.label).join(". ")}
               </p>
             </div>
           </div>
@@ -261,42 +284,38 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           </button>
         </div>
 
-        <div className="max-h-[calc(min(90dvh,48rem)-100px)] space-y-5 overflow-y-auto p-5 sm:p-6">
-          <div className="grid gap-4 border-y border-[#f0b6df]/14 bg-[#2e1e5a]/24 py-4 sm:py-5 lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="max-h-[calc(min(90dvh,48rem)-100px)] space-y-5 overflow-y-auto bg-[#0b0610] p-5 sm:p-6">
+          <div className="grid gap-4 border-y border-[#f0b6df]/14 bg-[#120a1b] py-4 sm:py-5 lg:grid-cols-[0.92fr_1.08fr]">
             <div>
-              <div className="grid grid-cols-3 text-xs font-dm-sans-bold text-[#f3c7de]">
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/42"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">Updated</span>
-                  <span className="sr-only">. Last Updated: June 11, 2026</span>
+              <div className="pm-legal-modal-route" aria-hidden="true">
+                <span className="pm-legal-modal-node">
+                  <FileText className="h-4 w-4" />
                 </span>
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/34"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">Waitlist</span>
+                <span className="pm-legal-modal-line">
+                  <span />
+                  <span />
+                  <span />
                 </span>
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/28"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">Support</span>
+                <span className="pm-legal-modal-node pm-legal-modal-node-shield">
+                  <Shield className="h-4 w-4" />
+                </span>
+                <span className="pm-legal-modal-line">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                <span className="pm-legal-modal-node pm-legal-modal-node-mail">
+                  <Mail className="h-4 w-4" />
                 </span>
               </div>
+              <span className="sr-only">
+                Updated. Last Updated: June 11, 2026. Waitlist. Support.
+              </span>
               <p
                 id={`legal-modal-description-${type}`}
                 className="mt-4 px-4 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:px-5"
               >
-                <span className="grid max-w-44 grid-cols-3 gap-2" aria-hidden="true">
-                  <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
-                  <span className="h-1.5 rounded-lg bg-[#8d69f6]/38" />
-                  <span className="h-1.5 rounded-lg bg-[#5c83e9]/30" />
-                </span>
+                Waitlist/support terms before full app access.
                 <span className="sr-only">
                   Please read this {selectedContent.title.toLowerCase()} carefully.
                   The current site is a waitlist and support surface, so terms may
@@ -305,24 +324,32 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               </p>
             </div>
             <p
-              className="mx-4 overflow-hidden border-l-2 border-[#f0b6df]/18 bg-[#120a1b]/42 p-3 sm:mx-5 lg:mx-0 lg:mr-5"
-              aria-hidden="true"
+              className="mx-4 overflow-hidden border-l-2 border-[#f0b6df]/18 bg-[#08050d] p-3 sm:mx-5 lg:mx-0 lg:mr-5"
             >
               <span className="grid grid-cols-[0.66fr_1fr] gap-3">
-                <span className="bg-[#1a0d27]/68 p-3">
-                  <span className="block h-12 rounded-lg bg-gradient-to-br from-[#ef3e78]/78 to-[#8d69f6]/70" />
-                  <span className="mt-3 block h-1.5 rounded-lg bg-[#f0b6df]/28" />
-                  <span className="mt-2 block h-1.5 w-2/3 rounded-lg bg-[#f0b6df]/18" />
+                <span className="pm-legal-device-mini">
+                  <span className="pm-legal-device-core">
+                    <IconComponent className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <span className="pm-legal-device-route">
+                    <span />
+                    <span />
+                    <span />
+                  </span>
+                  <span className="sr-only">Legal scope</span>
                 </span>
                 <span className="grid gap-2">
                   {legalPreviewRows.map((row) => (
-                    <span key={row.label} className="border-l border-[#f0b6df]/12 bg-[#21132f]/62 px-3 py-2">
-                      <span className={`block h-1.5 rounded-lg ${row.tone} ${row.fill}`} />
-                      <span className="mt-2 grid grid-cols-3 gap-1.5">
-                        <span className="h-5 rounded-lg bg-[#ef3e78]/20" />
-                        <span className="h-5 rounded-lg bg-[#8d69f6]/18" />
-                        <span className="h-5 rounded-lg bg-[#5c83e9]/16" />
+                    <span key={row.label} className="pm-legal-preview-row border-l border-[#f0b6df]/12 bg-[#21132f] px-3 py-2">
+                      <span className="sr-only">
+                        {row.label}
                       </span>
+                      <span className="pm-legal-route-meter" aria-hidden="true">
+                        <span />
+                        <span />
+                        <span />
+                      </span>
+                      <span className="sr-only">Read. Limit. Ask.</span>
                     </span>
                   ))}
                 </span>
@@ -330,16 +357,17 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
             </p>
           </div>
 
-          <div className="divide-y divide-[#f0b6df]/10 border-y border-[#f0b6df]/14">
+          <div className="divide-y divide-[#f0b6df]/10 border-y border-[#f0b6df]/14 bg-[#0f0718]">
             {selectedContent.sections.map((section, index) => {
               const isSectionOpen = openSection === index;
               const sectionButtonId = `legal-${type}-button-${index}`;
               const sectionPanelId = `legal-${type}-panel-${index}`;
+              const sectionVisual = legalSectionVisuals[index % legalSectionVisuals.length];
 
               return (
                 <article
                   key={section.title}
-                  className="animate-fadeInUp bg-[#120a1b]/18"
+                  className="pm-surface-hover animate-fadeInUp bg-[#120a1b]"
                   style={{ animationDelay: `${index * 60}ms` }}
                 >
                   <button
@@ -348,10 +376,10 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
                     aria-expanded={isSectionOpen}
                     aria-controls={sectionPanelId}
                     onClick={() => setOpenSection(isSectionOpen ? -1 : index)}
-                    className={`grid min-h-16 w-full cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-3 border-l-2 px-3 py-3 text-left transition duration-200 hover:bg-[#2e1e5a]/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:px-4 ${
+                    className={`grid min-h-16 w-full cursor-pointer grid-cols-[auto_1fr_auto] items-center gap-3 border-l-2 px-3 py-3 text-left transition duration-200 hover:bg-[#2e1e5a]/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff] sm:grid-cols-[auto_1fr_minmax(7rem,0.36fr)_auto] sm:px-4 ${
                       isSectionOpen
-                        ? "border-[#f0b6df] bg-[#2e1e5a]/32"
-                        : "border-[#f0b6df]/16"
+                        ? "border-[#f0b6df] bg-[#2e1e5a]/56"
+                        : "border-[#f0b6df]/16 bg-[#120a1b]"
                     }`}
                   >
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-dm-sans-bold text-white">
@@ -361,13 +389,22 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
                       <span className="block text-base font-dm-sans-bold text-white sm:text-lg">
                         {section.title}
                       </span>
-                      <span
-                        className="mt-3 grid max-w-36 grid-cols-3 gap-1.5"
-                        aria-hidden="true"
-                      >
-                        <span className="h-1.5 rounded-lg bg-[#ef3e78]/55" />
-                        <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
-                        <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
+                      <span className="sr-only">
+                        Section {index + 1}
+                      </span>
+                    </span>
+                    <span className="hidden border-l border-[#f0b6df]/12 pl-4 sm:block">
+                      <span className={`pm-legal-section-card bg-gradient-to-r ${sectionVisual.tone}`} aria-hidden="true">
+                        <IconComponent className="h-5 w-5" />
+                        <span className="pm-legal-route-meter">
+                          <span />
+                          <span />
+                          <span />
+                        </span>
+                      </span>
+                      <span className="sr-only">Scope</span>
+                      <span className="sr-only">
+                        {type === "privacy" ? "Privacy scope" : "Terms scope"}
                       </span>
                     </span>
                     <span
@@ -392,9 +429,29 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
                     } motion-reduce:transition-none`}
                   >
                     <div className="overflow-hidden">
-                      <p className="border-t border-[#f0b6df]/10 px-4 pb-5 pt-4 font-dm-sans-regular leading-7 text-[#d7c7ed] sm:ml-11 sm:px-5">
-                        {section.content}
-                      </p>
+                      <div className="grid gap-4 border-t border-[#f0b6df]/10 px-4 pb-5 pt-4 sm:ml-11 sm:grid-cols-[1fr_0.42fr] sm:px-5">
+                        <p className="font-dm-sans-regular leading-7 text-[#d7c7ed]">
+                          {section.content}
+                        </p>
+                        <div className="hidden border-l border-[#f0b6df]/12 bg-[#120a1b] px-3 py-3 sm:block">
+                          <span className={`pm-legal-section-device bg-gradient-to-r ${sectionVisual.tone}`} aria-hidden="true">
+                            <FileText className="h-5 w-5" />
+                            <span className="pm-legal-section-badge">
+                              <Shield className="h-3.5 w-3.5" />
+                            </span>
+                            <span className="pm-legal-device-route">
+                              <span />
+                              <span />
+                              <span />
+                            </span>
+                          </span>
+                          <span className="sr-only">Read.</span>
+                          <span className="sr-only">Scope. Limit. Ask.</span>
+                          <span className="sr-only">
+                            Read carefully
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </article>
@@ -402,23 +459,13 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
             })}
           </div>
 
-          <div className="mt-6 border-y border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a]/46 via-[#21132f]/56 to-[#170f22] py-5 sm:py-6">
+          <div className="mt-6 border-y border-[#F4376D]/24 bg-gradient-to-br from-[#2e1e5a] via-[#21132f] to-[#170f22] py-5 sm:py-6">
             <h3 className="mb-4 text-xl font-dm-sans-bold text-white">
-              <span className="grid max-w-28 grid-cols-3 gap-2" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
-                <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
-              </span>
-              <span className="sr-only">
               Questions?
-              </span>
               <span className="sr-only"> Questions or Concerns?</span>
             </h3>
             <p className="mb-4 font-dm-sans-regular leading-relaxed text-[#d7c7ed]">
-              <span className="grid max-w-52 gap-2" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#f0b6df]/26" />
-                <span className="h-1.5 w-4/5 rounded-lg bg-[#f0b6df]/18" />
-              </span>
+              Contact the launch support team for legal or account questions.
               <span className="sr-only">
                 If you have any questions about our{" "}
                 {selectedContent.title.toLowerCase()}, contact the launch support

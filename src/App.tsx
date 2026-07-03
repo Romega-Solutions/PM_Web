@@ -9,7 +9,8 @@ import Membership from "./components/sections/Membership";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#170f22] font-dm-sans-regular">
+    <div className="relative isolate min-h-screen overflow-hidden bg-[#120a1b] font-dm-sans-regular">
+      <div className="pm-ambient-stage" aria-hidden="true" />
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
@@ -17,7 +18,7 @@ function App() {
       {/* Header Component */}
       <Header />
 
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content" tabIndex={-1} className="relative z-10">
         {/* Hero Section */}
         <Hero />
 
@@ -38,7 +39,9 @@ function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }

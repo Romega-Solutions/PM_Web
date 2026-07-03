@@ -1,6 +1,5 @@
 import {
   ArrowRight,
-  CheckCircle2,
   HeartHandshake,
   MessageCircle,
   ShieldCheck,
@@ -42,27 +41,6 @@ const memberSignals = [
   {
     label: "Mobile",
     detail: "Mobile chat",
-  },
-];
-
-const connectionVisual = [
-  {
-    label: "Intent",
-    value: "01",
-    tone: "from-[#ef3e78] to-[#8d69f6]",
-    bars: ["w-5/6", "w-2/3", "w-1/2"],
-  },
-  {
-    label: "Review",
-    value: "02",
-    tone: "from-[#8d69f6] to-[#5c83e9]",
-    bars: ["w-3/4", "w-5/6", "w-2/5"],
-  },
-  {
-    label: "Context",
-    value: "03",
-    tone: "from-[#ef3e78] to-[#5c83e9]",
-    bars: ["w-2/3", "w-1/2", "w-4/5"],
   },
 ];
 
@@ -113,46 +91,39 @@ const About = () => {
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <div className="max-w-2xl">
-            <div className="mb-5 inline-flex min-h-11 items-center gap-2 border-l-2 border-[#f0b6df]/22 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
+            <div className="mb-5 inline-grid min-h-11 w-28 place-items-center rounded-lg border border-[#f0b6df]/14 bg-[#2a1a44]/45 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
               <HeartHandshake className="h-4 w-4" aria-hidden="true" />
-              <span className="grid w-28 grid-cols-3 gap-2" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/62" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/42" />
-                <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
-              </span>
-              <span className="sr-only">Trust direction</span>
               <span className="sr-only">
-                . Filipino dating product direction, built around trust
+                Trust direction. Filipino dating product direction, built around trust
               </span>
             </div>
 
             <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-              A calmer path from interest to real connection.
+              Interest to real connection.
+              <span className="sr-only">
+                A calmer path from interest to real connection.
+              </span>
             </h2>
 
-            <p className="mt-6 inline-flex min-h-10 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
-              <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
-                <span className="h-1.5 w-9 rounded-lg bg-[#ef3e78]/52" />
-                <span className="h-1.5 w-9 rounded-lg bg-[#8d69f6]/40" />
-                <span className="h-1.5 w-9 rounded-lg bg-[#5c83e9]/32" />
-              </span>
-              <span className="sr-only">
-                Intent. Review. Context.
-                Clear intent. Safer pacing. Less noise before anyone starts a
-                conversation.
-                PinayMate is shaped for people who want more than a busy dating
-                feed. The product path keeps the first step clear: safer
-                discovery, stronger intent, and conversations that can turn into
-                something real when access is available.
-              </span>
+            <p className="sr-only">
+              Intent. Review. Context.
+              Clear intent. Safer pacing. Less noise before anyone starts a
+              conversation.
+              PinayMate is shaped for people who want more than a busy dating
+              feed. The product path keeps the first step clear: safer
+              discovery, stronger intent, and conversations that can turn into
+              something real when access is available.
             </p>
-            <div
-              className="mt-5 grid grid-cols-3 gap-2"
-              aria-hidden="true"
-            >
-              <span className="h-2 rounded-lg bg-[#ef3e78]" />
-              <span className="h-2 rounded-lg bg-[#8d69f6]" />
-              <span className="h-2 rounded-lg bg-[#5c83e9]" />
+            <div className="pm-about-mini-product mt-7 hidden sm:block" aria-hidden="true">
+              <img
+                src="/assets/pinaymate-dark-app-collage.png"
+                alt=""
+                className="pm-about-mini-product-image"
+              />
+              <span className="pm-about-mini-product-glow" />
+            </div>
+            <div className="sr-only">
+              Intent. Review. Context.
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -175,28 +146,16 @@ const About = () => {
             </div>
             <p
               id="about-membership-note"
-              className="mt-4 grid max-w-xl grid-cols-3 border-y border-[#f0b6df]/12 py-3 text-xs font-dm-sans-bold text-[#f3c7de]"
+              className="sr-only"
             >
               <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/42"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">Interest only</span>
+                Interest only
               </span>
               <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/34"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">No matching</span>
+                No matching
               </span>
               <span className="border-l border-[#f0b6df]/12 px-2 text-center first:border-l-0">
-                <span
-                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/28"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">No checkout</span>
+                No checkout
               </span>
               <span className="sr-only">
                 Membership links collect interest only. They do not create a
@@ -204,129 +163,57 @@ const About = () => {
               </span>
             </p>
 
-            <div className="mt-8 hidden grid-cols-4 border-y border-[#f0b6df]/12 py-3 sm:grid">
+            <div className="sr-only">
               {memberSignals.map((signal) => (
-                <div
-                  key={signal.label}
-                  className="min-h-14 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-sm font-dm-sans-semibold text-[#eadff7] first:border-l-0"
-                >
-                  <CheckCircle2
-                    className="mx-auto mb-2 h-4 w-4 text-[#22a574]"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="mx-auto block h-1.5 w-10 rounded-lg bg-[#f0b6df]/26"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">{signal.label}</span>
-                  <span className="sr-only">. {signal.detail}</span>
-                </div>
+                <span key={signal.label}>
+                  {signal.label}. {signal.detail}.
+                </span>
               ))}
-            </div>
-
-            <dl className="mt-8 grid grid-cols-3 gap-2 border-y border-white/12 py-4 sm:gap-3 sm:py-5">
               {credibilityStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="min-w-0 border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0 sm:px-4"
-                >
-                  <dt className="font-lora text-3xl font-bold text-white sm:text-4xl">
-                    {stat.value}
-                  </dt>
-                  <dd className="mt-2 h-1.5 rounded-lg bg-[#ef3e78]/42 sm:h-auto sm:rounded-none sm:bg-transparent sm:text-sm sm:leading-6 sm:text-[#cbbade]">
-                    <span className="sr-only sm:not-sr-only">
-                    {stat.shortLabel}
-                    </span>
-                    <span className="sr-only">. {stat.label}</span>
-                  </dd>
-                </div>
+                <span key={stat.label}>
+                  {stat.value}. {stat.shortLabel}. {stat.label}.
+                </span>
               ))}
-            </dl>
-
-            <div className="mt-8 border-t border-white/12 pt-6">
-              <p className="grid max-w-28 grid-cols-3 gap-2 text-sm font-dm-sans-bold text-[#f3c7de]" aria-hidden="true">
-                <span className="h-1.5 rounded-lg bg-[#ef3e78]/52" />
-                <span className="h-1.5 rounded-lg bg-[#8d69f6]/36" />
-                <span className="h-1.5 rounded-lg bg-[#5c83e9]/28" />
-              </p>
-              <p className="sr-only">
-                Path
-                <span>. The access path</span>
-              </p>
-              <ol className="mt-4 grid grid-cols-3 border-y border-[#f0b6df]/12 py-3">
-                {trustFlow.map((step, index) => (
-                  <li
-                    key={step.label}
-                    className="min-h-16 border-l border-[#f0b6df]/12 px-2 py-1 text-center text-xs font-dm-sans-bold text-[#eadff7] first:border-l-0"
-                  >
-                    <span
-                      className="mx-auto flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-sm font-dm-sans-bold text-white"
-                      aria-hidden="true"
-                    >
-                      {index + 1}
-                    </span>
-                    <span className="mt-3 grid grid-cols-2 gap-1.5" aria-hidden="true">
-                      <span className="h-1.5 rounded-lg bg-[#f0b6df]/35" />
-                      <span className="h-1.5 rounded-lg bg-[#8d69f6]/32" />
-                    </span>
-                    <span className="sr-only">
-                      {step.label}
-                      <span>: {step.detail}</span>
-                    </span>
-                  </li>
-                ))}
-              </ol>
+              <span>The access path.</span>
+              {trustFlow.map((step) => (
+                <span key={step.label}>
+                  {step.label}: {step.detail}
+                </span>
+              ))}
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-white/12 lg:pl-10">
-            <div className="relative overflow-hidden border-y border-[#f0b6df]/16 bg-[#1a0d27]/46 py-5 sm:col-span-3 lg:col-span-1">
+          <div className="pm-about-trust-grid grid gap-4 sm:grid-cols-3 lg:grid-cols-1 lg:border-l lg:border-white/12 lg:pl-10">
+            <div className="pm-lift-panel relative overflow-hidden border-y border-[#f0b6df]/16 bg-[#1a0d27]/46 py-5 sm:col-span-3 lg:col-span-1">
               <div
-                className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#ef3e78]/14 to-transparent"
+                className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#ef3e78]/16 to-transparent"
                 aria-hidden="true"
               />
-              <div className="relative grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                {connectionVisual.map((item) => (
-                  <div
-                    key={item.label}
-                    className="border-l border-[#f0b6df]/12 bg-[#120a1b]/38 px-4 py-3 first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span
-                        className={`inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br ${item.tone} text-sm font-dm-sans-bold text-white`}
-                      >
-                        {item.value}
-                      </span>
-                      <span className="text-xs font-dm-sans-bold text-[#f6d0f1]">
-                        <span
-                          className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
-                          aria-hidden="true"
-                        />
-                        <span className="sr-only">{item.label}</span>
-                      </span>
-                    </div>
-                    <div className="mt-4 space-y-2" aria-hidden="true">
-                      {item.bars.map((bar, index) => (
-                        <span
-                          key={`${item.label}-${index}`}
-                          className={`block h-2 rounded-lg bg-[#f0b6df]/28 ${bar}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div
-                className="relative mt-4 grid grid-cols-3 gap-2"
-                aria-hidden="true"
-              >
-                <span className="h-2 rounded-lg bg-[#ef3e78]" />
-                <span className="h-2 rounded-lg bg-[#8d69f6]" />
-                <span className="h-2 rounded-lg bg-[#5c83e9]" />
+              <div className="relative mx-auto max-w-2xl px-4">
+                <div className="pm-about-product-visual" aria-hidden="true">
+                  <img
+                    src="/assets/pinaymate-dark-app-collage.png"
+                    alt=""
+                    className="pm-about-product-image"
+                  />
+                  <span className="pm-about-product-glass pm-about-product-glass-top">
+                    <Sparkles className="h-5 w-5" />
+                  </span>
+                  <span className="pm-about-product-glass pm-about-product-glass-mid">
+                    <ShieldCheck className="h-5 w-5" />
+                  </span>
+                  <span className="pm-about-product-glass pm-about-product-glass-bottom">
+                    <MessageCircle className="h-5 w-5" />
+                  </span>
+                </div>
+                <div className="sr-only">
+                  Goal. Fit. Chat. App path. Intent. Review. Ready. Goal. Cue.
+                  Fit. Intent. Review. Chat.
+                </div>
               </div>
               <p className="sr-only">
-                Visual connection flow showing intent, review, and context
-                before conversation.
+                Visual connection flow showing intent, review, profile context,
+                and conversation readiness before conversation.
               </p>
             </div>
 
@@ -336,24 +223,31 @@ const About = () => {
               return (
                 <article
                   key={point.title}
-                  className="border-l-2 border-[#f0b6df]/18 bg-[#1a0d27]/28 px-5 py-4 transition duration-200 hover:border-[#f0b6df]/45 hover:bg-[#21132f]/48"
+                  className="pm-surface-hover border-l-2 border-[#f0b6df]/18 bg-[#1a0d27]/28 px-5 py-4 transition duration-200 hover:border-[#f0b6df]/45 hover:bg-[#21132f]/48"
                   style={{ transitionDelay: `${index * 60}ms` }}
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white">
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
-                    <div>
-                      <h3 className="font-lora text-xl font-bold text-white">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="sr-only">
                         {point.title}
                       </h3>
-                      <p className="mt-3 grid max-w-24 grid-cols-3 gap-1.5" aria-hidden="true">
-                        <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
-                        <span className="h-1.5 rounded-lg bg-[#8d69f6]/42" />
-                        <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
-                      </p>
                       <p className="sr-only">
                         Step {index + 1}
+                      </p>
+                      <div className="pm-about-trust-chip" aria-hidden="true">
+                        <span>{point.title}</span>
+                        <span>
+                          {index === 0
+                            ? "Safer pace"
+                            : index === 1
+                              ? "Goals first"
+                              : "Warm intro"}
+                        </span>
+                      </div>
+                      <p className="sr-only">
                         <span className="sr-only">. {point.title}. {point.copy}</span>
                       </p>
                     </div>
@@ -362,18 +256,15 @@ const About = () => {
               );
             })}
 
-            <div className="border-y border-[#f0b6df]/18 bg-gradient-to-br from-[#2e1e5a]/42 via-[#21132f]/52 to-[#170f22] py-5 text-white sm:col-span-3 sm:py-6 lg:col-span-1">
+            <div className="pm-lift-panel border-y border-[#f0b6df]/18 bg-gradient-to-br from-[#2e1e5a]/42 via-[#21132f]/52 to-[#170f22] py-5 text-white sm:col-span-3 sm:py-6 lg:col-span-1">
               <div className="flex items-center gap-3">
                 <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#170f22]/70 text-[#f0b6df]">
                   <Users className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-sm font-dm-sans-bold text-[#f0b6df]">
-                    <span
-                      className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/30"
-                      aria-hidden="true"
-                    />
-                    <span className="sr-only">Promise. Product promise</span>
+                  <p className="sr-only">
+                    Product promise
+                    <span>. Promise</span>
                   </p>
                   <p className="text-xl font-lora font-bold">
                     Less noise. Better signals.
@@ -383,26 +274,34 @@ const About = () => {
                   </p>
                 </div>
               </div>
-              <p className="mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
-                <span className="h-9 rounded-lg bg-[#ef3e78]/24" />
-                <span className="h-9 rounded-lg bg-[#8d69f6]/22" />
-                <span className="h-9 rounded-lg bg-[#5c83e9]/18" />
+              <p className="pm-feature-signal-strip mt-4 max-w-none" aria-hidden="true">
+                <span>
+                  <Sparkles className="h-5 w-5" />
+                </span>
+                <span>
+                  <ShieldCheck className="h-5 w-5" />
+                </span>
+                <span>
+                  <HeartHandshake className="h-5 w-5" />
+                </span>
               </p>
+              <p className="sr-only">Intent. Review. Fit.</p>
               <p className="sr-only">
                 Better signals before conversation.
                 Every step is planned to help serious members understand fit,
                 safety posture, and value before they choose to start a
                 conversation in the app.
               </p>
-              <p className="mt-4 inline-flex min-h-9 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
-                <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
-                  <span className="h-1.5 w-8 rounded-lg bg-[#ef3e78]/46" />
-                  <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/34" />
-                  <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/28" />
-                </span>
+              <p className="sr-only">
+                Intent before chat
                 <span className="sr-only">
-                  Intent before chat. Better signals before conversation.
+                  . Better signals before conversation.
                 </span>
+              </p>
+              <p className="pm-about-mini-chips mt-4" aria-hidden="true">
+                <span>Intent</span>
+                <span>Review</span>
+                <span>Fit</span>
               </p>
             </div>
           </div>

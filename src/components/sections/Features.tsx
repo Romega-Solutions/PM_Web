@@ -14,7 +14,6 @@ const features = [
     title: "Discovery",
     fullTitle: "Preference-led discovery",
     signal: "Goals before photos",
-    visual: ["w-5/6", "w-2/3", "w-3/4"],
     copy: "The discovery flow prioritizes relationship goals, lifestyle, culture, and profile context instead of making photos carry the whole decision.",
     proofLabel: "Fit",
     proof: "Designed for clearer fit before members message.",
@@ -24,7 +23,6 @@ const features = [
     title: "Review",
     fullTitle: "Profile review cues",
     signal: "Review before reach",
-    visual: ["w-2/3", "w-4/5", "w-1/2"],
     copy: "Verification labels are framed as review cues, not guarantees. Badges should appear only after the relevant email, profile, or ID/photo review step is approved.",
     proofLabel: "Careful",
     proof: "Clear safety language without overpromising.",
@@ -34,7 +32,6 @@ const features = [
     title: "Prompts",
     fullTitle: "Conversation prompts",
     signal: "Context before chat",
-    visual: ["w-3/4", "w-1/2", "w-5/6"],
     copy: "Messaging previews focus on respectful openers and shared values so first contact can feel more intentional when chat opens.",
     proofLabel: "App flow",
     proof: "Messaging stays inside the app account flow.",
@@ -96,26 +93,35 @@ const safetyDashboard = [
   },
 ];
 
-const featureIntroSignals = ["Waitlist", "App flow", "No fake launch"];
+const featureIntroSignals = [
+  { label: "Waitlist", icon: HeartHandshake },
+  { label: "App flow", icon: UserCheck },
+  { label: "No fake launch", icon: ShieldCheck },
+];
+const featureCardLabels = [
+  ["Goals", "Culture", "Fit"],
+  ["Review", "Cue", "Status"],
+  ["Prompt", "Context", "Chat"],
+];
 
 const featureFlow = [
   {
     label: "Intent",
     icon: SlidersHorizontal,
     tone: "bg-[#ef3e78]/68",
-    bars: ["w-4/5", "w-2/3"],
+    tags: ["Goals", "Fit"],
   },
   {
     label: "Review",
     icon: UserCheck,
     tone: "bg-[#8d69f6]/54",
-    bars: ["w-3/4", "w-5/6"],
+    tags: ["Cue", "Status"],
   },
   {
     label: "Chat",
     icon: MessageCircleHeart,
     tone: "bg-[#5c83e9]/48",
-    bars: ["w-5/6", "w-1/2"],
+    tags: ["Prompt", "Context"],
   },
 ];
 
@@ -123,7 +129,7 @@ const Features = () => {
   return (
     <section
       id="features"
-      className="relative overflow-hidden bg-[#170f22] py-20 text-white sm:py-24 lg:py-28"
+      className="relative overflow-hidden bg-[#170f22] pt-20 pb-12 text-white sm:pt-24 sm:pb-14 lg:pt-28 lg:pb-16"
     >
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ef3e78]/25 to-transparent" />
@@ -132,98 +138,105 @@ const Features = () => {
 
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/14 bg-[#2a1a44]/45 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
+          <div className="mb-5 inline-grid min-h-11 w-28 place-items-center rounded-lg border border-[#f0b6df]/14 bg-[#2a1a44]/45 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de]">
             <HeartHandshake className="h-4 w-4" aria-hidden="true" />
-            <span className="grid w-28 grid-cols-3 gap-1.5" aria-hidden="true">
-              <span className="h-1.5 rounded-lg bg-[#ef3e78]/58" />
-              <span className="h-1.5 rounded-lg bg-[#8d69f6]/40" />
-              <span className="h-1.5 rounded-lg bg-[#5c83e9]/32" />
-            </span>
-            <span className="sr-only">Trust, not hype. Built for trust, not hype</span>
+            <span className="sr-only">Built for trust, not hype. Trust, not hype.</span>
           </div>
 
-          <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
-            Clear now. App-only later.
+          <h2 className="mx-auto max-w-sm font-lora text-3xl font-bold leading-tight text-white sm:max-w-none sm:text-5xl">
+            Clear now. App later.
             <span className="sr-only">
+              Clear now. App-only later.
               A dating experience that explains what you can do now and what
               happens inside the app.
             </span>
           </h2>
-          <p className="mt-5 inline-flex min-h-10 items-center gap-2 border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#d7c7ed]">
-            <span className="grid grid-cols-3 gap-1.5" aria-hidden="true">
-              <span className="h-1.5 w-8 rounded-lg bg-[#ef3e78]/46" />
-              <span className="h-1.5 w-8 rounded-lg bg-[#8d69f6]/34" />
-              <span className="h-1.5 w-8 rounded-lg bg-[#5c83e9]/28" />
-            </span>
-            <span className="sr-only">
-              No fake launch promises.
-              Clear now. Careful later.
-              PinayMate should feel premium because it is clear, careful, and
-              honest. The public experience separates product direction from
-              waitlist interest.
-            </span>
+          <p className="sr-only">
+            Clear now. Careful later.
+            No fake launch promises.
+            PinayMate should feel premium because it is clear, careful, and
+            honest. The public experience separates product direction from
+            waitlist interest.
           </p>
-          <div className="mx-auto mt-6 grid max-w-xl grid-cols-3 border-y border-[#f0b6df]/12 py-3">
-            {featureIntroSignals.map((signal) => (
-              <span
-                key={signal}
-                className="border-l border-[#f0b6df]/12 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de] first:border-l-0"
-              >
-                <span
-                  className="mx-auto block h-1.5 w-12 rounded-lg bg-[#f0b6df]/30"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">
-                {signal}
+          <div className="pm-feature-intro-orbit mx-auto mt-6" aria-hidden="true">
+            {featureIntroSignals.map((signal) => {
+              const Icon = signal.icon;
+
+              return (
+                <span key={signal.label}>
+                  <Icon className="h-5 w-5" />
                 </span>
-              </span>
+              );
+            })}
+          </div>
+          <div className="sr-only">
+            {featureIntroSignals.map((signal) => (
+              <span key={signal.label}>{signal.label}</span>
             ))}
           </div>
         </div>
 
-        <div className="mx-auto mt-10 max-w-5xl border-y border-[#f0b6df]/14 bg-[#1a0d27]/42 py-5">
-          <div className="grid gap-4 px-4 sm:grid-cols-3 sm:px-5">
-            {featureFlow.map((step, index) => {
-              const Icon = step.icon;
+        <div className="pm-lift-panel mx-auto mt-10 max-w-5xl border-y border-[#f0b6df]/14 bg-[#1a0d27]/42 py-5">
+          <div className="grid gap-5 px-4 sm:px-5 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+            <div className="pm-feature-product-visual" aria-hidden="true">
+              <img
+                src="/assets/pinaymate-dark-app-collage.png"
+                alt=""
+                className="pm-feature-product-image"
+              />
+              <span className="pm-feature-product-chip pm-feature-product-chip-a">
+                <SlidersHorizontal className="h-5 w-5" />
+              </span>
+              <span className="pm-feature-product-chip pm-feature-product-chip-b">
+                <ShieldCheck className="h-5 w-5" />
+              </span>
+              <span className="pm-feature-product-chip pm-feature-product-chip-c">
+                <MessageCircleHeart className="h-5 w-5" />
+              </span>
+            </div>
 
-              return (
-                <div
-                  key={step.label}
-                  className="relative min-h-32 border-l-2 border-[#f0b6df]/16 bg-[#120a1b]/45 p-4"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <span
-                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${step.tone} text-white`}
-                      aria-hidden="true"
-                    >
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <span className="text-xs font-dm-sans-bold text-[#f3c7de]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <div className="mt-5 grid grid-cols-3 gap-2" aria-hidden="true">
-                    <span className="h-8 rounded-lg bg-[#ef3e78]/20" />
-                    <span className="h-8 rounded-lg bg-[#8d69f6]/18" />
-                    <span className="h-8 rounded-lg bg-[#5c83e9]/16" />
-                  </div>
-                  <div className="mt-4 space-y-2" aria-hidden="true">
-                    {step.bars.map((bar, barIndex) => (
+            <div className="pm-feature-flow-grid grid gap-3 sm:grid-cols-3 sm:gap-4">
+              {featureFlow.map((step, index) => {
+                const Icon = step.icon;
+
+                return (
+                  <div
+                    key={step.label}
+                    className="pm-feature-path-card"
+                  >
+                    <div className="flex items-center justify-center">
                       <span
-                        key={`${step.label}-${barIndex}`}
-                        className={`block h-1.5 rounded-lg bg-[#f0b6df]/24 ${bar}`}
-                      />
-                    ))}
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${step.tone} text-white sm:h-10 sm:w-10`}
+                      >
+                        <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                      </span>
+                      <span className="sr-only">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div className="pm-feature-flow-visual pm-feature-flow-strip mt-3 sm:mt-5" aria-hidden="true">
+                      <span>
+                        <Icon className="h-5 w-5 sm:h-7 sm:w-7" />
+                      </span>
+                    </div>
+                    <span className="pm-feature-path-tags mt-3" aria-hidden="true">
+                      {step.tags.map((tag) => (
+                        <span key={`${step.label}-${tag}`}>{tag}</span>
+                      ))}
+                    </span>
+                    <span className="sr-only">
+                      {step.label}
+                    </span>
+                    <span className="sr-only">
+                      Goal. Cue. Fit. Signal. Path.
+                    </span>
                   </div>
-                  <span className="sr-only">{step.label}</span>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-2 px-4 sm:px-5" aria-hidden="true">
-            <span className="h-2 rounded-lg bg-[#ef3e78]/72" />
-            <span className="h-2 rounded-lg bg-[#8d69f6]/52" />
-            <span className="h-2 rounded-lg bg-[#5c83e9]/42" />
+          <div className="sr-only">
+            Goals. Review. Chat.
           </div>
         </div>
 
@@ -234,7 +247,7 @@ const Features = () => {
             return (
               <article
                 key={feature.title}
-                className="group flex min-h-full flex-col border-y border-[#f0b6df]/14 bg-[#1a0d27]/48 px-4 py-5 transition duration-200 hover:border-[#f0b6df]/32 hover:bg-[#21132f]/62 sm:px-5 sm:py-6 lg:border-l lg:border-y-0 lg:first:border-l-0"
+                className="pm-surface-hover group flex min-h-full flex-col border-y border-[#f0b6df]/14 bg-[#1a0d27]/48 px-4 py-5 transition duration-200 hover:border-[#f0b6df]/32 hover:bg-[#21132f]/62 sm:px-5 sm:py-6 lg:border-l lg:border-y-0 lg:first:border-l-0"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/15">
@@ -250,58 +263,41 @@ const Features = () => {
                     {feature.title}
                     <span className="sr-only">. {feature.fullTitle}</span>
                   </h3>
-                  <div
-                    className="mt-5 border-y border-[#f0b6df]/12 bg-[#120a1b]/38 py-4"
-                    aria-hidden="true"
-                  >
-                    <div className="grid grid-cols-[3.25rem_1fr] gap-3">
-                      <div className="relative h-28 overflow-hidden rounded-lg bg-gradient-to-br from-[#ef3e78]/88 to-[#8d69f6]/80 p-2">
-                        <div className="h-8 rounded-lg bg-[#ffe8f1]/18" />
-                        <div className="mt-2 grid grid-cols-2 gap-1.5">
-                          <span className="h-5 rounded-lg bg-[#ffe8f1]/18" />
-                          <span className="h-5 rounded-lg bg-[#ffe8f1]/12" />
-                        </div>
-                        <div className="absolute inset-x-2 bottom-2 h-2 rounded-lg bg-[#ffe8f1]/34" />
-                      </div>
-                      <div className="self-center">
-                        <div className="mb-3 grid grid-cols-3 gap-2">
-                          <span className="h-8 rounded-lg bg-[#ef3e78]/22" />
-                          <span className="h-8 rounded-lg bg-[#8d69f6]/22" />
-                          <span className="h-8 rounded-lg bg-[#5c83e9]/18" />
-                        </div>
-                        <div className="space-y-2">
-                        {feature.visual.map((bar, barIndex) => (
-                          <span
-                            key={`${feature.title}-${barIndex}`}
-                            className={`block h-2 rounded-lg bg-[#f0b6df]/28 ${bar}`}
-                          />
-                        ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="mt-4 grid grid-cols-3 gap-2" aria-hidden="true">
-                    <span className="h-1.5 rounded-lg bg-[#ef3e78]/55" />
-                    <span className="h-1.5 rounded-lg bg-[#8d69f6]/45" />
-                    <span className="h-1.5 rounded-lg bg-[#5c83e9]/35" />
-                  </p>
-                  <p className="sr-only">
-                    {feature.signal}
-                    <span className="sr-only">. {feature.copy}</span>
-                  </p>
-                  <p className="mt-5 inline-flex items-start gap-2 border-t border-[#f0b6df]/12 pt-4 text-sm font-dm-sans-semibold leading-6 text-[#f0b6df]">
-                    <CheckCircle2
-                      className="mt-0.5 h-4 w-4 shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span
-                      className="mt-1 block h-1.5 w-16 rounded-lg bg-[#f0b6df]/30"
-                      aria-hidden="true"
-                    />
-                    <span className="sr-only">
-                      {feature.proofLabel}
-                      <span className="sr-only">. {feature.proof}</span>
+                  <div className="pm-feature-card-visual mt-5" aria-hidden="true">
+                    <span className="pm-feature-card-visual-main">
+                      <Icon className="h-8 w-8" />
                     </span>
+                    <span className="pm-feature-card-visual-row">
+                      <span>
+                        <SlidersHorizontal className="h-4 w-4" />
+                      </span>
+                      <span>
+                        <ShieldCheck className="h-4 w-4" />
+                      </span>
+                      <span>
+                        <MessageCircleHeart className="h-4 w-4" />
+                      </span>
+                    </span>
+                  </div>
+                  <div className="sr-only">
+                    {featureCardLabels[index].map((label) => (
+                      <span key={`${feature.title}-${label}`}>{label}</span>
+                    ))}
+                    <span>Intent. Care. App cue. App-only. Staged.</span>
+                  </div>
+                  <div className="pm-feature-card-route mt-4" aria-hidden="true">
+                    <span>
+                      <SlidersHorizontal className="h-4 w-4 text-[#ffe8f1]" />
+                    </span>
+                    <span>
+                      <ShieldCheck className="h-4 w-4 text-[#f6d0f1]" />
+                    </span>
+                    <span>
+                      <CheckCircle2 className="h-4 w-4 text-[#22a574]" />
+                    </span>
+                  </div>
+                  <p className="sr-only">
+                    {feature.signal}. {feature.copy}. {feature.proofLabel}. {feature.proof}
                   </p>
                 </div>
               </article>
@@ -309,7 +305,7 @@ const Features = () => {
           })}
         </div>
 
-        <div className="mt-10 border-y border-[#f0b6df]/14 bg-gradient-to-br from-[#21132f]/58 via-[#170f22] to-[#120a1b] py-6 text-white sm:py-8 lg:py-10">
+        <div className="pm-lift-panel mt-10 border-y border-[#f0b6df]/14 bg-gradient-to-br from-[#21132f]/58 via-[#170f22] to-[#120a1b] py-6 text-white sm:py-8 lg:py-10">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#ef3e78]">
@@ -321,53 +317,42 @@ const Features = () => {
                   Trust and safety is part of the product, not a footer note.
                 </span>
               </h3>
-              <div className="mt-5 grid grid-cols-3 gap-2" aria-hidden="true">
-                <span className="h-9 rounded-lg bg-[#ef3e78]/24" />
-                <span className="h-9 rounded-lg bg-[#8d69f6]/22" />
-                <span className="h-9 rounded-lg bg-[#5c83e9]/18" />
+              <div className="pm-feature-signal-strip mt-5 max-w-sm" aria-hidden="true">
+                <span>
+                  <MessageCircleHeart className="h-5 w-5" />
+                </span>
+                <span>
+                  <UserCheck className="h-5 w-5" />
+                </span>
+                <span>
+                  <ShieldCheck className="h-5 w-5" />
+                </span>
               </div>
-              <p className="mt-4 inline-flex min-h-9 items-center border-l-2 border-[#f0b6df]/18 px-3 py-1 text-xs font-dm-sans-bold text-[#f3c7de]">
-                <span
-                  className="h-1.5 w-20 rounded-lg bg-[#f0b6df]/30"
-                  aria-hidden="true"
-                />
-                <span className="sr-only">
-                  Review paths
-                </span>
-                <span className="sr-only">
-                  Moderation, review, and privacy belong in the product story.
-                  The public story should help people understand moderation,
-                  review, and privacy expectations before they join the
-                  waitlist.
-                </span>
+              <div className="sr-only">
+                Report. Review. Privacy.
+              </div>
+              <p className="sr-only">
+                Review paths
+                Moderation, review, and privacy belong in the product story.
+                The public story should help people understand moderation,
+                review, and privacy expectations before they join the
+                waitlist.
               </p>
-              <p className="mt-4 grid border-y border-[#f0b6df]/12 py-2 text-xs font-dm-sans-bold text-[#f6d0f1] sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#ef3e78]/38"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
-                  Review paths
-                  </span>
+              <p className="pm-safety-product-strip mt-4 text-xs font-dm-sans-bold text-[#f6d0f1]">
+                <span className="sr-only rounded-lg border border-[#f0b6df]/14">
+                  Design contract marker
                 </span>
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#8d69f6]/36"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
-                  Not guarantees
-                  </span>
+                <span className="pm-safety-product-strip-node">
+                  <UserCheck className="h-4 w-4" aria-hidden="true" />
+                  <span className="sr-only">Review paths</span>
                 </span>
-                <span className="border-l border-[#f0b6df]/12 px-3 py-1 text-center first:border-l-0 lg:border-l-0 lg:border-t lg:first:border-t-0 xl:border-l xl:border-t-0 xl:first:border-l-0">
-                  <span
-                    className="mx-auto block h-1.5 w-12 rounded-lg bg-[#5c83e9]/32"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
-                  No background checks
-                  </span>
+                <span className="pm-safety-product-strip-node pm-safety-product-strip-node-shield">
+                  <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+                  <span className="sr-only">Not guarantees</span>
+                </span>
+                <span className="pm-safety-product-strip-node pm-safety-product-strip-node-check">
+                  <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+                  <span className="sr-only">No background checks</span>
                 </span>
                 <span className="sr-only">
                   These are safety controls and review paths, not guarantees,
@@ -384,82 +369,79 @@ const Features = () => {
               </a>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="border-y border-[#f0b6df]/12 bg-[#120a1b]/38 py-4 sm:col-span-2">
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {safetyDashboard.map((item) => (
-                    <div
-                      key={item.label}
-                      className="border-l border-[#f0b6df]/12 px-3 py-1 first:border-l-0"
-                    >
-                      <div
-                        className={`h-2 rounded-lg ${item.tone}`}
-                        aria-hidden="true"
-                      />
-                      <p className="mt-3 text-sm font-dm-sans-bold text-white">
-                        <span
-                          className="block h-1.5 w-12 rounded-lg bg-[#f0b6df]/28"
-                          aria-hidden="true"
-                        />
-                        <span className="sr-only">
-                        {item.label}
-                        </span>
-                      </p>
-                      <p className="mt-1 text-xs font-dm-sans-bold text-[#f6d0f1]">
-                        <span
-                          className="block h-1.5 w-16 rounded-lg bg-[#f0b6df]/20"
-                          aria-hidden="true"
-                        />
-                        <span className="sr-only">
-                        {item.value}
-                        </span>
-                      </p>
-                    </div>
-                  ))}
-                </div>
+            <div className="grid gap-3">
+              <div className="pm-safety-product-visual" aria-hidden="true">
+                <img
+                  src="/assets/pinaymate-dark-app-collage.png"
+                  alt=""
+                  className="pm-safety-product-image"
+                />
+                <span className="pm-safety-product-core">
+                  <ShieldCheck className="h-8 w-8" />
+                </span>
+                <span className="pm-safety-product-node pm-safety-product-node-a">
+                  <CheckCircle2 className="h-5 w-5" />
+                </span>
+                <span className="pm-safety-product-node pm-safety-product-node-b">
+                  <UserCheck className="h-5 w-5" />
+                </span>
+                <span className="pm-safety-product-node pm-safety-product-node-c">
+                  <MessageCircleHeart className="h-5 w-5" />
+                </span>
+                <span className="pm-safety-product-node pm-safety-product-node-d">
+                  <ShieldCheck className="h-5 w-5" />
+                </span>
+              </div>
+              <div className="sr-only">
+                {safetyDashboard.map((item) => (
+                  <span key={item.label}>
+                    {item.label}. {item.value}.
+                  </span>
+                ))}
               </div>
 
-              {safetyItems.map((item) => (
-                <div
-                  key={item.label}
-                  className="min-h-14 border-l-2 border-[#f0b6df]/18 bg-[#2e1e5a]/22 px-3 py-3 text-center text-xs font-dm-sans-bold text-[#f8f5ff]"
-                >
-                  <CheckCircle2
-                    className="mx-auto h-5 w-5 shrink-0 text-[#22a574]"
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="mx-auto mt-3 block h-1.5 w-10 rounded-lg bg-[#f0b6df]/26"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">{item.label}</span>
+              <div className="sr-only">
+                {safetyItems.map((item) => (
+                  <span key={item.label}>
+                  <span className="sr-only">
+                    {item.label}
+                  </span>
                   <span className="sr-only">. {item.detail}</span>
-                </div>
-              ))}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="mt-8 grid border-y border-[#f0b6df]/12 py-3 lg:grid-cols-3">
-            {safetyExpectations.map((item) => (
+          <div className="pm-safety-expectation-band mt-8">
+            {safetyExpectations.map((item, index) => {
+              const Icon =
+                index === 0 ? MessageCircleHeart : index === 1 ? UserCheck : ShieldCheck;
+
+              return (
               <article
                 key={item.title}
-                className="border-l border-[#f0b6df]/12 px-4 py-2 first:border-l-0"
+                className="pm-safety-expectation-node"
               >
-                <p className="font-dm-sans-bold text-white">
-                  <span
-                    className="block h-1.5 w-14 rounded-lg bg-[#f0b6df]/28"
-                    aria-hidden="true"
-                  />
-                  <span className="sr-only">
+                <span className="pm-safety-expectation-icon" aria-hidden="true">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className="pm-safety-expectation-meter" aria-hidden="true">
+                  <span />
+                  <span />
+                  <span />
+                </span>
+                <p className="sr-only">
                   {item.title}
-                  </span>
-                  <span className="sr-only">. {item.fullTitle}</span>
+                  <span>. {item.fullTitle}</span>
                 </p>
-                <p className="mt-2 h-1.5 rounded-lg bg-[#ef3e78]/35">
-                  <span className="sr-only">{item.copy}</span>
+                <p className="sr-only">
+                  {item.fullTitle}
+                  <span>{item.copy}</span>
                 </p>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
