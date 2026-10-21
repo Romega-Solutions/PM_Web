@@ -153,7 +153,7 @@ pinaymate/
 
    ```bash
    git clone https://github.com/Romega-Solutions/PM_Web.git
-   cd pinaymate
+   cd PM_Web
    ```
 
 2. **Install dependencies**
