@@ -152,8 +152,8 @@ pinaymate/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/pinaymate.git
-   cd pinaymate
+   git clone https://github.com/Romega-Solutions/PM_Web.git
+   cd PM_Web
    ```
 
 2. **Install dependencies**
