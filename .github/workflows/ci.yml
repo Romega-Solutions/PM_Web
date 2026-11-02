@@ -43,8 +43,7 @@ jobs:
       - name: Source and launch contracts
         run: npm run check:source-contracts
 
-      # Reports known vulnerabilities (moderate and above) without failing the
-      # run, so a new advisory cannot block an unrelated pull request. To make
-      # it block, delete the `|| echo ...` part.
-      - name: Dependency audit (warning only)
-        run: npm run check:dependency-audit || echo "::warning title=npm audit::Vulnerable dependencies were found. See this step's log. This step does not block merging."
+      # Fails the run when a dependency has a known vulnerability of moderate
+      # severity or higher (npm audit --audit-level=moderate).
+      - name: Dependency audit
+        run: npm run check:dependency-audit
