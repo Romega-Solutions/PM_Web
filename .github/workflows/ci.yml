@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# The job only reads the repository, so the token gets read access and nothing else.
+permissions:
+  contents: read
+
+# A newer push to the same branch makes the older run pointless.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # `npm run build` type-checks (tsc -b) and then builds with Vite.
+      - name: Build
+        run: npm run build
+
+      # Local links, launch claims, client-facing copy, the waitlist handoff
+      # and the product design contract.
+      - name: Source and launch contracts
+        run: npm run check:source-contracts
+
+      # Reports known vulnerabilities (moderate and above) without failing the
+      # run, so a new advisory cannot block an unrelated pull request. To make
+      # it block, delete the `|| echo ...` part.
+      - name: Dependency audit (warning only)
+        run: npm run check:dependency-audit || echo "::warning title=npm audit::Vulnerable dependencies were found. See this step's log. This step does not block merging."

@@ -35,3 +35,15 @@ updates:
           - "@eslint/*"
           - "typescript-eslint"
           - "eslint-plugin-*"
+
+  # Keeps the pinned action versions in .github/workflows up to date.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Manila"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(ci)"
