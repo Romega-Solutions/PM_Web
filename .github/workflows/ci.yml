@@ -38,6 +38,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      # Runs the Vitest suite (the waitlist form and backend handoff tests).
+      - name: Tests
+        run: npm test
+
       # Local links, launch claims, client-facing copy, the waitlist handoff
       # and the product design contract.
       - name: Source and launch contracts
