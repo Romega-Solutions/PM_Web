@@ -23,10 +23,10 @@ const Footer: React.FC = () => {
   };
 
   const quickLinks = [
-    { name: "Trust", href: "#about" },
-    { name: "Safety", href: "#features" },
-    { name: "Membership", href: "#pricing" },
-    { name: "Waitlist", href: "#download" },
+    { name: "Trust", href: "/#about" },
+    { name: "Safety", href: "/#features" },
+    { name: "Membership", href: "/#pricing" },
+    { name: "Waitlist", href: "/#download" },
   ];
 
   return (
@@ -139,6 +139,13 @@ const Footer: React.FC = () => {
               >
                 Privacy
               </button>
+              <span className="text-[#5f536d]">•</span>
+              <a
+                href="/delete-account"
+                className="inline-flex min-h-11 items-center text-[#d7c7ed] transition-colors hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+              >
+                Delete account
+              </a>
               <span className="text-[#5f536d]">•</span>
               <button
                 type="button"

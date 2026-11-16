@@ -2,6 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { X, Shield, FileText } from "lucide-react";
 import { launchEmailLinks } from "../../lib/launchEmailLinks";
 
+interface LegalSection {
+  title: string;
+  content: string;
+  link?: { href: string; label: string };
+}
+
 interface LegalModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -67,7 +73,10 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
 
   if (!isOpen) return null;
 
-  const content = {
+  const content: Record<
+    LegalModalProps["type"],
+    { title: string; icon: typeof Shield; sections: LegalSection[] }
+  > = {
     privacy: {
       title: "Privacy Policy",
       icon: Shield,
@@ -106,6 +115,10 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
           title: "Your Rights",
           content:
             "You can request access, updates, or deletion of your personal information through support. If in-app account deletion tools are not shown in your account, support can help route the request. Visible profile controls and communication preferences apply only when those app settings are available for your account.",
+          link: {
+            href: "/delete-account",
+            label: "How to request account deletion",
+          },
         },
         {
           title: "Cookies and Tracking",
@@ -249,6 +262,14 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
               <p className="pl-0 text-[#C8B5E6] font-dm-sans-regular leading-relaxed sm:pl-11">
                 {section.content}
               </p>
+              {section.link && (
+                <a
+                  href={section.link.href}
+                  className="inline-flex min-h-11 items-center text-[#ff8fb8] underline underline-offset-4 hover:text-white transition-colors font-dm-sans-bold sm:pl-11 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                >
+                  {section.link.label}
+                </a>
+              )}
             </div>
           ))}
 
