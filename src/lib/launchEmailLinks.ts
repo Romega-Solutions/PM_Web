@@ -59,6 +59,40 @@ ${SUPPORT_EMAIL_SENSITIVE_DATA_WARNING}
   return `${SUPPORT_MAILTO_PREFIX}subject=${encodeMailtoField("PinayMate account deletion request")}&body=${encodeMailtoField(body)}`;
 }
 
+// The two builders below use the same subjects and body text as the app's
+// Help & Support screen (PM_App app/(main)/profile-settings/help.tsx), so the
+// app and the website send the same email.
+function buildSupportRequestEmailHref() {
+  const body = `Hi PinayMate team,
+
+I need help with:
+
+Account email:
+Device:
+
+Details:
+
+${SUPPORT_EMAIL_SENSITIVE_DATA_WARNING}
+`;
+
+  return `${SUPPORT_MAILTO_PREFIX}subject=${encodeMailtoField("PinayMate support request")}&body=${encodeMailtoField(body)}`;
+}
+
+function buildSafetyConcernEmailHref() {
+  const body = `Hi PinayMate team,
+
+I need help with a safety concern.
+
+My account email:
+Other member name or public profile details:
+What happened:
+
+${SUPPORT_EMAIL_SENSITIVE_DATA_WARNING} If this is an emergency, I understand I should contact local emergency services first.
+`;
+
+  return `${SUPPORT_MAILTO_PREFIX}subject=${encodeMailtoField("PinayMate safety concern")}&body=${encodeMailtoField(body)}`;
+}
+
 export const launchEmailLinks = {
   iosWaitlist: buildWaitlistEmailHref("iOS"),
   androidWaitlist: buildWaitlistEmailHref("Android"),
@@ -79,6 +113,8 @@ export const launchEmailLinks = {
     "I have a legal or privacy question about:",
   ),
   accountDeletion: buildAccountDeletionEmailHref(),
+  supportRequest: buildSupportRequestEmailHref(),
+  safetyConcern: buildSafetyConcernEmailHref(),
 } as const;
 
 export function buildPlanInterestEmailHref(planName: string, subject: string) {

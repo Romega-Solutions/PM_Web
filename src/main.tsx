@@ -3,12 +3,19 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import DeleteAccount from './components/pages/DeleteAccount.tsx'
+import Support from './components/pages/Support.tsx'
 
-// The site has one page plus the public account-deletion page, so a path
-// check is enough and no router is needed.
-const isDeleteAccountPage =
-  window.location.pathname.replace(/\/+$/, '').toLowerCase() === '/delete-account'
+// The site has one landing page plus two public pages (account deletion and
+// support), so a path check is enough and no router is needed.
+const path = window.location.pathname.replace(/\/+$/, '').toLowerCase()
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>{isDeleteAccountPage ? <DeleteAccount /> : <App />}</StrictMode>,
-)
+const page =
+  path === '/delete-account' ? (
+    <DeleteAccount />
+  ) : path === '/support' ? (
+    <Support />
+  ) : (
+    <App />
+  )
+
+createRoot(document.getElementById('root')!).render(<StrictMode>{page}</StrictMode>)
