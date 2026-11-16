@@ -104,6 +104,12 @@ const Faqs = () => {
             >
               Contact support
             </a>
+            <a
+              href="/support"
+              className="mt-3 inline-flex min-h-11 items-center text-sm font-dm-sans-semibold text-[#f7a4c8] underline underline-offset-4 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+            >
+              Help, safety reports, and emergency guidance
+            </a>
           </aside>
 
           <div className="divide-y divide-white/10 border-y border-white/12">
