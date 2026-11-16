@@ -73,6 +73,12 @@ const Faqs = () => {
               <IconMail size={18} stroke={1.75} aria-hidden="true" />
               Contact support
             </a>
+            <a
+              href="/support"
+              className="mt-3 flex min-h-11 items-center text-sm font-dm-sans-semibold text-rosas underline underline-offset-4 transition-colors hover:text-plum"
+            >
+              Help, safety reports, and emergency guidance
+            </a>
           </div>
         </div>
 
