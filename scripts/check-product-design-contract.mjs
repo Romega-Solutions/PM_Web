@@ -236,12 +236,12 @@ const requiredFiles = [
     path: "src/components/sections/Features.tsx",
     markers: [
       "Built for trust, not hype",
-      "mt-12 grid gap-4 lg:grid-cols-3",
-      "rounded-lg border border-[#f0b6df]/14",
+      "From waitlist to first conversation",
+      "Create a profile inside the app when access is available",
       "Verification labels are framed as review cues",
       "Safety labels stay framed as review status",
       "not guarantees",
-      "Trust and safety is part of the product, not a footer note.",
+      "Safety is built in, not added later",
       "These are safety controls and review paths",
       "Ask a safety question",
     ],
@@ -284,7 +284,6 @@ const requiredFiles = [
     path: "src/components/sections/About.tsx",
     markers: [
       "collect interest only",
-      "Create a profile inside the app when access is available",
       "start matching",
       "open checkout",
     ],
