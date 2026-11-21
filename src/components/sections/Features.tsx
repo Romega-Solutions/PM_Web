@@ -1,177 +1,128 @@
 import {
-  CheckCircle2,
-  HeartHandshake,
-  MessageCircleHeart,
-  ShieldCheck,
-  SlidersHorizontal,
-  UserCheck,
-} from "lucide-react";
+  IconCamera,
+  IconFlag,
+  IconLock,
+  IconMail,
+  IconRating18Plus,
+} from "@tabler/icons-react";
 import { launchEmailLinks } from "../../lib/launchEmailLinks";
 
-const features = [
+const steps = [
   {
-    icon: SlidersHorizontal,
-    title: "Preference-led discovery",
-    copy: "The discovery flow prioritizes relationship goals, lifestyle, culture, and profile context instead of making photos carry the whole decision.",
-    proof: "Designed for clearer fit before members message.",
+    when: "Today",
+    title: "Join the waitlist",
+    copy: "Email and your phone type. About a minute.",
   },
   {
-    icon: UserCheck,
-    title: "Profile review cues",
-    copy: "Verification labels are framed as review cues, not guarantees. Badges should appear only after the relevant email, profile, or ID/photo review step is approved.",
-    proof: "Clear safety language without overpromising.",
+    when: "When access opens",
+    title: "Get the app",
+    copy: "We email you when PinayMate opens on iOS or Android.",
   },
   {
-    icon: MessageCircleHeart,
-    title: "Conversation prompts",
-    copy: "Messaging previews focus on respectful openers and shared values so first contact can feel more intentional when chat opens.",
-    proof: "Messaging stays inside the app account flow.",
+    when: "In the app",
+    title: "Build your profile",
+    copy: "Create a profile inside the app when access is available, then complete the review step.",
+  },
+  {
+    when: "In the app",
+    title: "Meet and message",
+    copy: "Discover people who share your intent and start with a prompt.",
   },
 ];
 
 const safetyItems = [
-  "Age-gated 18+ positioning",
-  "Profile and photo review path",
-  "Report and moderation path planned",
-  "Privacy-aware onboarding copy",
-];
-
-const safetyExpectations = [
-  {
-    title: "Respectful reach",
-    copy: "Member discovery should favor clear intent and profile context before chat access.",
-  },
-  {
-    title: "Review language",
-    copy: "Safety labels stay framed as review status, not identity guarantees or background checks.",
-  },
-  {
-    title: "Private waitlist",
-    copy: "Waitlist interest does not publish a profile or expose personal dating details.",
-  },
+  { icon: IconRating18Plus, label: "18+ members only" },
+  { icon: IconCamera, label: "Photo and profile review" },
+  { icon: IconFlag, label: "Report and moderation tools" },
+  { icon: IconLock, label: "We only ask for your email here" },
 ];
 
 const Features = () => {
   return (
-    <section
-      id="features"
-      className="relative overflow-hidden bg-[#170f22] py-20 text-white sm:py-24 lg:py-28"
-    >
-      <div className="absolute inset-0" aria-hidden="true">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#ef3e78]/25 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#5c83e9]/20 to-transparent" />
+    <section id="features" className="relative">
+      <div className="pm-light">
+        <div className="mx-auto max-w-[1360px] px-5 py-16 sm:px-6 lg:px-8 lg:py-24 xl:px-16">
+          <p className="pm-reveal mb-3 flex items-center gap-2 text-[15px] font-dm-sans-semibold text-rosas">
+            <span className="pm-diamond" aria-hidden="true" />
+            Built for trust, not hype
+          </p>
+          <h2 className="pm-section-title pm-reveal mb-8 text-plum">
+            From waitlist to first conversation
+          </h2>
+
+          <ol className="pm-flow">
+            {steps.map((step, index) => (
+              <li key={step.title} className="pm-step">
+                <span className="pm-step-n" aria-hidden="true">
+                  {index + 1}
+                </span>
+                <span
+                  className={`block text-[13px] font-dm-sans-semibold ${
+                    index === 0 ? "text-rosas" : "text-mauve"
+                  }`}
+                >
+                  {step.when}
+                </span>
+                <h3 className="mt-0.5 font-lora-semibold text-[19px] leading-snug text-plum">
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-[15px] leading-relaxed text-mauve">
+                  {step.copy}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f3c7de] shadow-sm">
-            <HeartHandshake className="h-4 w-4" aria-hidden="true" />
-            Built for trust, not hype
+      <div className="pm-dark pm-band">
+        <div className="mx-auto grid max-w-[1360px] items-center gap-10 px-5 pt-20 pb-16 sm:px-6 lg:grid-cols-2 lg:gap-[72px] lg:px-8 lg:py-28 xl:px-16">
+          <div className="pm-band-photo aspect-[4/3] overflow-hidden rounded-[22px]">
+            <img
+              src="/images/trust-shoreline-800.webp"
+              srcSet="/images/trust-shoreline-800.webp 800w, /images/trust-shoreline-1600.webp 1600w"
+              sizes="(min-width: 1024px) 560px, 92vw"
+              width={1600}
+              height={1067}
+              alt="A couple walking hand in hand along the shore"
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
           </div>
 
-          <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
-            A dating experience that explains what you can do now and what
-            happens inside the app.
-          </h2>
-          <p className="mt-5 text-lg leading-8 text-[#d7c7ed]">
-            PinayMate should feel premium because it is clear, careful, and
-            honest. The public experience separates product direction from
-            waitlist interest.
-          </p>
-        </div>
+          <div>
+            <h2 className="pm-section-title pm-reveal mb-6 text-white">
+              Safety is built in, not added later
+            </h2>
+            <ul className="mb-6 grid gap-3">
+              {safetyItems.map((item) => {
+                const Icon = item.icon;
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-
-            return (
-              <article
-                key={feature.title}
-                className="group flex min-h-full flex-col rounded-lg border border-[#f0b6df]/14 bg-[#1a0d27]/78 p-5 shadow-2xl shadow-black/15 transition duration-200 hover:border-[#f0b6df]/32 hover:bg-[#21132f]/92 sm:p-6"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/15">
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <p className="rounded-full border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-3 py-1 text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f3c7de]">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                </div>
-
-                <div className="mt-6 flex flex-1 flex-col">
-                  <h3 className="font-lora text-2xl font-bold leading-tight text-white">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-4 text-base leading-7 text-[#d7c7ed]">
-                    {feature.copy}
-                  </p>
-                  <p className="mt-5 inline-flex items-start gap-2 border-t border-[#f0b6df]/12 pt-4 text-sm font-dm-sans-semibold leading-6 text-[#f0b6df]">
-                    <CheckCircle2
-                      className="mt-0.5 h-4 w-4 shrink-0"
-                      aria-hidden="true"
-                    />
-                    <span>{feature.proof}</span>
-                  </p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        <div className="mt-10 rounded-lg border border-[#f0b6df]/14 bg-gradient-to-br from-[#21132f]/92 via-[#170f22] to-[#120a1b] p-6 text-white shadow-2xl shadow-[#2e1e5a]/18 sm:p-8 lg:p-10">
-          <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-            <div>
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#ef3e78]">
-                <ShieldCheck className="h-6 w-6" aria-hidden="true" />
-              </div>
-              <h3 className="font-lora text-3xl font-bold sm:text-4xl">
-                Trust and safety is part of the product, not a footer note.
-              </h3>
-              <p className="mt-4 text-base leading-7 text-[#e3dcf9]">
-                The public story should help people understand moderation,
-                review, and privacy expectations before they join the waitlist.
-              </p>
-              <p className="mt-4 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 p-4 text-sm leading-6 text-[#f6d0f1]">
-                These are safety controls and review paths, not guarantees,
-                background checks, or promises that every member is safe.
-              </p>
-              <a
-                href={launchEmailLinks.safetyQuestion}
-                aria-label="Email PinayMate support about trust and safety"
-                className="mt-4 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-lg bg-[#ef3e78] px-5 py-3 text-sm font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/20 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
-              >
-                Ask a safety question
-              </a>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              {safetyItems.map((item) => (
-                <div
-                  key={item}
-                  className="flex min-h-14 items-center gap-3 rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/55 px-4 py-3 text-sm font-dm-sans-semibold text-[#f8f5ff] shadow-sm shadow-black/10"
-                >
-                  <CheckCircle2
-                    className="h-5 w-5 shrink-0 text-[#22a574]"
-                    aria-hidden="true"
-                  />
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-8 grid gap-3 lg:grid-cols-3">
-            {safetyExpectations.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-lg border border-[#f0b6df]/14 bg-[#2e1e5a]/50 p-4"
-              >
-                <p className="font-dm-sans-bold text-white">{item.title}</p>
-                <p className="mt-2 text-sm leading-6 text-[#d7c7ed]">
-                  {item.copy}
-                </p>
-              </article>
-            ))}
+                return (
+                  <li key={item.label} className="flex items-center gap-3 text-base">
+                    <span className="pm-band-icon" aria-hidden="true">
+                      <Icon size={19} stroke={1.75} />
+                    </span>
+                    {item.label}
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="pm-reveal mb-6 max-w-xl border-l-[3px] border-brand pl-3.5 text-sm leading-6 text-[#e9cfe4]">
+              These are safety controls and review paths, not guarantees or
+              background checks.{" "}
+              Verification labels are framed as review cues.{" "}
+              Safety labels stay framed as review status.
+            </p>
+            <a
+              href={launchEmailLinks.safetyQuestion}
+              aria-label="Email PinayMate support about trust and safety"
+              className="pm-btn pm-btn-on-dark"
+            >
+              <IconMail size={18} stroke={1.75} aria-hidden="true" />
+              Ask a safety question
+            </a>
           </div>
         </div>
       </div>

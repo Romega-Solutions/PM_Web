@@ -397,3 +397,359 @@
     animation: pm-spin-in 0.9s var(--ease-pm) 0.2s both;
   }
 }
+
+/* ─── PR 2: benefit tiles, Manila strip, how it works, safety band ─────── */
+@layer components {
+  .pm-section-title {
+    font-family: "Lora", Georgia, serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 1024px) {
+    .pm-section-title {
+      font-size: 2.75rem;
+    }
+  }
+
+  .pm-tile {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-height: 320px;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: 22px;
+    color: #fff;
+    transition:
+      translate 0.45s var(--ease-pm),
+      box-shadow 0.45s var(--ease-pm);
+  }
+
+  .pm-tile img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 1.2s var(--ease-pm);
+  }
+
+  .pm-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgb(52 8 57 / 0) 30%, rgb(52 8 57 / 0.92) 100%);
+    transition: opacity 0.5s var(--ease-pm);
+  }
+
+  .pm-tile:hover {
+    translate: 0 -6px;
+    box-shadow: 0 30px 50px -28px rgb(52 8 57 / 0.6);
+  }
+
+  .pm-tile:hover img {
+    scale: 1.06;
+  }
+
+  .pm-tile .pm-icon-tile {
+    background-color: rgb(255 255 255 / 0.94);
+    transition:
+      rotate 0.45s var(--ease-pm),
+      scale 0.45s var(--ease-pm);
+  }
+
+  .pm-tile:hover .pm-icon-tile {
+    rotate: -8deg;
+    scale: 1.08;
+  }
+
+  @media (min-width: 1024px) {
+    .pm-tile {
+      min-height: 440px;
+    }
+  }
+
+  .pm-city {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-height: 300px;
+    align-items: flex-end;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  .pm-city img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pm-city::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgb(52 8 57 / 0.9), rgb(52 8 57 / 0.25));
+  }
+
+  @media (min-width: 1024px) {
+    .pm-city {
+      min-height: 380px;
+    }
+  }
+
+  /* How it works: a real sequence, so numbered diamonds and a joining line. */
+  .pm-flow {
+    position: relative;
+    display: grid;
+    gap: 14px;
+  }
+
+  .pm-step {
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 20px 20px 22px 80px;
+    box-shadow: 0 0 0 1px var(--color-line);
+    transition:
+      translate 0.45s var(--ease-pm),
+      box-shadow 0.45s var(--ease-pm);
+  }
+
+  .pm-step:hover {
+    translate: 0 -4px;
+    box-shadow:
+      0 0 0 1px var(--color-line),
+      0 24px 40px -28px rgb(52 8 57 / 0.45);
+  }
+
+  .pm-step-n {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    background-color: var(--color-petal);
+    color: var(--color-rosas);
+    font: 600 18px/44px "Lora", Georgia, serif;
+    text-align: center;
+    transition:
+      background-color 0.3s var(--ease-pm),
+      color 0.3s var(--ease-pm),
+      scale 0.45s var(--ease-pm);
+  }
+
+  .pm-step:first-child .pm-step-n,
+  .pm-step:hover .pm-step-n {
+    background-color: var(--color-rosas);
+    color: #fff;
+  }
+
+  .pm-step:hover .pm-step-n {
+    scale: 1.1;
+  }
+
+  @media (min-width: 1024px) {
+    .pm-flow {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .pm-flow::before {
+      content: "";
+      position: absolute;
+      top: 41px;
+      right: 44px;
+      left: 44px;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--color-rosas), var(--color-weave-violet));
+      transform-origin: 0 50%;
+    }
+
+    .pm-step {
+      padding: 80px 22px 24px;
+    }
+
+    .pm-step-n {
+      top: 20px;
+      left: 22px;
+    }
+  }
+
+  .pm-band {
+    position: relative;
+  }
+
+  .pm-band::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 18px;
+    background: url("/patterns/banig-edge.svg") 0 0 / auto 18px repeat-x;
+  }
+
+  .pm-band-icon {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    flex: none;
+    place-items: center;
+    border-radius: 10px;
+    background-color: rgb(246 208 241 / 0.12);
+    color: var(--color-blush);
+    transition:
+      background-color 0.3s var(--ease-pm),
+      scale 0.45s var(--ease-pm);
+  }
+
+  li:hover > .pm-band-icon {
+    background-color: rgb(246 208 241 / 0.24);
+    scale: 1.08;
+  }
+
+  /* Scroll reveals use CSS scroll timelines (no JavaScript). Browsers without
+     support skip this block and show everything in place. */
+  @media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes pm-reveal {
+      from {
+        opacity: 0.001;
+        transform: translateY(22px);
+        filter: blur(6px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+
+    @keyframes pm-rise-in {
+      from {
+        opacity: 0.001;
+        transform: translateY(40px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes pm-slide-in {
+      from {
+        opacity: 0.001;
+        transform: translateX(28px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes pm-settle {
+      from {
+        transform: scale(1.12);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pm-drift {
+      from {
+        transform: scale(1.15) translateY(-4%);
+      }
+      to {
+        transform: scale(1.15) translateY(4%);
+      }
+    }
+
+    @keyframes pm-draw {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: scaleX(1);
+      }
+    }
+
+    .pm-reveal {
+      animation: pm-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 90%;
+    }
+
+    .pm-tile,
+    .pm-step {
+      animation: pm-rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 85%;
+    }
+
+    .pm-tile:nth-child(2),
+    .pm-step:nth-child(2) {
+      animation-range: entry 12% entry 97%;
+    }
+
+    .pm-tile:nth-child(3),
+    .pm-step:nth-child(3) {
+      animation-range: entry 24% cover 30%;
+    }
+
+    .pm-step:nth-child(4) {
+      animation-range: entry 36% cover 36%;
+    }
+
+    .pm-tile img,
+    .pm-band-photo img {
+      animation: pm-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+
+    .pm-city img {
+      animation: pm-drift linear both;
+      animation-timeline: view();
+    }
+
+    .pm-flow::before {
+      animation: pm-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+
+    .pm-band li {
+      animation: pm-slide-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+
+    .pm-band li:nth-child(2) {
+      animation-range: entry 10% cover 25%;
+    }
+
+    .pm-band li:nth-child(3) {
+      animation-range: entry 20% cover 30%;
+    }
+
+    .pm-band li:nth-child(4) {
+      animation-range: entry 30% cover 35%;
+    }
+  }
+  }
+}
