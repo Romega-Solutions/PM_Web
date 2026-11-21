@@ -1,0 +1,245 @@
+{
+  "mobile-390": {
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": "a[aria-describedby=\"hero-cta-note\"]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".focus-visible\\:outline-\\[\\#3f6fe4\\]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".shadow-\\[\\#ef3e78\\]\\/20.hover\\:bg-\\[\\#d7346b\\].px-5",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".shadow-\\[\\#ef3e78\\]\\/20.py-1.shadow-lg",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".hover\\:bg-\\[\\#db2866\\]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".px-6.shadow-\\[\\#ef3e78\\]\\/20.hover\\:bg-\\[\\#d7346b\\]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".touch-manipulation",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".shadow-\\[\\#F4376D\\]\\/20.hover\\:shadow-\\[\\#F4376D\\]\\/30[aria-describedby=\"waitlist-email-note\"]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "count": 8
+      },
+      {
+        "id": "landmark-complementary-is-top-level",
+        "impact": "moderate",
+        "help": "Aside should not be contained in another landmark",
+        "nodes": [
+          {
+            "target": "aside",
+            "summary": "Fix any of the following: |   The null landmark is contained in another landmark."
+          }
+        ],
+        "count": 1
+      }
+    ],
+    "metrics": {
+      "small": [
+        "input \"waitlist-platform\" 1x1",
+        "input \"waitlist-platform\" 1x1",
+        "button \"Open PinayMate terms notice\" 39x44"
+      ],
+      "sizes": {
+        "16px": 53,
+        "24px": 8,
+        "14px": 151,
+        "36px": 6,
+        "18px": 6,
+        "12px": 41,
+        "20px": 8,
+        "30px": 10
+      },
+      "fonts": {
+        "\"DM Sans\"": 287,
+        "\"Hello Paris Sans\"": 2,
+        "Lora": 23
+      },
+      "scrollW": 390,
+      "h": 20176,
+      "headings": [
+        "H1 Serious Filipino dating should start with intent, safety, and respect.",
+        "H2 A calmer match path",
+        "H2 A calmer path from interest to real connection.",
+        "H3 Profile review first",
+        "H3 Intent-led matching",
+        "H3 Conversations with context",
+        "H2 A dating experience that explains what you can do now and what happens",
+        "H3 Preference-led discovery",
+        "H3 Profile review cues",
+        "H3 Conversation prompts",
+        "H3 Trust and safety is part of the product, not a footer note.",
+        "H2 Clear membership interest, not a live checkout.",
+        "H3 Filipina Waitlist",
+        "H3 Gold Interest",
+        "H3 Platinum Interest",
+        "H3 Pricing notice",
+        "H2 Straight answers before anyone joins.",
+        "H3 Need a direct answer?",
+        "H2 Pick your platform. Keep the first step private.",
+        "H3 Review before broad reach",
+        "H3 Intent over attention",
+        "H3 Built for cross-cultural clarity",
+        "H3 Navigate",
+        "H3 Contact"
+      ]
+    },
+    "focusTrail": [
+      "a \"Skip to main content\" outline=solid 3px rgb(129, 165, 233) shadow=yes",
+      "a \"Go to PinayMate home\" outline=solid 3px rgb(0, 0, 0) shadow=none",
+      "button \"Open menu\" outline=solid 3px rgb(255, 255, 255) shadow=none",
+      "a \"Join the waitlist\" outline=solid 2px rgb(255, 255, 255) shadow=yes",
+      "a \"See safety approach\" outline=solid 2px rgb(255, 255, 255) shadow=none",
+      "a \"See how it works\" outline=solid 2px rgb(255, 255, 255) shadow=yes",
+      "a \"Review planned memberships\" outline=solid 2px rgb(234, 223, 247) shadow=yes",
+      "a \"Email PinayMate support about \" outline=solid 2px rgb(255, 255, 255) shadow=yes",
+      "a \"Join free waitlist. Opens emai\" outline=solid 2px rgb(255, 255, 255) shadow=yes",
+      "a \"Register Gold interest. Opens \" outline=solid 2px rgb(255, 255, 255) shadow=yes",
+      "a \"Register VIP interest. Opens e\" outline=solid 2px rgb(255, 255, 255) shadow=yes",
+      "a \"Email PinayMate support withou\" outline=solid 2px rgb(129, 165, 233) shadow=yes"
+    ]
+  },
+  "desktop-1440": {
+    "axe": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": ".sm\\:inline-flex",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": "a[aria-describedby=\"hero-cta-note\"]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".focus-visible\\:outline-\\[\\#3f6fe4\\]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".shadow-\\[\\#ef3e78\\]\\/20.hover\\:bg-\\[\\#d7346b\\].px-5",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 10.5pt (14px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".shadow-\\[\\#ef3e78\\]\\/20.py-1.shadow-lg",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".hover\\:bg-\\[\\#db2866\\]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".px-6.shadow-\\[\\#ef3e78\\]\\/20.hover\\:bg-\\[\\#d7346b\\]",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": ".touch-manipulation",
+            "summary": "Fix any of the following: |   Element has insufficient color contrast of 3.72 (foreground color: #ffffff, background color: #ef3e78, font size: 12.0pt (16px), font weight: bold). Expected contrast ratio of 4.5:1"
+          }
+        ],
+        "count": 9
+      },
+      {
+        "id": "landmark-complementary-is-top-level",
+        "impact": "moderate",
+        "help": "Aside should not be contained in another landmark",
+        "nodes": [
+          {
+            "target": "aside",
+            "summary": "Fix any of the following: |   The null landmark is contained in another landmark."
+          }
+        ],
+        "count": 1
+      }
+    ],
+    "metrics": {
+      "small": [
+        "input \"waitlist-platform\" 1x1",
+        "input \"waitlist-platform\" 1x1",
+        "button \"Open PinayMate terms notice\" 39x44"
+      ],
+      "sizes": {
+        "16px": 48,
+        "24px": 8,
+        "14px": 151,
+        "72px": 1,
+        "20px": 10,
+        "12px": 41,
+        "60px": 2,
+        "30px": 9,
+        "48px": 3,
+        "18px": 9,
+        "36px": 1
+      },
+      "fonts": {
+        "\"DM Sans\"": 287,
+        "\"Hello Paris Sans\"": 2,
+        "Lora": 23
+      },
+      "scrollW": 1440,
+      "h": 10789,
+      "headings": [
+        "H1 Serious Filipino dating should start with intent, safety, and respect.",
+        "H2 A calmer match path",
+        "H2 A calmer path from interest to real connection.",
+        "H3 Profile review first",
+        "H3 Intent-led matching",
+        "H3 Conversations with context",
+        "H2 A dating experience that explains what you can do now and what happens",
+        "H3 Preference-led discovery",
+        "H3 Profile review cues",
+        "H3 Conversation prompts",
+        "H3 Trust and safety is part of the product, not a footer note.",
+        "H2 Clear membership interest, not a live checkout.",
+        "H3 Filipina Waitlist",
+        "H3 Gold Interest",
+        "H3 Platinum Interest",
+        "H3 Pricing notice",
+        "H2 Straight answers before anyone joins.",
+        "H3 Need a direct answer?",
+        "H2 Pick your platform. Keep the first step private.",
+        "H3 Review before broad reach",
+        "H3 Intent over attention",
+        "H3 Built for cross-cultural clarity",
+        "H3 Navigate",
+        "H3 Contact"
+      ]
+    },
+    "focusTrail": [
+      "a \"Skip to main content\" outline=solid 3px rgb(129, 165, 233) shadow=yes",
+      "a \"Go to PinayMate home\" outline=solid 3px rgb(0, 0, 0) shadow=none",
+      "a \"Home\" outline=solid 3px rgb(0, 0, 0) shadow=none",
+      "a \"Trust\" outline=solid 3px rgb(0, 0, 0) shadow=none",
+      "a \"Safety\" outline=solid 3px rgb(0, 0, 0) shadow=none",
+      "a \"Membership\" outline=solid 3px rgb(0, 0, 0) shadow=none",
+      "a \"FAQ\" outline=solid 3px rgb(0, 0, 0) shadow=none",
+      "a \"Go to PinayMate waitlist optio\" outline=solid 3px rgb(255, 255, 255) shadow=yes",
+      "a \"Join the waitlist\" outline=solid 2px rgb(255, 255, 255) shadow=yes",
+      "a \"See safety approach\" outline=solid 2px rgb(255, 255, 255) shadow=none",
+      "a \"See how it works\" outline=solid 2px rgb(255, 255, 255) shadow=yes",
+      "a \"Review planned memberships\" outline=solid 2px rgb(234, 223, 247) shadow=yes"
+    ]
+  }
+}
