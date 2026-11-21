@@ -1,0 +1,137 @@
+{
+  "mobile-390": {
+    "axe": [],
+    "metrics": {
+      "small": [],
+      "sizes": {
+        "16px": 40,
+        "24px": 2,
+        "15px": 38,
+        "40px": 1,
+        "18px": 12,
+        "14px": 42,
+        "13px": 17,
+        "20px": 2,
+        "32px": 6,
+        "22px": 5,
+        "26px": 4,
+        "19px": 4
+      },
+      "fonts": {
+        "\"DM Sans\"": 175,
+        "\"Hello Paris Sans\"": 2,
+        "Lora": 32
+      },
+      "scrollW": 390,
+      "h": 9319,
+      "headings": [
+        "H1 Dating with intent, safety, and respect.",
+        "H2 What your profile will show",
+        "H2 What PinayMate gives you",
+        "H3 Say what you're looking for",
+        "H3 Know more before you chat",
+        "H3 Start conversations easily",
+        "H2 From waitlist to first conversation",
+        "H3 Join the waitlist",
+        "H3 Get the app",
+        "H3 Build your profile",
+        "H3 Meet and message",
+        "H2 Safety is built in, not added later",
+        "H2 Plans for when the app opens",
+        "H3 Free",
+        "H3 Gold",
+        "H3 VIP",
+        "H2 Questions before you join",
+        "H3 Need a direct answer?",
+        "H2 Be first when PinayMate opens on your phone",
+        "H3 Email option",
+        "H3 Send only what the waitlist needs",
+        "H3 What happens next",
+        "H3 Navigate",
+        "H3 Contact"
+      ]
+    },
+    "focusTrail": [
+      "a \"Skip to main content\" outline=solid 3px rgb(129, 165, 233) shadow=yes",
+      "a \"Go to PinayMate home\" outline=solid 3px rgb(52, 8, 57) shadow=none",
+      "button \"Open menu\" outline=solid 3px rgb(52, 8, 57) shadow=none",
+      "a \"Join the waitlist\" outline=solid 3px rgb(28, 78, 190) shadow=yes",
+      "a \"See how it works\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Review planned memberships\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Email PinayMate support about \" outline=solid 3px rgb(160, 186, 238) shadow=none",
+      "a \"Join free waitlist. Opens emai\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Register Gold interest. Opens \" outline=solid 3px rgb(28, 78, 190) shadow=yes",
+      "a \"Register VIP interest. Opens e\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "summary \"Pricing notice and email detai\" outline=solid 3px rgb(52, 8, 57) shadow=none",
+      "a \"Email PinayMate support withou\" outline=solid 3px rgb(28, 78, 190) shadow=none"
+    ]
+  },
+  "desktop-1440": {
+    "axe": [],
+    "metrics": {
+      "small": [],
+      "sizes": {
+        "16px": 42,
+        "24px": 2,
+        "15px": 34,
+        "64px": 1,
+        "20px": 8,
+        "14px": 42,
+        "13px": 17,
+        "44px": 6,
+        "22px": 5,
+        "36px": 1,
+        "18px": 8,
+        "19px": 4,
+        "26px": 3
+      },
+      "fonts": {
+        "\"DM Sans\"": 175,
+        "\"Hello Paris Sans\"": 2,
+        "Lora": 32
+      },
+      "scrollW": 1440,
+      "h": 5884,
+      "headings": [
+        "H1 Dating with intent, safety, and respect.",
+        "H2 What your profile will show",
+        "H2 What PinayMate gives you",
+        "H3 Say what you're looking for",
+        "H3 Know more before you chat",
+        "H3 Start conversations easily",
+        "H2 From waitlist to first conversation",
+        "H3 Join the waitlist",
+        "H3 Get the app",
+        "H3 Build your profile",
+        "H3 Meet and message",
+        "H2 Safety is built in, not added later",
+        "H2 Plans for when the app opens",
+        "H3 Free",
+        "H3 Gold",
+        "H3 VIP",
+        "H2 Questions before you join",
+        "H3 Need a direct answer?",
+        "H2 Be first when PinayMate opens on your phone",
+        "H3 Email option",
+        "H3 Send only what the waitlist needs",
+        "H3 What happens next",
+        "H3 Navigate",
+        "H3 Contact"
+      ]
+    },
+    "focusTrail": [
+      "a \"Skip to main content\" outline=solid 3px rgb(129, 165, 233) shadow=yes",
+      "a \"Go to PinayMate home\" outline=solid 3px rgb(52, 8, 57) shadow=none",
+      "a \"Home\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Trust\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Safety\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Membership\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"FAQ\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Go to PinayMate waitlist optio\" outline=solid 3px rgb(28, 78, 190) shadow=yes",
+      "a \"Join the waitlist\" outline=solid 3px rgb(28, 78, 190) shadow=yes",
+      "a \"See how it works\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Review planned memberships\" outline=solid 3px rgb(28, 78, 190) shadow=none",
+      "a \"Email PinayMate support about \" outline=solid 3px rgb(160, 186, 238) shadow=none"
+    ]
+  }
+}
