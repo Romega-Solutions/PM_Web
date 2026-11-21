@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./styles/banig.css";
 
 /*───────────────────────────────────────────────
 🌸 PinayMate Design System – Color Tokens (CSS Variables)
@@ -885,6 +886,10 @@ button {
   font-weight: 700;
   box-shadow: 0 16px 40px rgba(15, 10, 26, 0.24);
   transition: transform 180ms ease;
+}
+
+.skip-link:not(:focus) {
+  box-shadow: none;
 }
 
 .skip-link:focus {
