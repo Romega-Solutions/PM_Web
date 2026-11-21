@@ -13,7 +13,8 @@ This site is a companion to PM_App. PM_Web should convert interest and set expec
 
 - Framework: Vite with React 19 and TypeScript.
 - Styling: Tailwind CSS v4 plus local CSS in `src/App.css`.
-- Icons: `lucide-react`.
+- Icons: `@tabler/icons-react` (outline, 1.75 stroke).
+- Visual design layer: `src/styles/banig.css` (tokens, focus ring, buttons, banig motif, motion). Patterns in `public/patterns/`, photos in `public/images/`.
 - Entry point: `src/main.tsx` mounts `src/App.tsx`.
 - Build output: `dist/` from `npm run build`.
 - Runtime model: static client-rendered site; no server-side rendering, API server, database, or payment processor is currently part of PM_Web.
