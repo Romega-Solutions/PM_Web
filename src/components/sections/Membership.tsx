@@ -1,12 +1,4 @@
-import {
-  Check,
-  Crown,
-  Heart,
-  Mail,
-  ShieldCheck,
-  Sparkles,
-  Star,
-} from "lucide-react";
+import { IconChevronDown, IconCircleCheck, IconMail } from "@tabler/icons-react";
 import {
   PLAN_INTEREST_EMAIL_WARNING,
   buildPlanInterestEmailHref,
@@ -14,63 +6,44 @@ import {
 
 const plans = [
   {
-    name: "Filipina Waitlist",
     id: "filipina-waitlist",
-    label: "No-card waitlist",
-    decision: "Best first step if you want launch timing before sharing profile details.",
+    name: "Free",
+    emailName: "Filipina Waitlist",
     price: "Free waitlist",
-    priceDetail: "no payment step",
+    priceDetail: "For Filipinas, no payment step",
     plannedPrice: null,
-    note: "Join launch updates by email. No account, profile, card, or billing flow starts here.",
-    icon: Heart,
-    tone: "from-[#ef3e78] to-[#8d69f6]",
     subject: "PinayMate waitlist - Filipina access",
     cta: "Join free waitlist",
-    features: [
-      "Launch update emails",
-      "Profile setup guidance",
-      "Verification review path",
-      "Community access updates when ready",
-    ],
+    features: ["Launch update emails", "Profile setup guidance", "Profile review"],
   },
   {
-    name: "Gold Interest",
     id: "gold-interest",
-    label: "Most relevant for serious search",
-    decision: "Best fit if curated discovery, clearer preferences, and support expectations matter most.",
+    name: "Gold",
+    emailName: "Gold Interest",
     price: "Gold interest",
-    priceDetail: "interest only",
+    priceDetail: "Register interest only",
     plannedPrice: "$29.99 / month planned",
-    note: "Register interest only. Final checkout terms, cancellation policy, and billing provider must be visible before any payment.",
-    icon: Star,
-    tone: "from-[#ef3e78] to-[#5c83e9]",
     subject: "PinayMate waitlist - Gold interest",
     cta: "Register Gold interest",
     features: [
-      "Messaging direction when launched",
+      "Messaging when launched",
       "Advanced preference filters",
       "Profile presentation options",
-      "Support response model direction",
     ],
   },
   {
-    name: "Platinum Interest",
-    id: "platinum-interest",
-    label: "VIP feature direction",
-    decision: "Best fit if you want priority support expectations and profile-quality review considered for early access.",
+    id: "vip-interest",
+    name: "VIP",
+    emailName: "VIP Interest",
     price: "VIP interest",
-    priceDetail: "interest only",
+    priceDetail: "Register interest only",
     plannedPrice: "$34.99 / month planned",
-    note: "Register VIP interest only. VIP features open only when membership access and checkout are available.",
-    icon: Crown,
-    tone: "from-[#8d69f6] to-[#5c83e9]",
-    subject: "PinayMate waitlist - Platinum interest",
+    subject: "PinayMate waitlist - VIP interest",
     cta: "Register VIP interest",
     features: [
-      "Gold feature direction plus",
-      "Profile quality review interest",
-      "Badge policy direction after review",
-      "Translation feature interest",
+      "Everything in Gold",
+      "Profile quality review",
+      "Translation (planned)",
     ],
   },
 ];
@@ -78,208 +51,129 @@ const plans = [
 const launchBoundaries = [
   "No card or charge",
   "No app account or dating profile created",
-  "No match request or matching session starts today",
   "Matching starts in the app",
-];
-
-const decisionPrompts = [
-  "Start free if you only want launch timing and access updates.",
-  "Choose Gold interest if curated discovery is your main launch concern.",
-  "Choose Platinum interest if support expectations and profile quality matter most.",
 ];
 
 const Membership = () => {
   return (
-    <section id="pricing" className="bg-[#170f22] py-20 sm:py-24 lg:py-28">
-      <div className="mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#f0b6df]/18 bg-[#2e1e5a]/55 px-4 py-2 text-sm font-dm-sans-bold text-[#f6d0f1]">
-            <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Membership direction
-          </div>
+    <section id="pricing" className="pm-light border-t border-line">
+      <div className="mx-auto max-w-[1360px] px-5 py-16 sm:px-6 lg:px-8 lg:py-24 xl:px-16">
+        <h2 className="pm-section-title pm-reveal text-plum">
+          Plans for when the app opens
+        </h2>
+        <p className="pm-reveal mt-2 max-w-xl text-base text-mauve sm:text-lg">
+          Pick the plan you&apos;re interested in. Nothing is charged today.
+        </p>
 
-          <h2 className="font-lora text-4xl font-bold leading-tight text-white sm:text-5xl">
-            Clear membership interest, not a live checkout.
-          </h2>
-          <p className="mt-5 text-lg leading-8 text-[#e3dcf9]">
-            These tiers explain the intended membership model. The current
-            action is email interest only, so pricing expectations stay clear
-            without suggesting signup, checkout, billing, or active matching.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
-          {plans.map((plan, index) => {
-            const Icon = plan.icon;
+        <div className="mt-8 grid gap-[18px] lg:grid-cols-3">
+          {plans.map((plan) => {
             const isFeatured = plan.id === "gold-interest";
 
             return (
               <article
-                key={plan.name}
+                key={plan.id}
                 aria-labelledby={`${plan.id}-title`}
-                className={`flex min-h-full flex-col rounded-lg border p-5 shadow-2xl transition duration-200 sm:p-6 ${
-                  isFeatured
-                    ? "border-[#ef3e78]/55 bg-[#21132f]/92 shadow-[#ef3e78]/12"
-                    : "border-[#f0b6df]/14 bg-[#1a0d27]/78 shadow-black/15 hover:border-[#f0b6df]/32"
-                }`}
+                className={`pm-tier ${isFeatured ? "pm-tier-pick" : ""}`}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${plan.tone} text-white shadow-lg shadow-black/15`}
-                    >
-                      <Icon className="h-6 w-6" aria-hidden="true" />
-                    </div>
-                    <p className="text-xs font-dm-sans-bold uppercase tracking-[0.16em] text-[#f0b6df]">
-                      {String(index + 1).padStart(2, "0")}
-                    </p>
-                  </div>
-                  {isFeatured && (
-                    <span className="rounded-full bg-[#ef3e78] px-3 py-1 text-xs font-dm-sans-bold uppercase text-white shadow-lg shadow-[#ef3e78]/20">
-                      Best fit
-                    </span>
-                  )}
-                </div>
-
-                <div className="mt-6">
-                  <p className="text-xs font-dm-sans-bold uppercase tracking-[0.14em] text-[#f0b6df]">
-                    {plan.label}
-                  </p>
-                  <h3
-                    id={`${plan.id}-title`}
-                    className="mt-3 font-lora text-3xl font-bold leading-tight text-white"
-                  >
-                    {plan.name}
-                  </h3>
-                  <p className="mt-3 text-sm font-dm-sans-semibold leading-6 text-[#f8f5ff]">
-                    {plan.decision}
-                  </p>
-                </div>
-
-                <div className="mt-6 border-y border-[#f0b6df]/12 py-5">
-                  <p className="font-dm-sans-bold text-3xl leading-tight text-white">
-                    {plan.price}
-                  </p>
-                  <p className="mt-1 text-sm font-dm-sans-bold text-[#f0b6df]">
-                    {plan.priceDetail}
-                  </p>
+                {isFeatured && (
+                  <span className="pm-tier-flag">Best fit</span>
+                )}
+                <h3
+                  id={`${plan.id}-title`}
+                  className="font-lora-medium text-[26px] leading-tight text-plum"
+                >
+                  {plan.name}
+                </h3>
+                <p className="text-[15px] text-mauve">
                   {plan.plannedPrice ? (
-                    <div className="mt-4 border-l border-[#f0b6df]/35 pl-3">
-                      <p className="text-xs font-dm-sans-bold uppercase text-[#f0b6df]">
-                        Planned pricing, not checkout
-                      </p>
-                      <p className="mt-1 text-base font-dm-sans-bold text-white">
-                        {plan.plannedPrice}
-                      </p>
-                    </div>
-                  ) : null}
-                  <p className="mt-4 text-sm leading-6 text-[#c5b1e4]">
-                    {plan.note}
-                  </p>
-                </div>
+                    <>
+                      <span className="text-[22px] font-dm-sans-semibold text-plum">
+                        {plan.plannedPrice.replace(" / month planned", "")}
+                      </span>{" "}
+                      / month, planned
+                    </>
+                  ) : (
+                    plan.priceDetail
+                  )}
+                </p>
+                <p className="sr-only">
+                  {plan.price}. {plan.priceDetail}.
+                </p>
 
-                <div className="mt-6 flex flex-1 flex-col gap-5">
-                  <ul className="grid gap-3">
-                    {plan.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-3 text-sm leading-6 text-[#f8f5ff]"
-                      >
-                        <CheckCircleIcon />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                <ul className="mb-2 grid gap-2 text-[15px] text-plum">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2">
+                      <IconCircleCheck
+                        size={17}
+                        stroke={1.75}
+                        className="shrink-0 text-ok"
+                        aria-hidden="true"
+                      />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
-                  <p
-                    id={`${plan.id}-action-note`}
-                    className="mt-auto border-t border-[#f0b6df]/12 pt-4 text-xs leading-5 text-[#e3dcf9]"
-                  >
-                    Opens a plan-interest email only. It does not create an app
-                    account, dating profile, match request, matching session,
-                    checkout step, or payment record. This is plan-interest
-                    email only. Do not include payment details, ID documents,
-                    location, or private profile information.{" "}
-                    {PLAN_INTEREST_EMAIL_WARNING}
-                  </p>
-
-                  <a
-                    href={buildPlanInterestEmailHref(plan.name, plan.subject)}
-                    aria-describedby={`${plan.id}-action-note`}
-                    aria-label={`${plan.cta}. Opens email interest form only. This is not checkout and does not create an app account, dating profile, match request, or payment record.`}
-                    className={`inline-flex min-h-14 w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-center font-dm-sans-bold transition duration-200 active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] ${
-                      isFeatured
-                        ? "bg-[#ef3e78] text-white shadow-lg shadow-[#ef3e78]/25 hover:bg-[#db2866] hover:shadow-[#ef3e78]/35"
-                        : "border border-[#f0b6df]/22 bg-[#2e1e5a]/55 text-white shadow-lg shadow-black/10 hover:border-[#f0b6df]/70 hover:bg-[#3b2255]/75"
-                    }`}
-                  >
-                    <Mail className="h-4 w-4" aria-hidden="true" />
-                    {plan.cta}
-                  </a>
-                </div>
+                <a
+                  href={buildPlanInterestEmailHref(plan.emailName, plan.subject)}
+                  aria-describedby="plan-interest-note"
+                  aria-label={`${plan.cta}. Opens email interest form only. This is not checkout and does not create an app account, dating profile, match request, or payment record.`}
+                  className={`pm-btn mt-auto w-full ${
+                    isFeatured ? "pm-btn-primary" : "pm-btn-outline"
+                  }`}
+                >
+                  <IconMail size={18} stroke={1.75} aria-hidden="true" />
+                  {plan.cta}
+                </a>
               </article>
             );
           })}
         </div>
 
-        <div className="mt-8 border-t border-white/10 pt-6 text-white">
-          <p className="text-sm font-dm-sans-bold uppercase text-[#f0b6df]">
-            Not sure which interest path fits?
-          </p>
-          <ul className="mt-4 grid gap-3 lg:grid-cols-3">
-            {decisionPrompts.map((prompt) => (
-              <li
-                key={prompt}
-                className="flex min-h-14 items-start gap-3 border-l border-white/14 pl-4 text-sm leading-6 text-[#f8f5ff]"
-              >
-                <CheckCircleIcon />
-                <span>{prompt}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div
-          className="mt-8 grid gap-3 border-y border-white/10 py-5 sm:grid-cols-3"
+        <ul
+          className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-mauve"
           aria-label="Current membership boundaries"
         >
+          <li className="font-dm-sans-semibold text-plum">
+            Planned pricing, not checkout.
+          </li>
           {launchBoundaries.map((boundary) => (
-            <div
-              key={boundary}
-              className="flex min-h-12 items-center justify-center text-center text-sm font-dm-sans-bold text-[#f8f5ff]"
-            >
-              {boundary}
-            </div>
+            <li key={boundary}>{boundary}.</li>
           ))}
-        </div>
+        </ul>
 
-        <div className="mt-8 border-l-2 border-[#f0b6df] bg-[#2e1e5a]/45 py-1 pl-5 pr-3 text-white sm:pl-6">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#2e1e5a] text-white">
-              <ShieldCheck className="h-5 w-5" aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="font-lora text-2xl font-bold">
-                Pricing notice
-              </h3>
-              <p className="mt-2 text-base leading-7 text-[#d7c7ed]">
-                Paid plans should not be treated as purchased, active, or
-                guaranteed until final plan details, checkout terms,
-                cancellation/refund policy, support coverage, and billing
-                provider flow are visible and confirmed.
-              </p>
-            </div>
-          </div>
-        </div>
+        <details className="pm-disclosure group mt-5 max-w-3xl">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 font-dm-sans-semibold text-plum">
+            Pricing notice and email details
+            <IconChevronDown
+              size={18}
+              stroke={1.75}
+              className="text-rosas transition-transform duration-300 group-open:rotate-180 motion-reduce:transition-none"
+              aria-hidden="true"
+            />
+          </summary>
+          <p className="pb-2 text-sm leading-6 text-mauve">
+            Paid plans should not be treated as purchased, active, or
+            guaranteed until final plan details, checkout terms,
+            cancellation/refund policy, support coverage, and billing provider
+            flow are visible and confirmed. Register interest only: VIP features
+            open only when membership access and checkout are available.
+          </p>
+          <p
+            id="plan-interest-note"
+            className="pb-3 text-sm leading-6 text-mauve"
+          >
+            Interest buttons open a plan-interest email only.{" "}
+            It does not create an app account, dating profile, match request,
+            matching session, checkout step, or payment record.{" "}
+            This is plan-interest email only.{" "}
+            Do not include payment details, ID documents, location, or{" "}
+            private profile information. {PLAN_INTEREST_EMAIL_WARNING}
+          </p>
+        </details>
       </div>
     </section>
   );
 };
-
-const CheckCircleIcon = () => (
-  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#22a574] text-white">
-    <Check className="h-3.5 w-3.5" aria-hidden="true" />
-  </span>
-);
 
 export default Membership;
