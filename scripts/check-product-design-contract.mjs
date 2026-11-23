@@ -204,7 +204,7 @@ const requiredFiles = [
     path: "src/components/sections/Download.tsx",
     markers: [
       "WaitlistCaptureForm",
-      "Pick your platform. Keep the first step private.",
+      "Be first when PinayMate opens on your phone",
       "Email option",
       "Choose your platform by email",
       "Join iOS waitlist",
@@ -219,7 +219,6 @@ const requiredFiles = [
       "without creating an app account, dating profile, match request, or payment record",
       "Keep passwords, ID documents, payment details, precise location, and private profile information",
       "border-l-2 border-[#f0b6df]",
-      "lg:border-l lg:border-white/12 lg:pl-10",
       "focus-visible:outline",
     ],
     forbiddenMarkers: [

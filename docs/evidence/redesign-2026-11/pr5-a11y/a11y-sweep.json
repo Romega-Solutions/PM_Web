@@ -1,0 +1,198 @@
+{
+  "reflow-320": {
+    "scrollW": 320,
+    "vw": 320,
+    "overflow": [
+      "SPAN. right=1256"
+    ],
+    "clipped": [
+      "Free waitlist. For Filipinas, no payment",
+      "Gold interest. Register interest only.",
+      "VIP interest. Register interest only.",
+      "Private waitlist. Share your email, choo",
+      ". Best if you use iPhone or iPad.",
+      ". Best if you use an Android phone.",
+      "Leave this field blank",
+      "What happens next"
+    ],
+    "errs": []
+  },
+  "zoom-200": {
+    "scrollW": 720,
+    "vw": 720,
+    "overflow": [
+      "SPAN. right=1260"
+    ],
+    "clipped": [
+      "Free waitlist. For Filipinas, no payment",
+      "Gold interest. Register interest only.",
+      "VIP interest. Register interest only.",
+      "Private waitlist. Share your email, choo",
+      ". Best if you use iPhone or iPad.",
+      ". Best if you use an Android phone.",
+      "Leave this field blank",
+      "What happens next"
+    ],
+    "errs": []
+  },
+  "textSpacing": {
+    "clipped": [
+      "Free waitlist. For Filipinas, no payment",
+      "Gold interest. Register interest only.",
+      "VIP interest. Register interest only.",
+      "Private waitlist. Share your email, choo",
+      "Leave this field blank",
+      "What happens next"
+    ],
+    "scrollW": 1440,
+    "vw": 1440
+  },
+  "forcedColors": {
+    "focused": "Join the waitlist",
+    "outlineStyle": "solid",
+    "outlineWidth": "3px",
+    "primaryBorder": "solid 1px"
+  },
+  "keyboard": {
+    "count": 32,
+    "missingFocus": [],
+    "order": [
+      "Skip to main content",
+      "Go to PinayMate home",
+      "Home",
+      "Trust",
+      "Safety",
+      "Membership",
+      "FAQ",
+      "Go to PinayMate waitlist options",
+      "Join the waitlist",
+      "See how it works",
+      "Review planned memberships",
+      "Email PinayMate support about trust and ",
+      "Join free waitlist. Opens email interest",
+      "Register Gold interest. Opens email inte",
+      "Register VIP interest. Opens email inter",
+      "Pricing notice and email details",
+      "Email PinayMate support without sending ",
+      "Is PinayMate live yet?Waitlist only",
+      "What do I share when I join?Email only",
+      "Can I pay or make a profile today?No pay",
+      "How does profile review work?In the app",
+      "Where do I get the app?Waitlist first",
+      "iOS waitlist. Best if you use iPhone or ",
+      "Android waitlist. Best if you use an And",
+      "Trust",
+      "Safety",
+      "Membership",
+      "Waitlist",
+      "Email PinayMate launch support",
+      "Email PinayMate legal and privacy team",
+      "Open PinayMate privacy notice",
+      "Open PinayMate terms notice"
+    ]
+  },
+  "desktop-1440": {
+    "headings": [
+      "H1 Dating with intent, safety, and respect.",
+      "H2 What your profile will show",
+      "H2 What PinayMate gives you",
+      "H3 Say what you're looking for",
+      "H3 Know more before you chat",
+      "H3 Start conversations easily",
+      "H2 From waitlist to first conversation",
+      "H3 Join the waitlist",
+      "H3 Get the app",
+      "H3 Build your profile",
+      "H3 Meet and message",
+      "H2 Safety is built in, not added later",
+      "H2 Plans for when the app opens",
+      "H3 Free",
+      "H3 Gold",
+      "H3 VIP",
+      "H2 Questions before you join",
+      "H3 Need a direct answer?",
+      "H2 Be first when PinayMate opens on your phone",
+      "H3 What happens next",
+      "H3 Navigate",
+      "H3 Contact"
+    ],
+    "landmarks": [
+      "nav[Main]",
+      "main#main-content",
+      "div#faq-panel-0",
+      "div#faq-panel-1",
+      "div#faq-panel-2",
+      "div#faq-panel-3",
+      "div#faq-panel-4",
+      "footer"
+    ],
+    "imgs": [
+      "/main-logo-no-bg.svg alt=\"PinayMate Logo\"",
+      "/images/hero-golden-hour-800.webp alt=\"A couple embracing in a field at golden hour\"",
+      "/images/intent-smile-800.webp alt=\"A couple smiling together by the water\"",
+      "/images/review-together-800.webp alt=\"A couple smiling at a phone together on a sofa\"",
+      "/images/conversation-coffee-800.webp alt=\"Two people holding hands across a café table\"",
+      "/images/manila-night-800.webp alt=\"Manila skyline at night\"",
+      "/images/trust-shoreline-800.webp alt=\"A couple walking hand in hand along the shore\"",
+      "/images/evening-string-lights-800.webp alt=\"A couple under string lights in the evening\"",
+      "/main-logo-no-bg.svg alt=\"PinayMate\""
+    ],
+    "dupIds": [],
+    "lang": "en",
+    "title": "PinayMate | Filipino Dating Built Around Trust",
+    "axe": [],
+    "errs": []
+  },
+  "mobile-390": {
+    "headings": [
+      "H1 Dating with intent, safety, and respect.",
+      "H2 What your profile will show",
+      "H2 What PinayMate gives you",
+      "H3 Say what you're looking for",
+      "H3 Know more before you chat",
+      "H3 Start conversations easily",
+      "H2 From waitlist to first conversation",
+      "H3 Join the waitlist",
+      "H3 Get the app",
+      "H3 Build your profile",
+      "H3 Meet and message",
+      "H2 Safety is built in, not added later",
+      "H2 Plans for when the app opens",
+      "H3 Free",
+      "H3 Gold",
+      "H3 VIP",
+      "H2 Questions before you join",
+      "H3 Need a direct answer?",
+      "H2 Be first when PinayMate opens on your phone",
+      "H3 What happens next",
+      "H3 Navigate",
+      "H3 Contact"
+    ],
+    "landmarks": [
+      "nav[Main]",
+      "main#main-content",
+      "div#faq-panel-0",
+      "div#faq-panel-1",
+      "div#faq-panel-2",
+      "div#faq-panel-3",
+      "div#faq-panel-4",
+      "footer"
+    ],
+    "imgs": [
+      "/main-logo-no-bg.svg alt=\"PinayMate Logo\"",
+      "/images/hero-golden-hour-800.webp alt=\"A couple embracing in a field at golden hour\"",
+      "/images/intent-smile-800.webp alt=\"A couple smiling together by the water\"",
+      "/images/review-together-800.webp alt=\"A couple smiling at a phone together on a sofa\"",
+      "/images/conversation-coffee-800.webp alt=\"Two people holding hands across a café table\"",
+      "/images/manila-night-800.webp alt=\"Manila skyline at night\"",
+      "/images/trust-shoreline-800.webp alt=\"A couple walking hand in hand along the shore\"",
+      "/images/evening-string-lights-800.webp alt=\"A couple under string lights in the evening\"",
+      "/main-logo-no-bg.svg alt=\"PinayMate\""
+    ],
+    "dupIds": [],
+    "lang": "en",
+    "title": "PinayMate | Filipino Dating Built Around Trust",
+    "axe": [],
+    "errs": []
+  }
+}
