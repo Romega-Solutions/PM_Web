@@ -59,6 +59,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    border: 1.5px solid transparent; /* shows as a real border in Windows high-contrast mode */
     border-radius: 999px;
     padding: 0 24px;
     font-family: "DM Sans", system-ui, sans-serif;

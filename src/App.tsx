@@ -11,7 +11,7 @@ import Membership from "./components/sections/Membership";
 
 function App() {
   return (
-    <div className="min-h-screen bg-paper font-dm-sans-regular text-plum">
+    <div className="pm-light min-h-screen font-dm-sans-regular">
       <a className="skip-link" href="#main-content">
         Skip to main content
       </a>
