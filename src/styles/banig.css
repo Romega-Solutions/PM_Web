@@ -59,6 +59,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    border: 1.5px solid transparent; /* shows as a real border in Windows high-contrast mode */
     border-radius: 999px;
     padding: 0 24px;
     font-family: "DM Sans", system-ui, sans-serif;
@@ -751,5 +752,162 @@
       animation-range: entry 30% cover 35%;
     }
   }
+  }
+}
+
+/* ─── PR 3: membership tiers and FAQ ──────────────────────────────────── */
+@layer components {
+  .pm-tier {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 24px;
+    box-shadow: 0 0 0 1px var(--color-line);
+    transition:
+      translate 0.45s var(--ease-pm),
+      box-shadow 0.45s var(--ease-pm);
+  }
+
+  .pm-tier:hover {
+    translate: 0 -4px;
+    box-shadow:
+      0 0 0 1px var(--color-line),
+      0 24px 40px -28px rgb(52 8 57 / 0.45);
+  }
+
+  /* The recommended plan carries the woven border as a ribbon. */
+  .pm-tier-pick {
+    padding-top: 40px;
+    box-shadow:
+      0 0 0 2px var(--color-rosas),
+      0 24px 50px -30px rgb(179 20 96 / 0.6);
+  }
+
+  .pm-tier-pick:hover {
+    box-shadow:
+      0 0 0 2px var(--color-rosas),
+      0 30px 60px -30px rgb(179 20 96 / 0.75);
+  }
+
+  .pm-tier-pick::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 14px;
+    background: url("/patterns/banig-edge.svg") 0 0 / auto 14px repeat-x;
+  }
+
+  .pm-tier-flag {
+    position: absolute;
+    top: 26px;
+    right: 20px;
+    border-radius: 999px;
+    background-color: var(--color-petal);
+    padding: 4px 12px;
+    color: var(--color-rosas);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .pm-disclosure {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .pm-disclosure summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .pm-tier {
+        animation: pm-rise-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 85%;
+      }
+
+      .pm-tier:nth-child(2) {
+        animation-range: entry 12% entry 97%;
+      }
+
+      .pm-tier:nth-child(3) {
+        animation-range: entry 24% cover 30%;
+      }
+    }
+  }
+}
+
+/* ─── PR 4: waitlist ──────────────────────────────────────────────────── */
+/* Platform cards wrap a visually hidden radio, so show focus on the card. */
+.pm-choice:has(:focus-visible) {
+  outline: 3px solid var(--color-luna);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .pm-join-mat {
+    position: relative;
+    padding: 0 0 40px 40px;
+  }
+
+  .pm-join-mat .pm-mat {
+    bottom: 0;
+    left: 0;
+    width: 78%;
+    height: 78%;
+    border-radius: 26px;
+  }
+
+  .pm-join-photo {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 22px;
+    box-shadow: 0 30px 60px -30px rgb(52 8 57 / 0.55);
+  }
+
+  .pm-join-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      @keyframes pm-photo-up {
+        from {
+          clip-path: inset(18% 0 0 0 round 22px);
+        }
+        to {
+          clip-path: inset(0 0 0 0 round 22px);
+        }
+      }
+
+      .pm-join-photo {
+        animation: pm-photo-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+      }
+
+      .pm-join-photo img {
+        animation: pm-settle linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 50%;
+      }
+    }
+  }
+}
+
+@layer components {
+  /* The waitlist email step eases in after a platform is chosen. */
+  .pm-reveal-panel:not([hidden]) {
+    animation: pm-rise 0.45s var(--ease-pm) both;
   }
 }

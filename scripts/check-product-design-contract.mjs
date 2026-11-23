@@ -204,7 +204,7 @@ const requiredFiles = [
     path: "src/components/sections/Download.tsx",
     markers: [
       "WaitlistCaptureForm",
-      "Pick your platform. Keep the first step private.",
+      "Be first when PinayMate opens on your phone",
       "Email option",
       "Choose your platform by email",
       "Join iOS waitlist",
@@ -219,7 +219,6 @@ const requiredFiles = [
       "without creating an app account, dating profile, match request, or payment record",
       "Keep passwords, ID documents, payment details, precise location, and private profile information",
       "border-l-2 border-[#f0b6df]",
-      "lg:border-l lg:border-white/12 lg:pl-10",
       "focus-visible:outline",
     ],
     forbiddenMarkers: [
@@ -254,8 +253,8 @@ const requiredFiles = [
   {
     path: "src/components/sections/Membership.tsx",
     markers: [
-      "Membership direction",
-      "Clear membership interest, not a live checkout",
+      "Plans for when the app opens",
+      "Nothing is charged today",
       "Free waitlist",
       "Gold interest",
       "VIP interest",
@@ -264,9 +263,7 @@ const requiredFiles = [
       "not checkout",
       "checkout step, or payment record",
       "PLAN_INTEREST_EMAIL_WARNING",
-      "mt-12 grid gap-4 lg:grid-cols-3",
       "Best fit",
-      "Not sure which interest path fits?",
       "Current membership boundaries",
       "Pricing notice",
       "Paid plans should not be treated as purchased",
@@ -291,12 +288,11 @@ const requiredFiles = [
   {
     path: "src/components/sections/Faqs.tsx",
     markers: [
-      "FAQ and access clarity",
-      "Straight answers before anyone joins.",
-      "Support boundary",
+      "Questions before you join",
+      "Need a direct answer?",
       "This website is for waitlist and support contact only",
       "Do not send passwords",
-      "divide-y divide-white/10 border-y",
+      "divide-y divide-line border-y",
       "aria-expanded",
       "aria-controls",
       "role=\"region\"",

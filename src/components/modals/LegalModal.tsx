@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { X, Shield, FileText } from "lucide-react";
+import { IconFileText, IconShieldCheck, IconX } from "@tabler/icons-react";
 import { launchEmailLinks } from "../../lib/launchEmailLinks";
 
 interface LegalModalProps {
@@ -70,7 +70,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
   const content = {
     privacy: {
       title: "Privacy Policy",
-      icon: Shield,
+      icon: IconShieldCheck,
       sections: [
         {
           title: "Launch-Stage Notice",
@@ -116,7 +116,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
     },
     terms: {
       title: "Terms of Service",
-      icon: FileText,
+      icon: IconFileText,
       sections: [
         {
           title: "Launch-Stage Service",
@@ -177,7 +177,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-plum/70 p-4 backdrop-blur-sm animate-fadeIn"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -191,40 +191,40 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
         aria-labelledby={`legal-modal-title-${type}`}
         aria-describedby={`legal-modal-description-${type}`}
         tabIndex={-1}
-        className="bg-gradient-to-br from-[#1a202c] via-[#283040] to-[#1a202c] rounded-xl max-w-4xl w-full max-h-[min(90dvh,48rem)] overflow-hidden border border-[#8D99B2]/20 shadow-2xl animate-slideInUp"
+        className="pm-light w-full max-w-3xl max-h-[min(90dvh,48rem)] overflow-hidden rounded-[22px] shadow-[0_40px_80px_-30px_rgb(52_8_57/0.6)] animate-slideInUp"
       >
-        {/* Header */}
-        <div className="bg-gradient-to-r from-[#F4376D]/10 via-[#A855F7]/10 to-[#3B82F6]/10 border-b border-[#8D99B2]/20 p-6 flex items-center justify-between sticky top-0 backdrop-blur-lg z-10">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-[#F4376D] via-[#A855F7] to-[#3B82F6] rounded-lg flex items-center justify-center shadow-lg">
-              <IconComponent className="w-6 h-6 text-white" />
-            </div>
+        <div className="pm-edge" aria-hidden="true" />
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-line bg-paper px-5 py-4 sm:px-6">
+          <div className="flex items-center gap-3">
+            <span className="pm-icon-tile" aria-hidden="true">
+              <IconComponent size={19} stroke={1.75} />
+            </span>
             <h2
               id={`legal-modal-title-${type}`}
-              className="text-2xl md:text-3xl font-dm-sans-black text-white"
+              className="font-lora-medium text-2xl text-plum md:text-[28px]"
             >
               {selectedContent.title}
             </h2>
           </div>
           <button
+            type="button"
             onClick={onClose}
             aria-label={`Close ${selectedContent.title}`}
-            className="w-11 h-11 bg-[#283040] hover:bg-[#F4376D] rounded-lg flex items-center justify-center transition-all duration-300 group border border-[#8D99B2]/20 hover:border-[#F4376D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F4376D]"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border-[1.5px] border-line bg-white text-plum transition-colors duration-200 hover:border-rosas hover:text-rosas"
           >
-            <X className="w-5 h-5 text-[#C8B5E6] group-hover:text-white transition-colors" />
+            <IconX size={20} stroke={1.75} aria-hidden="true" />
           </button>
         </div>
 
-        {/* Content */}
-        <div className="overflow-y-auto max-h-[calc(min(90dvh,48rem)-100px)] p-5 space-y-7 sm:p-6 sm:space-y-8">
-          <div className="bg-gradient-to-r from-[#F4376D]/5 via-[#A855F7]/5 to-[#3B82F6]/5 border border-[#F4376D]/20 rounded-lg p-6">
-            <p className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed">
-              <strong className="text-white">Last Updated:</strong> June 11,
+        <div className="max-h-[calc(min(90dvh,48rem)-96px)] space-y-7 overflow-y-auto p-5 sm:p-6">
+          <div className="rounded-[18px] bg-petal p-5">
+            <p className="leading-relaxed text-mauve">
+              <strong className="font-dm-sans-semibold text-plum">Last Updated:</strong> June 11,
               2026
             </p>
             <p
               id={`legal-modal-description-${type}`}
-              className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed mt-2"
+              className="mt-2 leading-relaxed text-mauve"
             >
               Please read this {selectedContent.title.toLowerCase()} carefully.
               The current site is a waitlist and support surface, so terms may
@@ -232,51 +232,50 @@ const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, type }) => {
             </p>
           </div>
 
-          {selectedContent.sections.map((section, index) => (
-            <div
-              key={index}
-              className="space-y-3 animate-fadeInUp"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-r from-[#F4376D] to-[#A855F7] text-sm font-bold text-white">
-                  {index + 1}
+          <ol className="space-y-6">
+            {selectedContent.sections.map((section, index) => (
+              <li key={index} className="space-y-2">
+                <div className="flex items-start gap-3">
+                  <span
+                    className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-petal font-lora-semibold text-sm text-rosas"
+                    aria-hidden="true"
+                  >
+                    {index + 1}
+                  </span>
+                  <h3 className="pt-0.5 font-lora-semibold text-lg text-plum">
+                    {section.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-dm-sans-bold text-white">
-                  {section.title}
-                </h3>
-              </div>
-              <p className="pl-0 text-[#C8B5E6] font-dm-sans-regular leading-relaxed sm:pl-11">
-                {section.content}
-              </p>
-            </div>
-          ))}
+                <p className="leading-relaxed text-mauve sm:pl-11">
+                  {section.content}
+                </p>
+              </li>
+            ))}
+          </ol>
 
-          {/* Contact Section */}
-          <div className="bg-gradient-to-r from-[#F4376D]/10 via-[#A855F7]/10 to-[#3B82F6]/10 border border-[#F4376D]/30 rounded-lg p-6 mt-8">
-            <h3 className="text-xl font-dm-sans-bold text-white mb-4">
+          <div className="rounded-[18px] border border-line bg-white p-5">
+            <h3 className="mb-2 font-lora-semibold text-lg text-plum">
               Questions or Concerns?
             </h3>
-            <p className="text-[#C8B5E6] font-dm-sans-regular leading-relaxed mb-4">
+            <p className="mb-3 leading-relaxed text-mauve">
               If you have any questions about our{" "}
               {selectedContent.title.toLowerCase()}, contact the launch support
               team:
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-1 sm:flex-row sm:gap-6">
               <a
                 href={launchEmailLinks.legalQuestion}
                 aria-label="Email PinayMate legal support"
-                className="inline-flex min-h-11 items-center space-x-2 rounded-xl text-[#ff8fb8] hover:text-white transition-colors font-dm-sans-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-11 items-center font-dm-sans-semibold text-luna underline decoration-brand decoration-2 underline-offset-4 hover:text-rosas"
               >
-                <span>legal@pinaymate.com</span>
+                legal@pinaymate.com
               </a>
-              <span className="text-[#8D99B2] hidden sm:block">•</span>
               <a
                 href={launchEmailLinks.supportQuestion}
                 aria-label="Email PinayMate support"
-                className="inline-flex min-h-11 items-center space-x-2 rounded-xl text-[#cbb2ff] hover:text-white transition-colors font-dm-sans-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91b1ff]"
+                className="inline-flex min-h-11 items-center font-dm-sans-semibold text-luna underline decoration-brand decoration-2 underline-offset-4 hover:text-rosas"
               >
-                <span>support@pinaymate.com</span>
+                support@pinaymate.com
               </a>
             </div>
           </div>
