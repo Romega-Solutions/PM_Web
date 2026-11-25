@@ -14,7 +14,7 @@
     "test:watch": "vitest",
     "check:launch-claims": "node scripts/check-launch-claims.mjs",
     "check:launch-claims:report": "node scripts/check-launch-claims.mjs --write-report",
-    "check:local-quality": "npm run lint && npx tsc -p tsconfig.app.json --noEmit --pretty false && npm run build && npm run check:release-local",
+    "check:local-quality": "npm run lint && npx tsc -p tsconfig.app.json --noEmit --pretty false && npm run build && npm test && npm run check:release-local",
     "check:local-links": "node scripts/check-local-cta-links.mjs",
     "check:local-links:report": "node scripts/check-local-cta-links.mjs --write-report",
     "check:product-design-contract": "node scripts/check-product-design-contract.mjs",
