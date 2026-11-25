@@ -3,10 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "check:dependency-audit": "npm audit --audit-level=moderate",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "check:launch-claims": "node scripts/check-launch-claims.mjs",
     "check:launch-claims:report": "node scripts/check-launch-claims.mjs --write-report",
     "check:local-quality": "npm run lint && npx tsc -p tsconfig.app.json --noEmit --pretty false && npm run build && npm run check:release-local",
@@ -31,6 +36,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
@@ -38,9 +47,11 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.7.0",
+    "jsdom": "^30.1.3",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.62.1",
-    "vite": "^8.3.5"
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
   },
   "overrides": {
     "minimatch": "^11.0.1"

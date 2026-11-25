@@ -144,7 +144,7 @@ pinaymate/
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22 or newer (the tests need it; `.nvmrc` pins 22, so `nvm use` picks the right version)
 - npm or yarn package manager
 
 ### Quick Start
@@ -184,6 +184,7 @@ npm run dev          # Start development server
 npm run build        # Build for production
 npm run preview      # Preview production build
 npm run lint         # Run ESLint
+npm test             # Run the Vitest tests once (Node 22+)
 ```
 
 ## Features Showcase

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 @import "./styles/banig.css";
+/* Test files hold words that look like Tailwind classes; keep them out of the shipped CSS. */
+@source not "./**/*.test.{ts,tsx}";
+@source not "./test";
 
 /*───────────────────────────────────────────────
 🌸 PinayMate Design System – Color Tokens (CSS Variables)
