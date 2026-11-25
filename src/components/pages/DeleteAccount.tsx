@@ -11,7 +11,7 @@ const inAppSteps = [
   "Open the PinayMate app and sign in.",
   "Tap the You tab at the bottom, then choose Privacy.",
   "Under Data & Account, tap Request Account Deletion and confirm.",
-  "Your request shows a status while support reviews it.",
+  "The app then shows a \"Deletion request received\" message. Support reviews the request and may contact you.",
 ];
 
 const emailSteps = [
@@ -167,8 +167,7 @@ const DeleteAccount: React.FC = () => {
             </h2>
             <p className="mt-3 max-w-2xl leading-7 text-mauve">
               Support checks that the request comes from the account owner and
-              may contact you before closing it. You will get a status update
-              after review. Some records may be kept for the reasons below.
+              may contact you before closing it. Some records may be kept for the reasons below.
             </p>
           </section>
 
