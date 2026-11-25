@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Heart, Menu, X } from "lucide-react";
+import {
+  IconChevronRight,
+  IconHeart,
+  IconMenu2,
+  IconX,
+} from "@tabler/icons-react";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -96,63 +101,45 @@ const Header: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-200 ${
+      aria-label="Main"
+      className={`pm-light fixed top-0 z-50 w-full border-b transition-[box-shadow,background-color,border-color] duration-300 ${
         isScrolled
-          ? "bg-dalisay-950/95 backdrop-blur-xl border-b border-amihan-500/25 shadow-2xl"
-          : "bg-dalisay-950/82 backdrop-blur-lg border-b border-luna-300/20"
+          ? "border-line bg-paper/95 shadow-[0_12px_30px_-20px_rgb(52_8_57/0.35)] backdrop-blur-xl"
+          : "border-transparent bg-paper/85 backdrop-blur-md"
       }`}
     >
-      <div
-        className="absolute inset-0 bg-gradient-to-r from-amihan-500/5 via-dalisay-500/5 to-luna-500/5 opacity-40 transition-opacity duration-200"
-        aria-hidden="true"
-      ></div>
-
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-20 relative">
+      <div className="relative mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8 xl:px-16">
         <div
-          className={`flex justify-between items-center transition-all duration-300 ${
-            isScrolled ? "h-14" : "h-16"
+          className={`flex items-center justify-between transition-[height] duration-300 ${
+            isScrolled ? "h-16" : "h-[72px]"
           }`}
         >
-          {/* Logo - Always Visible with Hover Border */}
           <a
             href="#home"
             aria-label="Go to PinayMate home"
-            className="flex min-h-12 cursor-pointer items-center space-x-3 rounded-lg border border-transparent px-3 py-2 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+            className="flex min-h-12 items-center gap-2 rounded-full pr-2"
           >
-            <div className="relative">
-              {/* Main Logo Container */}
-              <div className="w-12 h-12 relative">
-                <img
-                  src="/main-logo-no-bg.svg"
-                  alt="PinayMate Logo"
-                  className="w-full h-full object-contain drop-shadow-lg"
-                />
-              </div>
-            </div>
-
-            {/* Main Brand Name - Always visible, changes color based on section */}
-            <span
-              className="text-2xl font-hello-paris-bold text-white transition-all duration-300"
-            >
+            <img
+              src="/main-logo-no-bg.svg"
+              alt="PinayMate Logo"
+              width={44}
+              height={44}
+              className="h-11 w-11 object-contain"
+            />
+            <span className="font-hello-paris-bold text-2xl text-plum">
               PinayMate
             </span>
           </a>
 
-          {/* Right side - Navigation */}
-          <div className="flex items-center gap-3 sm:gap-4 lg:gap-6">
-            {/* Enhanced Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+          <div className="flex items-center gap-3 lg:gap-5">
+            <div className="hidden items-center gap-1 md:flex">
               {navItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="group nav-item relative min-h-11 rounded-lg border border-transparent px-4 py-2 transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+                  className="pm-nav-link font-dm-sans-medium text-base"
                 >
-                  <div className="flex items-center">
-                    <span className="font-dm-sans-medium text-base text-white transition-all duration-300 group-hover:text-[#F4376D]">
-                      {item.label}
-                    </span>
-                  </div>
+                  {item.label}
                 </a>
               ))}
             </div>
@@ -160,45 +147,36 @@ const Header: React.FC = () => {
             <a
               href="#download"
               aria-label="Go to PinayMate waitlist options"
-              className="hidden min-h-11 items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-4 py-2 text-sm font-dm-sans-bold text-white shadow-lg shadow-[#ef3e78]/25 transition-all duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] sm:inline-flex"
+              className="pm-btn pm-btn-primary hidden min-h-11 px-5 text-[15px] sm:inline-flex"
             >
               Join waitlist
-              <Heart className="h-4 w-4" aria-hidden="true" />
+              <IconHeart size={17} stroke={1.75} aria-hidden="true" />
             </a>
 
-            {/* Enhanced Mobile menu button */}
             <button
               ref={menuButtonRef}
               type="button"
               onClick={toggleMenu}
-              className="group relative min-h-11 min-w-11 rounded-lg border border-transparent bg-[#2e1e5a]/55 p-3 text-white backdrop-blur-sm transition-all duration-200 hover:border-[#F4376D] hover:bg-[#3b2255]/70 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9] md:hidden"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border-[1.5px] border-line bg-white text-plum transition-colors duration-200 hover:border-rosas md:hidden"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-navigation"
             >
-              <span
-                className={`w-6 h-6 relative z-10 transform transition-all duration-300 ${
-                  isMenuOpen ? "rotate-180" : "rotate-0"
-                }`}
-                aria-hidden="true"
-              >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </span>
+              {isMenuOpen ? (
+                <IconX size={22} stroke={1.75} aria-hidden="true" />
+              ) : (
+                <IconMenu2 size={22} stroke={1.75} aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
 
-        {/* Enhanced Mobile Navigation Menu */}
         {isMenuOpen && (
           <div className="fixed inset-x-0 top-16 z-40 md:hidden">
             <button
               type="button"
               aria-label="Close mobile navigation"
-              className="fixed left-0 right-0 top-16 h-[calc(100dvh-4rem)] bg-black/45"
+              className="fixed inset-x-0 top-16 h-[calc(100dvh-4rem)] bg-plum/70"
               onClick={closeMenu}
             />
             <div
@@ -207,41 +185,39 @@ const Header: React.FC = () => {
               role="dialog"
               aria-modal="true"
               aria-label="PinayMate mobile navigation"
-              className="relative max-h-[calc(100dvh-4rem)] animate-slideInDown overflow-y-auto border-t border-amihan-500/30 bg-dalisay-950/98 px-4 pt-4 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl backdrop-blur-xl"
+              className="pm-light relative max-h-[calc(100dvh-4rem)] animate-slideInDown overflow-y-auto rounded-b-3xl border-t border-line px-4 pt-3 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-2xl"
             >
-              <p className="px-4 pb-2 text-xs font-dm-sans-bold uppercase text-[#cbbade]">
-                Menu
-              </p>
-              <div className="space-y-3">
+              <ul className="divide-y divide-line">
                 {navItems.map((item, index) => (
-                  <a
-                    key={item.href}
-                    ref={index === 0 ? firstMobileLinkRef : undefined}
-                    href={item.href}
-                    className="group flex min-h-12 items-center space-x-3 rounded-lg border border-transparent px-4 py-3 text-white transition-all duration-200 hover:border-[#F4376D] hover:bg-[#2e1e5a]/45 hover:text-[#f7a4c8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
-                    style={{ animationDelay: `${index * 40}ms` }}
-                    onClick={closeMenu}
-                  >
-                    <span className="font-dm-sans-medium text-base transition-all duration-200">
+                  <li key={item.href}>
+                    <a
+                      ref={index === 0 ? firstMobileLinkRef : undefined}
+                      href={item.href}
+                      className="flex min-h-14 items-center justify-between rounded-xl px-3 font-dm-sans-medium text-lg text-plum transition-colors duration-200 hover:bg-petal"
+                      onClick={closeMenu}
+                    >
                       {item.label}
-                    </span>
-                    <span className="ml-auto text-sm text-[#f7a4c8]" aria-hidden="true">
-                      View
-                    </span>
-                  </a>
+                      <IconChevronRight
+                        size={20}
+                        stroke={1.75}
+                        className="text-rosas"
+                        aria-hidden="true"
+                      />
+                    </a>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               <a
                 href="#download"
                 onClick={closeMenu}
                 aria-label="Go to PinayMate waitlist options"
-                className="mt-4 flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#ef3e78] px-5 py-3 text-center font-dm-sans-bold text-white shadow-xl shadow-[#ef3e78]/25 transition duration-200 hover:bg-[#d7346b] active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#81a5e9]"
+                className="pm-btn pm-btn-primary mt-4 flex min-h-14 w-full"
               >
                 Join the waitlist
-                <Heart className="h-5 w-5" aria-hidden="true" />
+                <IconHeart size={20} stroke={1.75} aria-hidden="true" />
               </a>
-              <p className="mt-3 px-1 text-sm leading-6 text-[#cbbade]">
+              <p className="mt-3 px-1 text-sm leading-6 text-mauve">
                 Waitlist links open email. No profile, checkout, or payment is
                 created from this website.
               </p>

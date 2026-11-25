@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "./styles/banig.css";
+/* Test files hold words that look like Tailwind classes; keep them out of the shipped CSS. */
+@source not "./**/*.test.{ts,tsx}";
+@source not "./test";
 
 /*───────────────────────────────────────────────
 🌸 PinayMate Design System – Color Tokens (CSS Variables)
@@ -387,71 +391,13 @@ h6 {
   font-weight: 900;
 }
 
-/* ─── Hover contrast utilities (use design token --color-neutral-white) ─── */
-.group:hover .hover-contrast-text,
-.hover-contrast-text:hover {
-  color: var(--color-neutral-white) !important;
-  background: none !important;
-  -webkit-text-fill-color: var(--color-neutral-white) !important;
-  transition: color 180ms ease, background 180ms ease;
-}
-
-.group:hover .hover-contrast-bg,
-.hover-contrast-bg:hover {
-  /* switch to white background for max contrast, dark brand text */
-  background: var(--color-neutral-white) !important;
-  color: var(--color-dalisay-950) !important;
-  background-image: none !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
-}
-
-/* ensure gradient overlays don't hide the white variant */
-.group:hover .hover-contrast-bg > .contrast-overlay,
-.hover-contrast-bg:hover > .contrast-overlay {
-  opacity: 0 !important;
-}
-
-/* Custom animations for PinayMate Hero section */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* ─── Motion used by the mobile menu and legal modal ─── */
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -466,193 +412,6 @@ h6 {
   }
 }
 
-.animate-fadeInUp {
-  animation: fadeInUp 0.8s ease-out;
-}
-
-.animate-fadeIn {
-  animation: fadeIn 1s ease-out;
-}
-
-.animate-slideInRight {
-  animation: slideInRight 0.6s ease-out;
-}
-
-.animate-slideInLeft {
-  animation: slideInLeft 0.6s ease-out;
-}
-
-.animate-slideInDown {
-  animation: slideInDown 0.8s ease-out;
-}
-
-/* Animation delays */
-.delay-150 {
-  animation-delay: 150ms;
-}
-.delay-300 {
-  animation-delay: 300ms;
-}
-.delay-500 {
-  animation-delay: 500ms;
-}
-.delay-700 {
-  animation-delay: 700ms;
-}
-.delay-1000 {
-  animation-delay: 1000ms;
-}
-.delay-75 {
-  animation-delay: 75ms;
-}
-
-/* Gradient text animation */
-.bg-size-200 {
-  background-size: 200% 200%;
-}
-.bg-pos-0 {
-  background-position: 0% 50%;
-}
-.bg-pos-100 {
-  background-position: 100% 50%;
-}
-
-/* 3D Animation Styles for About Section */
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-gpu {
-  transform: translateZ(0);
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px) rotateY(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotateY(180deg);
-  }
-}
-
-@keyframes float-delayed {
-  0%,
-  100% {
-    transform: translateY(0px) rotateX(0deg);
-  }
-  50% {
-    transform: translateY(-30px) rotateX(15deg);
-  }
-}
-
-@keyframes float-slow {
-  0%,
-  100% {
-    transform: translateY(0px) scale(1);
-  }
-  50% {
-    transform: translateY(-10px) scale(1.1);
-  }
-}
-
-@keyframes bounce-slow {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes heartbeat {
-  0%,
-  50%,
-  100% {
-    transform: scale(1);
-  }
-  25%,
-  75% {
-    transform: scale(1.1);
-  }
-}
-
-@keyframes heartbeat-3d {
-  0%,
-  50%,
-  100% {
-    transform: scale(1) rotateY(0deg) translateZ(0px);
-  }
-  25% {
-    transform: scale(1.15) rotateY(10deg) translateZ(5px);
-  }
-  75% {
-    transform: scale(1.15) rotateY(-10deg) translateZ(5px);
-  }
-}
-
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes float-3d {
-  0%,
-  100% {
-    transform: translateY(0px) translateZ(0px) rotateX(0deg);
-  }
-  33% {
-    transform: translateY(-8px) translateZ(10px) rotateX(5deg);
-  }
-  66% {
-    transform: translateY(-4px) translateZ(5px) rotateX(-5deg);
-  }
-}
-
-@keyframes float-heart-3d {
-  0%,
-  100% {
-    transform: translateY(0px) translateZ(0px) rotateY(0deg) scale(1);
-  }
-  25% {
-    transform: translateY(-12px) translateZ(15px) rotateY(90deg) scale(1.1);
-  }
-  50% {
-    transform: translateY(-20px) translateZ(25px) rotateY(180deg) scale(1.2);
-  }
-  75% {
-    transform: translateY(-12px) translateZ(15px) rotateY(270deg) scale(1.1);
-  }
-}
-
-@keyframes slideInDown-3d {
-  from {
-    opacity: 0;
-    transform: translateY(-50px) translateZ(-20px) rotateX(-20deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) translateZ(0) rotateX(0deg);
-  }
-}
-
 @keyframes slideInUp {
   from {
     opacity: 0;
@@ -664,192 +423,16 @@ h6 {
   }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
 }
-.animate-float-delayed {
-  animation: float-delayed 8s ease-in-out infinite;
+
+.animate-slideInDown {
+  animation: slideInDown 0.35s ease-out;
 }
-.animate-float-slow {
-  animation: float-slow 4s ease-in-out infinite;
-}
-.animate-bounce-slow {
-  animation: bounce-slow 3s ease-in-out infinite;
-}
-.animate-pulse-slow {
-  animation: pulse-slow 4s ease-in-out infinite;
-}
-.animate-heartbeat {
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-.animate-heartbeat-3d {
-  animation: heartbeat-3d 2s ease-in-out infinite;
-}
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
-}
-.animate-float-3d {
-  animation: float-3d 5s ease-in-out infinite;
-}
-.animate-float-heart-3d {
-  animation: float-heart-3d 8s ease-in-out infinite;
-}
-.animate-slideInDown-3d {
-  animation: slideInDown-3d 1s ease-out;
-}
+
 .animate-slideInUp {
-  animation: slideInUp 0.6s ease-out;
-}
-
-/* Enhanced Features Section Animations */
-@keyframes gradient-x {
-  0%,
-  100% {
-    background-size: 200% 200%;
-    background-position: left center;
-  }
-  50% {
-    background-size: 200% 200%;
-    background-position: right center;
-  }
-}
-
-@keyframes pulse-subtle {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(244, 55, 109, 0.4);
-  }
-  50% {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 10px rgba(244, 55, 109, 0);
-  }
-}
-
-@keyframes rotate-y-180 {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(180deg);
-  }
-}
-
-.animate-gradient-x {
-  animation: gradient-x 3s ease-in-out infinite;
-}
-.animate-pulse-subtle {
-  animation: pulse-subtle 2s ease-in-out infinite;
-}
-.hover\:rotate-y-180:hover {
-  animation: rotate-y-180 0.7s ease-in-out;
-}
-
-/* Additional delays for staggered animations */
-.delay-400 {
-  animation-delay: 400ms;
-}
-.delay-600 {
-  animation-delay: 600ms;
-}
-.delay-800 {
-  animation-delay: 800ms;
-}
-
-/* Custom Heart Cursor */
-.cursor-heart {
-  cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='%23F4376D' stroke='%23ffffff' stroke-width='2'/%3E%3C/svg%3E")
-      12 12,
-    auto !important;
-}
-
-/* Heartbeat animation for special elements */
-@keyframes heartbeat-cursor {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  75% {
-    transform: scale(1.1);
-  }
-}
-
-.animate-heartbeat-cursor {
-  animation: heartbeat-cursor 1s ease-in-out infinite;
-}
-
-/* Responsive cursor improvements */
-@media (max-width: 640px) {
-  .cursor-heart {
-    cursor: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='%23F4376D' stroke='%23ffffff' stroke-width='2.5'/%3E%3C/svg%3E")
-        10 10,
-      auto !important;
-  }
-}
-
-/* Mobile responsive cursor */
-@media (max-width: 480px) {
-  .cursor-heart {
-    cursor: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 17.35l-1.2-1.1C4.4 12.36 2 10.28 2 7.5 2 5.42 3.42 4 5.5 4c1.24 0 2.45.54 3.5 1.41C9.55 4.54 10.76 4 12 4c2.08 0 3.5 1.42 3.5 3.5 0 2.78-2.4 4.86-6.8 8.75L10 17.35z' fill='%23F4376D' stroke='%23000000' stroke-width='2' opacity='0.95'/%3E%3Cpath d='M10 17.35l-1.2-1.1C4.4 12.36 2 10.28 2 7.5 2 5.42 3.42 4 5.5 4c1.24 0 2.45.54 3.5 1.41C9.55 4.54 10.76 4 12 4c2.08 0 3.5 1.42 3.5 3.5 0 2.78-2.4 4.86-6.8 8.75L10 17.35z' fill='none' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E")
-        8 8,
-      auto !important;
-  }
-}
-
-/* Shimmer effect for loading bar */
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.animate-shimmer {
-  animation: shimmer 2s ease-in-out infinite;
-}
-
-/* Floating heart animation */
-@keyframes float-heart {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translateY(-10px) rotate(5deg) scale(1.1);
-  }
-  50% {
-    transform: translateY(-20px) rotate(0deg) scale(1.2);
-  }
-  75% {
-    transform: translateY(-10px) rotate(-5deg) scale(1.1);
-  }
-}
-
-.animate-float-heart {
-  animation: float-heart 6s ease-in-out infinite;
-}
-
-/* Zoom pulse animation for CTA button */
-@keyframes zoom-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.animate-zoom-pulse {
-  animation: zoom-pulse 2s ease-in-out infinite;
+  animation: slideInUp 0.4s ease-out;
 }
 
 html {
@@ -885,6 +468,10 @@ button {
   font-weight: 700;
   box-shadow: 0 16px 40px rgba(15, 10, 26, 0.24);
   transition: transform 180ms ease;
+}
+
+.skip-link:not(:focus) {
+  box-shadow: none;
 }
 
 .skip-link:focus {
