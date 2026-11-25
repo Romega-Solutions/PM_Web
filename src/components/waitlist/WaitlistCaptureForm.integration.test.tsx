@@ -34,6 +34,7 @@ afterEach(() => {
 async function joinAs(email: string) {
   const user = userEvent.setup();
   render(<WaitlistCaptureForm />);
+  await user.click(screen.getByRole("button", { name: /^ios waitlist/i }));
   await user.type(screen.getByLabelText(/email for launch updates/i), email);
   await user.click(screen.getByRole("button", { name: "Join the waitlist" }));
 }

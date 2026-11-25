@@ -37,8 +37,16 @@ const notSent: WaitlistBackendResult = {
 
 const emailField = () => screen.getByLabelText(/email for launch updates/i);
 const joinButton = () => screen.getByRole("button", { name: /join the waitlist|joining/i });
+const platformButton = (platform: "ios" | "android") =>
+  screen.getByRole("button", { name: platform === "ios" ? /^ios waitlist/i : /^android waitlist/i });
 
-async function fillAndSubmit(user: ReturnType<typeof userEvent.setup>, email = "ana@example.com") {
+// The email step only appears after a platform button is pressed.
+async function fillAndSubmit(
+  user: ReturnType<typeof userEvent.setup>,
+  email = "ana@example.com",
+  platform: "ios" | "android" = "ios",
+) {
+  await user.click(platformButton(platform));
   await user.type(emailField(), email);
   await user.click(joinButton());
 }
@@ -48,14 +56,21 @@ beforeEach(() => {
 });
 
 describe("WaitlistCaptureForm: first view", () => {
-  it("asks only for an email and a platform, with iOS selected", () => {
+  it("offers two platform buttons, with the email step hidden until one is pressed", async () => {
+    const user = userEvent.setup();
     render(<WaitlistCaptureForm />);
 
+    expect(platformButton("ios")).toHaveAttribute("aria-pressed", "false");
+    expect(platformButton("android")).toHaveAttribute("aria-pressed", "false");
+    expect(emailField()).not.toBeVisible();
+
+    await user.click(platformButton("ios"));
+
+    expect(platformButton("ios")).toHaveAttribute("aria-pressed", "true");
+    expect(emailField()).toBeVisible();
     expect(emailField()).toHaveAttribute("type", "email");
     expect(emailField()).toBeRequired();
-    expect(screen.getByRole("radio", { name: /^ios/i })).toBeChecked();
-    expect(screen.getByRole("radio", { name: /^android/i })).not.toBeChecked();
-    expect(screen.getByRole("button", { name: "Join the waitlist" })).toBeEnabled();
+    expect(joinButton()).toBeEnabled();
   });
 
   it("shows the privacy notice in a polite status region, and no email option yet", () => {
@@ -70,6 +85,7 @@ describe("WaitlistCaptureForm: first view", () => {
     const user = userEvent.setup();
     render(<WaitlistCaptureForm />);
 
+    await user.click(platformButton("ios"));
     await user.click(joinButton());
 
     expect(submit).not.toHaveBeenCalled();
@@ -77,7 +93,7 @@ describe("WaitlistCaptureForm: first view", () => {
 });
 
 describe("WaitlistCaptureForm: what it sends", () => {
-  it("sends the email, the default iOS platform and an empty honeypot", async () => {
+  it("sends the email, the chosen iOS platform and an empty honeypot", async () => {
     submit.mockResolvedValue(accepted);
     const user = userEvent.setup();
     render(<WaitlistCaptureForm />);
@@ -98,8 +114,7 @@ describe("WaitlistCaptureForm: what it sends", () => {
     const user = userEvent.setup();
     render(<WaitlistCaptureForm />);
 
-    await user.click(screen.getByRole("radio", { name: /^android/i }));
-    await fillAndSubmit(user);
+    await fillAndSubmit(user, "ana@example.com", "android");
 
     expect(submit).toHaveBeenCalledWith(expect.objectContaining({ platform: "android" }));
   });
@@ -168,8 +183,7 @@ describe("WaitlistCaptureForm: the answer", () => {
     const user = userEvent.setup();
     render(<WaitlistCaptureForm />);
 
-    await user.click(screen.getByRole("radio", { name: /^android/i }));
-    await fillAndSubmit(user);
+    await fillAndSubmit(user, "ana@example.com", "android");
 
     expect(await screen.findByRole("status")).toHaveTextContent("You're on the Android waitlist.");
   });
@@ -179,8 +193,7 @@ describe("WaitlistCaptureForm: the answer", () => {
     const user = userEvent.setup();
     render(<WaitlistCaptureForm />);
 
-    await user.click(screen.getByRole("radio", { name: /^android/i }));
-    await fillAndSubmit(user, "ana@example.com");
+    await fillAndSubmit(user, "ana@example.com", "android");
 
     expect(await screen.findByRole("alert")).toHaveTextContent(/use the email option to join/i);
 
@@ -234,7 +247,7 @@ describe("WaitlistCaptureForm: after an answer", () => {
     await fillAndSubmit(user);
     expect(await screen.findByRole("status")).toHaveTextContent(/you're on the ios waitlist/i);
 
-    await user.click(screen.getByRole("radio", { name: /^android/i }));
+    await user.click(platformButton("android"));
 
     expect(screen.getByRole("status")).not.toHaveTextContent(/you're on the/i);
   });
