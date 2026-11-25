@@ -9,7 +9,7 @@ const PAGE_DESCRIPTION =
 
 const inAppSteps = [
   "Open the PinayMate app and sign in.",
-  "Open your profile settings, then choose Privacy.",
+  "Tap the You tab at the bottom, then choose Privacy.",
   "Under Data & Account, tap Request Account Deletion and confirm.",
   "Your request shows a status while support reviews it.",
 ];
@@ -37,15 +37,15 @@ const keptData = [
 const retentionDraft = [
   {
     label: "Active systems",
-    value: "Your data is removed within 30 days after support approves the request.",
+    value: "Your data is removed after support approves the request.",
   },
   {
     label: "Backups",
-    value: "Copies in backups are removed within a further 90 days.",
+    value: "Copies in backups are removed on a schedule that is still being confirmed.",
   },
   {
     label: "Safety, fraud, and legal records",
-    value: "Kept for up to 12 months, or longer only where the law requires it.",
+    value: "Kept only where the law requires it or for safety and fraud prevention.",
   },
 ];
 
