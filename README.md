@@ -144,7 +144,7 @@ pinaymate/
 
 ### Prerequisites
 
-- Node.js 22 or newer (the tests need it; `.nvmrc` pins 22, so `nvm use` picks the right version)
+- Node.js 22.22.2+ on the 22 line, 24.15.0+ on the 24 line, or 26+. This matches `engines` in `package.json` and is what the test runner's `jsdom` needs. `.nvmrc` pins 22, so `nvm use` picks a supported version.
 - npm or yarn package manager
 
 ### Quick Start
@@ -184,7 +184,7 @@ npm run dev          # Start development server
 npm run build        # Build for production
 npm run preview      # Preview production build
 npm run lint         # Run ESLint
-npm test             # Run the Vitest tests once (Node 22+)
+npm test             # Run the Vitest tests once (see the Node versions above)
 ```
 
 ## Features Showcase
