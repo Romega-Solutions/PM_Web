@@ -68,12 +68,6 @@ const StepList: React.FC<{ steps: string[] }> = ({ steps }) => (
   </ol>
 );
 
-const DraftTag: React.FC = () => (
-  <span className="inline-flex items-center rounded-full border border-buri bg-buri/30 px-3 py-1 text-xs font-dm-sans-semibold text-plum">
-    Draft wording, pending approval
-  </span>
-);
-
 const DeleteAccount: React.FC = () => {
   useEffect(() => {
     document.title = PAGE_TITLE;
@@ -172,12 +166,9 @@ const DeleteAccount: React.FC = () => {
           </section>
 
           <section aria-labelledby="data-heading" className="mt-12">
-            <div className="flex flex-wrap items-center gap-3">
-              <h2 id="data-heading" className="font-lora-semibold text-xl text-plum">
-                What is deleted and what may be kept
-              </h2>
-              <DraftTag />
-            </div>
+            <h2 id="data-heading" className="font-lora-semibold text-xl text-plum">
+              What is deleted and what may be kept
+            </h2>
 
             <div className="mt-5 grid gap-8 md:grid-cols-2">
               <div>
