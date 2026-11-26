@@ -48,6 +48,17 @@ function buildLegalEmailHref(subject: string, prompt: string) {
   return `${LEGAL_MAILTO_PREFIX}subject=${encodeMailtoField(subject)}&body=${encodeMailtoField(body)}`;
 }
 
+function buildAccountDeletionEmailHref() {
+  const body = `Hi PinayMate team,
+
+I would like to request deletion of my PinayMate account and the personal data linked to it. I am sending this from the email address registered to my account.
+
+${SUPPORT_EMAIL_SENSITIVE_DATA_WARNING}
+`;
+
+  return `${SUPPORT_MAILTO_PREFIX}subject=${encodeMailtoField("PinayMate account deletion request")}&body=${encodeMailtoField(body)}`;
+}
+
 export const launchEmailLinks = {
   iosWaitlist: buildWaitlistEmailHref("iOS"),
   androidWaitlist: buildWaitlistEmailHref("Android"),
@@ -67,6 +78,7 @@ export const launchEmailLinks = {
     "PinayMate legal question",
     "I have a legal or privacy question about:",
   ),
+  accountDeletion: buildAccountDeletionEmailHref(),
 } as const;
 
 export function buildPlanInterestEmailHref(planName: string, subject: string) {

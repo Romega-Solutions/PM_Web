@@ -29,10 +29,10 @@ const Footer: React.FC = () => {
   };
 
   const quickLinks = [
-    { name: "Trust", href: "#about" },
-    { name: "Safety", href: "#features" },
-    { name: "Membership", href: "#pricing" },
-    { name: "Waitlist", href: "#download" },
+    { name: "Trust", href: "/#about" },
+    { name: "Safety", href: "/#features" },
+    { name: "Membership", href: "/#pricing" },
+    { name: "Waitlist", href: "/#download" },
   ];
 
   const linkClass =
@@ -150,6 +150,15 @@ const Footer: React.FC = () => {
               >
                 Privacy
               </button>
+              <span className="text-blush/50" aria-hidden="true">
+                •
+              </span>
+              <a
+                href="/delete-account"
+                className="inline-flex min-h-11 items-center text-sm text-blush transition-colors duration-200 hover:text-white"
+              >
+                Delete account
+              </a>
               <span className="text-blush/50" aria-hidden="true">
                 •
               </span>
